@@ -1,4 +1,172 @@
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
+import { useVideoPlayer } from "./hooks/useVideoPlayer";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 function App() {
+  const cursorPackRef = useRef(null);
+  const defaultCursorRef = useRef(null);
+  const linkCursorRef = useRef(null);
+  const [cursorType, setCursorType] = useState("default");
+
+  useVideoPlayer();
+
+  // Custom Cursor Logic
+  useEffect(() => {
+    const cursorPack = cursorPackRef.current;
+    const defaultCursor = defaultCursorRef.current;
+    const linkCursor = linkCursorRef.current;
+
+    if (!cursorPack || !defaultCursor || !linkCursor) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    // Track mouse position
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    // Smooth cursor animation loop
+    const animateCursor = () => {
+      // Smooth interpolation for cursor movement
+      const speed = 0.15;
+      cursorX += (mouseX - cursorX) * speed;
+      cursorY += (mouseY - cursorY) * speed;
+
+      // Position both cursors - they already have transform: translate(-50%, -50%) in CSS
+      if (defaultCursor) {
+        defaultCursor.style.left = `${cursorX}px`;
+        defaultCursor.style.top = `${cursorY}px`;
+      }
+      if (linkCursor) {
+        linkCursor.style.left = `${cursorX}px`;
+        linkCursor.style.top = `${cursorY}px`;
+      }
+
+      requestAnimationFrame(animateCursor);
+    };
+
+    // Start cursor animation
+    const animationFrame = requestAnimationFrame(animateCursor);
+
+    // Handle hover states for links and interactive elements
+    const handleLinkHover = () => setCursorType("link");
+    const handleLinkLeave = () => setCursorType("default");
+
+    // Add hover listeners to all links and interactive elements
+    const links = document.querySelectorAll("a, button, .link, .project-card");
+    links.forEach((link) => {
+      link.addEventListener("mouseenter", handleLinkHover);
+      link.addEventListener("mouseleave", handleLinkLeave);
+    });
+
+    // Clean up
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrame);
+      links.forEach((link) => {
+        link.removeEventListener("mouseenter", handleLinkHover);
+        link.removeEventListener("mouseleave", handleLinkLeave);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    // Initialize all animations and carousel after component mounts
+    const initializeAnimations = () => {
+      // Text animations with GSAP
+      if (typeof window !== "undefined") {
+        // Split text into spans
+        let typeSplit = new SplitType("[text-split]", {
+          types: "words, chars",
+          tagName: "span",
+        });
+
+        // Link timelines to scroll position
+        function createScrollTriggerAnimation(triggerElement, timeline) {
+          ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top bottom",
+            onLeaveBack: () => {
+              timeline.progress(0);
+              timeline.pause();
+            },
+          });
+          ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top 80%",
+            onEnter: () => timeline.play(),
+          });
+        }
+
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+        // Words slide up animation
+        $$("[words-slide-up]").forEach((element) => {
+          let tl = gsap.timeline({ paused: true });
+          tl.from(element.querySelectorAll(".word"), {
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.5,
+            ease: "power2.out(2)",
+            stagger: { amount: 0.5 },
+          });
+          createScrollTriggerAnimation(element, tl);
+        });
+
+        // Words rotate in animation
+        $$("[words-rotate-in]").forEach((element) => {
+          let tl = gsap.timeline({ paused: true });
+          tl.set(element.querySelectorAll(".word"), {
+            transformPerspective: 1000,
+          });
+          tl.from(element.querySelectorAll(".word"), {
+            rotationX: -90,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: { amount: 0.6 },
+          });
+          createScrollTriggerAnimation(element, tl);
+        });
+
+        // Set text as visible
+        gsap.set("[text-split]", { opacity: 1 });
+      }
+
+      // Logo carousel animation
+      const carousels = document.querySelectorAll(".collection-list-logo-anim");
+      carousels.forEach((carousel) => {
+        const slides = Array.from(carousel.children);
+        let idx = -1;
+        slides.forEach((slide) => (slide.style.display = "none"));
+        function rotate() {
+          if (idx >= 0) {
+            slides[idx].style.display = "none";
+          }
+          idx = (idx + 1) % slides.length;
+          slides[idx].style.display = "block";
+          setTimeout(rotate, 83.333333);
+        }
+        rotate();
+      });
+    };
+
+    // Wait a bit for libraries to load and DOM to settle
+    const timer = setTimeout(initializeAnimations, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="loader">
@@ -10,7 +178,10 @@ function App() {
             <div className="footer-logo-frame">
               <div className="logo-frame-wrp">
                 <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div role="list" className="collection-list-logo-anim w-dyn-items">
+                  <div
+                    role="list"
+                    className="collection-list-logo-anim w-dyn-items"
+                  >
                     <div
                       style={{
                         backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
@@ -288,15 +459,21 @@ function App() {
         id="cursor-pack"
         data-w-id="ffc94e13-05f2-5027-2033-6946e0d01232"
         className="cursor-pack"
+        ref={cursorPackRef}
       >
         <div
           data-w-id="ffc94e13-05f2-5027-2033-6946e0d01237"
-          className="default-cursor"
+          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
+          ref={defaultCursorRef}
         >
           <div className="def-cursor-hor"></div>
           <div className="def-cursor-ver"></div>
         </div>
-        <div data-w-id="ffc94e13-05f2-5027-2033-6946e0d01234" className="link-cursor">
+        <div
+          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01234"
+          className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
+          ref={linkCursorRef}
+        >
           <div className="link-cursor-hor"></div>
           <div className="link-cursor-ver"></div>
         </div>
@@ -308,7 +485,9 @@ function App() {
         <div className="arrow-cursor"></div>
         <div id="video-cursor" className="video-cursor">
           <div id="video-loader" className="video-loader"></div>
-          <div id="videocontrol-play-btn" className="videocontrol-play-btn">Play</div>
+          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
+            Play
+          </div>
         </div>
         <div className="drag-helper">Drag</div>
         <div className="team-drag">Drag</div>
@@ -368,8 +547,8 @@ function App() {
             </div>
             <div className="fs-cc-banner2_text">
               By clicking "Accept", you agree to the storing of cookies on your
-              device to enhance site navigation, analyze site usage, and assist in
-              our marketing efforts. View our
+              device to enhance site navigation, analyze site usage, and assist
+              in our marketing efforts. View our
               <a
                 href="#"
                 data-wf-native-id-path="add0c45d-d02e-cb36-c4ab-5b762e766396:f650a7ea-2f52-1ece-a861-43a90418f594"
@@ -474,7 +653,9 @@ function App() {
               </div>
               <div className="fs-cc-prefs2_option">
                 <div className="fs-cc-prefs2_toggle-wrapper">
-                  <div className="fs-cc-prefs2_label">Personalization cookies</div>
+                  <div className="fs-cc-prefs2_label">
+                    Personalization cookies
+                  </div>
                   <label
                     data-wf-native-id-path="add0c45d-d02e-cb36-c4ab-5b762e766396:f650a7ea-2f52-1ece-a861-43a90418f5b9"
                     data-wf-ao-click-engagement-tracking="true"
@@ -609,8 +790,10 @@ function App() {
           </div>
         </div>
         <div className="t-large t-white">
-          Hanauer Landstr. 287<br />
-          60314 Frankfurt am<br />
+          Hanauer Landstr. 287
+          <br />
+          60314 Frankfurt am
+          <br />
           Main, Germany
         </div>
         <a
@@ -928,15 +1111,11 @@ function App() {
       <div className="section">
         <div id="scrollto" className="gap-80"></div>
         <div className="container _5-grid">
-          <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678">
-            <h2 words-slide-up="" text-split="">
-              About
-            </h2>
-          </div>
+          <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678"></div>
           <div id="w-node-_07ba283e-d6d6-55a6-8ecc-27cf9d894ec7-256fe678">
             <div
               data-w-id="7256aa37-c59c-faaf-e9fb-6a5ef41e1011"
-              style={{ opacity: 0 }}
+              style={{ opacity: 1 }}
               className="motto"
             >
               Visual precision, designed to resonate
@@ -967,9 +1146,15 @@ function App() {
                 </div>
                 <div className="videocontrol-sub-wrp">
                   <div id="videocontrol-track" className="videocontrol-track">
-                    <div id="videocontrol-bar" className="videocontrol-bar"></div>
+                    <div
+                      id="videocontrol-bar"
+                      className="videocontrol-bar"
+                    ></div>
                   </div>
-                  <div id="videocontrol-sound" className="videocontrol-sound"></div>
+                  <div
+                    id="videocontrol-sound"
+                    className="videocontrol-sound"
+                  ></div>
                   <div
                     id="videocontrol-screensize"
                     className="videocontrol-screensize"
@@ -980,7 +1165,7 @@ function App() {
                 <video
                   id="video"
                   playsInline
-                  webkit-playsinline=""
+                  muted
                   style={{
                     width: "100%",
                     height: "100%",
@@ -1000,14 +1185,20 @@ function App() {
         <div className="gap-80"></div>
         <div words-slide-up="" text-split="" className="container">
           <div>
-            <div>Styleframe GmbH<br />Based in<br />Frankfurt am Main</div>
+            <div>
+              Styleframe GmbH
+              <br />
+              Based in
+              <br />
+              Frankfurt am Main
+            </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
             <div className="t-large">
               Styleframe is a design and CGI animation studio driven by clarity,
               craft, and creative vision. Projects are approached with precision
-              and purpose, ensuring every detail contributes to meaningful visual
-              impact.
+              and purpose, ensuring every detail contributes to meaningful
+              visual impact.
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
@@ -1052,15 +1243,21 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">04 x Worldfest Houston</div>
+                      <div className="t-large-no-anim">
+                        04 x Worldfest Houston
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Berlin Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        01 x Berlin Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">02 x Vegas Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        02 x Vegas Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1070,7 +1267,9 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">03 x Red Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        03 x Red Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1088,15 +1287,21 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">04 x Worldfest Houston</div>
+                      <div className="t-large-no-anim">
+                        04 x Worldfest Houston
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Berlin Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        01 x Berlin Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">02 x Vegas Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        02 x Vegas Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1106,7 +1311,9 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">03 x Red Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        03 x Red Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1124,15 +1331,21 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">04 x Worldfest Houston</div>
+                      <div className="t-large-no-anim">
+                        04 x Worldfest Houston
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Berlin Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        01 x Berlin Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">02 x Vegas Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        02 x Vegas Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1142,7 +1355,9 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">03 x Red Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        03 x Red Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1160,15 +1375,21 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">04 x Worldfest Houston</div>
+                      <div className="t-large-no-anim">
+                        04 x Worldfest Houston
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Berlin Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        01 x Berlin Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">02 x Vegas Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        02 x Vegas Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1178,7 +1399,9 @@ function App() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">03 x Red Movie Awards</div>
+                      <div className="t-large-no-anim">
+                        03 x Red Movie Awards
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1538,7 +1761,10 @@ function App() {
             <div className="footer-logo-frame">
               <div className="logo-frame-wrp">
                 <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div role="list" className="collection-list-logo-anim w-dyn-items">
+                  <div
+                    role="list"
+                    className="collection-list-logo-anim w-dyn-items"
+                  >
                     <div
                       style={{
                         backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
