@@ -1,23 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
-import { Routes, Route, Link } from "react-router-dom";
-import IndexPage from "./IndexPage";
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/project-index" element={<IndexPage />} />
-    </Routes>
-  );
-}
-
-function HomePage() {
+function IndexPage() {
   const cursorPackRef = useRef(null);
   const defaultCursorRef = useRef(null);
   const linkCursorRef = useRef(null);
@@ -58,6 +49,7 @@ function HomePage() {
         defaultCursor.style.left = `${cursorX}px`;
         defaultCursor.style.top = `${cursorY}px`;
       }
+
       if (linkCursor) {
         linkCursor.style.left = `${cursorX}px`;
         linkCursor.style.top = `${cursorY}px`;
@@ -178,7 +170,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="app-container">
+    <>
       <div className="loader">
         <div
           data-w-id="b8bdbb27-d710-8937-fa2d-e2ff10981e1c"
@@ -189,151 +181,156 @@ function HomePage() {
               <div className="logo-frame-wrp">
                 <div className="collection-list-wrp-logo-anim w-dyn-list">
                   <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ea7b8caf2e461da972d_18.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e9dab059fd303cb59bb_17.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e8c9b02ae0d1681b7b8_16.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cb457683fdcaecf34aa_15.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cabbf94893911f30b8d_14.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ca28d03c1d72159ab26_13.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c954de027a2c9aa384c_12.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c84894ff1d8f915df24_11.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
-                  <div
-                    style={{
-                      backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                    }}
-                    role="listitem"
-                    className="collection-item-logo-anim w-dyn-item"
-                  ></div>
+                    role="list"
+                    className="collection-list-logo-anim w-dyn-items"
+                  >
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ea7b8caf2e461da972d_18.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e9dab059fd303cb59bb_17.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e8c9b02ae0d1681b7b8_16.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cb457683fdcaecf34aa_15.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cabbf94893911f30b8d_14.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ca28d03c1d72159ab26_13.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c954de027a2c9aa384c_12.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c84894ff1d8f915df24_11.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="footer-logo-s"></div>
+            <div className="footer-logo-r"></div>
           </div>
-          <div className="footer-logo-s"></div>
-          <div className="footer-logo-r"></div>
         </div>
       </div>
       <div className="navbar">
@@ -345,8 +342,7 @@ function HomePage() {
               data-wf-element-id="695dd12c-82a5-a52d-8f5b-486dd64e909b"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%5D"
               href="/"
-              aria-current="page"
-              className="logo link w-inline-block w--current"
+              className="logo link w-inline-block"
             ></a>
           </div>
           <div
@@ -354,16 +350,16 @@ function HomePage() {
             className="navbar-dt-wrp"
           >
             <div className="navbar-link-wrp">
-              <a
+              <Link
                 data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
                 data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="/project-index"
+                to="/project-index"
                 className="link navbar-link"
               >
                 Index
-              </a>
+              </Link>
               <a
                 data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
                 data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
@@ -415,16 +411,16 @@ function HomePage() {
         </div>
         <div className="navbar-mob-wrp">
           <div className="navbar-link-wrp">
-            <a
+            <Link
               data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="/project-index"
+              to="/project-index"
               className="link navbar-link"
             >
               Index
-            </a>
+            </Link>
             <a
               data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
               data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
@@ -496,6 +492,301 @@ function HomePage() {
         </div>
         <div className="drag-helper">Drag</div>
         <div className="team-drag">Drag</div>
+      </div>
+      <div className="section">
+        <div className="gap-120"></div>
+        <div className="container hide-mob">
+          <div
+            id="w-node-e060aa2e-8755-94e5-ddd9-be93d928de7e-256fe6c6"
+            className="table-head"
+          >
+            <div className="index-1st-col-wrp"><div className="t-small">Year</div></div>
+            <div
+              id="w-node-b33f70e5-7c5e-a17d-742d-332bb7f9776b-256fe6c6"
+              className="t-small"
+            >
+              Client
+            </div>
+            <div
+              id="w-node-_56def625-c6a4-ff87-da40-59d2690f689e-256fe6c6"
+              className="t-small"
+            >
+              Project
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div
+            id="w-node-_87d630e8-24c6-78b1-5886-37237d20c0ca-256fe6c6"
+            className="index-list-wrp w-dyn-list"
+          >
+            <div role="list" className="index-list w-dyn-items">
+              {/* Samsung Wearables */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/samsung-wearables"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Samsung</div>
+                  <div className="t-large">Galaxy Watch8 Series</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69023aab725e99851044f4b2_Samsung_Wearables_Watches_10s_PACKSHOT_WEB.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/Samsung_Wearables/SNIPPET_SAMSUNG_WEARABLES.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Oakley Plantaris */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/plantaris-ti"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Oakley</div>
+                  <div className="t-large">Plantaris Titanium</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6902375a90fb4818e5e5720f_PLANTARIS_TI_STILL-Life_MAXINE_HERO_V3_16x9_600dpi_web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/oakley-plantaris_ti/SNIPPET_PLANTARIS-Ti.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Samsung BnB */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/beats-n-buckets"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Samsung</div>
+                  <div className="t-large">Galaxy Z Fold 7 - BnB</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/Samsung_BeatzNBuckets/SNIPPET-Samsung_BnB_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ray-Ban Innovation Lab */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/innovation-lab"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Ray-Ban</div>
+                  <div className="t-large">Innovation Lab</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/ray-ban_innovation_lab/SNIPPET-RayBan_InnovationLab_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Oakley Artifacts */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/cltr-rdfnd-7nt5r"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Oakley</div>
+                  <div className="t-large">Artifacts from the Future</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904b145453e177540b455c2_497237698_18509548351001463_3505879398570363264_n_web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/OAKLEY_CLTR_RDFND/SNIPPET-OAKLEY_CLTR_RDFND_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Wolf & Shepherd */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/wolf-shepherd"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Wolf &amp; Shepherd</div>
+                  <div className="t-large">SuperCrossover</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68ffa2f85f4049d12ecc726e_250305_WS_CGFILM-FINAL_v19_Music_Atmospheric01_00175_web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/wolfshepard-film-web/SNIPPET-WOLF_%26_HIRTE_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Moncler */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Moncler</div>
+                  <div className="t-large">Grenoble FW25</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              {/* Panel Systems */}
+              <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/szp"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2024</div>
+                  </div>
+                  <div className="t-large">Panel Systems</div>
+                  <div className="t-large">Unit</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904a6f2e3503a24fdfa73dc_SZP-web_055web.avif"
+                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/SZP-web/VARIABLE_UNIT_WebsiteSnippet.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="cookie-pack">
         <div fs-cc="banner" className="fs-cc-banner">
@@ -1112,9 +1403,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="section">
-        <div id="scrollto" className="gap-80"></div>
+        <div className="gap-80"></div>
         <div className="container _5-grid">
           <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678"></div>
           <div id="w-node-_07ba283e-d6d6-55a6-8ecc-27cf9d894ec7-256fe678">
@@ -1919,8 +2208,8 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default App;
+export default IndexPage;
