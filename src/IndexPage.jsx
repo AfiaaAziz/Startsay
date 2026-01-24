@@ -500,7 +500,9 @@ function IndexPage() {
             id="w-node-e060aa2e-8755-94e5-ddd9-be93d928de7e-256fe6c6"
             className="table-head"
           >
-            <div className="index-1st-col-wrp"><div className="t-small">Year</div></div>
+            <div className="index-1st-col-wrp">
+              <div className="t-small">Year</div>
+            </div>
             <div
               id="w-node-b33f70e5-7c5e-a17d-742d-332bb7f9776b-256fe6c6"
               className="t-small"
@@ -543,7 +545,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69023aab725e99851044f4b2_Samsung_Wearables_Watches_10s_PACKSHOT_WEB.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/Samsung_Wearables/SNIPPET_SAMSUNG_WEARABLES.mp4"
@@ -576,7 +582,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6902375a90fb4818e5e5720f_PLANTARIS_TI_STILL-Life_MAXINE_HERO_V3_16x9_600dpi_web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/oakley-plantaris_ti/SNIPPET_PLANTARIS-Ti.mp4"
@@ -609,7 +619,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/Samsung_BeatzNBuckets/SNIPPET-Samsung_BnB_LowRes.mp4"
@@ -642,7 +656,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/ray-ban_innovation_lab/SNIPPET-RayBan_InnovationLab_LowRes.mp4"
@@ -675,7 +693,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904b145453e177540b455c2_497237698_18509548351001463_3505879398570363264_n_web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/OAKLEY_CLTR_RDFND/SNIPPET-OAKLEY_CLTR_RDFND_LowRes.mp4"
@@ -708,7 +730,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68ffa2f85f4049d12ecc726e_250305_WS_CGFILM-FINAL_v19_Music_Atmospheric01_00175_web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/wolfshepard-film-web/SNIPPET-WOLF_%26_HIRTE_LowRes.mp4"
@@ -741,7 +767,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
@@ -774,7 +804,11 @@ function IndexPage() {
                       disablePictureInPicture
                       disableRemotePlayback
                       poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904a6f2e3503a24fdfa73dc_SZP-web_055web.avif"
-                      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
                     >
                       <source
                         src="https://cdn.styleframe.de/SZP-web/VARIABLE_UNIT_WebsiteSnippet.mp4"
@@ -1150,771 +1184,7 @@ function IndexPage() {
           </a>
         </div>
       </div>
-      <div className="section hero">
-        <a
-          data-wf-native-id-path="a28d1b75-7034-a468-795d-8dac5dfca10b"
-          data-wf-ao-click-engagement-tracking="true"
-          data-wf-element-id="a28d1b75-7034-a468-795d-8dac5dfca10b"
-          href="#scrollto"
-          className="down-arrow"
-        >
-          ↓
-        </a>
-        <div
-          data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d7f"
-          className="project-list-wrp w-dyn-list"
-        >
-          <div
-            data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d80"
-            role="list"
-            className="project-list w-dyn-items"
-          >
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-0"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif")`,
-                }}
-                href="/project/mars"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Oakley
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-1"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif")`,
-                }}
-                href="/project/teenage-engineering"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Teenage Engineering
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-2"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif")`,
-                }}
-                href="/project/innovation-lab"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Ray-Ban
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-3"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif")`,
-                }}
-                href="/project/beats-n-buckets"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Samsung
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-4"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif")`,
-                }}
-                href="/project/moncler-grenoble"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Moncler
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-5"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg")`,
-                }}
-                href="/project/13-11"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Oakley
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-6"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif")`,
-                }}
-                href="/project/we-are-rewind"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  We Are Rewind
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-7"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif")`,
-                }}
-                href="/project/hatton-labs-x-ap"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Hatton Labs
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="gap-80"></div>
-        <div className="container _5-grid">
-          <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678"></div>
-          <div id="w-node-_07ba283e-d6d6-55a6-8ecc-27cf9d894ec7-256fe678">
-            <div
-              data-w-id="7256aa37-c59c-faaf-e9fb-6a5ef41e1011"
-              style={{ opacity: 1 }}
-              className="motto"
-            >
-              Visual precision, designed to resonate
-            </div>
-          </div>
-        </div>
-        <div id="showreel" className="container _5-grid">
-          <div id="w-node-a83bf4c9-7318-1161-7fa0-1f567b3d4e71-256fe678">
-            <div>Showreel</div>
-          </div>
-          <div id="w-node-a83bf4c9-7318-1161-7fa0-1f567b3d4e74-256fe678">
-            <div
-              id="videocontainer"
-              className="video-container home-instance w-node-_41f6b6fa-a7cb-2ea7-ba37-7aa8483ca464-256fe678"
-            >
-              <div id="videocontrol" className="videocontrol">
-                <div
-                  id="videocontrol-play-area"
-                  data-w-id="41f6b6fa-a7cb-2ea7-ba37-7aa8483ca466"
-                  className="videocontrol-play-area"
-                >
-                  <div className="video-cursor-mobile-wrp">
-                    <div className="video-cursor mobile-cursor">
-                      <div className="video-loader"></div>
-                      <div className="videocontrol-play-btn">Play</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="videocontrol-sub-wrp">
-                  <div id="videocontrol-track" className="videocontrol-track">
-                    <div
-                      id="videocontrol-bar"
-                      className="videocontrol-bar"
-                    ></div>
-                  </div>
-                  <div
-                    id="videocontrol-sound"
-                    className="videocontrol-sound"
-                  ></div>
-                  <div
-                    id="videocontrol-screensize"
-                    className="videocontrol-screensize"
-                  ></div>
-                </div>
-              </div>
-              <div className="project-hero-video w-embed">
-                <video
-                  id="video"
-                  playsInline
-                  muted
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                  poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
-                >
-                  <source
-                    src="https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="gap-80"></div>
-        <div words-slide-up="" text-split="" className="container">
-          <div>
-            <div>
-              Styleframe GmbH
-              <br />
-              Based in
-              <br />
-              Frankfurt am Main
-            </div>
-          </div>
-          <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
-            <div className="t-large">
-              Styleframe is a design and CGI animation studio driven by clarity,
-              craft, and creative vision. Projects are approached with precision
-              and purpose, ensuring every detail contributes to meaningful
-              visual impact.
-            </div>
-          </div>
-          <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
-            <div className="t-large">
-              Collaboration with international clients shapes the work, always
-              balancing experimentation with refined execution.
-            </div>
-            <div className="gap-40"></div>
-            <a
-              data-wf-native-id-path="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
-              href="/studio"
-              className="link l-large right-arrow"
-            >
-              Read More
-            </a>
-          </div>
-        </div>
-        <div className="gap-120"></div>
-        <div words-slide-up="" text-split="" className="container">
-          <div>
-            <div className="gap-15"></div>
-            <div>Awards</div>
-          </div>
-          <div id="w-node-d48b33b4-4f55-d80e-e9f8-fe8192c56aee-256fe678">
-            <div className="carousel-wrp">
-              <div className="carousel">
-                <div
-                  data-w-id="23bbced2-e113-b288-9ae4-e1b1c477c475"
-                  className="overflow-hidden w-dyn-list"
-                >
-                  <div
-                    data-w-id="23bbced2-e113-b288-9ae4-e1b1c477c476"
-                    role="list"
-                    className="scroll-list w-dyn-items"
-                  >
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div words-slide-up="" text-split="" className="container no-top-pad">
-          <div>
-            <div className="gap-15"></div>
-            <div>Clients</div>
-          </div>
-          <div id="w-node-ae8e3923-2f96-1bde-69cd-fbf36d96061f-256fe678">
-            <div className="carousel-wrp">
-              <div className="carousel">
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-w-id="f95d632f-46e9-13c6-2c2c-5236e3238c6e"
-                  className="overflow-hidden w-dyn-list"
-                >
-                  <div
-                    data-w-id="f95d632f-46e9-13c6-2c2c-5236e3238c6f"
-                    role="list"
-                    className="scroll-list w-dyn-items"
-                  >
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="gap-40"></div>
-            <a
-              data-wf-native-id-path="9a73183d-b011-f786-83ad-31a4f71def03"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="9a73183d-b011-f786-83ad-31a4f71def03"
-              href="/project-index"
-              className="link l-large right-arrow"
-            >
-              All Projects
-            </a>
-          </div>
-        </div>
-        <div className="gap-80"></div>
-      </div>
+     
       <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
         <div className="container">
           <div
