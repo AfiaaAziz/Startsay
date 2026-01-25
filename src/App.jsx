@@ -5,6 +5,7 @@ import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
 import { Routes, Route, Link } from "react-router-dom";
 import IndexPage from "./IndexPage";
+import StudioPage from "./StudioPage";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/project-index" element={<IndexPage />} />
+      <Route path="/studio" element={<StudioPage />} />
     </Routes>
   );
 }
