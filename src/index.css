@@ -272,3 +272,73 @@ button:focus-visible {
     display: none !important;
   }
 }
+
+/* Contact Banner Styles */
+.contact-banner {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #ff5101;
+  padding: 40px 30px;
+  overflow-y: auto;
+  transition: right 0.4s ease-in-out;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-banner.open {
+  right: 0;
+}
+
+.contact-banner.closed {
+  right: -400px;
+}
+
+.contact-banner .link.t-large.t-right {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-banner a {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-banner a:hover {
+  opacity: 0.8;
+}
+
+.contact-banner .t-white {
+  color: white;
+}
+
+.contact-banner .t-white-50 {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-banner .link-wrp {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .contact-banner {
+    width: 100%;
+    right: -100%;
+  }
+
+  .contact-banner.open {
+    right: 0;
+  }
+
+  .contact-banner.closed {
+    right: -100%;
+  }
+}
