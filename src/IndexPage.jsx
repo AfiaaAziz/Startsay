@@ -170,6 +170,60 @@ function IndexPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle index hover video positioning and visibility
+  useEffect(() => {
+    const indexItems = document.querySelectorAll(".index-item");
+
+    const handleItemMouseEnter = (e) => {
+      const hoverVideo = e.currentTarget.querySelector(".index-hover");
+      if (hoverVideo) {
+        hoverVideo.style.display = "block";
+        hoverVideo.setAttribute("data-visible", "true");
+      }
+    };
+
+    const handleItemMouseLeave = (e) => {
+      const hoverVideo = e.currentTarget.querySelector(".index-hover");
+      if (hoverVideo) {
+        hoverVideo.style.display = "none";
+        hoverVideo.removeAttribute("data-visible");
+      }
+    };
+
+    const handleMouseMove = (e) => {
+      const visibleVideos = document.querySelectorAll(
+        ".index-hover[data-visible='true']",
+      );
+      visibleVideos.forEach((video) => {
+        // Get the video dimensions
+        const videoWidth = video.offsetWidth || window.innerWidth * 0.25;
+        const videoHeight = video.offsetHeight || videoWidth * (9 / 16);
+
+        // Position with offset to center around cursor
+        const offsetX = e.clientX - videoWidth / 2;
+        const offsetY = e.clientY - videoHeight / 2;
+
+        // Use transform for better performance
+        video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+    };
+
+    indexItems.forEach((item) => {
+      item.addEventListener("mouseenter", handleItemMouseEnter);
+      item.addEventListener("mouseleave", handleItemMouseLeave);
+    });
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      indexItems.forEach((item) => {
+        item.removeEventListener("mouseenter", handleItemMouseEnter);
+        item.removeEventListener("mouseleave", handleItemMouseLeave);
+      });
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       <div className="loader">

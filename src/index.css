@@ -328,6 +328,51 @@ button:focus-visible {
   gap: 15px;
 }
 
+/* Index Hover Videos */
+.index-item {
+  position: relative;
+}
+
+.link.table-row {
+  position: relative;
+  z-index: 1000;
+}
+
+.index-hover {
+  aspect-ratio: 16 / 9;
+  width: 25vw;
+  height: auto;
+  display: none;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.index-hover[data-visible="true"] {
+  display: block !important;
+}
+
+.index-hover-vid {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.index-hover-vid video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.index-poster {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   .contact-banner {
     width: 100%;
@@ -340,5 +385,9 @@ button:focus-visible {
 
   .contact-banner.closed {
     right: -100%;
+  }
+  
+  .index-hover {
+    display: none !important;
   }
 }
