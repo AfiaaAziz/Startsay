@@ -13,6 +13,7 @@ function IndexPage() {
   const defaultCursorRef = useRef(null);
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useVideoPlayer();
 
@@ -389,6 +390,10 @@ function IndexPage() {
                 data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
                 href="#"
                 className="link navbar-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsContactOpen(!isContactOpen);
+                }}
               >
                 Contact
               </a>
@@ -450,6 +455,10 @@ function IndexPage() {
               data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
               href="#"
               className="link navbar-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsContactOpen(!isContactOpen);
+              }}
             >
               Contact
             </a>
@@ -1083,11 +1092,13 @@ function IndexPage() {
       </div>
       <div
         data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
-        className="contact-banner"
+        className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
       >
         <div
           data-w-id="d5f92b82-978f-a770-3f25-8224578da03b"
           className="link t-large t-right bottom-auto"
+          onClick={() => setIsContactOpen(false)}
+          style={{ cursor: "pointer" }}
         >
           ✕
         </div>
@@ -1184,7 +1195,7 @@ function IndexPage() {
           </a>
         </div>
       </div>
-     
+
       <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
         <div className="container">
           <div
