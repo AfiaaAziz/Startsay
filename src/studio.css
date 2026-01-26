@@ -1,0 +1,102 @@
+.cms-list-team {
+        overflow-x: auto;
+        -webkit-scrollbar {
+          display: none;
+        }
+        -webkit-overflow-scrolling: touch;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+
+       [fs-cc="banner"],
+      [fs-cc="manager"],
+      [fs-cc="preferences"],
+      [fs-cc="interaction"] {
+        display: none;
+      }
+
+      .wf-force-outline-none[tabindex="-1"]:focus {
+        outline: none;
+      }
+
+       html.w-mod-js:not(.w-mod-ix3) :is(.lab-image) {
+        visibility: hidden !important;
+      }
+
+
+      .anti-flicker,
+      .anti-flicker * {
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
+
+       [data-wf-hidden-variation],
+      [data-wf-hidden-variation] * {
+        display: none !important;
+      }
+
+
+       ::selection {
+        background-color: #ff5101;
+      }
+
+      ::-moz-selection {
+        background-color: #ff5101;
+      }
+
+      ::-o-selection {
+        background-color: #ff5101;
+      }
+
+      ::-ms-selection {
+        background-color: #ff5101;
+      }
+
+      ::-webkit-selection {
+        background-color: #ff5101;
+      }
+
+      .contact-banner::selection,
+      .contact-banner *::selection {
+        background-color: #fff;
+        color: #000000 !important;
+      }
+      .contact-banner::-moz-selection,
+      .contact-banner *::-moz-selection {
+        background-color: #fff;
+        color: #000000 !important;
+      }
+      .contact-banner::-webkit-selection,
+      .contact-banner *::-webkit-selection {
+        background-color: #fff;
+        color: #000000 !important;
+      }
+
+      [text-split] {
+        opacity: 0;
+      }
+      html.w-editor [text-split] {
+        opacity: 1;
+      }
+
+      .word {
+        overflow: hidden;
+        padding-bottom: 0.1em;
+        margin-bottom: -0.1em;
+        transform-origin: bottom;
+      }
+
+      .line {
+        position: relative;
+      }
+      .line-mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #e6e6e6;
+        opacity: 0.65;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+      }

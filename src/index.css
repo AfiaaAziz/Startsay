@@ -80,7 +80,7 @@ button:focus-visible {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10000;
   overflow: hidden;
 }
 
@@ -136,7 +136,7 @@ button:focus-visible {
 .link-cursor-hor,
 .link-cursor-ver {
   position: absolute;
-  background-color: #ff5101;
+  background-color: #ff5101
 }
 
 .def-cursor-hor {
@@ -290,6 +290,50 @@ button:focus-visible {
   gap: 40px;
 }
 
+/* Contact Banner White Cursor - CSS Hover-based approach */
+.contact-banner:hover ~ #cursor-pack .default-cursor .def-cursor-hor,
+.contact-banner:hover ~ #cursor-pack .default-cursor .def-cursor-ver {
+  background-color: white !important;
+}
+
+.contact-banner:hover ~ #cursor-pack .link-cursor .link-cursor-hor,
+.contact-banner:hover ~ #cursor-pack .link-cursor .link-cursor-ver {
+  background-color: white !important;
+}
+
+.contact-banner:hover ~ #cursor-pack .drag-cursor,
+.contact-banner:hover ~ #cursor-pack .resize-cursor {
+  border-color: white !important;
+}
+
+.contact-banner:hover ~ #cursor-pack .drag-helper,
+.contact-banner:hover ~ #cursor-pack .team-drag {
+  color: white !important;
+  border-color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.contact-banner:hover ~ #cursor-pack .video-cursor .video-loader {
+  border-color: white !important;
+  border-top-color: transparent !important;
+}
+
+.contact-banner:hover ~ #cursor-pack .video-cursor .videocontrol-play-btn {
+  color: white !important;
+}
+
+/* Hide original orange cursor on contact banner hover */
+.contact-banner:hover ~ #cursor-pack .default-cursor,
+.contact-banner:hover ~ #cursor-pack .link-cursor {
+  opacity: 0;
+}
+
+/* Show a dedicated white cursor when over contact banner */
+.contact-banner:hover ~ #cursor-pack .contact-white-cursor {
+  opacity: 1;
+  visibility: visible;
+}
+
 .contact-banner.open {
   right: 0;
 }
@@ -301,8 +345,23 @@ button:focus-visible {
 .contact-banner .link.t-large.t-right {
   align-self: flex-end;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
+  color: black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+}
+
+.contact-banner .link.t-large.t-right:hover {
+  transform: scale(1.1);
 }
 
 .contact-banner a {
@@ -326,6 +385,15 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.contact-banner .link-wrp .link {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.contact-banner .link-wrp .link:hover {
+  color: white;
 }
 
 /* Index Hover Videos */

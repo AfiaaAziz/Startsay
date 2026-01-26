@@ -5,6 +5,7 @@ import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
 import { Routes, Route, Link } from "react-router-dom";
 import IndexPage from "./IndexPage";
+import StudioPage from "./StudioPage";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/project-index" element={<IndexPage />} />
+      <Route path="/studio" element={<StudioPage />} />
     </Routes>
   );
 }
@@ -38,6 +40,13 @@ function HomePage() {
     let mouseY = 0;
     let cursorX = 0;
     let cursorY = 0;
+
+    // Get all cursor elements
+    const dragCursor = cursorPack.querySelector(".drag-cursor");
+    const resizeCursor = cursorPack.querySelector(".resize-cursor");
+    const videoCursor = cursorPack.querySelector(".video-cursor");
+    const dragHelper = cursorPack.querySelector(".drag-helper");
+    const teamDrag = cursorPack.querySelector(".team-drag");
 
     // Track mouse position
     const handleMouseMove = (e) => {
@@ -70,25 +79,70 @@ function HomePage() {
     // Start cursor animation
     const animationFrame = requestAnimationFrame(animateCursor);
 
-    // Handle hover states for links and interactive elements
-    const handleLinkHover = () => setCursorType("link");
-    const handleLinkLeave = () => setCursorType("default");
+    // Function to add white cursor class to all cursor elements
+    const addContactBannerCursor = () => {
+      if (defaultCursor) defaultCursor.classList.add("contact-banner-cursor");
+      if (linkCursor) linkCursor.classList.add("contact-banner-cursor");
+      if (dragCursor) dragCursor.classList.add("contact-banner-cursor");
+      if (resizeCursor) resizeCursor.classList.add("contact-banner-cursor");
+      if (videoCursor) videoCursor.classList.add("contact-banner-cursor");
+      if (dragHelper) dragHelper.classList.add("contact-banner-cursor");
+      if (teamDrag) teamDrag.classList.add("contact-banner-cursor");
+    };
 
-    // Add hover listeners to all links and interactive elements
-    const links = document.querySelectorAll("a, button, .link, .project-card");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover);
-      link.addEventListener("mouseleave", handleLinkLeave);
-    });
+    // Function to remove white cursor class from all cursor elements
+    const removeContactBannerCursor = () => {
+      if (defaultCursor)
+        defaultCursor.classList.remove("contact-banner-cursor");
+      if (linkCursor) linkCursor.classList.remove("contact-banner-cursor");
+      if (dragCursor) dragCursor.classList.remove("contact-banner-cursor");
+      if (resizeCursor) resizeCursor.classList.remove("contact-banner-cursor");
+      if (videoCursor) videoCursor.classList.remove("contact-banner-cursor");
+      if (dragHelper) dragHelper.classList.remove("contact-banner-cursor");
+      if (teamDrag) teamDrag.classList.remove("contact-banner-cursor");
+    };
+
+    // Handle hover states for links and interactive elements using event delegation
+    const handleLinkHover = (e) => {
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
+      if (target) {
+        setCursorType("link");
+      }
+      // Check if hovering over contact banner for white cursor
+      const contactBanner = e.target.closest(".contact-banner");
+      if (contactBanner) {
+        addContactBannerCursor();
+      }
+    };
+
+    const handleLinkLeave = (e) => {
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
+      if (target) {
+        setCursorType("default");
+      }
+      // Check if leaving contact banner - remove white cursor
+      const relatedTarget = e.relatedTarget;
+      const leavingContactBanner =
+        !relatedTarget || !relatedTarget.closest(".contact-banner");
+      if (leavingContactBanner) {
+        removeContactBannerCursor();
+      }
+    };
+
+    // Use event delegation on document for dynamically added elements
+    document.addEventListener("mouseenter", handleLinkHover, true);
+    document.addEventListener("mouseleave", handleLinkLeave, true);
 
     // Clean up
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrame);
-      links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover);
-        link.removeEventListener("mouseleave", handleLinkLeave);
-      });
+      document.removeEventListener("mouseenter", handleLinkHover, true);
+      document.removeEventListener("mouseleave", handleLinkLeave, true);
     };
   }, []);
 
@@ -505,6 +559,11 @@ function HomePage() {
         </div>
         <div className="drag-helper">Drag</div>
         <div className="team-drag">Drag</div>
+        {/* Dedicated white cursor for contact banner - visible only when hovering contact banner */}
+        <div className="contact-white-cursor">
+          <div className="contact-white-hor"></div>
+          <div className="contact-white-ver"></div>
+        </div>
       </div>
       <div className="cookie-pack">
         <div fs-cc="banner" className="fs-cc-banner">
