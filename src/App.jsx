@@ -6,6 +6,7 @@ import { useVideoPlayer } from "./hooks/useVideoPlayer";
 import { Routes, Route, Link } from "react-router-dom";
 import IndexPage from "./IndexPage";
 import StudioPage from "./StudioPage";
+import ResearchPage from "./ResearchPage";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/project-index" element={<IndexPage />} />
       <Route path="/studio" element={<StudioPage />} />
+      <Route path="/research" element={<ResearchPage />} />
     </Routes>
   );
 }
@@ -104,6 +106,9 @@ function HomePage() {
 
     // Handle hover states for links and interactive elements using event delegation
     const handleLinkHover = (e) => {
+      // Check if target has closest method (skip if it doesn't)
+      if (!e.target || typeof e.target.closest !== "function") return;
+
       const target = e.target.closest(
         "a, button, .link, .project-card, .contact-banner",
       );
@@ -118,6 +123,9 @@ function HomePage() {
     };
 
     const handleLinkLeave = (e) => {
+      // Check if target has closest method (skip if it doesn't)
+      if (!e.target || typeof e.target.closest !== "function") return;
+
       const target = e.target.closest(
         "a, button, .link, .project-card, .contact-banner",
       );
@@ -133,16 +141,16 @@ function HomePage() {
       }
     };
 
-    // Use event delegation on document for dynamically added elements
-    document.addEventListener("mouseenter", handleLinkHover, true);
-    document.addEventListener("mouseleave", handleLinkLeave, true);
+    // Use mouseover/mouseout instead of mouseenter/mouseleave for better bubbling
+    document.addEventListener("mouseover", handleLinkHover);
+    document.addEventListener("mouseout", handleLinkLeave);
 
     // Clean up
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrame);
-      document.removeEventListener("mouseenter", handleLinkHover, true);
-      document.removeEventListener("mouseleave", handleLinkLeave, true);
+      document.removeEventListener("mouseover", handleLinkHover);
+      document.removeEventListener("mouseout", handleLinkLeave);
     };
   }, []);
 
