@@ -89,14 +89,18 @@ function IndexPage() {
     const initializeAnimations = () => {
       // Text animations with GSAP
       if (typeof window !== "undefined") {
-        // Split text into spans
-        let typeSplit = new SplitType("[text-split]", {
-          types: "words, chars",
-          tagName: "span",
-        });
+        const textSplitElements = document.querySelectorAll("[text-split]");
+        if (textSplitElements.length > 0) {
+          // Split text into spans
+          new SplitType("[text-split]", {
+            types: "words, chars",
+            tagName: "span",
+          });
+        }
 
         // Link timelines to scroll position
         function createScrollTriggerAnimation(triggerElement, timeline) {
+          if (!timeline) return;
           ScrollTrigger.create({
             trigger: triggerElement,
             start: "top bottom",
@@ -143,8 +147,10 @@ function IndexPage() {
           createScrollTriggerAnimation(element, tl);
         });
 
-        // Set text as visible
-        gsap.set("[text-split]", { opacity: 1 });
+        // Set text as visible when present
+        if (textSplitElements.length > 0) {
+          gsap.set("[text-split]", { opacity: 1 });
+        }
       }
 
       // Logo carousel animation
