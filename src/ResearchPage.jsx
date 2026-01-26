@@ -1119,19 +1119,7 @@ function ResearchPage() {
         </div>
       </div>
 
-      {/* Hero Section with text-split for GSAP animations */}
-      <div className="lab-hero-section">
-        <div
-          words-slide-up=""
-          text-split=""
-          className="container lab-hero-container"
-        >
-          <h1 className="lab-hero-title">
-            Experimental visuals and <br />
-            technical explorations
-          </h1>
-        </div>
-      </div>
+  
 
       <div className="lab-canvas-wrp">
         <Link
