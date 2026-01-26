@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
+import panzoom from "panzoom";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -108,7 +109,6 @@ function ResearchPage() {
       loadScript(
         "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/js/webflow.22196bf4.30fd916c899bdc1d.js",
       ),
-      loadScript("https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"),
     ]).catch((err) => console.log("Script loading error:", err));
 
     // Text split animations
@@ -319,11 +319,6 @@ function ResearchPage() {
 
     // Panzoom and drag/resize functionality for lab images
     const initLabCanvas = () => {
-      if (typeof window.panzoom === "undefined") {
-        setTimeout(initLabCanvas, 100);
-        return;
-      }
-
       const container = document.querySelector(".collection-list-wrp-lab");
       const list = document.querySelector(".collection-list-lab");
       const items = document.querySelectorAll(".collection-item-lab");
@@ -335,7 +330,7 @@ function ResearchPage() {
       const nonPassive = { passive: false };
 
       // Panzoom instance
-      const instance = window.panzoom(list, {
+      const instance = panzoom(list, {
         initialZoom: 0.5,
         maxZoom: 2.5,
         minZoom: 0.4,
@@ -372,11 +367,11 @@ function ResearchPage() {
         } catch {}
       }
 
-      // Initial scroll
-      if (container) {
-        container.scrollLeft = 1000;
-        container.scrollTop = 0;
-      }
+      // Initial scroll - Removed to ensure visibility
+      // if (container) {
+      //   container.scrollLeft = 1000;
+      //   container.scrollTop = 0;
+      // }
 
       // Randomly place items
       items.forEach((item) => {
@@ -595,7 +590,7 @@ function ResearchPage() {
     };
 
     // Initialize lab canvas after scripts load
-    setTimeout(initLabCanvas, 1000);
+    initLabCanvas();
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -925,6 +920,69 @@ function ResearchPage() {
 
   return (
     <>
+      <style>{`
+        .lab-canvas-wrp {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: #000;
+          overflow: hidden;
+          z-index: 0;
+        }
+        .collection-list-wrp-lab {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .collection-list-lab {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform-origin: 0 0;
+          cursor: grab;
+        }
+        .collection-list-lab:active {
+          cursor: grabbing;
+        }
+        .collection-item-lab {
+          position: absolute;
+          display: inline-block;
+          visibility: visible !important;
+          opacity: 1 !important;
+          will-change: transform;
+        }
+        .lab-image {
+          display: block;
+          max-width: none;
+          width: auto;
+          height: auto;
+          max-height: 50vh;
+          pointer-events: none;
+          user-select: none;
+          -webkit-user-drag: none;
+        }
+        .resizable {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 20px;
+          height: 20px;
+          cursor: se-resize;
+          z-index: 10;
+        }
+        .navbar {
+          position: relative;
+          z-index: 100;
+        }
+        .cursor-pack {
+          z-index: 9999;
+          pointer-events: none;
+        }
+      `}</style>
       <div className="navbar">
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">
@@ -1118,8 +1176,6 @@ function ResearchPage() {
           </a>
         </div>
       </div>
-
-  
 
       <div className="lab-canvas-wrp">
         <Link
