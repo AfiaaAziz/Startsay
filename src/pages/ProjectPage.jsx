@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 import { projects, getAdjacentProjects } from "../data/projects";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
 import "./ProjectPage.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function ProjectPage() {
   const { projectSlug } = useParams();
@@ -74,6 +79,45 @@ function ProjectPage() {
         link.removeEventListener("mouseleave", handleLinkLeave);
       });
     };
+  }, []);
+
+  useEffect(() => {
+    const init = () => {
+      new SplitType("[text-split]", {
+        types: "words, chars",
+        tagName: "span",
+      });
+      const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+      const create = (el, tl) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top bottom",
+          onLeaveBack: () => {
+            tl.progress(0);
+            tl.pause();
+          },
+        });
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 80%",
+          onEnter: () => tl.play(),
+        });
+      };
+      $$("[words-slide-up]").forEach((el) => {
+        let tl = gsap.timeline({ paused: true });
+        tl.from(el.querySelectorAll(".word"), {
+          opacity: 0,
+          yPercent: 100,
+          duration: 0.5,
+          ease: "power2.out(2)",
+          stagger: { amount: 0.5 },
+        });
+        create(el, tl);
+      });
+      gsap.set("[text-split]", { opacity: 1 });
+    };
+    const t = setTimeout(init, 300);
+    return () => clearTimeout(t);
   }, []);
 
   // Handle contact banner cursor color
@@ -278,19 +322,48 @@ function ProjectPage() {
 
       {/* Project Hero Section */}
       <div className="section project-hero">
-        <div
-          className="project-hero-image"
-          style={{
-            backgroundImage: `url("${project.heroImage}")`,
-          }}
-        >
-          <div className="project-hero-overlay"></div>
-        </div>
+        {project.heroVideo ? (
+          <div className="project-hero-video">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              disablePictureInPicture
+              className="project-hero-video-el"
+            >
+              <source src={project.heroVideo} type="video/mp4" />
+            </video>
+            <div className="project-hero-overlay"></div>
+          </div>
+        ) : (
+          <div
+            className="project-hero-image"
+            style={{ backgroundImage: `url("${project.heroImage}")` }}
+          >
+            <div className="project-hero-overlay"></div>
+          </div>
+        )}
         <div className="project-hero-content">
           <div className="container">
-            <div className="project-meta">
-              <span className="project-client">{project.client}</span>
-              <span className="project-year">{project.year}</span>
+            <div
+              words-slide-up=""
+              text-split=""
+              style={{ display: "inline-block" }}
+            >
+              <div className="t-small t-gray">Year</div>
+              <div className="gap-40"></div>
+              <div className="t-large">{project.year}</div>
+            </div>
+            <div className="gap-40"></div>
+            <div
+              words-slide-up=""
+              text-split=""
+              style={{ display: "inline-block" }}
+            >
+              <div className="t-small t-gray">Client</div>
+              <div className="gap-40"></div>
+              <div className="t-large">{project.client}</div>
             </div>
             <h1 className="project-title">{project.title}</h1>
             {project.category && (

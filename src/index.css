@@ -14,6 +14,62 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background-color: #ff5101;
+}
+::-moz-selection {
+  background-color: #ff5101;
+}
+::-o-selection {
+  background-color: #ff5101;
+}
+::-ms-selection {
+  background-color: #ff5101;
+}
+::-webkit-selection {
+  background-color: #ff5101;
+}
+.contact-banner::selection,
+.contact-banner *::selection {
+  background-color: #fff;
+  color: #000000 !important;
+}
+.contact-banner::-moz-selection,
+.contact-banner *::-moz-selection {
+  background-color: #fff;
+  color: #000000 !important;
+}
+.contact-banner::-webkit-selection,
+.contact-banner *::-webkit-selection {
+  background-color: #fff;
+  color: #000000 !important;
+}
+[text-split] {
+  opacity: 0;
+}
+html.w-editor [text-split] {
+  opacity: 1;
+}
+.word {
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  transform-origin: bottom;
+}
+.line {
+  position: relative;
+}
+.line-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #e6e6e6;
+  opacity: 0.65;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;

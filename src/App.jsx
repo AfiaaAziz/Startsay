@@ -8,6 +8,7 @@ import IndexPage from "./IndexPage";
 import StudioPage from "./StudioPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
+import MarsPage from "./pages/MarsPage";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/project-index" element={<IndexPage />} />
       <Route path="/studio" element={<StudioPage />} />
       <Route path="/research" element={<ResearchPage />} />
+      <Route path="/project/mars" element={<MarsPage />} />
       <Route path="/project/:projectSlug" element={<ProjectPage />} />
     </Routes>
   );

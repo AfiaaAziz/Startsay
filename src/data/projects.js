@@ -4,18 +4,24 @@
 export const projects = {
   mars: {
     slug: "mars",
-    title: "Oakley",
+    title: "MUZM Mars",
     client: "Oakley",
-    year: "2024",
+    year: "2022",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif",
+    heroVideo:
+      "https://cdn.styleframe.de/oakley-mars/OAKLEY_MARS_CAMPAIGN_FILM_DirectorsCut_16x9_25SEK_klein.mp4",
     gallery: [
+      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2.avif",
+      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb84fab4ef70a362aa7532_Mars_Stills_Static_Background_Rover_web.avif",
+      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0dcf8c00dfb4a224bd6_2.2.avif",
+      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0e3b587f63e8c69536f_3.2.avif",
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif",
-      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif",
+      "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
     ],
     description:
-      "A groundbreaking visual campaign for Oakley's Mars collection. This project showcases the innovative design and cutting-edge technology that defines Oakley's latest eyewear line.",
-    category: "Eyewear Campaign",
+      "Oakley MUZM Mars campaign set against a forged-in-red Martian surface, unifying terrain, rover, and glasses as a vehicle of performance and design.",
+    category: "Campaign Film",
   },
   "teenage-engineering": {
     slug: "teenage-engineering",
