@@ -486,8 +486,8 @@ html.w-mod-js .collection-item-lab,
 
 .index-hover {
   aspect-ratio: 16 / 9;
-  width: 25vw;
-  height: auto;
+  width: 480px;
+  height: 270px;
   display: none;
   position: fixed;
   pointer-events: none;
@@ -495,6 +495,42 @@ html.w-mod-js .collection-item-lab,
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Consistent image dimensions for all 8 poster images */
+.index-hover-vid video,
+.index-hover-vid img {
+  width: 480px !important;
+  height: 270px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Mobile responsive - scale down proportionally */
+@media (max-width: 1024px) {
+  .index-hover {
+    width: 400px;
+    height: 225px;
+  }
+  
+  .index-hover-vid video,
+  .index-hover-vid img {
+    width: 400px !important;
+    height: 225px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .index-hover {
+    width: 320px;
+    height: 180px;
+  }
+  
+  .index-hover-vid video,
+  .index-hover-vid img {
+    width: 320px !important;
+    height: 180px !important;
+  }
 }
 
 .index-hover[data-visible="true"] {
