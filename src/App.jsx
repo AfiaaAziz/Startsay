@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import IndexPage from "./IndexPage";
 import StudioPage from "./StudioPage";
 import ResearchPage from "./ResearchPage";
+import ProjectPage from "./pages/ProjectPage";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/project-index" element={<IndexPage />} />
       <Route path="/studio" element={<StudioPage />} />
       <Route path="/research" element={<ResearchPage />} />
+      <Route path="/project/:projectSlug" element={<ProjectPage />} />
     </Routes>
   );
 }
