@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -9,13 +9,12 @@ import { useVideoPlayer } from "./hooks/useVideoPlayer";
 gsap.registerPlugin(ScrollTrigger);
 
 function ResearchPage() {
-  const pageRef = useRef(null);
   const cursorPackRef = useRef(null);
   const defaultCursorRef = useRef(null);
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const navigate = useNavigate();
+  const panzoomInstanceRef = useRef(null);
 
   useVideoPlayer();
 
@@ -77,270 +76,50 @@ function ResearchPage() {
     };
   }, []);
 
+  // Panzoom and drag/resize functionality
   useEffect(() => {
-    // Load scripts
-    const loadScript = (src, integrity = null) => {
-      return new Promise((resolve, reject) => {
-        if (document.querySelector(`script[src="${src}"]`)) {
-          resolve();
-          return;
-        }
-        const script = document.createElement("script");
-        script.src = src;
-        if (integrity) script.integrity = integrity;
-        script.crossOrigin = integrity ? "anonymous" : null;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    };
-
-    Promise.all([
-      loadScript(
-        "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=66c3a685de0fd85a256fe67c",
-        "sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=",
-      ),
-      loadScript(
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/js/webflow.schunk.36b8fb49256177c8.js",
-      ),
-      loadScript(
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/js/webflow.schunk.b76e6d9ad01b486f.js",
-      ),
-      loadScript(
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/js/webflow.22196bf4.30fd916c899bdc1d.js",
-      ),
-    ]).catch((err) => console.log("Script loading error:", err));
-
-    // Text split animations
-    let typeSplit;
-    const runSplit = () => {
-      // Only run if there are [text-split] elements
-      const textSplitElements = document.querySelectorAll("[text-split]");
-      if (textSplitElements.length === 0) return;
-
-      try {
-        typeSplit = new SplitType("[text-split]", {
-          types: "words, chars",
-          tagName: "span",
-        });
-      } catch (err) {
-        console.log("SplitType error:", err);
-        return;
-      }
-
-      function createScrollTrigger(triggerElement, timeline) {
-        ScrollTrigger.create({
-          trigger: triggerElement,
-          start: "top bottom",
-          onLeaveBack: () => {
-            timeline.progress(0);
-            timeline.pause();
-          },
-        });
-        ScrollTrigger.create({
-          trigger: triggerElement,
-          start: "top 80%",
-          onEnter: () => timeline.play(),
-        });
-      }
-
-      document.querySelectorAll("[words-slide-up]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".word"), {
-          opacity: 0,
-          yPercent: 100,
-          duration: 0.5,
-          ease: "power2.out(2)",
-          stagger: { amount: 0.5 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[words-rotate-in]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.set(el.querySelectorAll(".word"), { transformPerspective: 1000 });
-        tl.from(el.querySelectorAll(".word"), {
-          rotationX: -90,
-          duration: 0.6,
-          ease: "power2.out",
-          stagger: { amount: 0.6 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[words-slide-from-right]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".word"), {
-          opacity: 0,
-          x: "1em",
-          duration: 0.6,
-          ease: "power2.out",
-          stagger: { amount: 0.2 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[letters-slide-up]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".char"), {
-          yPercent: 100,
-          duration: 0.2,
-          ease: "power1.out",
-          stagger: { amount: 0.6 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[letters-slide-down]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".char"), {
-          yPercent: -120,
-          duration: 0.3,
-          ease: "power1.out",
-          stagger: { amount: 0.7 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[letters-fade-in]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".char"), {
-          opacity: 0,
-          duration: 0.2,
-          ease: "power1.out",
-          stagger: { amount: 0.8 },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[letters-fade-in-random]").forEach((el) => {
-        const tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".char"), {
-          opacity: 0,
-          duration: 0.05,
-          ease: "power1.out",
-          stagger: { amount: 0.4, from: "random" },
-        });
-        createScrollTrigger(el, tl);
-      });
-
-      document.querySelectorAll("[scrub-each-word]").forEach((el) => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-            end: "top center",
-            scrub: true,
-          },
-        });
-        tl.from(el.querySelectorAll(".word"), {
-          opacity: 0.2,
-          duration: 0.2,
-          ease: "power1.out",
-          stagger: { each: 0.4 },
-        });
-      });
-
-      // Only set if elements exist
-      const textSplitEls = document.querySelectorAll("[text-split]");
-      if (textSplitEls.length > 0) {
-        gsap.set("[text-split]", { opacity: 1 });
-      }
-    };
-
-    runSplit();
-
-    // Line split animation
-    let lineSplit;
-    const runLineSplit = () => {
-      // Only run if there are .split-lines elements
-      const splitLinesElements = document.querySelectorAll(".split-lines");
-      if (splitLinesElements.length === 0) return;
-
-      try {
-        lineSplit = new SplitType(".split-lines", {
-          types: "lines, words",
-        });
-      } catch (err) {
-        console.log("SplitType error for split-lines:", err);
-        return;
-      }
-      document.querySelectorAll(".line").forEach((line) => {
-        if (!line.querySelector(".line-mask")) {
-          const mask = document.createElement("div");
-          mask.className = "line-mask";
-          line.appendChild(mask);
-        }
-      });
-      createLineAnimation();
-    };
-
-    const createLineAnimation = () => {
-      document.querySelectorAll(".line").forEach((line) => {
-        const mask = line.querySelector(".line-mask");
-        if (mask) {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: line,
-              start: "top center",
-              end: "bottom center",
-              scrub: 1,
-            },
-          });
-          tl.to(mask, {
-            width: "0%",
-            duration: 1,
-          });
-        }
-      });
-    };
-
-    runLineSplit();
-
-    // Logo carousel animation
-    const logoCarousels = document.querySelectorAll(
-      ".collection-list-logo-anim",
-    );
-    const carouselIntervals = [];
-    logoCarousels.forEach((carousel) => {
-      const slides = Array.from(carousel.children);
-      let idx = -1;
-      slides.forEach((slide) => (slide.style.display = "none"));
-      const rotate = () => {
-        if (idx >= 0) {
-          slides[idx].style.display = "none";
-        }
-        idx = (idx + 1) % slides.length;
-        slides[idx].style.display = "block";
-        carouselIntervals.push(setTimeout(rotate, 83.333333));
-      };
-      rotate();
-    });
-
-    // Panzoom and drag/resize functionality for lab images
-    const initLabCanvas = () => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
       const container = document.querySelector(".collection-list-wrp-lab");
       const list = document.querySelector(".collection-list-lab");
       const items = document.querySelectorAll(".collection-item-lab");
       const resizables = document.querySelectorAll(".resizable");
 
-      if (!container || !list || items.length === 0) return;
+      if (!container || !list || items.length === 0) {
+        console.log("Elements not found:", {
+          container,
+          list,
+          itemsCount: items.length,
+        });
+        return;
+      }
+
+      console.log("Initializing panzoom with", items.length, "items");
 
       const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
       const nonPassive = { passive: false };
 
-      // Panzoom instance
+      // Get actual viewport dimensions
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+
+      console.log("Container dimensions:", containerWidth, containerHeight);
+
+      // Initialize Panzoom
       const instance = panzoom(list, {
-        initialZoom: 0.5,
+        initialZoom: 1,
         maxZoom: 2.5,
-        minZoom: 0.4,
+        minZoom: 0.3,
         zoomSpeed: 0.05,
+        bounds: false,
+        boundsPadding: 0.1,
       });
+      panzoomInstanceRef.current = instance;
 
       let mode = null;
       let activeItem = null;
-      let startX = 0,
-        startY = 0;
+      let dragStartX = 0,
+        dragStartY = 0;
       let startLeft = 0,
         startTop = 0;
       let origW = 0,
@@ -348,15 +127,21 @@ function ResearchPage() {
       let rStartX = 0,
         rStartY = 0;
 
-      const getScale = () =>
-        list.getBoundingClientRect().width / list.offsetWidth;
+      const getScale = () => {
+        const transform = list.style.transform;
+        if (!transform) return 1;
+        const matrix = new DOMMatrix(transform);
+        return matrix.a || 1;
+      };
 
       function freezeGestures() {
         list.style.touchAction = "none";
         if (container) container.style.touchAction = "none";
         try {
           if (instance.pause) instance.pause();
-        } catch {}
+        } catch (e) {
+          console.log("Pause error:", e);
+        }
       }
 
       function unfreezeGestures() {
@@ -364,30 +149,82 @@ function ResearchPage() {
         if (container) container.style.touchAction = "";
         try {
           if (instance.resume) instance.resume();
-        } catch {}
+        } catch (e) {
+          console.log("Resume error:", e);
+        }
       }
 
-      // Initial scroll - Removed to ensure visibility
-      // if (container) {
-      //   container.scrollLeft = 1000;
-      //   container.scrollTop = 0;
-      // }
+      // FIXED: Position items in visible viewport with proper spacing
+      const itemSize = 250;
+      const spacing = 50;
+      const cols = Math.ceil(Math.sqrt(items.length));
+      const rows = Math.ceil(items.length / cols);
 
-      // Randomly place items
-      items.forEach((item) => {
+      const gridWidth = cols * itemSize + (cols - 1) * spacing;
+      const gridHeight = rows * itemSize + (rows - 1) * spacing;
+
+      const gridStartX = Math.max(100, (containerWidth - gridWidth) / 2);
+      const gridStartY = Math.max(100, (containerHeight - gridHeight) / 2);
+
+      console.log("Grid layout:", {
+        cols,
+        rows,
+        gridWidth,
+        gridHeight,
+        gridStartX,
+        gridStartY,
+      });
+
+      items.forEach((item, index) => {
+        // Prevent default drag
         item.addEventListener("dragstart", (e) => e.preventDefault());
-        item
-          .querySelectorAll("img")
-          .forEach((img) => img.setAttribute("draggable", "false"));
 
-        const cw = container?.scrollWidth || list.scrollWidth || 0;
-        const ch = container?.scrollHeight || list.scrollHeight || 0;
-        const iw = item.clientWidth;
-        const ih = item.clientHeight;
-        const rx = Math.random() * Math.max(0, cw - iw);
-        const ry = Math.random() * Math.max(0, ch - ih);
-        item.style.left = `${rx}px`;
-        item.style.top = `${ry}px`;
+        const col = index % cols;
+        const row = Math.floor(index / cols);
+
+        const x = gridStartX + col * (itemSize + spacing);
+        const y = gridStartY + row * (itemSize + spacing);
+
+        // ULTIMATE FORCE VISIBILITY - MAX Z-INDEX
+        item.style.cssText = `
+          position: absolute !important;
+          left: ${x}px !important;
+          top: ${y}px !important;
+          width: ${itemSize}px !important;
+          height: ${itemSize}px !important;
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          z-index: 99999 !important;
+          cursor: move !important;
+        `;
+
+        // Force image visibility
+        const img = item.querySelector("img");
+        if (img) {
+          img.style.cssText = `
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            pointer-events: none !important;
+          `;
+          img.setAttribute("draggable", "false");
+
+          // Log when image loads
+          img.onload = () => {
+            console.log(`✅ Image ${index} rendered at ${x}, ${y}`);
+          };
+          img.onerror = () => {
+            console.error(`❌ Image ${index} FAILED to load: ${img.src}`);
+          };
+        }
+
+        console.log(
+          `🎯 Item ${index} ULTIMATE FORCE at: ${x}, ${y} (size: ${itemSize}x${itemSize})`,
+        );
 
         if (hasTouch) {
           item.addEventListener("touchstart", onDragStartTouch, nonPassive);
@@ -395,6 +232,21 @@ function ResearchPage() {
           item.addEventListener("mousedown", onDragStartMouse);
         }
       });
+
+      // Force the list container to be visible too
+      list.style.cssText += `
+        z-index: 99998 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      `;
+
+      container.style.cssText += `
+        z-index: 99997 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      `;
+
+      console.log("🚀 ULTIMATE FORCE APPLIED - YOU MUST SEE LIME BORDERS NOW!");
 
       // Resizable handles
       resizables.forEach((handle) => {
@@ -405,6 +257,7 @@ function ResearchPage() {
         }
       });
 
+      // ===== DRAG FUNCTIONS =====
       function onDragStartMouse(e) {
         if (e.button !== 0) return;
         if (e.target.classList && e.target.classList.contains("resizable"))
@@ -416,8 +269,8 @@ function ResearchPage() {
         activeItem = e.currentTarget;
         mode = "drag";
 
-        startX = e.pageX;
-        startY = e.pageY;
+        dragStartX = e.pageX;
+        dragStartY = e.pageY;
         startLeft = parseFloat(activeItem.style.left || "0");
         startTop = parseFloat(activeItem.style.top || "0");
 
@@ -431,14 +284,14 @@ function ResearchPage() {
         e.preventDefault();
 
         const scale = getScale();
-        const dx = (e.pageX - startX) / scale;
-        const dy = (e.pageY - startY) / scale;
+        const dx = (e.pageX - dragStartX) / scale;
+        const dy = (e.pageY - dragStartY) / scale;
 
         activeItem.style.left = `${startLeft + dx}px`;
         activeItem.style.top = `${startTop + dy}px`;
       }
 
-      function onEndMouse(e) {
+      function onEndMouse() {
         cleanup();
       }
 
@@ -454,8 +307,8 @@ function ResearchPage() {
         mode = "drag";
 
         const t = e.touches[0];
-        startX = t.pageX;
-        startY = t.pageY;
+        dragStartX = t.pageX;
+        dragStartY = t.pageY;
         startLeft = parseFloat(activeItem.style.left || "0");
         startTop = parseFloat(activeItem.style.top || "0");
 
@@ -471,17 +324,18 @@ function ResearchPage() {
 
         const t = e.touches[0];
         const scale = getScale();
-        const dx = (t.pageX - startX) / scale;
-        const dy = (t.pageY - startY) / scale;
+        const dx = (t.pageX - dragStartX) / scale;
+        const dy = (t.pageY - dragStartY) / scale;
 
         activeItem.style.left = `${startLeft + dx}px`;
         activeItem.style.top = `${startTop + dy}px`;
       }
 
-      function onEndTouch(e) {
+      function onEndTouch() {
         cleanup();
       }
 
+      // ===== RESIZE FUNCTIONS =====
       function onResizeStartMouse(e) {
         if (e.button !== 0) return;
         e.preventDefault();
@@ -554,14 +408,14 @@ function ResearchPage() {
         let newW, newH;
 
         if (Math.abs(dx) < Math.abs(dy)) {
-          newW = Math.max(20, origW + dx);
+          newW = Math.max(100, origW + dx);
           newH = newW * aspect;
         } else if (Math.abs(dy) < Math.abs(dx)) {
-          newH = Math.max(20, origH + dy);
+          newH = Math.max(100, origH + dy);
           newW = newH / aspect;
         } else {
-          newW = Math.max(20, origW + dx);
-          newH = Math.max(20, origH + dy);
+          newW = Math.max(100, origW + dx);
+          newH = Math.max(100, origH + dy);
         }
 
         activeItem.style.width = `${newW}px`;
@@ -587,16 +441,22 @@ function ResearchPage() {
         mode = null;
         activeItem = null;
       }
-    };
 
-    // Initialize lab canvas after scripts load
-    initLabCanvas();
+      return () => {
+        if (panzoomInstanceRef.current) {
+          panzoomInstanceRef.current.dispose();
+          panzoomInstanceRef.current = null;
+        }
+        cleanup();
+      };
+    }, 100);
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      carouselIntervals.forEach((id) => clearTimeout(id));
-      if (typeSplit) typeSplit.revert();
-      if (lineSplit) lineSplit.revert();
+      clearTimeout(timer);
+      if (panzoomInstanceRef.current) {
+        panzoomInstanceRef.current.dispose();
+        panzoomInstanceRef.current = null;
+      }
     };
   }, []);
 
@@ -604,385 +464,68 @@ function ResearchPage() {
   const labImages = [
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4d67248630f3b884c9f_RND_002_rv.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4ba6091278950063d28_RND_006_rv.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4abb1cf50e8eac3c609_250203_Midas_RND_v006_rv0001.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4abb1cf50e8eac3c609_250203_Midas_RND_v006_rv0001-p-500.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4abb1cf50e8eac3c609_250203_Midas_RND_v006_rv0001-p-800.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4abb1cf50e8eac3c609_250203_Midas_RND_v006_rv0001-p-1080.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c4abb1cf50e8eac3c609_250203_Midas_RND_v006_rv0001.avif 1920w",
-      sizes: "100vw",
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c49833f45c0e5cb1b0fd_250203_Midas_RND_v007_abstract_rv0001.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c49833f45c0e5cb1b0fd_250203_Midas_RND_v007_abstract_rv0001-p-500.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c49833f45c0e5cb1b0fd_250203_Midas_RND_v007_abstract_rv0001-p-800.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c49833f45c0e5cb1b0fd_250203_Midas_RND_v007_abstract_rv0001-p-1080.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904c49833f45c0e5cb1b0fd_250203_Midas_RND_v007_abstract_rv0001.avif 1920w",
-      sizes: "100vw",
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe84e_wc-2.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe84d_wc-1.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe84c_vans-2.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe84b_vans-1.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe84a_sonra-snow-globe-2.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe849_sonra-snow-globe-1.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe848_sonra-3.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe847_sonra-2.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe846_sonra-1.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe845_rose.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe844_ropescene.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe843_rayban-ferrari-3.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe842_rayban-ferrari-2.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe841_rayban-ferrari-1.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe840_rack-3.avif",
-      srcset: null,
     },
     {
       src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83f_rack-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83e_rack-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83d_ps-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83c_ps-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83b_printer-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe83a_printer-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe839_polestar.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe838_partikulierung.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe837_mickey-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe836_mickey-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe835_michelin-3.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe834_michelin-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe833_michelin-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe832_megabunt.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe831_mad-paris.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.webp 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.webp 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.webp 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.webp 1600w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe830_letter-a.avif 2160w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82f_hyundai-cam-2.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82f_hyundai-cam-2.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82f_hyundai-cam-2.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82f_hyundai-cam-2.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82f_hyundai-cam-2.avif 2480w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82e_hyundai-cam-1.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82e_hyundai-cam-1.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82e_hyundai-cam-1.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82e_hyundai-cam-1.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82e_hyundai-cam-1.avif 2480w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif 1600w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82d_humanpower.avif 2160w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82c_hattonlabs-9.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82c_hattonlabs-9.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82c_hattonlabs-9.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82c_hattonlabs-9.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe82c_hattonlabs-9.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe81d_hattonlabs-8.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe81d_hattonlabs-8.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe81d_hattonlabs-8.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe81d_hattonlabs-8.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe81d_hattonlabs-8.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe804_hattonlabs-7.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe803_hattonlabs-6.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe802_hattonlabs-5.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe801_hattonlabs-4.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7e1_hattonlabs-3.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7cf_hattonlabs-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ce_hattonlabs-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7cd_cloth-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7cc_cloth-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7cb_chair-simple.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ca_cd-covers.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c9_carseat-3.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c8_carseat-2.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c7_carseat-1.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c6_cactus.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c5_blob.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c4_bizzare-12.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c3_bizzare-11.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c2_bizzare-10.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c1_bizzare-9.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7c0_bizzare-8.avif",
-      srcset: null,
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 1600w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 2000w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bf_bizzare-7.avif 3000w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7be_bizzare-6.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7be_bizzare-6.webp 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7be_bizzare-6.webp 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7be_bizzare-6.webp 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7be_bizzare-6.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bd_bizzare-5.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bd_bizzare-5.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bd_bizzare-5.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bd_bizzare-5.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bd_bizzare-5.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bc_bizzare-4.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bc_bizzare-4.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bc_bizzare-4.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bc_bizzare-4.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bc_bizzare-4.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bb_bizzare-3.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bb_bizzare-3.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bb_bizzare-3.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bb_bizzare-3.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7bb_bizzare-3.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ba_bizzare-2.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ba_bizzare-2.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ba_bizzare-2.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ba_bizzare-2.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7ba_bizzare-2.avif 1920w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b9_bizarre-1.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b9_bizarre-1.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b9_bizarre-1.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b9_bizarre-1.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b9_bizarre-1.avif 3000w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b8_apfel.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b8_apfel.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b8_apfel.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b8_apfel.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b8_apfel.avif 2160w",
-      sizes: "100vw",
-    },
-    {
-      src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif",
-      srcset:
-        "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 1080w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 1600w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 2000w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/66c3a685de0fd85a256fe7b7_and.avif 4320w",
-      sizes: "100vw",
     },
   ];
 
   return (
     <>
-      <style>{`
-        .lab-canvas-wrp {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background-color: #000;
-          overflow: hidden;
-          z-index: 0;
-        }
-        .collection-list-wrp-lab {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-        }
-        .collection-list-lab {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          transform-origin: 0 0;
-          cursor: grab;
-        }
-        .collection-list-lab:active {
-          cursor: grabbing;
-        }
-        .collection-item-lab {
-          position: absolute;
-          display: inline-block;
-          visibility: visible !important;
-          opacity: 1 !important;
-          will-change: transform;
-        }
-        .lab-image {
-          display: block;
-          max-width: none;
-          width: auto;
-          height: auto;
-          max-height: 50vh;
-          pointer-events: none;
-          user-select: none;
-          -webkit-user-drag: none;
-        }
-        .resizable {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 20px;
-          height: 20px;
-          cursor: se-resize;
-          z-index: 10;
-        }
-        .navbar {
-          position: relative;
-          z-index: 100;
-        }
-        .cursor-pack {
-          z-index: 9999;
-          pointer-events: none;
-        }
-      `}</style>
       <div className="navbar">
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">
@@ -1062,14 +605,98 @@ function ResearchPage() {
         </div>
       </div>
 
+      <div className="cookie-pack">
+        <div fs-cc="banner" className="fs-cc-banner">
+          <div className="fs-cc-banner2_container">
+            <div className="fs-cc-manager2_button w-embed">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 8L9 8.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M16 15L16 15.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 17L10 17.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M11 13L11 13.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 12L6 12.01"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 21C16.9706 21 21 16.9706 21 12C21 11.4402 20.9489 10.8924 20.8511 10.361C20.3413 10.7613 19.6985 11 19 11C18.4536 11 17.9413 10.8539 17.5 10.5987C17.0587 10.8539 16.5464 11 16 11C14.3431 11 13 9.65685 13 8C13 7.60975 13.0745 7.23691 13.2101 6.89492C11.9365 6.54821 11 5.38347 11 4C11 3.66387 11.0553 3.34065 11.1572 3.03894C6.58185 3.46383 3 7.31362 3 12C3 16.9706 7.02944 21 12 21Z"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="fs-cc-banner2_text">
+              By clicking "Accept", you agree to the storing of cookies on your
+              device to enhance site navigation, analyze site usage, and assist
+              in our marketing efforts. View our
+              <a href="#" className="fs-cc-banner2_text-link">
+                Privacy Policy
+              </a>
+              for more information.
+            </div>
+            <div className="fs-cc-banner2_buttons-wrapper">
+              <a
+                fs-cc="allow"
+                href="#"
+                className="link fs-cc-banner2_button w-button"
+              >
+                Accept
+              </a>
+              <a
+                fs-cc="deny"
+                href="#"
+                className="link fs-cc-banner2_button fs-cc-button-alt w-button"
+              >
+                Deny
+              </a>
+              <div fs-cc="open-preferences" className="link fs-cc-manager">
+                <div>Preferences</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div
         id="cursor-pack"
-        data-w-id="ffc94e13-05f2-5027-2033-6946e0d01232"
         className="cursor-pack"
         ref={cursorPackRef}
+        style={{ zIndex: 200000 }}
       >
         <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01237"
           className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
           ref={defaultCursorRef}
         >
@@ -1077,17 +704,13 @@ function ResearchPage() {
           <div className="def-cursor-ver"></div>
         </div>
         <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01234"
           className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
           ref={linkCursorRef}
         >
           <div className="link-cursor-hor"></div>
           <div className="link-cursor-ver"></div>
         </div>
-        <div
-          data-w-id="218bd18c-b09b-fd1f-8919-239f1d31cae1"
-          className="drag-cursor"
-        ></div>
+        <div className="drag-cursor"></div>
         <div className="resize-cursor"></div>
         <div className="arrow-cursor"></div>
         <div id="video-cursor" className="video-cursor">
@@ -1101,14 +724,13 @@ function ResearchPage() {
       </div>
 
       <div
-        data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
         className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
+        style={{ zIndex: 150000 }}
       >
         <div
-          data-w-id="d5f92b82-978f-a770-3f25-8224578da03b"
           className="link t-large t-right bottom-auto"
           onClick={() => setIsContactOpen(false)}
-          style={{ cursor: "pointer", color: "black" }}
+          style={{ cursor: "pointer" }}
         >
           ✕
         </div>
@@ -1118,7 +740,7 @@ function ResearchPage() {
             <br />
           </div>
           <div className="t-large t-white">
-            <a href="#" className="link">
+            <a href="mailto:info@styleframe.de" className="link">
               info@styleframe.de
             </a>
             <br />
@@ -1134,6 +756,7 @@ function ResearchPage() {
         <a
           href="https://maps.app.goo.gl/iqJ7Bt22FuPA7EKA7"
           target="_blank"
+          rel="noopener noreferrer"
           className="link t-white-50"
         >
           Map ↗
@@ -1142,6 +765,7 @@ function ResearchPage() {
           <a
             href="https://www.instagram.com/styleframe.studio/"
             target="_blank"
+            rel="noopener noreferrer"
             className="link t-large"
           >
             ↗ Instagram
@@ -1149,6 +773,7 @@ function ResearchPage() {
           <a
             href="https://www.linkedin.com/company/styleframe"
             target="_blank"
+            rel="noopener noreferrer"
             className="link t-large"
           >
             ↗ LinkedIn
@@ -1156,6 +781,7 @@ function ResearchPage() {
           <a
             href="https://www.behance.net/styleframe"
             target="_blank"
+            rel="noopener noreferrer"
             className="link t-large"
           >
             ↗ Behance
@@ -1163,6 +789,7 @@ function ResearchPage() {
           <a
             href="https://vimeo.com/styleframe"
             target="_blank"
+            rel="noopener noreferrer"
             className="link t-large"
           >
             ↗ Vimeo
@@ -1170,6 +797,7 @@ function ResearchPage() {
           <a
             href="https://www.instagram.com/echologic.lab/"
             target="_blank"
+            rel="noopener noreferrer"
             className="link t-large"
           >
             ↗ AI Lab
@@ -1177,32 +805,21 @@ function ResearchPage() {
         </div>
       </div>
 
-      <div className="lab-canvas-wrp">
+      <div className="lab-canvas-wrp" style={{ zIndex: 50000 }}>
         <Link
           to="/research"
           aria-current="page"
           className="refresh-page w-inline-block w--current"
         ></Link>
-        <div
-          data-w-id="bb85d5a4-4b77-08a5-330f-48e2521ba1e8"
-          className="collection-list-wrp-lab w-dyn-list"
-        >
-          <div role="list" className="collection-list-lab w-dyn-items">
+        <div className="collection-list-wrp-lab">
+          <div className="collection-list-lab">
             {labImages.map((img, index) => (
-              <div
-                key={index}
-                role="listitem"
-                className="collection-item-lab w-dyn-item"
-              >
+              <div key={index} className="collection-item-lab">
                 <img
                   src={img.src}
                   loading="eager"
-                  width="Auto"
-                  height="Auto"
-                  alt=""
+                  alt={`Lab research ${index + 1}`}
                   className="lab-image"
-                  srcSet={img.srcset || undefined}
-                  sizes={img.sizes || undefined}
                   draggable="false"
                 />
                 <div className="resizable"></div>

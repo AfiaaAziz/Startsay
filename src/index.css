@@ -1,3 +1,4 @@
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +12,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
 a {
@@ -29,14 +35,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Override body layout for ResearchPage */
 .lab-canvas-wrp ~ body,
 body:has(.lab-canvas-wrp) {
   display: block;
-  background-color: #000;
+  background-color: #ffffff;
   place-items: unset;
+  overflow: visible;
 }
 
 h1 {
@@ -80,7 +88,115 @@ button:focus-visible {
   }
 }
 
-/* Cursor Pack Styling */
+/* ========== LAB CANVAS STYLES - CRITICAL ========== */
+.lab-canvas-wrp {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - 120px) !important;
+  background-color: #ffffff !important;
+  background-image: radial-gradient(circle, #ccc 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+}
+
+/* Cookie banner on top of everything */
+.cookie-pack {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 100000 !important;
+  height: auto !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.fs-cc-banner {
+  z-index: 100000 !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.collection-list-wrp-lab {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: grab !important;
+}
+
+.collection-list-wrp-lab:active {
+  cursor: grabbing !important;
+}
+
+.collection-list-lab {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform-origin: 0 0 !important;
+}
+
+.collection-item-lab {
+  position: absolute !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: move !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  z-index: 10 !important;
+}
+
+.collection-item-lab img.lab-image {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+  -moz-user-drag: none !important;
+  -ms-user-drag: none !important;
+}
+
+.resizable {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  cursor: se-resize !important;
+  background: linear-gradient(135deg, transparent 50%, rgba(255, 81, 1, 0.5) 50%) !important;
+  z-index: 10 !important;
+}
+
+/* OVERRIDE ANY HIDING STYLES */
+html.w-mod-js:not(.w-mod-ix3) .lab-image,
+html.w-mod-js .lab-image,
+.lab-image,
+html.w-mod-js:not(.w-mod-ix3) .collection-item-lab,
+html.w-mod-js .collection-item-lab,
+.collection-item-lab {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* ========== CURSOR PACK STYLING ========== */
 #cursor-pack {
   position: fixed;
   top: 0;
@@ -110,7 +226,6 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Center the cursor at the mouse position */
   transform: translate(-50%, -50%);
 }
 
@@ -122,7 +237,6 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Center the cursor at the mouse position */
   transform: translate(-50%, -50%);
 }
 
@@ -281,7 +395,7 @@ button:focus-visible {
   }
 }
 
-/* Contact Banner Styles */
+/* ========== CONTACT BANNER STYLES ========== */
 .contact-banner {
   position: fixed;
   right: -400px;
@@ -296,50 +410,6 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-/* Contact Banner White Cursor - CSS Hover-based approach */
-.contact-banner:hover ~ #cursor-pack .default-cursor .def-cursor-hor,
-.contact-banner:hover ~ #cursor-pack .default-cursor .def-cursor-ver {
-  background-color: white !important;
-}
-
-.contact-banner:hover ~ #cursor-pack .link-cursor .link-cursor-hor,
-.contact-banner:hover ~ #cursor-pack .link-cursor .link-cursor-ver {
-  background-color: white !important;
-}
-
-.contact-banner:hover ~ #cursor-pack .drag-cursor,
-.contact-banner:hover ~ #cursor-pack .resize-cursor {
-  border-color: white !important;
-}
-
-.contact-banner:hover ~ #cursor-pack .drag-helper,
-.contact-banner:hover ~ #cursor-pack .team-drag {
-  color: white !important;
-  border-color: white !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.contact-banner:hover ~ #cursor-pack .video-cursor .video-loader {
-  border-color: white !important;
-  border-top-color: transparent !important;
-}
-
-.contact-banner:hover ~ #cursor-pack .video-cursor .videocontrol-play-btn {
-  color: white !important;
-}
-
-/* Hide original orange cursor on contact banner hover */
-.contact-banner:hover ~ #cursor-pack .default-cursor,
-.contact-banner:hover ~ #cursor-pack .link-cursor {
-  opacity: 0;
-}
-
-/* Show a dedicated white cursor when over contact banner */
-.contact-banner:hover ~ #cursor-pack .contact-white-cursor {
-  opacity: 1;
-  visibility: visible;
 }
 
 .contact-banner.open {
@@ -468,7 +538,7 @@ button:focus-visible {
   }
 }
 
-/* Studio Page Styles */
+/* ========== STUDIO PAGE STYLES ========== */
 .hero-studio {
   position: relative;
   min-height: 100vh;
@@ -690,102 +760,7 @@ button:focus-visible {
   }
 }
 
-/* Lab canvas styles */
-.lab-canvas-wrp {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #000;
-  z-index: 1;
-}
-
-/* Lab Hero Section */
-.lab-hero-section {
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  pointer-events: none;
-}
-
-.lab-hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.lab-hero-title {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  line-height: 1.2;
-  pointer-events: auto;
-}
-
-.collection-list-wrp-lab {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  cursor: grab;
-}
-
-.collection-list-wrp-lab:active {
-  cursor: grabbing;
-}
-
-.collection-list-lab {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.collection-item-lab {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 300px;
-  min-width: 200px;
-  min-height: 200px;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-}
-
-.collection-item-lab img.lab-image {
-  -webkit-user-drag: none !important;
-  user-drag: none !important;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto;
-}
-
-.resizable {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  cursor: se-resize;
-  background: linear-gradient(135deg, transparent 50%, #ff5101 50%);
-}
-
-/* ========== CRITICAL VISIBILITY STYLES ========== */
-
-/* Selection colors */
+/* ========== SELECTION COLORS ========== */
 ::selection {
   background-color: #ff5101;
 }
@@ -824,7 +799,7 @@ button:focus-visible {
   color: #000000 !important;
 }
 
-/* Text split animations - CRITICAL FOR VISIBILITY */
+/* ========== TEXT SPLIT ANIMATIONS ========== */
 [text-split] {
   opacity: 0;
 }
@@ -853,15 +828,4 @@ html.w-editor [text-split] {
   height: 100%;
   width: 100%;
   z-index: 2;
-}
-
-/* MAKE LAB IMAGES VISIBLE - KEY FIX */
-html.w-mod-js:not(.w-mod-ix3) :is(.lab-image) {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.lab-image {
-  visibility: visible !important;
-  opacity: 1 !important;
 }

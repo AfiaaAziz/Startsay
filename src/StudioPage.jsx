@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
+import "./StudioPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -258,9 +259,7 @@ function StudioPage() {
         function endDrag(e) {
           if (!isDragging || (e && e.pointerId !== activePointerId)) return;
           isDragging = false;
-          try {
-            scroller.releasePointerCapture?.(activePointerId);
-          } catch {}
+          scroller.releasePointerCapture?.(activePointerId);
           activePointerId = null;
         }
 
@@ -392,29 +391,6 @@ function StudioPage() {
       title: "3D Designer",
       img: "68ee350e62d9c1fccfde9981_SF_Portraits_Jannic_Final_Blur.avif",
     },
-  ];
-
-  const logoAnimImages = [
-    "68e42f32e179658fc220ff71_20.avif",
-    "68e42f2a1bc30a29cc9dde23_19.avif",
-    "68e42ea7b8caf2e461da972d_18.avif",
-    "68e42e9dab059fd303cb59bb_17.avif",
-    "68e42e8c9b02ae0d1681b7b8_16.avif",
-    "68e42cb457683fdcaecf34aa_15.avif",
-    "68e42cabbf94893911f30b8d_14.avif",
-    "68e42ca28d03c1d72159ab26_13.avif",
-    "68e42c954de027a2c9aa384c_12.avif",
-    "68e42c84894ff1d8f915df24_11.avif",
-    "6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif",
-    "688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif",
-    "68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif",
-    "6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif",
-    "688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
-    "68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif",
-    "688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif",
-    "688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif",
-    "688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif",
-    "688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
   ];
 
   return (
