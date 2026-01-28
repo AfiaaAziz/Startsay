@@ -5,7 +5,7 @@ import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
 import { Routes, Route, Link } from "react-router-dom";
 import IndexPage from "./IndexPage";
-import StudioPage from "./StudioPage";
+import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/project-index" element={<IndexPage />} />
-      <Route path="/studio" element={<StudioPage />} />
+      <Route path="/team" element={<TeamPage />} />
       <Route path="/research" element={<ResearchPage />} />
       <Route path="/project/mars" element={<MarsPage />} />
       <Route path="/project/:projectSlug" element={<ProjectPage />} />
@@ -452,10 +452,10 @@ function HomePage() {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
                 data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="/studio"
+                href="/team"
                 className="link navbar-link"
               >
-                Studio
+                Team
               </a>
               <a
                 data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
@@ -517,10 +517,10 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="/studio"
+              href="/team"
               className="link navbar-link"
             >
-              Studio
+              Team
             </a>
             <a
               data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
@@ -1303,7 +1303,7 @@ function HomePage() {
               data-wf-native-id-path="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
-              href="/studio"
+              href="/team"
               className="link l-large right-arrow"
             >
               Read More
@@ -1835,10 +1835,10 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f9"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/studio"
+              href="/team"
               className="link footer-link right-arrow"
             >
-              Studio
+              Team
             </a>
             <div
               data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"

@@ -546,8 +546,8 @@ function ResearchPage() {
               >
                 Research
               </Link>
-              <Link to="/studio" className="link navbar-link">
-                Studio
+              <Link to="/team" className="link navbar-link">
+                Team
               </Link>
               <a
                 href="#"
@@ -588,8 +588,8 @@ function ResearchPage() {
             >
               Research
             </Link>
-            <Link to="/studio" className="link navbar-link">
-              Studio
+            <Link to="/team" className="link navbar-link">
+              Team
             </Link>
             <a
               href="#"

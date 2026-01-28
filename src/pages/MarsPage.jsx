@@ -203,8 +203,8 @@ export default function MarsPage() {
               <Link to="/research" className="link navbar-link">
                 Research
               </Link>
-              <Link to="/studio" className="link navbar-link">
-                Studio
+              <Link to="/team" className="link navbar-link">
+                Team
               </Link>
               <a
                 href="#"
@@ -243,8 +243,8 @@ export default function MarsPage() {
             <Link to="/research" className="link navbar-link">
               Research
             </Link>
-            <Link to="/studio" className="link navbar-link">
-              Studio
+            <Link to="/team" className="link navbar-link">
+              Team
             </Link>
             <a
               href="#"
@@ -896,8 +896,8 @@ export default function MarsPage() {
             <a href="/research" className="link footer-link right-arrow">
               Research
             </a>
-            <a href="/studio" className="link footer-link right-arrow">
-              Studio
+            <a href="/team" className="link footer-link right-arrow">
+              Team
             </a>
             <div
               data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import "./StudioPage.css";
+import "./TeamPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function StudioPage() {
+function TeamPage() {
   const pageRef = useRef(null);
 
   useEffect(() => {
@@ -642,4 +642,4 @@ function StudioPage() {
   );
 }
 
-export default StudioPage;
+export default TeamPage;
