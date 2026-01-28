@@ -821,71 +821,127 @@ export default function MarsPage() {
         </div>
       </div>
 
-      {/* Footer */}
       <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
         <div className="container">
-          <div id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3" className="footer-column">
-            <div className="t-small">© Styleframe</div>
+          <div
+            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
+            className="footer-column"
+          >
+            <div className="t-small">© Startsay</div>
           </div>
-          <div id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3" className="footer-column">
+          <div
+            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3"
+            className="footer-column"
+          >
             <a
-              href="https://www.instagram.com/styleframe.studio/"
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09e9"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09e9"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="https://www.instagram.com/startsay.official/"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               Instagram
             </a>
             <a
-              href="https://www.linkedin.com/company/styleframe"
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="https://www.linkedin.com/company/startsayofficial"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               LinkedIn
             </a>
             <a
-              href="https://www.behance.net/styleframe"
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="https://www.facebook.com/profile.php?id=61572256355814"
+              target="_blank"
+              className="link footer-link right-up-arrow"
+            >
+              Facebook
+            </a>
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09ed"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09ed"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="https://www.behance.net/thisissyedbadshah"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               Behance
             </a>
-            <a
-              href="https://vimeo.com/styleframe"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Vimeo
-            </a>
-            <a
-              href="https://www.instagram.com/echologic.lab/"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              AI Lab
-            </a>
+
+
           </div>
-          <div id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3" className="footer-column">
-            <a href="/legal/privacy-policy" className="link footer-link fl-small">
+          <div
+            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
+            className="footer-column"
+          >
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f0"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f0"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="/legal/privacy-policy"
+              className="link footer-link fl-small"
+            >
               Privacy Policy
             </a>
-            <a href="/legal/imprint" className="link footer-link fl-small">
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f2"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f2"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="/legal/imprint"
+              className="link footer-link fl-small"
+            >
               Imprint
             </a>
           </div>
-          <div id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3" className="footer-column">
-            <a href="/project-index" className="link footer-link right-arrow">
+          <div
+            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
+            className="footer-column"
+          >
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f5"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f5"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="/project-index"
+              className="link footer-link right-arrow"
+            >
               Index
             </a>
-            <a href="/research" className="link footer-link right-arrow">
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f7"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f7"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="/research"
+              className="link footer-link right-arrow"
+            >
               Research
             </a>
-            <a href="/team" className="link footer-link right-arrow">
+            <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f9"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f9"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="/team"
+              className="link footer-link right-arrow"
+            >
               Team
             </a>
             <div
               data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"
               className="link footer-link"
-              onClick={() => setIsContactOpen(true)}
             >
               Contact
             </div>
@@ -896,18 +952,150 @@ export default function MarsPage() {
             <div className="footer-logo-frame">
               <div className="logo-frame-wrp">
                 <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div role="list" className="collection-list-logo-anim w-dyn-items">
-                    {[...Array(20)].map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                          display: i === 19 ? "block" : "none",
-                        }}
-                        role="listitem"
-                        className="collection-item-logo-anim w-dyn-item"
-                      ></div>
-                    ))}
+                  <div
+                    role="list"
+                    className="collection-list-logo-anim w-dyn-items"
+                  >
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ea7b8caf2e461da972d_18.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e9dab059fd303cb59bb_17.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e8c9b02ae0d1681b7b8_16.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cb457683fdcaecf34aa_15.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cabbf94893911f30b8d_14.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ca28d03c1d72159ab26_13.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c954de027a2c9aa384c_12.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c84894ff1d8f915df24_11.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
+                    <div
+                      style={{
+                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
+                      }}
+                      role="listitem"
+                      className="collection-item-logo-anim w-dyn-item"
+                    ></div>
                   </div>
                 </div>
               </div>
