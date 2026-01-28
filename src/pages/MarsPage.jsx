@@ -352,25 +352,24 @@ export default function MarsPage() {
         </div>
         <div>
           <div className="t-large t-white">
-            <a href="tel:+496994946890">+49 69 9494 689-0</a>
+            <a href="tel:+496994946890">+92 312 517 5041</a>
             <br />
           </div>
           <div className="t-large t-white">
             <a href="#" className="link">
-              info@styleframe.de
+              info@startsay.com
             </a>
             <br />
           </div>
         </div>
         <div className="t-large t-white">
-          Hanauer Landstr. 287
+          Office Number 2207          <br />
+          National Science & Technology Park (NSTP)
           <br />
-          60314 Frankfurt am
-          <br />
-          Main, Germany
+          NUST H-12, Islamabad
         </div>
         <a
-          href="https://maps.app.goo.gl/iqJ7Bt22FuPA7EKA7"
+          href="https://www.google.com/maps/place/National+Science+%26+Technology+Park+(NSTP)/@33.6457175,72.9972339,18z/data=!4m14!1m7!3m6!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!2sNational+Science+%26+Technology+Park+(NSTP)!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk!3m5!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           className="link t-white-50"
         >
@@ -398,20 +397,7 @@ export default function MarsPage() {
           >
             ↗ Behance
           </a>
-          <a
-            href="https://vimeo.com/styleframe"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ Vimeo
-          </a>
-          <a
-            href="https://www.instagram.com/echologic.lab/"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ AI Lab
-          </a>
+
         </div>
       </div>
 
@@ -535,19 +521,16 @@ export default function MarsPage() {
               >
                 <div className="section-visuals-wrp">
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb83d10b4fcd7cd3aa90df_Oakley_MARS_CAMPAIGN_FILM_FINAL_1x1_00154_web.avif"
+                    src="/assets/Project1a.jpeg"
                     loading="lazy"
-                    width="Auto"
                     alt=""
                     className="section-img"
                   />
+
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2.avif"
+                    src="/assets/Project1a.jpeg"
                     loading="lazy"
-                    width="Auto"
                     alt=""
-                    sizes="100vw"
-                    srcSet="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2-p-500.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2-p-800.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2.avif 1277w"
                     className="section-img"
                   />
                 </div>
@@ -562,7 +545,7 @@ export default function MarsPage() {
               >
                 <div className="section-visuals-wrp">
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb84fab4ef70a362aa7532_Mars_Stills_Static_Background_Rover_web.avif"
+                    src="/assets/section2.jpeg"
                     loading="lazy"
                     width="Auto"
                     alt=""
@@ -580,19 +563,19 @@ export default function MarsPage() {
               >
                 <div className="section-visuals-wrp">
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0dcf8c00dfb4a224bd6_2.2.avif"
+                    src="/assets/Project1a.jpeg"
                     loading="lazy"
-                    width="Auto"
                     alt=""
                     className="section-img"
                   />
+
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0e3b587f63e8c69536f_3.2.avif"
+                    src="/assets/Project1b.jpeg"
                     loading="lazy"
                     width="Auto"
                     alt=""
                     sizes="100vw"
-                    srcSet="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0e3b587f63e8c69536f_3.2-p-500.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0e3b587f63e8c69536f_3.2.avif 1238w"
+                    srcSet="/assets/Project1b.jpeg 500w, /assets/Project1b.jpeg 800w, /assets/Project1b.jpeg 1277w"
                     className="section-img"
                   />
                 </div>
@@ -607,7 +590,7 @@ export default function MarsPage() {
               >
                 <div className="section-visuals-wrp">
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb85b340c73a78b2c9744f_Mars_Stills_Static_Background_Landscape_web.avif"
+                    src="/assets/section2.jpeg"
                     loading="lazy"
                     width="Auto"
                     alt=""
@@ -668,7 +651,7 @@ export default function MarsPage() {
               >
                 <div className="section-visuals-wrp">
                   <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb87121faccd95cf30ef7e_Oakley_MARS_CAMPAIGN_FILM_Planet_16x9_00009_web.avif"
+                    src="/assets/section2.jpeg"
                     loading="lazy"
                     width="Auto"
                     alt=""

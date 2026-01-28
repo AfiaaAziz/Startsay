@@ -856,14 +856,14 @@ function HomePage() {
         <div>
           <div className="t-large t-white">
             <a
-              href="tel:+496994946890"
+              href="tel:+923125175041"
               data-w-id="3e6c7f76-b278-6f4b-e9b1-42e06638d930"
               data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:3e6c7f76-b278-6f4b-e9b1-42e06638d930"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="3e6c7f76-b278-6f4b-e9b1-42e06638d930"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
             >
-              +49 69 9494 689-0
+              +92 312 517 5041
             </a>
             <br />
           </div>
@@ -876,24 +876,25 @@ function HomePage() {
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
               className="link"
             >
-              info@styleframe.de
+              info@startsay.com
             </a>
             <br />
           </div>
         </div>
         <div className="t-large t-white">
-          Hanauer Landstr. 287
+          Office Number 2207          <br />
+          National Science & Technology Park (NSTP)
           <br />
-          60314 Frankfurt am
-          <br />
-          Main, Germany
+          NUST H-12, Islamabad
         </div>
+
+
         <a
           data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da048"
           data-wf-ao-click-engagement-tracking="true"
           data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da048"
           data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-          href="https://maps.app.goo.gl/iqJ7Bt22FuPA7EKA7"
+          href="https://www.google.com/maps/place/National+Science+%26+Technology+Park+(NSTP)/@33.6457175,72.9972339,18z/data=!4m14!1m7!3m6!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!2sNational+Science+%26+Technology+Park+(NSTP)!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk!3m5!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           className="link t-white-50"
         >
@@ -905,7 +906,7 @@ function HomePage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04b"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.instagram.com/styleframe.studio/"
+            href="https://www.instagram.com/startsay.official/"
             target="_blank"
             className="link t-large"
           >
@@ -916,7 +917,7 @@ function HomePage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04d"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.linkedin.com/company/styleframe"
+            href="https://www.linkedin.com/company/startsayofficial"
             target="_blank"
             className="link t-large"
           >
@@ -927,23 +928,13 @@ function HomePage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04f"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.behance.net/styleframe"
+            href="https://www.behance.net/thisissyedbadshah"
             target="_blank"
             className="link t-large"
           >
             ↗ Behance
           </a>
-          <a
-            data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d2af606f-149b-8b2f-5693-b4336dbbb856"
-            data-wf-ao-click-engagement-tracking="true"
-            data-wf-element-id="d2af606f-149b-8b2f-5693-b4336dbbb856"
-            data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.instagram.com/echologic.lab/"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ AI Lab
-          </a>
+
         </div>
       </div>
       <div className="section hero">
@@ -977,7 +968,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/mars"
                 className="link project-card w-inline-block"
@@ -1035,7 +1026,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif")`,
+                  backgroundImage: 'url("/assets/homeImage1.jpeg")',
                 }}
                 href="/project/innovation-lab"
                 className="link project-card w-inline-block"
@@ -1719,7 +1710,7 @@ function HomePage() {
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
             className="footer-column"
           >
-            <div className="t-small">© Styleframe</div>
+            <div className="t-small">© Startsay</div>
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3"
@@ -1730,7 +1721,7 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09e9"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.instagram.com/styleframe.studio/"
+              href="https://www.instagram.com/startsay.official/"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
@@ -1741,45 +1732,36 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.linkedin.com/company/styleframe"
+              href="https://www.linkedin.com/company/startsayofficial"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               LinkedIn
             </a>
             <a
+              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-ao-click-engagement-tracking="true"
+              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
+              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
+              href="https://www.facebook.com/profile.php?id=61572256355814"
+              target="_blank"
+              className="link footer-link right-up-arrow"
+            >
+              Facebook
+            </a>
+            <a
               data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09ed"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09ed"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.behance.net/styleframe"
+              href="https://www.behance.net/thisissyedbadshah"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               Behance
             </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:663a9216-98a0-5d14-d605-628b564d6c41"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="663a9216-98a0-5d14-d605-628b564d6c41"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://vimeo.com/styleframe"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Vimeo
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:8aaf9017-ddd5-9ae3-dc86-58cdc2f708ad"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="8aaf9017-ddd5-9ae3-dc86-58cdc2f708ad"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.instagram.com/echologic.lab/"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              AI Lab
-            </a>
+
+
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"

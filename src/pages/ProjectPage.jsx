@@ -543,25 +543,24 @@ function ProjectPage() {
         </div>
         <div>
           <div className="t-large t-white">
-            <a href="tel:+496994946890">+49 69 9494 689-0</a>
+            <a href="tel:+496994946890">+92 312 517 5041</a>
             <br />
           </div>
           <div className="t-large t-white">
             <a href="#" className="link">
-              info@styleframe.de
+             info@startsay.com
             </a>
             <br />
           </div>
         </div>
         <div className="t-large t-white">
-          Hanauer Landstr. 287
+          Office Number 2207          <br />
+          National Science & Technology Park (NSTP)
           <br />
-          60314 Frankfurt am
-          <br />
-          Main, Germany
+          NUST H-12, Islamabad
         </div>
         <a
-          href="https://maps.app.goo.gl/iqJ7Bt22FuPA7EKA7"
+          href="https://www.google.com/maps/place/National+Science+%26+Technology+Park+(NSTP)/@33.6457175,72.9972339,18z/data=!4m14!1m7!3m6!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!2sNational+Science+%26+Technology+Park+(NSTP)!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk!3m5!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           className="link t-white-50"
         >
@@ -625,13 +624,7 @@ function ProjectPage() {
             >
               Behance
             </a>
-            <a
-              href="https://vimeo.com/styleframe"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Vimeo
-            </a>
+          
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
