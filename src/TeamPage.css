@@ -1,3 +1,101 @@
+/* ========== CONTACT BANNER FIX - Match IndexPage ========== */
+.contact-banner {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #ff5101;
+  padding: 40px 30px;
+  padding-top: 80px; /* Extra padding at top for close button */
+  overflow-y: auto;
+  transition: right 0.4s ease-in-out;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.contact-banner.open {
+  right: 0;
+}
+
+.contact-banner.closed {
+  right: -400px;
+}
+
+.contact-banner .link.t-large.t-right {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+}
+
+.contact-banner .link.t-large.t-right:hover {
+  transform: scale(1.1);
+}
+
+.contact-banner a {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-banner a:hover {
+  opacity: 0.8;
+}
+
+.contact-banner .t-white {
+  color: white;
+}
+
+.contact-banner .t-white-50 {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-banner .link-wrp {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-banner .link-wrp .link {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.contact-banner .link-wrp .link:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .contact-banner {
+    width: 100%;
+    right: -100%;
+    padding-top: 80px;
+  }
+
+  .contact-banner.open {
+    right: 0;
+  }
+
+  .contact-banner.closed {
+    right: -100%;
+  }
+}
+
+/* ========== TEAM PAGE STYLES ========== */
 .hero-studio {
   position: relative;
   min-height: 100vh;
