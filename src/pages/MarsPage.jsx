@@ -667,24 +667,6 @@ export default function MarsPage() {
                 role="listitem"
                 className="section-item w-dyn-item"
               >
-                <div className="section-visuals-wrp">
-                  <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f12bda46dd49e8b3545316_11.3.avif"
-                    loading="lazy"
-                    width="Auto"
-                    alt=""
-                    className="section-img"
-                  />
-                  <img
-                    src="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e2f6915ebf52992f1174_6.2.avif"
-                    loading="lazy"
-                    width="Auto"
-                    alt=""
-                    sizes="100vw"
-                    srcSet="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e2f6915ebf52992f1174_6.2-p-500.avif 500w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e2f6915ebf52992f1174_6.2-p-800.avif 800w, https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e2f6915ebf52992f1174_6.2.avif 1381w"
-                    className="section-img"
-                  />
-                </div>
               </div>
             </div>
           </div>
