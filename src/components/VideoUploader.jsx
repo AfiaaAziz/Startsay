@@ -1,7 +1,7 @@
 // src/components/VideoUploader.jsx
 import React, { useState } from 'react';
 import { uploadFile } from '../lib/supabaseAdmin';
-import '../styles/VideoUploader.css';
+import '../styles/VedioUploader.css';
 
 const VideoUploader = ({ onUploadComplete }) => {
   const [uploading, setUploading] = useState(false);

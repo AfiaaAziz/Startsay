@@ -1,5 +1,5 @@
 // src/pages/HomePageSettings.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   fetchHomePageSettings,
   updateHomePageSettings,
@@ -8,8 +8,8 @@ import {
   addFeaturedProject,
   removeFeaturedProject,
   reorderFeaturedProjects,
-} from '../lib/supabaseAdmin';
-import '../styles/HomePageSettings.css';
+} from "../lib/supabaseAdmin";
+import "../styles/HomePageSettings.css";
 
 const HomePageSettings = () => {
   const [settings, setSettings] = useState(null);
@@ -17,11 +17,11 @@ const HomePageSettings = () => {
   const [allProjects, setAllProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   // Form state
-  const [showreelVideo, setShowreelVideo] = useState('');
-  const [showreelPoster, setShowreelPoster] = useState('');
+  const [showreelVideo, setShowreelVideo] = useState("");
+  const [showreelPoster, setShowreelPoster] = useState("");
 
   useEffect(() => {
     loadData();
@@ -36,13 +36,13 @@ const HomePageSettings = () => {
       ]);
 
       setSettings(settingsData);
-      setShowreelVideo(settingsData.showreel_video_url || '');
-      setShowreelPoster(settingsData.showreel_poster_url || '');
+      setShowreelVideo(settingsData.showreel_video_url || "");
+      setShowreelPoster(settingsData.showreel_poster_url || "");
       setFeaturedProjects(featuredData);
       setAllProjects(projectsData);
     } catch (error) {
-      console.error('Error loading data:', error);
-      setMessage('Error loading settings');
+      console.error("Error loading data:", error);
+      setMessage("Error loading settings");
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ const HomePageSettings = () => {
   const handleSaveSettings = async (e) => {
     e.preventDefault();
     setSaving(true);
-    setMessage('');
+    setMessage("");
 
     try {
       await updateHomePageSettings({
@@ -59,11 +59,11 @@ const HomePageSettings = () => {
         showreel_poster_url: showreelPoster || null,
       });
 
-      setMessage('Settings saved successfully!');
-      setTimeout(() => setMessage(''), 3000);
+      setMessage("Settings saved successfully!");
+      setTimeout(() => setMessage(""), 3000);
     } catch (error) {
-      console.error('Error saving settings:', error);
-      setMessage('Error saving settings');
+      console.error("Error saving settings:", error);
+      setMessage("Error saving settings");
     } finally {
       setSaving(false);
     }
@@ -71,7 +71,7 @@ const HomePageSettings = () => {
 
   const handleAddFeatured = async (projectId) => {
     if (featuredProjects.length >= 8) {
-      setMessage('Maximum 8 featured projects allowed');
+      setMessage("Maximum 8 featured projects allowed");
       return;
     }
 
@@ -79,11 +79,11 @@ const HomePageSettings = () => {
       const newOrder = featuredProjects.length;
       await addFeaturedProject(projectId, newOrder);
       await loadData();
-      setMessage('Project added to featured');
-      setTimeout(() => setMessage(''), 3000);
+      setMessage("Project added to featured");
+      setTimeout(() => setMessage(""), 3000);
     } catch (error) {
-      console.error('Error adding featured project:', error);
-      setMessage('Error adding project');
+      console.error("Error adding featured project:", error);
+      setMessage("Error adding project");
     }
   };
 
@@ -91,11 +91,11 @@ const HomePageSettings = () => {
     try {
       await removeFeaturedProject(id);
       await loadData();
-      setMessage('Project removed from featured');
-      setTimeout(() => setMessage(''), 3000);
+      setMessage("Project removed from featured");
+      setTimeout(() => setMessage(""), 3000);
     } catch (error) {
-      console.error('Error removing featured project:', error);
-      setMessage('Error removing project');
+      console.error("Error removing featured project:", error);
+      setMessage("Error removing project");
     }
   };
 
@@ -108,17 +108,17 @@ const HomePageSettings = () => {
 
     try {
       await reorderFeaturedProjects(reordered);
-      setMessage('Order updated');
-      setTimeout(() => setMessage(''), 3000);
+      setMessage("Order updated");
+      setTimeout(() => setMessage(""), 3000);
     } catch (error) {
-      console.error('Error reordering:', error);
-      setMessage('Error updating order');
+      console.error("Error reordering:", error);
+      setMessage("Error updating order");
       await loadData(); // Reload on error
     }
   };
 
   const availableProjects = allProjects.filter(
-    (project) => !featuredProjects.some((fp) => fp.project_id === project.id)
+    (project) => !featuredProjects.some((fp) => fp.project_id === project.id),
   );
 
   if (loading) {
@@ -133,7 +133,9 @@ const HomePageSettings = () => {
       </div>
 
       {message && (
-        <div className={`message ${message.includes('Error') ? 'error' : 'success'}`}>
+        <div
+          className={`message ${message.includes("Error") ? "error" : "success"}`}
+        >
           {message}
         </div>
       )}
@@ -165,7 +167,7 @@ const HomePageSettings = () => {
           </div>
 
           <button type="submit" className="btn-primary" disabled={saving}>
-            {saving ? 'Saving...' : 'Save Settings'}
+            {saving ? "Saving..." : "Save Settings"}
           </button>
         </form>
       </section>
@@ -173,7 +175,7 @@ const HomePageSettings = () => {
       {/* Featured Projects Section */}
       <section className="settings-section">
         <h2>Featured Projects ({featuredProjects.length}/8)</h2>
-        
+
         {featuredProjects.length > 0 ? (
           <div className="featured-list">
             {featuredProjects.map((fp, index) => (
