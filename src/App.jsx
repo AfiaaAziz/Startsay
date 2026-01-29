@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import './admin/admin.css';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -9,6 +10,8 @@ import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
+import AdminRoutes from './admin/AdminRoutes';
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +24,8 @@ function App() {
       <Route path="/research" element={<ResearchPage />} />
       <Route path="/project/mars" element={<MarsPage />} />
       <Route path="/project/:projectSlug" element={<ProjectPage />} />
+      <Route path="/admin/*" element={<AdminRoutes />} />
+
     </Routes>
   );
 }

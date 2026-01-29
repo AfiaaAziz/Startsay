@@ -1,23 +1,27 @@
-import { useState, useEffect } from 'react';
-import { 
-  getFeaturedProjects, 
-  setFeaturedProjects, 
-  getHomePageSettings,
+// src/pages/HomePageSettings.jsx
+import React, { useState, useEffect } from 'react';
+import {
+  fetchHomePageSettings,
   updateHomePageSettings,
-  getProjects
-} from '../../lib/supabaseAdmin';
-import VideoUploader from '../components/VideoUploader';
-import ImageUploader from '../components/ImageUploader';
-import '../admin.css';
+  fetchFeaturedProjects,
+  fetchProjects,
+  addFeaturedProject,
+  removeFeaturedProject,
+  reorderFeaturedProjects,
+} from '../lib/supabaseAdmin';
+import '../styles/HomePageSettings.css';
 
-export default function HomePageSettings() {
+const HomePageSettings = () => {
+  const [settings, setSettings] = useState(null);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [featuredProjects, setFeaturedProjectsState] = useState([]);
-  const [availableProjects, setAvailableProjects] = useState([]);
+  const [message, setMessage] = useState('');
+
+  // Form state
   const [showreelVideo, setShowreelVideo] = useState('');
   const [showreelPoster, setShowreelPoster] = useState('');
-  const [draggedItem, setDraggedItem] = useState(null);
 
   useEffect(() => {
     loadData();
@@ -25,287 +29,219 @@ export default function HomePageSettings() {
 
   const loadData = async () => {
     try {
-      setLoading(true);
-      
-      // Load featured projects
-      const featured = await getFeaturedProjects();
-      setFeaturedProjectsState(featured);
+      const [settingsData, featuredData, projectsData] = await Promise.all([
+        fetchHomePageSettings(),
+        fetchFeaturedProjects(),
+        fetchProjects(),
+      ]);
 
-      // Load all available projects
-      const all = await getProjects();
-      setAvailableProjects(all);
-
-      // Load home page settings
-      const settings = await getHomePageSettings();
-      setShowreelVideo(settings.showreel_video_url || '');
-      setShowreelPoster(settings.showreel_poster_url || '');
-      
+      setSettings(settingsData);
+      setShowreelVideo(settingsData.showreel_video_url || '');
+      setShowreelPoster(settingsData.showreel_poster_url || '');
+      setFeaturedProjects(featuredData);
+      setAllProjects(projectsData);
     } catch (error) {
       console.error('Error loading data:', error);
-      alert('Failed to load home page settings');
+      setMessage('Error loading settings');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleAddFeaturedProject = (projectId) => {
-    const project = availableProjects.find(p => p.id === projectId);
-    if (!project) return;
-
-    if (featuredProjects.length >= 8) {
-      alert('You can only feature up to 8 projects on the home page');
-      return;
-    }
-
-    if (featuredProjects.some(fp => fp.project_id === projectId)) {
-      alert('This project is already featured');
-      return;
-    }
-
-    setFeaturedProjectsState(prev => [...prev, {
-      project_id: projectId,
-      display_order: prev.length,
-      projects: project
-    }]);
-  };
-
-  const handleRemoveFeaturedProject = (projectId) => {
-    setFeaturedProjectsState(prev => 
-      prev.filter(fp => fp.project_id !== projectId)
-        .map((fp, index) => ({ ...fp, display_order: index }))
-    );
-  };
-
-  const handleDragStart = (e, index) => {
-    setDraggedItem(index);
-    e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const handleDragOver = (e, index) => {
+  const handleSaveSettings = async (e) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-
-    if (draggedItem === null || draggedItem === index) return;
-
-    const items = [...featuredProjects];
-    const draggedItemContent = items[draggedItem];
-    
-    // Remove dragged item
-    items.splice(draggedItem, 1);
-    // Insert at new position
-    items.splice(index, 0, draggedItemContent);
-    
-    // Update display order
-    const reordered = items.map((item, idx) => ({
-      ...item,
-      display_order: idx
-    }));
-    
-    setFeaturedProjectsState(reordered);
-    setDraggedItem(index);
-  };
-
-  const handleDragEnd = () => {
-    setDraggedItem(null);
-  };
-
-  const handleShowreelVideoUpload = (url) => {
-    setShowreelVideo(url);
-  };
-
-  const handleShowreelPosterUpload = (url) => {
-    setShowreelPoster(url);
-  };
-
-  const handleSave = async () => {
-    if (featuredProjects.length !== 8) {
-      if (!confirm(`You have ${featuredProjects.length} featured projects. The home page displays exactly 8 projects. Continue saving?`)) {
-        return;
-      }
-    }
+    setSaving(true);
+    setMessage('');
 
     try {
-      setSaving(true);
-
-      // Save featured projects
-      const projectIds = featuredProjects.map(fp => fp.project_id);
-      await setFeaturedProjects(projectIds);
-
-      // Save home page settings
       await updateHomePageSettings({
-        showreel_video_url: showreelVideo,
-        showreel_poster_url: showreelPoster
+        showreel_video_url: showreelVideo || null,
+        showreel_poster_url: showreelPoster || null,
       });
 
-      alert('Home page settings saved successfully!');
+      setMessage('Settings saved successfully!');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
       console.error('Error saving settings:', error);
-      alert('Failed to save settings: ' + error.message);
+      setMessage('Error saving settings');
     } finally {
       setSaving(false);
     }
   };
 
-  if (loading) {
-    return (
-      <div className="admin-page">
-        <div className="loading">Loading settings...</div>
-      </div>
-    );
-  }
+  const handleAddFeatured = async (projectId) => {
+    if (featuredProjects.length >= 8) {
+      setMessage('Maximum 8 featured projects allowed');
+      return;
+    }
 
-  const unselectedProjects = availableProjects.filter(
-    p => !featuredProjects.some(fp => fp.project_id === p.id)
+    try {
+      const newOrder = featuredProjects.length;
+      await addFeaturedProject(projectId, newOrder);
+      await loadData();
+      setMessage('Project added to featured');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error adding featured project:', error);
+      setMessage('Error adding project');
+    }
+  };
+
+  const handleRemoveFeatured = async (id) => {
+    try {
+      await removeFeaturedProject(id);
+      await loadData();
+      setMessage('Project removed from featured');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error removing featured project:', error);
+      setMessage('Error removing project');
+    }
+  };
+
+  const handleReorder = async (fromIndex, toIndex) => {
+    const reordered = [...featuredProjects];
+    const [moved] = reordered.splice(fromIndex, 1);
+    reordered.splice(toIndex, 0, moved);
+
+    setFeaturedProjects(reordered);
+
+    try {
+      await reorderFeaturedProjects(reordered);
+      setMessage('Order updated');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error reordering:', error);
+      setMessage('Error updating order');
+      await loadData(); // Reload on error
+    }
+  };
+
+  const availableProjects = allProjects.filter(
+    (project) => !featuredProjects.some((fp) => fp.project_id === project.id)
   );
 
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
   return (
-    <div className="admin-page">
-      <div className="page-header">
+    <div className="home-settings">
+      <div className="settings-header">
         <h1>Home Page Settings</h1>
-        <button 
-          onClick={handleSave} 
-          className="btn-primary"
-          disabled={saving}
-        >
-          {saving ? 'Saving...' : 'Save Changes'}
-        </button>
+        <p>Manage showreel and featured projects</p>
       </div>
 
-      {/* Featured Projects Section */}
-      <div className="form-section">
-        <h2>Featured Projects (8 slots)</h2>
-        <p className="help-text">
-          Drag and drop to reorder. These projects will appear on the home page.
-        </p>
-
-        <div className="featured-slots">
-          {featuredProjects.map((featured, index) => (
-            <div
-              key={featured.project_id}
-              className={`featured-slot ${draggedItem === index ? 'dragging' : ''}`}
-              draggable
-              onDragStart={(e) => handleDragStart(e, index)}
-              onDragOver={(e) => handleDragOver(e, index)}
-              onDragEnd={handleDragEnd}
-            >
-              <div className="featured-slot-number">{index + 1}</div>
-              <div className="featured-slot-content">
-                {featured.projects.hero_image_url && (
-                  <img 
-                    src={featured.projects.hero_image_url} 
-                    alt={featured.projects.title}
-                    className="featured-slot-image"
-                  />
-                )}
-                <div className="featured-slot-info">
-                  <div className="featured-slot-title">{featured.projects.title}</div>
-                  <div className="featured-slot-client">{featured.projects.client}</div>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleRemoveFeaturedProject(featured.project_id)}
-                className="btn-remove"
-                title="Remove"
-              >
-                ✕
-              </button>
-            </div>
-          ))}
-
-          {/* Empty slots */}
-          {[...Array(8 - featuredProjects.length)].map((_, index) => (
-            <div key={`empty-${index}`} className="featured-slot empty">
-              <div className="featured-slot-number">
-                {featuredProjects.length + index + 1}
-              </div>
-              <div className="featured-slot-content">
-                <div className="empty-slot-text">Empty Slot</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Add Project Selector */}
-        {featuredProjects.length < 8 && unselectedProjects.length > 0 && (
-          <div className="form-group">
-            <label>Add Project to Featured</label>
-            <select
-              onChange={(e) => {
-                if (e.target.value) {
-                  handleAddFeaturedProject(e.target.value);
-                  e.target.value = '';
-                }
-              }}
-              className="project-selector"
-            >
-              <option value="">Select a project...</option>
-              {unselectedProjects.map(project => (
-                <option key={project.id} value={project.id}>
-                  {project.title} - {project.client} ({project.year})
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-      </div>
-
-      {/* Showreel Section */}
-      <div className="form-section">
-        <h2>Showreel</h2>
-
-        <div className="form-group">
-          <label>Showreel Video</label>
-          <VideoUploader
-            onUpload={handleShowreelVideoUpload}
-            bucket="hero-videos"
-            folder="showreel"
-            currentVideo={showreelVideo}
-          />
-          {showreelVideo && (
-            <small>Current: {showreelVideo}</small>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label>Showreel Poster Image</label>
-          <ImageUploader
-            onUpload={handleShowreelPosterUpload}
-            bucket="hero-images"
-            folder="showreel"
-            currentImage={showreelPoster}
-          />
-          {showreelPoster && (
-            <small>Current: {showreelPoster}</small>
-          )}
-        </div>
-      </div>
-
-      {/* Preview */}
-      {showreelVideo && (
-        <div className="form-section">
-          <h2>Showreel Preview</h2>
-          <div className="video-preview">
-            <video
-              controls
-              poster={showreelPoster}
-              style={{ width: '100%', maxWidth: '800px' }}
-            >
-              <source src={showreelVideo} type="video/mp4" />
-            </video>
-          </div>
+      {message && (
+        <div className={`message ${message.includes('Error') ? 'error' : 'success'}`}>
+          {message}
         </div>
       )}
 
-      <div className="form-actions">
-        <button 
-          onClick={handleSave} 
-          className="btn-primary"
-          disabled={saving}
-        >
-          {saving ? 'Saving...' : 'Save Changes'}
-        </button>
-      </div>
+      {/* Showreel Section */}
+      <section className="settings-section">
+        <h2>Showreel Settings</h2>
+        <form onSubmit={handleSaveSettings}>
+          <div className="form-group">
+            <label>Showreel Video URL</label>
+            <input
+              type="url"
+              value={showreelVideo}
+              onChange={(e) => setShowreelVideo(e.target.value)}
+              placeholder="https://example.com/showreel.mp4"
+            />
+            <small>Main showreel video displayed on home page</small>
+          </div>
+
+          <div className="form-group">
+            <label>Showreel Poster Image URL</label>
+            <input
+              type="url"
+              value={showreelPoster}
+              onChange={(e) => setShowreelPoster(e.target.value)}
+              placeholder="https://example.com/poster.jpg"
+            />
+            <small>Poster image shown before video loads</small>
+          </div>
+
+          <button type="submit" className="btn-primary" disabled={saving}>
+            {saving ? 'Saving...' : 'Save Settings'}
+          </button>
+        </form>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="settings-section">
+        <h2>Featured Projects ({featuredProjects.length}/8)</h2>
+        
+        {featuredProjects.length > 0 ? (
+          <div className="featured-list">
+            {featuredProjects.map((fp, index) => (
+              <div key={fp.id} className="featured-item">
+                <div className="featured-info">
+                  <span className="featured-order">#{index + 1}</span>
+                  <span className="featured-title">{fp.projects.title}</span>
+                  <span className="featured-client">{fp.projects.client}</span>
+                </div>
+                <div className="featured-actions">
+                  {index > 0 && (
+                    <button
+                      onClick={() => handleReorder(index, index - 1)}
+                      className="btn-icon"
+                      title="Move up"
+                    >
+                      ↑
+                    </button>
+                  )}
+                  {index < featuredProjects.length - 1 && (
+                    <button
+                      onClick={() => handleReorder(index, index + 1)}
+                      className="btn-icon"
+                      title="Move down"
+                    >
+                      ↓
+                    </button>
+                  )}
+                  <button
+                    onClick={() => handleRemoveFeatured(fp.id)}
+                    className="btn-danger-icon"
+                    title="Remove"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="empty-state">No featured projects yet</p>
+        )}
+      </section>
+
+      {/* Add Featured Project Section */}
+      {featuredProjects.length < 8 && availableProjects.length > 0 && (
+        <section className="settings-section">
+          <h2>Add Featured Project</h2>
+          <div className="available-projects">
+            {availableProjects.map((project) => (
+              <div key={project.id} className="available-item">
+                <div className="project-info">
+                  <span className="project-title">{project.title}</span>
+                  <span className="project-client">{project.client}</span>
+                </div>
+                <button
+                  onClick={() => handleAddFeatured(project.id)}
+                  className="btn-secondary"
+                >
+                  Add to Featured
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
-}
+};
+
+export default HomePageSettings;

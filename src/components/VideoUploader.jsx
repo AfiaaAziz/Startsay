@@ -1,169 +1,95 @@
-import { useState, useRef } from 'react';
-import { uploadFile } from '../../lib/supabase';
+// src/components/VideoUploader.jsx
+import React, { useState } from 'react';
+import { uploadFile } from '../lib/supabaseAdmin';
+import '../styles/VideoUploader.css';
 
-export default function VideoUploader({ 
-  onUpload, 
-  bucket = 'project-videos',
-  folder = '',
-  maxSize = 50 * 1024 * 1024, // 50MB default
-  currentVideo = null
-}) {
+const VideoUploader = ({ onUploadComplete }) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [dragActive, setDragActive] = useState(false);
-  const [preview, setPreview] = useState(currentVideo);
-  const fileInputRef = useRef(null);
+  const [error, setError] = useState('');
 
-  const validateFile = (file) => {
-    if (file.size > maxSize) {
-      throw new Error(`Video size must be less than ${maxSize / 1024 / 1024}MB`);
-    }
-    
-    if (!file.type.startsWith('video/')) {
-      throw new Error('Only video files are allowed');
-    }
-    
-    return true;
-  };
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const handleFile = async (file) => {
+    // Check file size (max 100MB)
+    if (file.size > 100 * 1024 * 1024) {
+      setError('File size must be less than 100MB');
+      return;
+    }
+
+    setUploading(true);
+    setError('');
+    setProgress(0);
+
     try {
-      validateFile(file);
-      setUploading(true);
-      setProgress(0);
-      
-      // Simulate progress (Supabase doesn't provide real progress)
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      // Simulate progress for large files
       const progressInterval = setInterval(() => {
-        setProgress(prev => Math.min(prev + 10, 90));
-      }, 500);
-      
-      const result = await uploadFile(file, bucket, folder);
-      
+        setProgress((prev) => Math.min(prev + 5, 95));
+      }, 200);
+
+      const publicUrl = await uploadFile('media', filePath, file);
+
       clearInterval(progressInterval);
       setProgress(100);
-      
-      setPreview(result.url);
-      
-      if (onUpload) {
-        onUpload(result.url);
+
+      if (onUploadComplete) {
+        onUploadComplete(publicUrl);
       }
-      
-      alert('Video uploaded successfully!');
-      
+
       setTimeout(() => {
+        setUploading(false);
         setProgress(0);
       }, 1000);
-      
-    } catch (error) {
-      console.error('Upload error:', error);
-      alert('Upload failed: ' + error.message);
-      setProgress(0);
-    } finally {
+    } catch (err) {
+      console.error('Upload error:', err);
+      setError(err.message || 'Upload failed');
       setUploading(false);
+      setProgress(0);
     }
-  };
 
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      handleFile(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      handleFile(e.target.files[0]);
-    }
-  };
-
-  const handleButtonClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const formatFileSize = (bytes) => {
-    return `${(bytes / 1024 / 1024).toFixed(1)}MB`;
+    e.target.value = '';
   };
 
   return (
     <div className="video-uploader">
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="video/*"
-        onChange={handleChange}
-        style={{ display: 'none' }}
-        disabled={uploading}
-      />
-      
-      <div
-        className={`upload-area ${dragActive ? 'drag-active' : ''} ${uploading ? 'uploading' : ''}`}
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-        onClick={!uploading ? handleButtonClick : undefined}
-      >
-        {preview ? (
-          <div className="preview-container">
-            <video 
-              src={preview} 
-              controls 
-              className="preview-video"
-              style={{ maxWidth: '100%', maxHeight: '300px' }}
-            />
-            <div className="preview-overlay">
-              <span>Click or drop to replace</span>
+      <label className={`upload-label ${uploading ? 'uploading' : ''}`}>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          accept="video/*"
+          disabled={uploading}
+          className="upload-input"
+        />
+        <div className="upload-content">
+          {uploading ? (
+            <div className="upload-progress">
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              <span>Uploading video... {progress}%</span>
+              <small>This may take a while for large files</small>
             </div>
-          </div>
-        ) : (
-          <div className="upload-prompt">
-            {uploading ? (
-              <>
-                <div className="upload-spinner"></div>
-                <p>Uploading video... {progress}%</p>
-              </>
-            ) : (
-              <>
-                <div className="upload-icon">🎬</div>
-                <p className="upload-text">
-                  <strong>Click to upload</strong> or drag and drop
-                </p>
-                <p className="upload-hint">
-                  MP4, WebM up to {formatFileSize(maxSize)}
-                </p>
-                <p className="upload-warning">
-                  ⚠️ Large videos may take several minutes to upload
-                </p>
-              </>
-            )}
-          </div>
-        )}
-      </div>
-      
-      {uploading && progress > 0 && (
-        <div className="upload-progress">
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-          <span className="progress-text">{progress}%</span>
+          ) : (
+            <>
+              <span className="upload-icon">🎬</span>
+              <span>Click to upload video</span>
+              <small>Max 100MB • MP4, WebM, MOV</small>
+            </>
+          )}
         </div>
-      )}
+      </label>
+
+      {error && <div className="upload-error">{error}</div>}
     </div>
   );
-}
+};
+
+export default VideoUploader;

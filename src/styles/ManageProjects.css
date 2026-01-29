@@ -1,0 +1,146 @@
+/* src/styles/ManageProjects.css */
+
+.manage-projects {
+  max-width: 1400px;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.projects-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.projects-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 140px 2fr 1.5fr 100px 120px 200px;
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 140px 2fr 1.5fr 100px 120px 200px;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #F3F4F6;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.table-row:hover {
+  background-color: #F9FAFB;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.col-order {
+  display: flex;
+  align-items: center;
+}
+
+.reorder-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-number {
+  font-weight: 600;
+  color: #6B7280;
+  min-width: 30px;
+}
+
+.col-title {
+  font-weight: 600;
+}
+
+.project-link {
+  color: #4F46E5;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.project-link:hover {
+  color: #4338CA;
+  text-decoration: underline;
+}
+
+.col-client,
+.col-year {
+  color: #6B7280;
+}
+
+.col-status {
+  display: flex;
+  align-items: center;
+}
+
+.col-actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 1200px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 120px 2fr 1fr 100px 180px;
+    gap: 12px;
+  }
+
+  .col-year {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .col-order,
+  .col-title,
+  .col-client,
+  .col-status,
+  .col-actions {
+    width: 100%;
+  }
+
+  .col-actions {
+    flex-wrap: wrap;
+  }
+}

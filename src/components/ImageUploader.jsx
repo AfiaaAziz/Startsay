@@ -1,172 +1,87 @@
-import { useState, useRef } from 'react';
-import { uploadFile } from '../../lib/supabase';
+// src/components/ImageUploader.jsx
+import React, { useState } from 'react';
+import { uploadFile } from '../lib/supabaseAdmin';
+import '../styles/ImageUploader.css';
 
-export default function ImageUploader({ 
-  onUpload, 
-  bucket = 'project-images',
-  folder = '',
-  maxSize = 10 * 1024 * 1024, // 10MB default
-  accept = 'image/*',
-  multiple = false,
-  currentImage = null
-}) {
+const ImageUploader = ({ onUploadComplete, accept = 'image/*' }) => {
   const [uploading, setUploading] = useState(false);
-  const [dragActive, setDragActive] = useState(false);
-  const [preview, setPreview] = useState(currentImage);
-  const fileInputRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState('');
 
-  const validateFile = (file) => {
-    if (file.size > maxSize) {
-      throw new Error(`File size must be less than ${maxSize / 1024 / 1024}MB`);
-    }
-    
-    if (accept === 'image/*' && !file.type.startsWith('image/')) {
-      throw new Error('Only image files are allowed');
-    }
-    
-    return true;
-  };
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const handleFiles = async (files) => {
+    setUploading(true);
+    setError('');
+    setProgress(0);
+
     try {
-      setUploading(true);
-      
-      const fileArray = Array.from(files);
-      const validFiles = [];
-      
-      // Validate all files first
-      for (const file of fileArray) {
-        try {
-          validateFile(file);
-          validFiles.push(file);
-        } catch (error) {
-          alert(`${file.name}: ${error.message}`);
-        }
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      // Simulate progress
+      const progressInterval = setInterval(() => {
+        setProgress((prev) => Math.min(prev + 10, 90));
+      }, 100);
+
+      const publicUrl = await uploadFile('media', filePath, file);
+
+      clearInterval(progressInterval);
+      setProgress(100);
+
+      if (onUploadComplete) {
+        onUploadComplete(publicUrl);
       }
-      
-      if (validFiles.length === 0) {
+
+      setTimeout(() => {
         setUploading(false);
-        return;
-      }
-      
-      // Upload files
-      const uploadPromises = validFiles.map(file => 
-        uploadFile(file, bucket, folder)
-      );
-      
-      const results = await Promise.all(uploadPromises);
-      const urls = results.map(r => r.url);
-      
-      // Update preview for single file upload
-      if (!multiple && urls.length > 0) {
-        setPreview(urls[0]);
-      }
-      
-      // Call parent callback
-      if (onUpload) {
-        multiple ? onUpload(urls) : onUpload(urls[0]);
-      }
-      
-      alert(`Successfully uploaded ${urls.length} file(s)`);
-      
-    } catch (error) {
-      console.error('Upload error:', error);
-      alert('Upload failed: ' + error.message);
-    } finally {
+        setProgress(0);
+      }, 500);
+    } catch (err) {
+      console.error('Upload error:', err);
+      setError(err.message || 'Upload failed');
       setUploading(false);
+      setProgress(0);
     }
-  };
 
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      handleFiles(e.dataTransfer.files);
-    }
-  };
-
-  const handleChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      handleFiles(e.target.files);
-    }
-  };
-
-  const handleButtonClick = () => {
-    fileInputRef.current?.click();
+    e.target.value = '';
   };
 
   return (
     <div className="image-uploader">
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept={accept}
-        multiple={multiple}
-        onChange={handleChange}
-        style={{ display: 'none' }}
-        disabled={uploading}
-      />
-      
-      <div
-        className={`upload-area ${dragActive ? 'drag-active' : ''} ${uploading ? 'uploading' : ''}`}
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-        onClick={handleButtonClick}
-      >
-        {preview && !multiple ? (
-          <div className="preview-container">
-            <img src={preview} alt="Preview" className="preview-image" />
-            <div className="preview-overlay">
-              <span>Click or drop to replace</span>
+      <label className={`upload-label ${uploading ? 'uploading' : ''}`}>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          accept={accept}
+          disabled={uploading}
+          className="upload-input"
+        />
+        <div className="upload-content">
+          {uploading ? (
+            <div className="upload-progress">
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              <span>Uploading... {progress}%</span>
             </div>
-          </div>
-        ) : (
-          <div className="upload-prompt">
-            {uploading ? (
-              <>
-                <div className="upload-spinner"></div>
-                <p>Uploading...</p>
-              </>
-            ) : (
-              <>
-                <div className="upload-icon">📁</div>
-                <p className="upload-text">
-                  <strong>Click to upload</strong> or drag and drop
-                </p>
-                <p className="upload-hint">
-                  {accept === 'image/*' ? 'PNG, JPG, AVIF, WebP' : 'Supported files'} 
-                  {' '}up to {maxSize / 1024 / 1024}MB
-                </p>
-                {multiple && (
-                  <p className="upload-hint">You can upload multiple files</p>
-                )}
-              </>
-            )}
-          </div>
-        )}
-      </div>
-      
-      {uploading && (
-        <div className="upload-progress">
-          <div className="progress-bar">
-            <div className="progress-fill"></div>
-          </div>
+          ) : (
+            <>
+              <span className="upload-icon">⬆️</span>
+              <span>Click to upload or drag and drop</span>
+            </>
+          )}
         </div>
-      )}
+      </label>
+
+      {error && <div className="upload-error">{error}</div>}
     </div>
   );
-}
+};
+
+export default ImageUploader;

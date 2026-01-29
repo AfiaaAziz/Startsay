@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react';
+// src/pages/ProjectEdit.jsx
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  getProject, 
-  createProject, 
-  updateProject, 
-  deleteProject,
-  getGalleryImages,
+import {
+  fetchProjectBySlug,
+  createProject,
+  updateProject,
   addGalleryImage,
   deleteGalleryImage,
-  reorderGallery
-} from '../../lib/supabaseAdmin';
-import ImageUploader from '../components/ImageUploader';
-import VideoUploader from '../components/VideoUploader';
-import '../admin.css';
+  reorderGalleryImages,
+} from '../lib/supabaseAdmin';
+import '../styles/ProjectEdit.css';
 
-export default function ProjectEdit() {
-  const { id } = useParams();
+const ProjectEdit = () => {
+  const { slug } = useParams();
   const navigate = useNavigate();
-  const isEdit = !!id;
+  const isNew = slug === 'new';
 
-  const [loading, setLoading] = useState(isEdit);
+  const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState('');
+
+  // Project fields
   const [formData, setFormData] = useState({
-    title: '',
     slug: '',
+    title: '',
     client: '',
     year: new Date().getFullYear().toString(),
     category: '',
@@ -32,45 +32,49 @@ export default function ProjectEdit() {
     hero_video_url: '',
     index_video_url: '',
     is_active: true,
-    display_order: 0
   });
-  const [gallery, setGallery] = useState([]);
+
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [newImageUrl, setNewImageUrl] = useState('');
+  const [projectId, setProjectId] = useState(null);
 
   useEffect(() => {
-    if (isEdit) {
+    if (!isNew) {
       loadProject();
     }
-  }, [id]);
+  }, [slug, isNew]);
 
   const loadProject = async () => {
     try {
-      setLoading(true);
-      const project = await getProject(id);
-      if (project) {
-        setFormData({
-          title: project.title,
-          slug: project.slug,
-          client: project.client,
-          year: project.year,
-          category: project.category || '',
-          description: project.description || '',
-          hero_image_url: project.hero_image_url || '',
-          hero_video_url: project.hero_video_url || '',
-          index_video_url: project.index_video_url || '',
-          is_active: project.is_active,
-          display_order: project.display_order
-        });
-        
-        // Load gallery
-        const galleryImages = await getGalleryImages(id);
-        setGallery(galleryImages);
-      }
+      const data = await fetchProjectBySlug(slug);
+      setFormData({
+        slug: data.slug,
+        title: data.title,
+        client: data.client,
+        year: data.year,
+        category: data.category || '',
+        description: data.description || '',
+        hero_image_url: data.hero_image_url || '',
+        hero_video_url: data.hero_video_url || '',
+        index_video_url: data.index_video_url || '',
+        is_active: data.is_active,
+      });
+      setGalleryImages(data.project_gallery || []);
+      setProjectId(data.id);
     } catch (error) {
       console.error('Error loading project:', error);
-      alert('Failed to load project');
+      setMessage('Error loading project');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   const generateSlug = (title) => {
@@ -80,251 +84,174 @@ export default function ProjectEdit() {
       .replace(/^-|-$/g, '');
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+  const handleTitleChange = (e) => {
+    const title = e.target.value;
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      title,
+      slug: isNew ? generateSlug(title) : prev.slug,
     }));
-
-    // Auto-generate slug from title if creating new project
-    if (name === 'title' && !isEdit) {
-      setFormData(prev => ({
-        ...prev,
-        slug: generateSlug(value)
-      }));
-    }
-  };
-
-  const handleHeroImageUpload = (url) => {
-    setFormData(prev => ({ ...prev, hero_image_url: url }));
-  };
-
-  const handleHeroVideoUpload = (url) => {
-    setFormData(prev => ({ ...prev, hero_video_url: url }));
-  };
-
-  const handleIndexVideoUpload = (url) => {
-    setFormData(prev => ({ ...prev, index_video_url: url }));
-  };
-
-  const handleGalleryUpload = async (urls) => {
-    if (!isEdit) {
-      // If creating new project, store gallery URLs temporarily
-      const newGalleryItems = urls.map((url, index) => ({
-        image_url: url,
-        display_order: gallery.length + index,
-        temp_id: Date.now() + index
-      }));
-      setGallery(prev => [...prev, ...newGalleryItems]);
-    } else {
-      // If editing, add to database immediately
-      try {
-        const promises = urls.map((url, index) => 
-          addGalleryImage(id, url, gallery.length + index)
-        );
-        await Promise.all(promises);
-        await loadProject(); // Reload to get IDs
-      } catch (error) {
-        console.error('Error adding gallery images:', error);
-        alert('Failed to add gallery images');
-      }
-    }
-  };
-
-  const handleRemoveGalleryImage = async (item) => {
-    if (item.id) {
-      // Existing image in database
-      if (confirm('Remove this image from gallery?')) {
-        try {
-          await deleteGalleryImage(item.id);
-          setGallery(prev => prev.filter(g => g.id !== item.id));
-        } catch (error) {
-          console.error('Error removing gallery image:', error);
-          alert('Failed to remove image');
-        }
-      }
-    } else {
-      // Temporary image (not saved yet)
-      setGallery(prev => prev.filter(g => g.temp_id !== item.temp_id));
-    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validation
-    if (!formData.title || !formData.slug || !formData.client || !formData.year) {
-      alert('Please fill in all required fields (Title, Slug, Client, Year)');
-      return;
-    }
+    setSaving(true);
+    setMessage('');
 
     try {
-      setSaving(true);
-
-      if (isEdit) {
-        // Update existing project
-        await updateProject(id, formData);
-        alert('Project updated successfully!');
-      } else {
-        // Create new project
+      if (isNew) {
         const newProject = await createProject(formData);
-        
-        // Add gallery images if any
-        if (gallery.length > 0) {
-          const promises = gallery.map((item, index) => 
-            addGalleryImage(newProject.id, item.image_url, index)
-          );
-          await Promise.all(promises);
-        }
-        
-        alert('Project created successfully!');
-        navigate(`/admin/projects/${newProject.id}`);
+        setMessage('Project created successfully!');
+        setTimeout(() => {
+          navigate(`/admin/projects/${newProject.slug}`);
+        }, 1500);
+      } else {
+        await updateProject(projectId, formData);
+        setMessage('Project updated successfully!');
+        setTimeout(() => setMessage(''), 3000);
       }
     } catch (error) {
       console.error('Error saving project:', error);
-      alert('Failed to save project: ' + error.message);
+      setMessage(error.message || 'Error saving project');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete this project? This cannot be undone.')) {
-      return;
-    }
+  const handleAddGalleryImage = async () => {
+    if (!newImageUrl || !projectId) return;
 
     try {
-      await deleteProject(id);
-      alert('Project deleted successfully');
-      navigate('/admin/projects');
+      const newOrder = galleryImages.length;
+      await addGalleryImage(projectId, newImageUrl, newOrder);
+      await loadProject();
+      setNewImageUrl('');
+      setMessage('Image added to gallery');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
-      console.error('Error deleting project:', error);
-      alert('Failed to delete project: ' + error.message);
+      console.error('Error adding image:', error);
+      setMessage('Error adding image');
+    }
+  };
+
+  const handleDeleteGalleryImage = async (id) => {
+    if (!confirm('Delete this image from gallery?')) return;
+
+    try {
+      await deleteGalleryImage(id);
+      await loadProject();
+      setMessage('Image deleted');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error deleting image:', error);
+      setMessage('Error deleting image');
+    }
+  };
+
+  const handleReorderGallery = async (fromIndex, toIndex) => {
+    const reordered = [...galleryImages];
+    const [moved] = reordered.splice(fromIndex, 1);
+    reordered.splice(toIndex, 0, moved);
+
+    setGalleryImages(reordered);
+
+    try {
+      await reorderGalleryImages(reordered);
+      setMessage('Gallery order updated');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Error reordering:', error);
+      setMessage('Error updating order');
+      await loadProject();
     }
   };
 
   if (loading) {
-    return (
-      <div className="admin-page">
-        <div className="loading">Loading project...</div>
-      </div>
-    );
+    return <div className="loading">Loading project...</div>;
   }
 
   return (
-    <div className="admin-page">
-      <div className="page-header">
-        <h1>{isEdit ? 'Edit Project' : 'Add New Project'}</h1>
-        <div className="header-actions">
-          <button 
-            type="button" 
-            onClick={() => navigate('/admin/projects')}
-            className="btn-secondary"
-          >
-            Cancel
-          </button>
-          {isEdit && (
-            <button 
-              type="button" 
-              onClick={handleDelete}
-              className="btn-danger"
-            >
-              Delete Project
-            </button>
-          )}
-        </div>
+    <div className="project-edit">
+      <div className="edit-header">
+        <h1>{isNew ? 'New Project' : `Edit: ${formData.title}`}</h1>
+        <button onClick={() => navigate('/admin/projects')} className="btn-secondary">
+          ← Back to Projects
+        </button>
       </div>
 
+      {message && (
+        <div className={`message ${message.includes('Error') ? 'error' : 'success'}`}>
+          {message}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="project-form">
-        {/* Basic Info */}
-        <div className="form-section">
+        <section className="form-section">
           <h2>Basic Information</h2>
-          
-          <div className="form-grid">
-            <div className="form-group">
-              <label htmlFor="title">
-                Title <span className="required">*</span>
-              </label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="slug">
-                Slug <span className="required">*</span>
-                <span className="help-text">URL-friendly name</span>
-              </label>
-              <input
-                type="text"
-                id="slug"
-                name="slug"
-                value={formData.slug}
-                onChange={handleInputChange}
-                required
-                pattern="[a-z0-9-]+"
-              />
-              <small>Only lowercase letters, numbers, and hyphens</small>
-            </div>
+          <div className="form-group">
+            <label htmlFor="title">Title *</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleTitleChange}
+              required
+            />
+          </div>
 
+          <div className="form-group">
+            <label htmlFor="slug">Slug *</label>
+            <input
+              type="text"
+              id="slug"
+              name="slug"
+              value={formData.slug}
+              onChange={handleChange}
+              required
+              pattern="[a-z0-9-]+"
+              title="Only lowercase letters, numbers, and hyphens"
+            />
+            <small>URL-friendly identifier (e.g., "mars-campaign")</small>
+          </div>
+
+          <div className="form-row">
             <div className="form-group">
-              <label htmlFor="client">
-                Client <span className="required">*</span>
-              </label>
+              <label htmlFor="client">Client *</label>
               <input
                 type="text"
                 id="client"
                 name="client"
                 value={formData.client}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="year">
-                Year <span className="required">*</span>
-              </label>
+              <label htmlFor="year">Year *</label>
               <input
                 type="text"
                 id="year"
                 name="year"
                 value={formData.year}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 required
-                pattern="\d{4}"
               />
             </div>
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="category">Category</label>
-              <input
-                type="text"
-                id="category"
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                placeholder="e.g., Campaign Film, Product Photography"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="display_order">Display Order</label>
-              <input
-                type="number"
-                id="display_order"
-                name="display_order"
-                value={formData.display_order}
-                onChange={handleInputChange}
-                min="0"
-              />
-            </div>
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              placeholder="e.g., Campaign Film, Product Photography"
+            />
           </div>
 
           <div className="form-group">
@@ -333,94 +260,125 @@ export default function ProjectEdit() {
               id="description"
               name="description"
               value={formData.description}
-              onChange={handleInputChange}
+              onChange={handleChange}
               rows="4"
-              placeholder="Brief description of the project"
+              placeholder="Project description..."
             />
           </div>
 
           <div className="form-group">
-            <label>
+            <label className="checkbox-label">
               <input
                 type="checkbox"
                 name="is_active"
                 checked={formData.is_active}
-                onChange={handleInputChange}
+                onChange={handleChange}
               />
-              {' '}Active (visible on site)
+              <span>Active (visible on public site)</span>
             </label>
           </div>
+        </section>
+
+        <section className="form-section">
+          <h2>Media</h2>
+
+          <div className="form-group">
+            <label htmlFor="hero_image_url">Hero Image URL</label>
+            <input
+              type="url"
+              id="hero_image_url"
+              name="hero_image_url"
+              value={formData.hero_image_url}
+              onChange={handleChange}
+              placeholder="https://example.com/hero.jpg"
+            />
+            <small>Main image shown on project detail page</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="hero_video_url">Hero Video URL</label>
+            <input
+              type="url"
+              id="hero_video_url"
+              name="hero_video_url"
+              value={formData.hero_video_url}
+              onChange={handleChange}
+              placeholder="https://example.com/hero-video.mp4"
+            />
+            <small>Optional hero video (autoplay on project page)</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="index_video_url">Index Video URL</label>
+            <input
+              type="url"
+              id="index_video_url"
+              name="index_video_url"
+              value={formData.index_video_url}
+              onChange={handleChange}
+              placeholder="https://example.com/index-video.mp4"
+            />
+            <small>Video shown on hover in index/listing pages</small>
+          </div>
+        </section>
+
+        <div className="form-actions">
+          <button type="submit" className="btn-primary" disabled={saving}>
+            {saving ? 'Saving...' : isNew ? 'Create Project' : 'Save Changes'}
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/admin/projects')}
+            className="btn-secondary"
+          >
+            Cancel
+          </button>
         </div>
+      </form>
 
-        {/* Hero Media */}
-        <div className="form-section">
-          <h2>Hero Media</h2>
-          
-          <div className="form-group">
-            <label>Hero Image</label>
-            <ImageUploader
-              onUpload={handleHeroImageUpload}
-              bucket="hero-images"
-              folder={formData.slug || 'new-project'}
-              currentImage={formData.hero_image_url}
+      {/* Gallery Section - Only for existing projects */}
+      {!isNew && projectId && (
+        <section className="gallery-section">
+          <h2>Gallery Images</h2>
+
+          <div className="add-image">
+            <input
+              type="url"
+              value={newImageUrl}
+              onChange={(e) => setNewImageUrl(e.target.value)}
+              placeholder="Enter image URL"
             />
-            {formData.hero_image_url && (
-              <small>Current: {formData.hero_image_url}</small>
-            )}
+            <button onClick={handleAddGalleryImage} className="btn-primary">
+              Add Image
+            </button>
           </div>
 
-          <div className="form-group">
-            <label>Hero Video (Optional)</label>
-            <VideoUploader
-              onUpload={handleHeroVideoUpload}
-              bucket="hero-videos"
-              folder={formData.slug || 'new-project'}
-              currentVideo={formData.hero_video_url}
-            />
-            {formData.hero_video_url && (
-              <small>Current: {formData.hero_video_url}</small>
-            )}
-          </div>
-
-          <div className="form-group">
-            <label>Index Page Video (for hover)</label>
-            <VideoUploader
-              onUpload={handleIndexVideoUpload}
-              bucket="project-videos"
-              folder={formData.slug || 'new-project'}
-              currentVideo={formData.index_video_url}
-            />
-            {formData.index_video_url && (
-              <small>Current: {formData.index_video_url}</small>
-            )}
-          </div>
-        </div>
-
-        {/* Gallery */}
-        <div className="form-section">
-          <h2>Project Gallery</h2>
-          
-          <div className="form-group">
-            <label>Gallery Images</label>
-            <ImageUploader
-              onUpload={handleGalleryUpload}
-              bucket="project-images"
-              folder={formData.slug || 'new-project'}
-              multiple={true}
-            />
-          </div>
-
-          {gallery.length > 0 && (
+          {galleryImages.length > 0 ? (
             <div className="gallery-grid">
-              {gallery.map((item, index) => (
-                <div key={item.id || item.temp_id} className="gallery-item">
-                  <img src={item.image_url} alt={`Gallery ${index + 1}`} />
-                  <div className="gallery-item-overlay">
-                    <span>Order: {item.display_order}</span>
+              {galleryImages.map((image, index) => (
+                <div key={image.id} className="gallery-item">
+                  <img src={image.image_url} alt={`Gallery ${index + 1}`} />
+                  <div className="gallery-controls">
+                    {index > 0 && (
+                      <button
+                        onClick={() => handleReorderGallery(index, index - 1)}
+                        className="btn-icon"
+                      >
+                        ←
+                      </button>
+                    )}
+                    <span>#{index + 1}</span>
+                    {index < galleryImages.length - 1 && (
+                      <button
+                        onClick={() => handleReorderGallery(index, index + 1)}
+                        className="btn-icon"
+                      >
+                        →
+                      </button>
+                    )}
                     <button
-                      type="button"
-                      onClick={() => handleRemoveGalleryImage(item)}
-                      className="btn-remove"
+                      onClick={() => handleDeleteGalleryImage(image.id)}
+                      className="btn-danger-icon"
                     >
                       ✕
                     </button>
@@ -428,20 +386,13 @@ export default function ProjectEdit() {
                 </div>
               ))}
             </div>
+          ) : (
+            <p className="empty-gallery">No gallery images yet</p>
           )}
-        </div>
-
-        {/* Submit */}
-        <div className="form-actions">
-          <button 
-            type="submit" 
-            className="btn-primary"
-            disabled={saving}
-          >
-            {saving ? 'Saving...' : (isEdit ? 'Update Project' : 'Create Project')}
-          </button>
-        </div>
-      </form>
+        </section>
+      )}
     </div>
   );
-}
+};
+
+export default ProjectEdit;
