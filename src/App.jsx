@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import './admin/admin.css';
+import "./admin/admin.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -10,7 +10,11 @@ import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
-import AdminRoutes from './admin/AdminRoutes';
+import AdminRoutes from "./admin/AdminRoutes";
+import {
+  fetchFeaturedProjects,
+  fetchHomePageSettings,
+} from "./lib/supabaseAdmin";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -25,7 +29,6 @@ function App() {
       <Route path="/project/mars" element={<MarsPage />} />
       <Route path="/project/:projectSlug" element={<ProjectPage />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
-
     </Routes>
   );
 }
@@ -36,6 +39,13 @@ function HomePage() {
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [showreelVideo, setShowreelVideo] = useState(
+    "https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4",
+  );
+  const [showreelPoster, setShowreelPoster] = useState(
+    "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp",
+  );
 
   useVideoPlayer();
 
@@ -161,6 +171,27 @@ function HomePage() {
       document.removeEventListener("mouseover", handleLinkHover);
       document.removeEventListener("mouseout", handleLinkLeave);
     };
+  }, []);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const [fp, settings] = await Promise.all([
+          fetchFeaturedProjects(),
+          fetchHomePageSettings(),
+        ]);
+        setFeaturedProjects(Array.isArray(fp) ? fp : []);
+        if (settings?.showreel_video_url) {
+          setShowreelVideo(settings.showreel_video_url);
+        }
+        if (settings?.showreel_poster_url) {
+          setShowreelPoster(settings.showreel_poster_url);
+        }
+      } catch {
+        console.error("Failed to load home data");
+      }
+    };
+    load();
   }, []);
 
   useEffect(() => {
@@ -887,12 +918,11 @@ function HomePage() {
           </div>
         </div>
         <div className="t-large t-white">
-          Office Number 2207          <br />
+          Office Number 2207 <br />
           National Science & Technology Park (NSTP)
           <br />
           NUST H-12, Islamabad
         </div>
-
 
         <a
           data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da048"
@@ -939,7 +969,6 @@ function HomePage() {
           >
             ↗ Behance
           </a>
-
         </div>
       </div>
       <div className="section hero">
@@ -961,238 +990,28 @@ function HomePage() {
             role="list"
             className="project-list w-dyn-items"
           >
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-0"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
-                }}
-                href="/project/mars"
-                className="link project-card w-inline-block"
+            {featuredProjects.map((fp) => (
+              <div
+                key={fp.id}
+                role="listitem"
+                className="project-item w-dyn-item"
               >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
+                <a
+                  href={`/project/${fp.projects.slug}`}
+                  className="link project-card w-inline-block"
+                  style={{
+                    backgroundImage: fp.projects.hero_image_url
+                      ? `url("${fp.projects.hero_image_url}")`
+                      : undefined,
+                  }}
                 >
-                  Oakley
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-1"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif")`,
-                }}
-                href="/project/teenage-engineering"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Teenage Engineering
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-2"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/homeImage1.jpeg")',
-                }}
-                href="/project/innovation-lab"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Ray-Ban
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-3"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif")`,
-                }}
-                href="/project/beats-n-buckets"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Samsung
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-4"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif")`,
-                }}
-                href="/project/moncler-grenoble"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Moncler
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-5"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg")`,
-                }}
-                href="/project/13-11"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Oakley
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-6"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif")`,
-                }}
-                href="/project/we-are-rewind"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  We Are Rewind
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
-            <div
-              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
-              role="listitem"
-              className="project-item w-dyn-item"
-            >
-              <a
-                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-7"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
-                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
-                style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif")`,
-                }}
-                href="/project/hatton-labs-x-ap"
-                className="link project-card w-inline-block"
-              >
-                <div
-                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
-                  className="project-title"
-                >
-                  Hatton Labs
-                </div>
-                <div
-                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
-                  className="solid"
-                ></div>
-              </a>
-            </div>
+                  <div className="project-title">
+                    {fp.projects.client || fp.projects.title}
+                  </div>
+                  <div className="solid"></div>
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -1259,12 +1078,9 @@ function HomePage() {
                     height: "100%",
                     objectFit: "cover",
                   }}
-                  poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
+                  poster={showreelPoster}
                 >
-                  <source
-                    src="https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4"
-                    type="video/mp4"
-                  />
+                  <source src={showreelVideo} type="video/mp4" />
                 </video>
               </div>
             </div>
@@ -1765,8 +1581,6 @@ function HomePage() {
             >
               Behance
             </a>
-
-
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"

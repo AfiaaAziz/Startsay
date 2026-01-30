@@ -60,14 +60,36 @@ html.w-editor [text-split] {
   position: relative;
 }
 .line-mask {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #e6e6e6;
-  opacity: 0.65;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Force hide any line-mask elements from external Webflow CSS */
+html body .line-mask,
+.wf-content .line-mask,
+.section .line-mask {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Remove any white backgrounds on hover for table rows */
+.link.table-row,
+.link.table-row:hover,
+.link.table-row:focus,
+.index-item,
+.index-item:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove outline/box-shadow on hover */
+.link.table-row:hover,
+.index-item:hover {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #root {
@@ -570,6 +592,15 @@ html.w-mod-js .collection-item-lab,
 .link.table-row {
   position: relative;
   z-index: 1000;
+  background: transparent !important;
+}
+
+.link.table-row:hover {
+  background: transparent !important;
+}
+
+.index-item:hover {
+  background: transparent !important;
 }
 
 .index-hover {
@@ -1065,15 +1096,4 @@ html.w-editor [text-split] {
 
 .line {
   position: relative;
-}
-
-.line-mask {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #e6e6e6;
-  opacity: 0.65;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
 }

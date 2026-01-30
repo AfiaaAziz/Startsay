@@ -923,57 +923,141 @@ function TeamPage() {
           <div className="clients-grid">
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-                alt="Google"
+                src="assets/clientlogos/logo1.png"
+                alt="Client1"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
-                alt="Microsoft"
+                src="assets/clientlogos/logo2.png"
+                alt="Client2"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-                alt="Apple"
+                src="assets/clientlogos/logo3.png"
+                alt="Client3"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
-                alt="Spotify"
+                src="assets/clientlogos/logo4.png"
+                alt="Client4"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-                alt="Amazon"
+                src="assets/clientlogos/logo5.png"
+                alt="Client5"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                alt="LinkedIn"
+                src="assets/clientlogos/logo6.png"
+                alt="Client6"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-                alt="Netflix"
+                src="assets/clientlogos/logo7.png"
+                alt="Client7"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-                alt="Meta"
+                src="assets/clientlogos/logo8.png"
+                alt="Client8"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo9.png"
+                alt="Client9"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo10.png"
+                alt="Client10"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo11.png"
+                alt="Client11"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo12.png"
+                alt="Client12"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo13.png"
+                alt="Client13"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo14.png"
+                alt="Client14"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo15.png"
+                alt="Client15"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo16.png"
+                alt="Client16"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo17.png"
+                alt="Client17"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo18.png"
+                alt="Client18"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo19.png"
+                alt="Client19"
+                className="client-logo"
+              />
+            </div>
+             <div className="client-card">
+              <img
+                src="assets/clientlogos/logo20.png"
+                alt="Client20"
                 className="client-logo"
               />
             </div>

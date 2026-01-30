@@ -342,14 +342,18 @@ html.w-editor [text-split] {
 }
 
 .line-mask {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #e6e6e6;
-  opacity: 0.65;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Force hide any line-mask elements from external Webflow CSS */
+html body .line-mask,
+.wf-content .line-mask,
+.section .line-mask {
+  display: none !important;
+  visibility: hidden !important;
 }
 
 /* ========== CLIENTS/PARTNERS SECTION ========== */
@@ -374,7 +378,7 @@ html.w-editor [text-split] {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 2px;
-  color: #6366f1;
+  color: black;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
@@ -397,11 +401,11 @@ html.w-editor [text-split] {
 .client-card {
   background-color: white;
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 30px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 140px;
+  min-height: 60px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   border: 1px solid #e5e7eb;
@@ -414,8 +418,8 @@ html.w-editor [text-split] {
 }
 
 .client-logo {
-  max-width: 140px;
-  max-height: 50px;
+  max-width: 250px;
+  max-height: 80px;
   width: auto;
   height: auto;
   object-fit: contain;
