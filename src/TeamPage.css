@@ -234,8 +234,9 @@
 }
 
 .studio-team {
-  padding: 40px 20px 80px;
-  overflow: hidden;
+  padding: 40px 20px 40px;
+  overflow: visible;
+
 }
 
 .cms-list-wrp-team {
@@ -317,8 +318,14 @@
     font-size: clamp(2rem, 10vw, 4rem);
   }
 
+  .cms-list-team {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 16px;
+    overflow-x: visible;
+  }
   .cms-item-team {
-    flex: 0 0 250px;
+    flex: none;
   }
 }
 
@@ -358,8 +365,8 @@ html body .line-mask,
 
 /* ========== CLIENTS/PARTNERS SECTION ========== */
 .clients-section {
-  padding: 120px 20px;
-  background-color: #f8f9fa;
+  padding: 40px 20px 80px;
+  background-color: transparent;
   min-height: auto;
 }
 
@@ -435,7 +442,7 @@ html body .line-mask,
 /* Responsive Design for Clients Section */
 @media (max-width: 768px) {
   .clients-section {
-    padding: 80px 20px;
+    padding: 40px 20px 60px;
   }
 
   .clients-header {
