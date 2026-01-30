@@ -11,6 +11,8 @@ function TeamPage() {
   const defaultCursorRef = useRef(null);
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
+  const [isCursorInitialized, setIsCursorInitialized] = useState(false);
+  const cursorInitializedRef = useRef(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   // Custom Cursor Logic
@@ -35,6 +37,10 @@ function TeamPage() {
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (!cursorInitializedRef.current) {
+        cursorInitializedRef.current = true;
+        setIsCursorInitialized(true);
+      }
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -487,7 +493,7 @@ function TeamPage() {
       {/* Cursor Pack */}
       <div id="cursor-pack" className="cursor-pack" ref={cursorPackRef}>
         <div
-          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
+          className={`default-cursor ${cursorType === "link" || !isCursorInitialized ? "hidden" : ""}`}
           ref={defaultCursorRef}
         >
           <div className="def-cursor-hor"></div>
@@ -786,7 +792,7 @@ function TeamPage() {
         </div>
       </div>
 
-       <div
+      <div
         data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
         className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
       >
@@ -827,7 +833,7 @@ function TeamPage() {
           </div>
         </div>
         <div className="t-large t-white">
-          Office Number 2207          <br />
+          Office Number 2207 <br />
           National Science & Technology Park (NSTP)
           <br />
           NUST H-12, Islamabad
@@ -877,7 +883,6 @@ function TeamPage() {
           >
             ↗ Behance
           </a>
-        
         </div>
       </div>
       {/* Team Section */}
@@ -917,58 +922,58 @@ function TeamPage() {
           </div>
           <div className="clients-grid">
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
-                alt="Google" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                alt="Google"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" 
-                alt="Microsoft" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                alt="Microsoft"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
-                alt="Apple" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                alt="Apple"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" 
-                alt="Spotify" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+                alt="Spotify"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" 
-                alt="Amazon" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                alt="Amazon"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
-                alt="LinkedIn" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                alt="LinkedIn"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
-                alt="Netflix" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                alt="Netflix"
                 className="client-logo"
               />
             </div>
             <div className="client-card">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
-                alt="Meta" 
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                alt="Meta"
                 className="client-logo"
               />
             </div>
@@ -1034,8 +1039,6 @@ function TeamPage() {
             >
               Behance
             </a>
-
-
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
