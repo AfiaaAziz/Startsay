@@ -908,6 +908,74 @@ function TeamPage() {
         </div>
       </div>
 
+      {/* Clients/Partners Section */}
+      <div className="section clients-section">
+        <div className="clients-container">
+          <div className="clients-header">
+            <div className="clients-subtitle">OUR PARTNERS</div>
+            <h2 className="clients-heading">We work with the best partners</h2>
+          </div>
+          <div className="clients-grid">
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
+                alt="Google" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" 
+                alt="Microsoft" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+                alt="Apple" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" 
+                alt="Spotify" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" 
+                alt="Amazon" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
+                alt="LinkedIn" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
+                alt="Netflix" 
+                className="client-logo"
+              />
+            </div>
+            <div className="client-card">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+                alt="Meta" 
+                className="client-logo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
 
       <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">

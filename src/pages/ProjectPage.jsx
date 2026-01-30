@@ -3,15 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import { projects, getAdjacentProjects } from "../data/projects";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
+import { fetchProjectBySlug, fetchProjects } from "../lib/supabaseAdmin";
 import "./ProjectPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ProjectPage() {
   const { projectSlug } = useParams();
-  const project = projects[projectSlug];
+  const [project, setProject] = useState(null);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [previous, setPrevious] = useState(null);
+  const [next, setNext] = useState(null);
 
   const cursorPackRef = useRef(null);
   const defaultCursorRef = useRef(null);
@@ -19,7 +22,35 @@ function ProjectPage() {
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const { previous, next } = getAdjacentProjects(projectSlug);
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      try {
+        const data = await fetchProjectBySlug(projectSlug);
+        if (!mounted) return;
+        setProject(data);
+        setGalleryImages(
+          Array.isArray(data?.project_gallery) ? data.project_gallery : [],
+        );
+        const all = await fetchProjects();
+        const idx = all.findIndex((p) => p.slug === projectSlug);
+        const prev = idx > 0 ? all[idx - 1] : null;
+        const nxt = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
+        setPrevious(prev);
+        setNext(nxt);
+      } catch {
+        if (!mounted) return;
+        setProject(null);
+        setGalleryImages([]);
+        setPrevious(null);
+        setNext(null);
+      }
+    };
+    load();
+    return () => {
+      mounted = false;
+    };
+  }, [projectSlug]);
 
   useVideoPlayer();
 
@@ -322,7 +353,7 @@ function ProjectPage() {
 
       {/* Project Hero Section */}
       <div className="section project-hero">
-        {project.heroVideo ? (
+        {project.hero_video_url ? (
           <div className="project-hero-video">
             <video
               autoPlay
@@ -332,14 +363,14 @@ function ProjectPage() {
               disablePictureInPicture
               className="project-hero-video-el"
             >
-              <source src={project.heroVideo} type="video/mp4" />
+              <source src={project.hero_video_url} type="video/mp4" />
             </video>
             <div className="project-hero-overlay"></div>
           </div>
         ) : (
           <div
             className="project-hero-image"
-            style={{ backgroundImage: `url("${project.heroImage}")` }}
+            style={{ backgroundImage: `url("${project.hero_image_url}")` }}
           >
             <div className="project-hero-overlay"></div>
           </div>
@@ -389,7 +420,7 @@ function ProjectPage() {
         <div className="container">
           <div className="project-gallery w-dyn-list">
             <div role="list" className="project-gallery-grid w-dyn-items">
-              {project.gallery.map((image, index) => (
+              {galleryImages.map((image, index) => (
                 <div
                   key={index}
                   role="listitem"
@@ -398,7 +429,7 @@ function ProjectPage() {
                   <div
                     className="project-gallery-image"
                     style={{
-                      backgroundImage: `url("${image}")`,
+                      backgroundImage: `url("${image.image_url}")`,
                     }}
                   ></div>
                 </div>
@@ -548,13 +579,13 @@ function ProjectPage() {
           </div>
           <div className="t-large t-white">
             <a href="#" className="link">
-             info@startsay.com
+              info@startsay.com
             </a>
             <br />
           </div>
         </div>
         <div className="t-large t-white">
-          Office Number 2207          <br />
+          Office Number 2207 <br />
           National Science & Technology Park (NSTP)
           <br />
           NUST H-12, Islamabad
@@ -624,7 +655,6 @@ function ProjectPage() {
             >
               Behance
             </a>
-          
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
