@@ -162,15 +162,13 @@ function HomePage() {
     };
   }, []);
 
-
-
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
     const initializeAnimations = () => {
       // Text animations with GSAP
       if (typeof window !== "undefined") {
         // Split text into spans
-        let typeSplit = new SplitType("[text-split]", {
+        new SplitType("[text-split]", {
           types: "words, chars",
           tagName: "span",
         });
@@ -192,7 +190,6 @@ function HomePage() {
           });
         }
 
-        const $ = (sel) => document.querySelector(sel);
         const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
         // Words slide up animation
@@ -248,6 +245,21 @@ function HomePage() {
     // Wait a bit for libraries to load and DOM to settle
     const timer = setTimeout(initializeAnimations, 500);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const el = document.querySelector(".loader");
+    if (!el) return;
+    el.style.display = "flex";
+    el.style.opacity = "1";
+    el.setAttribute("aria-busy", "true");
+    const t = setTimeout(() => {
+      el.style.opacity = "0";
+      el.style.display = "none";
+      el.removeAttribute("aria-busy");
+      el.setAttribute("aria-hidden", "true");
+    }, 1500);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -409,9 +421,18 @@ function HomePage() {
                 </div>
               </div>
             </div>
+            <div
+              className="footer-logo-img"
+              style={{
+                backgroundImage: 'url("/assets/logo.png")',
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                width: "80px",
+                height: "60px",
+              }}
+            ></div>
           </div>
-          <div className="footer-logo-s"></div>
-          <div className="footer-logo-r"></div>
         </div>
       </div>
       <div className="navbar">
@@ -582,7 +603,6 @@ function HomePage() {
         </div>
         <div className="drag-helper">Drag</div>
         <div className="team-drag">Drag</div>
-        {/* Dedicated white cursor for contact banner - visible only when hovering contact banner */}
         <div className="contact-white-cursor">
           <div className="contact-white-hor"></div>
           <div className="contact-white-ver"></div>
@@ -1001,7 +1021,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/teenage-engineering"
                 className="link project-card w-inline-block"
@@ -1030,7 +1050,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/homeImage1.jpeg")',
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/innovation-lab"
                 className="link project-card w-inline-block"
@@ -1059,7 +1079,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/beats-n-buckets"
                 className="link project-card w-inline-block"
@@ -1088,7 +1108,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/moncler-grenoble"
                 className="link project-card w-inline-block"
@@ -1117,7 +1137,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/13-11"
                 className="link project-card w-inline-block"
@@ -1146,7 +1166,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/we-are-rewind"
                 className="link project-card w-inline-block"
@@ -1175,7 +1195,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
                 style={{
-                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif")`,
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
                 href="/project/hatton-labs-x-ap"
                 className="link project-card w-inline-block"
@@ -1183,7 +1203,6 @@ function HomePage() {
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
-
                 >
                   Hatton Labs
                 </div>
@@ -1193,7 +1212,6 @@ function HomePage() {
                 ></div>
               </a>
             </div>
-
           </div>
         </div>
       </div>
@@ -1260,11 +1278,13 @@ function HomePage() {
                     height: "100%",
                     objectFit: "cover",
                   }}
-                  poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"                >
+                  poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
+                >
                   <source
                     src="https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4"
                     type="video/mp4"
-                  />                </video>
+                  />{" "}
+                </video>
               </div>
             </div>
           </div>
@@ -1765,7 +1785,7 @@ function HomePage() {
               Behance
             </a>
           </div>
-  
+
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"
@@ -1808,7 +1828,6 @@ function HomePage() {
             </div>
           </div>
         </div>
-     
       </div>
     </div>
   );

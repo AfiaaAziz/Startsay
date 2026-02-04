@@ -60,8 +60,43 @@ html.w-editor [text-split] {
   position: relative;
 }
 
-/* ========== FOOTER OVERRIDES ========== */
-/* Reduce excessive orange space in footer */
+.loader {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1000000 !important;
+  background: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.loader[aria-hidden="true"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.loader-logo-cont {
+  position: relative !important;
+  width: 160px !important;
+  height: 160px !important;
+}
+
+.collection-list-logo-anim {
+  width: 160px !important;
+  height: 160px !important;
+  position: relative !important;
+}
+
+.collection-item-logo-anim {
+  width: 160px !important;
+  height: 160px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+
 .footer {
   padding-top: 20px !important;
   padding-bottom: 150px !important;
@@ -74,13 +109,11 @@ html.w-editor [text-split] {
   padding-bottom: 0 !important;
 }
 
-/* Hide the logo container to remove extra vacant space */
 .footer-logo-cont {
   display: none !important;
 }
 
-/* ========== REMOVE WHITE LINES ========== */
-/* Remove borders/white lines from Index Page list items and animations */
+
 .index-item,
 .table-row,
 .w-dyn-item,
@@ -100,29 +133,23 @@ html.w-editor [text-split] {
   outline: none !important;
 }
 
-/* Ensure animations don't have borders */
 .index-hover,
 .index-hover-vid,
 .index-poster,
 .collection-item-logo-anim,
 .video-cursor,
 .cursor-pack div {
-  /* Be careful with cursor-pack as some have intentional orange borders */
-  /* Only targeting white lines */
+ 
 }
 
-/* Specifically remove white borders but keep orange ones if needed */
 .index-item, .table-row {
   border-bottom-color: transparent !important;
 }
 
-/* ========== INDEX PAGE ALIGNMENT ========== */
-/* Align Year, Client, and Project columns exactly vertically */
-/* This applies to BOTH header (.table-head) AND rows (.link.table-row) */
+
 .table-head,
 .link.table-row {
   display: grid !important;
-  /* Define exact column widths: Year (smaller), Client, Project */
   grid-template-columns: 80px 1fr 1.5fr !important;
   gap: 0px 20px !important;
   align-items: center !important;
@@ -136,7 +163,6 @@ html.w-editor [text-split] {
   margin: 0 !important;
 }
 
-/* Ensure ALL direct children follow the grid flow and reset any Webflow positioning */
 .table-head > div,
 .link.table-row > div {
   grid-column: auto !important;
@@ -1292,4 +1318,46 @@ html.w-editor [text-split] {
 
 .line {
   position: relative;
+}
+
+/* ========== NAVBAR LOGO - REPLACE S/R WITH PNG ========== */
+/* Hide pseudo-elements that generate S and R letters */
+.logo::before,
+.logo::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Style for PNG logo in navbar */
+.navbar-logo-wrp .logo {
+  display: block;
+  width: 50px;
+  height: 40px;
+  background-image: url("/assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+/* Footer logo image style */
+.footer-logo-img {
+  background-image: url("/assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Adjust logo size for different screen sizes */
+@media (max-width: 768px) {
+  .navbar-logo-wrp .logo {
+    width: 120px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo-wrp .logo {
+    width: 100px;
+    height: 28px;
+  }
 }

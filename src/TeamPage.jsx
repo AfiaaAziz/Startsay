@@ -126,6 +126,47 @@ function TeamPage() {
     };
   }, []);
 
+  useEffect(() => {
+    // Initialize all animations and carousel after component mounts
+    const initializeAnimations = () => {
+      // Logo carousel animation
+      const carousels = document.querySelectorAll(".collection-list-logo-anim");
+      carousels.forEach((carousel) => {
+        const slides = Array.from(carousel.children);
+        let idx = -1;
+        slides.forEach((slide) => (slide.style.display = "none"));
+        function rotate() {
+          if (idx >= 0) {
+            slides[idx].style.display = "none";
+          }
+          idx = (idx + 1) % slides.length;
+          slides[idx].style.display = "block";
+          setTimeout(rotate, 83.333333);
+        }
+        rotate();
+      });
+    };
+
+    // Wait a bit for DOM to settle
+    const timer = setTimeout(initializeAnimations, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const el = document.querySelector(".loader");
+    if (!el) return;
+    el.style.display = "flex";
+    el.style.opacity = "1";
+    el.setAttribute("aria-busy", "true");
+    const t = setTimeout(() => {
+      el.style.opacity = "0";
+      el.style.display = "none";
+      el.removeAttribute("aria-busy");
+      el.setAttribute("aria-hidden", "true");
+    }, 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   const teamMembers = [
     {
       name: "Robin",
@@ -349,8 +390,17 @@ function TeamPage() {
                 </div>
               </div>
             </div>
-            <div className="footer-logo-s"></div>
-            <div className="footer-logo-r"></div>
+            <div
+              className="footer-logo-img"
+              style={{
+                backgroundImage: 'url("/assets/logo.png")',
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                width: "80px",
+                height: "60px",
+              }}
+            ></div>
           </div>
         </div>
       </div>
@@ -366,6 +416,12 @@ function TeamPage() {
               data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%5D"
               href="/"
               className="logo link w-inline-block"
+              style={{
+                backgroundImage: 'url("/assets/logo.png")',
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
             ></a>
           </div>
           <div
@@ -855,7 +911,7 @@ function TeamPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04b"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-              href="https://www.instagram.com/startsay.official/"
+            href="https://www.instagram.com/startsay.official/"
             target="_blank"
             className="link t-large"
           >
@@ -866,7 +922,7 @@ function TeamPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04d"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-              href="https://www.linkedin.com/company/startsayofficial"
+            href="https://www.linkedin.com/company/startsayofficial"
             target="_blank"
             className="link t-large"
           >
@@ -877,7 +933,7 @@ function TeamPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04f"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-              href="https://www.behance.net/thisissyedbadshah"
+            href="https://www.behance.net/thisissyedbadshah"
             target="_blank"
             className="link t-large"
           >
@@ -977,84 +1033,84 @@ function TeamPage() {
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo9.png"
                 alt="Client9"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo10.png"
                 alt="Client10"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo11.png"
                 alt="Client11"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo12.png"
                 alt="Client12"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo13.png"
                 alt="Client13"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo14.png"
                 alt="Client14"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo15.png"
                 alt="Client15"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo16.png"
                 alt="Client16"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo17.png"
                 alt="Client17"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo18.png"
                 alt="Client18"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo19.png"
                 alt="Client19"
                 className="client-logo"
               />
             </div>
-             <div className="client-card">
+            <div className="client-card">
               <img
                 src="assets/clientlogos/logo20.png"
                 alt="Client20"
@@ -1067,7 +1123,7 @@ function TeamPage() {
 
       {/* Footer */}
 
-         <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
+      <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
         <div className="container">
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
@@ -1124,7 +1180,7 @@ function TeamPage() {
               Behance
             </a>
           </div>
-  
+
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"
@@ -1167,7 +1223,6 @@ function TeamPage() {
             </div>
           </div>
         </div>
-     
       </div>
     </div>
   );

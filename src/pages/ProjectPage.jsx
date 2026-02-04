@@ -248,7 +248,16 @@ export default function ProjectPage() {
       >
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">
-            <Link to="/" className="logo link w-inline-block"></Link>
+            <Link
+              to="/"
+              className="logo link w-inline-block"
+              style={{
+                backgroundImage: 'url("/assets/logo.png")',
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            ></Link>
           </div>
           <div
             id="w-node-f189272f-6638-5b12-d5b7-2dd5adebb21e-d64e909a"

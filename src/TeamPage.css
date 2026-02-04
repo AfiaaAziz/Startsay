@@ -1,8 +1,3 @@
-/* ========== LOADER FIX - Hide the orange loader ========== */
-.loader {
-  display: none !important;
-}
-
 /* ========== CONTACT BANNER FIX - Match IndexPage ========== */
 .contact-banner {
   position: fixed;
