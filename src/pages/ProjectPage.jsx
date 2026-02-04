@@ -4,17 +4,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
-import { fetchProjectBySlug, fetchProjects } from "../lib/supabaseAdmin";
-import "./ProjectPage.css";
+import { getProjectBySlug, getAdjacentProjects } from "../data/projects";
+// import "./ProjectPage.css"; // Commented out to avoid conflicts with MarsPage styles
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectPage() {
+export default function ProjectPage() {
   const { projectSlug } = useParams();
   const [project, setProject] = useState(null);
-  const [galleryImages, setGalleryImages] = useState([]);
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
+  const [galleryImages, setGalleryImages] = useState([]);
 
   const cursorPackRef = useRef(null);
   const defaultCursorRef = useRef(null);
@@ -22,36 +22,26 @@ function ProjectPage() {
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
 
+  // Fetch Data
   useEffect(() => {
-    let mounted = true;
-    const load = async () => {
-      try {
-        const data = await fetchProjectBySlug(projectSlug);
-        if (!mounted) return;
-        setProject(data);
-        setGalleryImages(
-          Array.isArray(data?.project_gallery) ? data.project_gallery : [],
-        );
-        const all = await fetchProjects();
-        const idx = all.findIndex((p) => p.slug === projectSlug);
-        const prev = idx > 0 ? all[idx - 1] : null;
-        const nxt = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
-        setPrevious(prev);
-        setNext(nxt);
-      } catch {
-        if (!mounted) return;
-        setProject(null);
-        setGalleryImages([]);
-        setPrevious(null);
-        setNext(null);
-      }
-    };
-    load();
-    return () => {
-      mounted = false;
-    };
+    const data = getProjectBySlug(projectSlug);
+
+    if (data) {
+      setProject(data);
+      setGalleryImages(data.gallery || []);
+
+      const { previous, next } = getAdjacentProjects(projectSlug);
+      setPrevious(previous);
+      setNext(next);
+    } else {
+      setProject(null);
+      setGalleryImages([]);
+      setPrevious(null);
+      setNext(null);
+    }
   }, [projectSlug]);
 
+  // Initialize video player
   useVideoPlayer();
 
   // Custom Cursor Logic
@@ -66,6 +56,12 @@ function ProjectPage() {
     let mouseY = 0;
     let cursorX = 0;
     let cursorY = 0;
+
+    const dragCursor = cursorPack.querySelector(".drag-cursor");
+    const resizeCursor = cursorPack.querySelector(".resize-cursor");
+    const videoCursor = cursorPack.querySelector(".video-cursor");
+    const dragHelper = cursorPack.querySelector(".drag-helper");
+    const teamDrag = cursorPack.querySelector(".team-drag");
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
@@ -93,77 +89,6 @@ function ProjectPage() {
 
     const animationFrame = requestAnimationFrame(animateCursor);
 
-    const handleLinkHover = () => setCursorType("link");
-    const handleLinkLeave = () => setCursorType("default");
-
-    const links = document.querySelectorAll("a, button, .link, .project-card");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover);
-      link.addEventListener("mouseleave", handleLinkLeave);
-    });
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrame);
-      links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover);
-        link.removeEventListener("mouseleave", handleLinkLeave);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    const init = () => {
-      new SplitType("[text-split]", {
-        types: "words, chars",
-        tagName: "span",
-      });
-      const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-      const create = (el, tl) => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top bottom",
-          onLeaveBack: () => {
-            tl.progress(0);
-            tl.pause();
-          },
-        });
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top 80%",
-          onEnter: () => tl.play(),
-        });
-      };
-      $$("[words-slide-up]").forEach((el) => {
-        let tl = gsap.timeline({ paused: true });
-        tl.from(el.querySelectorAll(".word"), {
-          opacity: 0,
-          yPercent: 100,
-          duration: 0.5,
-          ease: "power2.out(2)",
-          stagger: { amount: 0.5 },
-        });
-        create(el, tl);
-      });
-      gsap.set("[text-split]", { opacity: 1 });
-    };
-    const t = setTimeout(init, 300);
-    return () => clearTimeout(t);
-  }, []);
-
-  // Handle contact banner cursor color
-  useEffect(() => {
-    const cursorPack = cursorPackRef.current;
-    if (!cursorPack) return;
-
-    const defaultCursor = cursorPack.querySelector(".default-cursor");
-    const linkCursor = cursorPack.querySelector(".link-cursor");
-    const dragCursor = cursorPack.querySelector(".drag-cursor");
-    const resizeCursor = cursorPack.querySelector(".resize-cursor");
-    const videoCursor = cursorPack.querySelector(".video-cursor");
-    const dragHelper = cursorPack.querySelector(".drag-helper");
-    const teamDrag = cursorPack.querySelector(".team-drag");
-
     const addContactBannerCursor = () => {
       if (defaultCursor) defaultCursor.classList.add("contact-banner-cursor");
       if (linkCursor) linkCursor.classList.add("contact-banner-cursor");
@@ -185,28 +110,107 @@ function ProjectPage() {
       if (teamDrag) teamDrag.classList.remove("contact-banner-cursor");
     };
 
-    const handleContactHover = (e) => {
-      if (e.target.closest(".contact-banner")) {
+    const handleLinkHover = (e) => {
+      if (!e.target || typeof e.target.closest !== "function") return;
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
+      if (target) {
+        setCursorType("link");
+      }
+      const contactBanner = e.target.closest(".contact-banner");
+      if (contactBanner) {
         addContactBannerCursor();
       }
     };
 
-    const handleContactLeave = (e) => {
-      if (!e.relatedTarget || !e.relatedTarget.closest(".contact-banner")) {
+    const handleLinkLeave = (e) => {
+      if (!e.target || typeof e.target.closest !== "function") return;
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
+      if (target) {
+        setCursorType("default");
+      }
+      const relatedTarget = e.relatedTarget;
+      const leavingContactBanner =
+        !relatedTarget || !relatedTarget.closest(".contact-banner");
+      if (leavingContactBanner) {
         removeContactBannerCursor();
       }
     };
 
-    document.addEventListener("mouseover", handleContactHover);
-    document.addEventListener("mouseout", handleContactLeave);
+    document.addEventListener("mouseover", handleLinkHover);
+    document.addEventListener("mouseout", handleLinkLeave);
 
     return () => {
-      document.removeEventListener("mouseover", handleContactHover);
-      document.removeEventListener("mouseout", handleContactLeave);
+      document.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrame);
+      document.removeEventListener("mouseover", handleLinkHover);
+      document.removeEventListener("mouseout", handleLinkLeave);
     };
   }, []);
 
-  // 404 check
+  // Text animations
+  useEffect(() => {
+    const initializeAnimations = () => {
+      let typeSplit = new SplitType("[text-split]", {
+        types: "words, chars",
+        tagName: "span",
+      });
+
+      function createScrollTriggerAnimation(triggerElement, timeline) {
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: "top bottom",
+          onLeaveBack: () => {
+            timeline.progress(0);
+            timeline.pause();
+          },
+        });
+        ScrollTrigger.create({
+          trigger: triggerElement,
+          start: "top 80%",
+          onEnter: () => timeline.play(),
+        });
+      }
+
+      const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+      $$("[words-slide-up]").forEach((element) => {
+        let tl = gsap.timeline({ paused: true });
+        tl.from(element.querySelectorAll(".word"), {
+          opacity: 0,
+          yPercent: 100,
+          duration: 0.5,
+          ease: "power2.out(2)",
+          stagger: { amount: 0.5 },
+        });
+        createScrollTriggerAnimation(element, tl);
+      });
+
+      gsap.set("[text-split]", { opacity: 1 });
+    };
+
+    const timer = setTimeout(initializeAnimations, 500);
+    return () => clearTimeout(timer);
+  }, [projectSlug]); // Re-run on project change
+
+  // Section items fade in animation
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll(".section-item"));
+    items.forEach((item) => {
+      gsap.set(item, { opacity: 0 });
+      ScrollTrigger.create({
+        trigger: item,
+        start: "top 85%",
+        onEnter: () => {
+          gsap.to(item, { opacity: 1, duration: 0.6, ease: "power2.out" });
+        },
+      });
+    });
+  }, [projectSlug, galleryImages]); // Re-run on project change
+
   if (!project) {
     return (
       <div className="app-container">
@@ -232,45 +236,24 @@ function ProjectPage() {
 
   return (
     <div className="app-container">
-      <div className="loader">
-        <div
-          data-w-id="b8bdbb27-d710-8937-fa2d-e2ff10981e1c"
-          className="loader-logo-cont"
-        >
-          <div className="footer-logo-wrp">
-            <div className="footer-logo-frame">
-              <div className="logo-frame-wrp">
-                <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div
-                    role="list"
-                    className="collection-list-logo-anim w-dyn-items"
-                  >
-                    {[...Array(20)].map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                        }}
-                        role="listitem"
-                        className="collection-item-logo-anim w-dyn-item"
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="footer-logo-s"></div>
-            <div className="footer-logo-r"></div>
-          </div>
-        </div>
-      </div>
-
-      <div className="navbar">
+      {/* Navbar */}
+      <div
+        className="navbar"
+        style={{
+          willChange: "transform",
+          transform:
+            "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+          transformStyle: "preserve-3d",
+        }}
+      >
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">
             <Link to="/" className="logo link w-inline-block"></Link>
           </div>
-          <div className="navbar-dt-wrp">
+          <div
+            id="w-node-f189272f-6638-5b12-d5b7-2dd5adebb21e-d64e909a"
+            className="navbar-dt-wrp"
+          >
             <div className="navbar-link-wrp">
               <Link to="/project-index" className="link navbar-link">
                 Index
@@ -294,26 +277,67 @@ function ProjectPage() {
             </div>
           </div>
           <div
+            id="w-node-_695dd12c-82a5-a52d-8f5b-486dd64e909c-d64e909a"
             data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909c"
             className="menu-icon"
           >
             <div
               data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909d"
               className="menu-icon-line"
+              style={{
+                transform:
+                  "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                transformStyle: "preserve-3d",
+              }}
             ></div>
             <div
               data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909e"
               className="menu-icon-line mi-2"
+              style={{
+                transform:
+                  "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                transformStyle: "preserve-3d",
+              }}
             ></div>
+          </div>
+        </div>
+        <div className="navbar-mob-wrp">
+          <div className="navbar-link-wrp">
+            <Link to="/project-index" className="link navbar-link">
+              Index
+            </Link>
+            <Link to="/research" className="link navbar-link">
+              Research
+            </Link>
+            <Link to="/team" className="link navbar-link">
+              Team
+            </Link>
+            <a
+              href="#"
+              className="link navbar-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsContactOpen(!isContactOpen);
+              }}
+            >
+              Contact
+            </a>
           </div>
         </div>
       </div>
 
+      {/* Cursor Pack */}
       <div
         id="cursor-pack"
         data-w-id="ffc94e13-05f2-5027-2033-6946e0d01232"
         className="cursor-pack"
         ref={cursorPackRef}
+        style={{
+          willChange: "transform",
+          transform:
+            "translate3d(50vw, 50vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+          transformStyle: "preserve-3d",
+        }}
       >
         <div
           data-w-id="ffc94e13-05f2-5027-2033-6946e0d01237"
@@ -337,145 +361,34 @@ function ProjectPage() {
         ></div>
         <div className="resize-cursor"></div>
         <div className="arrow-cursor"></div>
-        <div id="video-cursor" className="video-cursor">
-          <div id="video-loader" className="video-loader"></div>
-          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
+        <div id="video-cursor" className="video-cursor" style={{ opacity: 1 }}>
+          <div
+            id="video-loader"
+            className="video-loader"
+            aria-hidden="true"
+            style={{ display: "none", opacity: 0 }}
+          ></div>
+          <div
+            id="videocontrol-play-btn"
+            className="videocontrol-play-btn"
+            aria-hidden="true"
+            tabIndex="-1"
+            style={{ pointerEvents: "none" }}
+          >
             Play
           </div>
         </div>
         <div className="drag-helper">Drag</div>
         <div className="team-drag">Drag</div>
-        <div className="contact-white-cursor">
-          <div className="contact-white-hor"></div>
-          <div className="contact-white-ver"></div>
-        </div>
       </div>
 
-      {/* Project Hero Section */}
-      <div className="section project-hero">
-        {project.hero_video_url ? (
-          <div className="project-hero-video">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              disablePictureInPicture
-              className="project-hero-video-el"
-            >
-              <source src={project.hero_video_url} type="video/mp4" />
-            </video>
-            <div className="project-hero-overlay"></div>
-          </div>
-        ) : (
-          <div
-            className="project-hero-image"
-            style={{ backgroundImage: `url("${project.hero_image_url}")` }}
-          >
-            <div className="project-hero-overlay"></div>
-          </div>
-        )}
-        <div className="project-hero-content">
-          <div className="container">
-            <div
-              words-slide-up=""
-              text-split=""
-              style={{ display: "inline-block" }}
-            >
-              <div className="t-small t-gray">Year</div>
-              <div className="gap-40"></div>
-              <div className="t-large">{project.year}</div>
-            </div>
-            <div className="gap-40"></div>
-            <div
-              words-slide-up=""
-              text-split=""
-              style={{ display: "inline-block" }}
-            >
-              <div className="t-small t-gray">Client</div>
-              <div className="gap-40"></div>
-              <div className="t-large">{project.client}</div>
-            </div>
-            <h1 className="project-title">{project.title}</h1>
-            {project.category && (
-              <p className="project-category">{project.category}</p>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Project Description */}
-      <div className="section">
-        <div className="container">
-          <div className="project-description-wrp">
-            <div className="project-description">
-              <p className="t-large">{project.description}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Project Gallery */}
-      <div className="section">
-        <div className="container">
-          <div className="project-gallery w-dyn-list">
-            <div role="list" className="project-gallery-grid w-dyn-items">
-              {galleryImages.map((image, index) => (
-                <div
-                  key={index}
-                  role="listitem"
-                  className="project-gallery-item w-dyn-item"
-                >
-                  <div
-                    className="project-gallery-image"
-                    style={{
-                      backgroundImage: `url("${image.image_url}")`,
-                    }}
-                  ></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="section project-nav">
-        <div className="container">
-          <div className="project-nav-wrp">
-            {previous && (
-              <Link
-                to={`/project/${previous.slug}`}
-                className="link project-nav-item prev"
-              >
-                <span className="project-nav-label">Previous</span>
-                <span className="project-nav-title">{previous.title}</span>
-              </Link>
-            )}
-            {next && (
-              <Link
-                to={`/project/${next.slug}`}
-                className="link project-nav-item next"
-              >
-                <span className="project-nav-label">Next</span>
-                <span className="project-nav-title">{next.title}</span>
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Back to Index */}
-      <div className="section">
-        <div className="container" style={{ textAlign: "center" }}>
-          <Link to="/project-index" className="link l-large right-arrow">
-            View All Projects
-          </Link>
-        </div>
-      </div>
-
+      {/* Cookie Pack */}
       <div className="cookie-pack">
-        <div fs-cc="banner" className="fs-cc-banner">
+        <div
+          fs-cc="banner"
+          className="fs-cc-banner"
+          style={{ display: "flex", opacity: 1 }}
+        >
           <div className="fs-cc-banner2_container">
             <div className="fs-cc-manager2_button w-embed">
               <svg
@@ -489,48 +402,48 @@ function ProjectPage() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
                 <path
                   d="M16 15L16 15.01"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
                 <path
                   d="M10 17L10 17.01"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
                 <path
                   d="M11 13L11 13.01"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
                 <path
                   d="M6 12L6 12.01"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
                 <path
                   d="M12 21C16.9706 21 21 16.9706 21 12C21 11.4402 20.9489 10.8924 20.8511 10.361C20.3413 10.7613 19.6985 11 19 11C18.4536 11 17.9413 10.8539 17.5 10.5987C17.0587 10.8539 16.5464 11 16 11C14.3431 11 13 9.65685 13 8C13 7.60975 13.0745 7.23691 13.2101 6.89492C11.9365 6.54821 11 5.38347 11 4C11 3.66387 11.0553 3.34065 11.1572 3.03894C6.58185 3.46383 3 7.31362 3 12C3 16.9706 7.02944 21 12 21Z"
                   stroke="currentColor"
                   strokeWidth="1"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
+                ></path>
               </svg>
             </div>
             <div className="fs-cc-banner2_text">
               By clicking "Accept", you agree to the storing of cookies on your
               device to enhance site navigation, analyze site usage, and assist
-              in our marketing efforts. View our
+              in our marketing efforts. View our{" "}
               <a href="#" className="fs-cc-banner2_text-link">
                 Privacy Policy
               </a>{" "}
@@ -541,6 +454,8 @@ function ProjectPage() {
                 fs-cc="allow"
                 href="#"
                 className="link fs-cc-banner2_button w-button"
+                role="button"
+                tabIndex="0"
               >
                 Accept
               </a>
@@ -548,11 +463,18 @@ function ProjectPage() {
                 fs-cc="deny"
                 href="#"
                 className="link fs-cc-banner2_button fs-cc-button-alt w-button"
+                role="button"
+                tabIndex="0"
               >
                 Deny
               </a>
-              <div fs-cc="open-preferences" className="link fs-cc-manager">
-                Preferences
+              <div
+                fs-cc="open-preferences"
+                className="link fs-cc-manager"
+                role="button"
+                tabIndex="0"
+              >
+                <div>Preferences</div>
               </div>
             </div>
           </div>
@@ -562,7 +484,11 @@ function ProjectPage() {
       {/* Contact Banner */}
       <div
         data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
-        className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
+        className="contact-banner"
+        style={{
+          transform: `translate3d(${isContactOpen ? "0" : "100"}%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+          transformStyle: "preserve-3d",
+        }}
       >
         <div
           data-w-id="d5f92b82-978f-a770-3f25-8224578da03b"
@@ -622,34 +548,496 @@ function ProjectPage() {
         </div>
       </div>
 
+      {/* Up Arrow */}
+      <a
+        data-w-id="14381865-62c7-47ee-67e2-7f40e4733502"
+        href="#top"
+        className="up-arrow"
+        style={{
+          willChange: "transform, opacity",
+          transform:
+            "translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+          transformStyle: "preserve-3d",
+          opacity: 0,
+        }}
+      >
+        ↑
+      </a>
+
+      {/* Main Content */}
+      <div className="section">
+        <div className="gap-120"></div>
+        <div className="container">
+          <h1
+            words-slide-up=""
+            text-split=""
+            id="w-node-_78ba933a-a78e-f877-f420-ecea77870969-256fe6a4"
+            style={{ opacity: 1 }}
+          >
+            {project.title}
+          </h1>
+        </div>
+
+        {/* Hero Video / Image */}
+        <div
+          data-w-id="932de7c3-cbe3-b0db-943e-c0e63a54128b"
+          style={{
+            opacity: 1,
+            transform:
+              "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+            transformStyle: "preserve-3d",
+          }}
+          className="container no-pad"
+        >
+          <div
+            id="videocontainer"
+            className="video-container w-node-e05988ce-6958-9991-9b6c-cb5b44175a30-256fe6a4"
+          >
+            {project.heroVideo ? (
+              <>
+                <div
+                  id="videocontrol"
+                  className="videocontrol"
+                  style={{ opacity: 1 }}
+                >
+                  <div
+                    id="videocontrol-play-area"
+                    data-w-id="d3ded114-7ade-dc4e-a958-948ffa3070fc"
+                    className="videocontrol-play-area"
+                  >
+                    <div className="video-cursor-mobile-wrp">
+                      <div
+                        className="video-cursor mobile-cursor"
+                        style={{ opacity: 1 }}
+                      >
+                        <div
+                          className="video-loader"
+                          aria-hidden="true"
+                          style={{ display: "none", opacity: 0 }}
+                        ></div>
+                        <div
+                          className="videocontrol-play-btn"
+                          aria-hidden="true"
+                          tabIndex="-1"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          Play
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="videocontrol-sub-wrp">
+                    <div id="videocontrol-track" className="videocontrol-track">
+                      <div
+                        id="videocontrol-bar"
+                        className="videocontrol-bar"
+                        style={{ width: "0%" }}
+                      ></div>
+                    </div>
+                    <div
+                      id="videocontrol-sound"
+                      className="videocontrol-sound"
+                      tabIndex="0"
+                      aria-pressed="false"
+                    ></div>
+                    <div
+                      id="videocontrol-screensize"
+                      className="videocontrol-screensize"
+                      tabIndex="0"
+                    ></div>
+                  </div>
+                </div>
+                <div className="project-hero-video w-embed">
+                  <video
+                    id="video"
+                    playsInline
+                    webkitPlaysinline=""
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    poster={project.heroImage}
+                  >
+                    <source src={project.heroVideo} type="video/mp4" />
+                  </video>
+                </div>
+              </>
+            ) : (
+              <div
+                className="project-hero-video w-embed"
+                style={{ height: "100%" }}
+              >
+                <img
+                  src={project.heroImage}
+                  alt={project.title}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Project Info */}
+        <div className="container">
+          <div words-slide-up="" text-split="" style={{ opacity: 1 }}>
+            <div
+              className="t-small t-gray"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              Year
+            </div>
+            <div className="gap-40"></div>
+            <div
+              className="t-large"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              {project.year}
+            </div>
+          </div>
+          <div words-slide-up="" text-split="" style={{ opacity: 1 }}>
+            <div
+              className="t-small t-gray"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              Client
+            </div>
+            <div className="gap-40"></div>
+            <div
+              className="t-large"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              {project.client}
+            </div>
+          </div>
+          <div
+            words-slide-up=""
+            text-split=""
+            id="w-node-_31f82efd-f2e5-3af9-d080-b497ba184cc2-256fe6a4"
+            style={{ opacity: 1 }}
+          >
+            <div
+              className="t-small t-gray"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              Project Details
+            </div>
+            <div className="gap-40"></div>
+            <div
+              className="t-large t-normal w-richtext"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              <p style={{ display: "inline-block", position: "relative" }}>
+                {project.description}
+              </p>
+            </div>
+          </div>
+          <div words-slide-up="" text-split="" style={{ opacity: 1 }}>
+            <div
+              className="t-small t-gray"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              Type
+            </div>
+            <div className="gap-40"></div>
+            <div
+              className="t-large"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              {project.category}
+            </div>
+          </div>
+        </div>
+        <div className="gap-120"></div>
+      </div>
+
+      {/* Gallery Section */}
+      <div className="section">
+        <div className="container">
+          <div
+            id="w-node-_4bfd1412-00ec-d53d-c832-8775a6512fe6-256fe6a4"
+            className="section-list-wrp w-dyn-list"
+          >
+            <div role="list" className="section-list w-dyn-items">
+              {galleryImages.map((section, index) => (
+                <div
+                  key={index}
+                  data-w-id="4bfd1412-00ec-d53d-c832-8775a6512fe8"
+                  style={{ opacity: 0 }}
+                  role="listitem"
+                  className="section-item w-dyn-item"
+                >
+                  <div className="section-visuals-wrp">
+                    {section.items.map((item, itemIndex) => {
+                      if (item.type === "video") {
+                        return (
+                          <div
+                            key={itemIndex}
+                            className="section-video w-embed"
+                          >
+                            <div style={{ height: "100%" }}>
+                              <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                disablePictureInPicture
+                                disableRemotePlayback
+                                x-webkit-airplay="deny"
+                                style={{
+                                  height: "100%",
+                                  width: "100%",
+                                  objectFit: "cover",
+                                }}
+                              >
+                                <source src={item.src} type="video/mp4" />
+                              </video>
+                            </div>
+                          </div>
+                        );
+                      } else {
+                        return (
+                          <img
+                            key={itemIndex}
+                            src={item.src}
+                            loading="lazy"
+                            alt=""
+                            className="section-img"
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Credits Section */}
+      <div className="section">
+        <div className="gap-120"></div>
+        <div className="container">
+          <div
+            id="w-node-dbacb399-4cbe-e265-cd6d-671956f93798-256fe6a4"
+            className="w-richtext"
+          >
+            <p>
+              {project.title} - {project.category}
+            </p>
+          </div>
+          <div id="w-node-_98c4c2f8-303d-e9a5-2b47-4a6a46e7f61b-256fe6a4">
+            <div className="t-small t-gray">Credits</div>
+            <div className="gap-40"></div>
+            <div className="credits-wrp">
+              <div className="credits-column">
+                <div>Client</div>
+                <div className="t-bold">{project.client}</div>
+                <div className="gap-20"></div>
+                <div>Services</div>
+                <div className="w-dyn-list">
+                  <div role="list" className="w-dyn-items">
+                    {project.services &&
+                      project.services.map((service, index) => (
+                        <div key={index} role="listitem" className="w-dyn-item">
+                          <div className="t-bold">{service}</div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="gap-120"></div>
+      </div>
+
+      {/* Project Navigation */}
+      <div
+        id="current-project"
+        current-title={project.title}
+        className="section"
+      >
+        <div className="container">
+          <div
+            id="w-node-_15a0e899-fa0b-561c-f0d1-fbda7825a78b-256fe6a4"
+            data-w-id="15a0e899-fa0b-561c-f0d1-fbda7825a78b"
+            className="proj-prev-trigger"
+          >
+            <div className="w-dyn-list">
+              {previous && (
+                <div id="listPrev" role="list" className="w-dyn-items">
+                  <div
+                    project-title={previous.title}
+                    role="listitem"
+                    className="proj-item w-dyn-item"
+                    style={{}}
+                  >
+                    <Link
+                      to={`/project/${previous.slug}`}
+                      className="proj-mover w-inline-block"
+                    >
+                      <div className="proj-mover-title-wrp">
+                        <div className="t-large t-gray mov-prev">←</div>
+                        <div className="t-large t-gray">Previous Project</div>
+                      </div>
+                      <div className="t-large">{previous.title}</div>
+                    </Link>
+                    <div
+                      className="index-hover"
+                      style={{
+                        willChange: "transform",
+                        transform:
+                          "translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      <div className="index-hover-vid w-embed">
+                        {previous.heroVideo ? (
+                          <video
+                            data-src={previous.heroVideo}
+                            poster={previous.heroImage}
+                            disablePictureInPicture
+                            disableRemotePlayback
+                            x-webkit-airplay="deny"
+                            playsInline
+                            muted
+                            preload="none"
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                            src={previous.heroVideo}
+                            autoPlay
+                          ></video>
+                        ) : (
+                          <img
+                            src={previous.heroImage}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                            alt={previous.title}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <div
+            id="w-node-aa9e3a5a-b311-be9f-6c44-62316b4bc69c-256fe6a4"
+            data-w-id="aa9e3a5a-b311-be9f-6c44-62316b4bc69c"
+            className="proj-next-trigger"
+          >
+            <div className="w-dyn-list">
+              {next && (
+                <div id="listNext" role="list" className="w-dyn-items">
+                  <div
+                    project-title={next.title}
+                    role="listitem"
+                    className="proj-item w-dyn-item"
+                    style={{}}
+                  >
+                    <Link
+                      to={`/project/${next.slug}`}
+                      className="proj-mover w-inline-block"
+                    >
+                      <div className="proj-mover-title-wrp">
+                        <div className="t-large t-gray">Next Project</div>
+                        <div className="t-large t-gray mov-next">→</div>
+                      </div>
+                      <div className="t-large">{next.title}</div>
+                    </Link>
+                    <div
+                      className="index-hover"
+                      style={{
+                        willChange: "transform",
+                        transform:
+                          "translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      <div className="index-hover-vid w-embed">
+                        {next.heroVideo ? (
+                          <video
+                            data-src={next.heroVideo}
+                            poster={next.heroImage}
+                            disablePictureInPicture
+                            disableRemotePlayback
+                            x-webkit-airplay="deny"
+                            playsInline
+                            muted
+                            preload="none"
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                            src={next.heroVideo}
+                            autoPlay
+                          ></video>
+                        ) : (
+                          <img
+                            src={next.heroImage}
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              objectFit: "cover",
+                            }}
+                            alt={next.title}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
         <div className="container">
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
             className="footer-column"
           >
-            <div className="t-small">© Styleframe</div>
+            <div className="t-small">© Startsay</div>
           </div>
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3"
             className="footer-column"
           >
             <a
-              href="https://www.instagram.com/styleframe.studio/"
+              href="https://www.instagram.com/startsay.official/"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               Instagram
             </a>
             <a
-              href="https://www.linkedin.com/company/styleframe"
+              href="https://www.linkedin.com/company/startsayofficial"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
               LinkedIn
             </a>
             <a
-              href="https://www.behance.net/styleframe"
+              href="https://www.facebook.com/profile.php?id=61572256355814"
+              target="_blank"
+              className="link footer-link right-up-arrow"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.behance.net/thisissyedbadshah"
               target="_blank"
               className="link footer-link right-up-arrow"
             >
@@ -691,9 +1079,34 @@ function ProjectPage() {
             </div>
           </div>
         </div>
+        <div className="footer-logo-cont">
+          <div className="footer-logo-wrp">
+            <div className="footer-logo-frame">
+              <div className="logo-frame-wrp">
+                <div className="collection-list-wrp-logo-anim w-dyn-list">
+                  <div
+                    role="list"
+                    className="collection-list-logo-anim w-dyn-items"
+                  >
+                    {[...Array(20)].map((_, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
+                        }}
+                        role="listitem"
+                        className="collection-item-logo-anim w-dyn-item"
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="footer-logo-s"></div>
+            <div className="footer-logo-r"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-export default ProjectPage;

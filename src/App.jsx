@@ -11,10 +11,6 @@ import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
 import AdminRoutes from "./admin/AdminRoutes";
-import {
-  fetchFeaturedProjects,
-  fetchHomePageSettings,
-} from "./lib/supabaseAdmin";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -39,13 +35,6 @@ function HomePage() {
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [featuredProjects, setFeaturedProjects] = useState([]);
-  const [showreelVideo, setShowreelVideo] = useState(
-    "https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4",
-  );
-  const [showreelPoster, setShowreelPoster] = useState(
-    "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp",
-  );
 
   useVideoPlayer();
 
@@ -173,26 +162,7 @@ function HomePage() {
     };
   }, []);
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const [fp, settings] = await Promise.all([
-          fetchFeaturedProjects(),
-          fetchHomePageSettings(),
-        ]);
-        setFeaturedProjects(Array.isArray(fp) ? fp : []);
-        if (settings?.showreel_video_url) {
-          setShowreelVideo(settings.showreel_video_url);
-        }
-        if (settings?.showreel_poster_url) {
-          setShowreelPoster(settings.showreel_poster_url);
-        }
-      } catch {
-        console.error("Failed to load home data");
-      }
-    };
-    load();
-  }, []);
+
 
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
@@ -990,28 +960,240 @@ function HomePage() {
             role="list"
             className="project-list w-dyn-items"
           >
-            {featuredProjects.map((fp) => (
-              <div
-                key={fp.id}
-                role="listitem"
-                className="project-item w-dyn-item"
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-0"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
+                style={{
+                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                }}
+                href="/project/mars"
+                className="link project-card w-inline-block"
               >
-                <a
-                  href={`/project/${fp.projects.slug}`}
-                  className="link project-card w-inline-block"
-                  style={{
-                    backgroundImage: fp.projects.hero_image_url
-                      ? `url("${fp.projects.hero_image_url}")`
-                      : undefined,
-                  }}
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
                 >
-                  <div className="project-title">
-                    {fp.projects.client || fp.projects.title}
-                  </div>
-                  <div className="solid"></div>
-                </a>
-              </div>
-            ))}
+                  Oakley
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-1"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif")`,
+                }}
+                href="/project/teenage-engineering"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  Teenage Engineering
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-2"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
+                style={{
+                  backgroundImage: 'url("/assets/homeImage1.jpeg")',
+                }}
+                href="/project/innovation-lab"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  Ray-Ban
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-3"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif")`,
+                }}
+                href="/project/beats-n-buckets"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  Samsung
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-4"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif")`,
+                }}
+                href="/project/moncler-grenoble"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  Moncler
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-5"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg")`,
+                }}
+                href="/project/13-11"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  Oakley
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-6"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif")`,
+                }}
+                href="/project/we-are-rewind"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+                >
+                  We Are Rewind
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+            <div
+              data-w-id="36ef00c4-c0c4-67da-152a-af725a1c8d81"
+              role="listitem"
+              className="project-item w-dyn-item"
+            >
+              <a
+                data-w-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-native-id-path="ace78f01-d8e5-8629-9683-6b3790a435cd_instance-7"
+                data-wf-ao-click-engagement-tracking="true"
+                data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
+                data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
+                style={{
+                  backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif")`,
+                }}
+                href="/project/hatton-labs-x-ap"
+                className="link project-card w-inline-block"
+              >
+                <div
+                  data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
+                  className="project-title"
+
+                >
+                  Hatton Labs
+                </div>
+                <div
+                  data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
+                  className="solid"
+                ></div>
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
@@ -1078,10 +1260,11 @@ function HomePage() {
                     height: "100%",
                     objectFit: "cover",
                   }}
-                  poster={showreelPoster}
-                >
-                  <source src={showreelVideo} type="video/mp4" />
-                </video>
+                  poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"                >
+                  <source
+                    src="https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4"
+                    type="video/mp4"
+                  />                </video>
               </div>
             </div>
           </div>
@@ -1582,31 +1765,7 @@ function HomePage() {
               Behance
             </a>
           </div>
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
-            className="footer-column"
-          >
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f0"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f0"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/legal/privacy-policy"
-              className="link footer-link fl-small"
-            >
-              Privacy Policy
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f2"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f2"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/legal/imprint"
-              className="link footer-link fl-small"
-            >
-              Imprint
-            </a>
-          </div>
+  
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"
@@ -1649,163 +1808,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <div className="footer-logo-cont">
-          <div className="footer-logo-wrp">
-            <div className="footer-logo-frame">
-              <div className="logo-frame-wrp">
-                <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div
-                    role="list"
-                    className="collection-list-logo-anim w-dyn-items"
-                  >
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ea7b8caf2e461da972d_18.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e9dab059fd303cb59bb_17.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e8c9b02ae0d1681b7b8_16.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cb457683fdcaecf34aa_15.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cabbf94893911f30b8d_14.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ca28d03c1d72159ab26_13.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c954de027a2c9aa384c_12.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c84894ff1d8f915df24_11.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="footer-logo-s"></div>
-            <div className="footer-logo-r"></div>
-          </div>
-        </div>
+     
       </div>
     </div>
   );
