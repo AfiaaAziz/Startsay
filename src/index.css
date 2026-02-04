@@ -59,6 +59,194 @@ html.w-editor [text-split] {
 .line {
   position: relative;
 }
+
+/* ========== FOOTER OVERRIDES ========== */
+/* Reduce excessive orange space in footer */
+.footer {
+  padding-top: 20px !important;
+  padding-bottom: 150px !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.footer .container {
+  height: auto !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hide the logo container to remove extra vacant space */
+.footer-logo-cont {
+  display: none !important;
+}
+
+/* ========== REMOVE WHITE LINES ========== */
+/* Remove borders/white lines from Index Page list items and animations */
+.index-item,
+.table-row,
+.w-dyn-item,
+.collection-item-logo-anim,
+.index-list,
+.index-list-wrp,
+.table-head,
+.service-item,
+.client-list,
+.service-list {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure animations don't have borders */
+.index-hover,
+.index-hover-vid,
+.index-poster,
+.collection-item-logo-anim,
+.video-cursor,
+.cursor-pack div {
+  /* Be careful with cursor-pack as some have intentional orange borders */
+  /* Only targeting white lines */
+}
+
+/* Specifically remove white borders but keep orange ones if needed */
+.index-item, .table-row {
+  border-bottom-color: transparent !important;
+}
+
+/* ========== INDEX PAGE ALIGNMENT ========== */
+/* Align Year, Client, and Project columns exactly vertically */
+/* This applies to BOTH header (.table-head) AND rows (.link.table-row) */
+.table-head,
+.link.table-row {
+  display: grid !important;
+  /* Define exact column widths: Year (smaller), Client, Project */
+  grid-template-columns: 80px 1fr 1.5fr !important;
+  gap: 0px 20px !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  grid-column-gap: 20px !important;
+  -webkit-column-gap: 20px !important;
+  column-gap: 20px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure ALL direct children follow the grid flow and reset any Webflow positioning */
+.table-head > div,
+.link.table-row > div {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  grid-area: auto !important;
+  margin: 0 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+/* FIRST COLUMN (Year) - Apply to ALL direct children in both header and rows */
+.table-head > div:nth-child(1),
+.link.table-row > div:nth-child(1) {
+  grid-column: 1 !important;
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+  flex: 0 0 80px !important;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* SECOND COLUMN (Client) - Target 2nd child in both header and rows */
+.table-head > div:nth-child(2),
+.link.table-row > div:nth-child(2) {
+  grid-column: 2 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+}
+
+/* THIRD COLUMN (Project) - Target 3rd child in both header and rows */
+.table-head > div:nth-child(3),
+.link.table-row > div:nth-child(3) {
+  grid-column: 3 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+}
+
+/* FIRST COLUMN wrapper - specifically for index-1st-col-wrp in Year column */
+.table-head > div > .index-1st-col-wrp,
+.link.table-row > div > .index-1st-col-wrp {
+  grid-column: 1 !important;
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+  flex: 0 0 80px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* SECOND COLUMN wrapper - specifically for Year column's inner div */
+.table-head > div > .index-1st-col-wrp > div,
+.link.table-row > div > .index-1st-col-wrp > div {
+  grid-column: 1 !important;
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  flex: 0 0 100px !important;
+}
+
+/* Ensure Year text is aligned properly */
+.index-1st-col-wrp .t-large.mob-size,
+.index-1st-col-wrp .t-small {
+  text-align: left !important;
+  width: 100px !important;
+}
+
+/* Increase font size for list items */
+.link.table-row .t-large {
+  font-size: 1.4rem !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+
+/* Increase header font size */
+.table-head .t-small {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* Ensure containers align perfectly - preserve original spacing */
+.index-list-wrp,
+.index-list {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.index-item {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 12px 0 !important;
+  margin: 0 !important;
+}
+
+/* Increase spacing between list items */
+.link.table-row {
+  padding: 12px 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
 .line-mask {
   display: none !important;
   visibility: hidden !important;
