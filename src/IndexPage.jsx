@@ -1213,7 +1213,7 @@ function IndexPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04b"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.instagram.com/styleframe.studio/"
+              href="https://www.instagram.com/startsay.official/"
             target="_blank"
             className="link t-large"
           >
@@ -1224,7 +1224,7 @@ function IndexPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04d"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.linkedin.com/company/styleframe"
+              href="https://www.linkedin.com/company/startsayofficial"
             target="_blank"
             className="link t-large"
           >
@@ -1235,7 +1235,7 @@ function IndexPage() {
             data-wf-ao-click-engagement-tracking="true"
             data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04f"
             data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.behance.net/styleframe"
+              href="https://www.behance.net/thisissyedbadshah"
             target="_blank"
             className="link t-large"
           >
