@@ -379,6 +379,13 @@ button:focus-visible {
   height: auto !important;
   display: block !important;
   visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* When contact banner is open, hide cookie banner completely */
+body:has(.contact-banner.open) .cookie-pack,
+body:has(.contact-banner.open) .fs-cc-banner {
+  display: none !important;
 }
 
 .fs-cc-banner {
@@ -702,9 +709,10 @@ html.w-mod-js .collection-item-lab,
   height: 100vh;
   background-color: #ff5101;
   padding: 40px 30px;
+  padding-bottom: 180px; /* Extra padding at bottom to avoid cookie banner overlap */
   overflow-y: auto;
   transition: right 0.4s ease-in-out;
-  z-index: 9999;
+  z-index: 100001 !important;
   display: flex;
   flex-direction: column;
   gap: 40px;
