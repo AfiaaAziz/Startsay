@@ -225,11 +225,9 @@ function IndexPage() {
         
         // Immediate position update
         const touch = e.touches[0];
-        // Ensure we calculate dimensions correctly even if valid
-        const videoWidth = 320; // Fallback or use offsetWidth
+        const videoWidth = 320; 
         const videoHeight = 180;
         
-        // Use clientX/Y which is viewport relative
         const offsetX = touch.clientX - (hoverVideo.offsetWidth || videoWidth) / 2;
         const offsetY = touch.clientY - (hoverVideo.offsetHeight || videoHeight) / 2;
         
@@ -250,8 +248,7 @@ function IndexPage() {
         ".index-hover[data-visible='true']",
       );
       if (visibleVideos.length > 0) {
-          // Prevent scrolling to let the user "drag" the video
-          if (e.cancelable) e.preventDefault(); 
+          // REMOVED preventDefault to allow scrolling
           
           const touch = e.touches[0];
           visibleVideos.forEach((video) => {
@@ -271,14 +268,14 @@ function IndexPage() {
       item.addEventListener("mouseleave", handleItemMouseLeave);
       
       // Add touch listeners
-      // Use passive: false to allow preventDefault (blocking scroll)
+      // Changed to passive: true to allow scrolling
       item.addEventListener("touchstart", handleTouchStart, { passive: true });
       item.addEventListener("touchend", handleTouchEnd);
+      item.addEventListener("touchcancel", handleTouchEnd); // Handle scroll cancellation
     });
 
     document.addEventListener("mousemove", handleMouseMove);
-    // Use passive: false for touchmove to allow preventing scroll
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchmove", handleTouchMove, { passive: true });
 
     return () => {
       indexItems.forEach((item) => {
@@ -286,6 +283,7 @@ function IndexPage() {
         item.removeEventListener("mouseleave", handleItemMouseLeave);
         item.removeEventListener("touchstart", handleTouchStart);
         item.removeEventListener("touchend", handleTouchEnd);
+        item.removeEventListener("touchcancel", handleTouchEnd);
       });
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("touchmove", handleTouchMove);
