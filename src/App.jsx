@@ -306,16 +306,17 @@ function HomePage() {
     const timer = setTimeout(() => {
       try {
         if (window.Webflow && window.Webflow.require) {
-          const ix2 = window.Webflow.require("ix2");
-          if (ix2 && typeof ix2.init === "function") {
-            ix2.init();
-          }
+          window.Webflow.destroy();
+          window.Webflow.ready();
+          window.Webflow.require("ix2").init();
+          document.dispatchEvent(new Event("readystatechange"));
+          window.dispatchEvent(new Event("resize"));
         }
       } catch (e) {}
       try {
         ScrollTrigger.refresh();
       } catch (e) {}
-    }, 0);
+    }, 500);
     return () => clearTimeout(timer);
   }, []);
 
