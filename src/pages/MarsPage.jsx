@@ -1115,7 +1115,7 @@ export default function MarsPage() {
               Behance
             </a>
           </div>
-        
+
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"
