@@ -12,11 +12,11 @@ import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
 import AdminRoutes from "./admin/AdminRoutes";
 import Loader from "./components/Loader.jsx";
-            <a
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-              href="#/"
+function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -346,7 +346,7 @@ function HomePage() {
             >
               Index
             </a>
-              <a
+            <a
               data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
               data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
               data-wf-ao-click-engagement-tracking="true"
