@@ -18,17 +18,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    // Enable touch/click for menu icons produced by Webflow export
-    const icons = Array.from(document.querySelectorAll(".menu-icon"));
-    const handlers = new Map();
-    icons.forEach((icon) => {
-      const handler = (e) => {
-        // allow link handling on click but ensure touch starts also toggle
-        e.preventDefault?.();
+    // Event delegation for mobile menu to handle dynamic navigation
+    const handleMenuInteraction = (e) => {
+      // 1. Handle Menu Icon Click
+      const icon = e.target.closest(".menu-icon");
+      if (icon) {
+        e.preventDefault(); // Prevent ghost clicks if checking both touch/click or default behaviors
         const navbar = icon.closest(".navbar");
         if (!navbar) return;
         const mob = navbar.querySelector(".navbar-mob-wrp");
         if (!mob) return;
+        
         const isOpen = mob.getAttribute("data-open") === "true";
         if (isOpen) {
           mob.setAttribute("data-open", "false");
@@ -39,33 +39,32 @@ function App() {
           mob.style.display = "block";
           icon.classList.add("menu-open");
         }
-      };
-      icon.addEventListener("click", handler);
-      icon.addEventListener("touchstart", handler);
-      handlers.set(icon, handler);
-    });
-
-    // Close mobile menu when a navbar link is clicked
-    const closeOnLink = (e) => {
-      const link = e.target.closest && e.target.closest(".navbar-link");
-      if (!link) return;
-      const navbar = link.closest && link.closest(".navbar");
-      const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
-      const icon = navbar && navbar.querySelector(".menu-icon");
-      if (mob) {
-        mob.setAttribute("data-open", "false");
-        mob.style.display = "";
+        return; // Stop processing if we handled the icon
       }
-      if (icon) icon.classList.remove("menu-open");
+
+      // 2. Handle Link Clicks (Close Menu)
+      const link = e.target.closest(".navbar-link");
+      if (link) {
+        const navbar = link.closest(".navbar");
+        const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
+        const menuIcon = navbar && navbar.querySelector(".menu-icon");
+        
+        if (mob) {
+          mob.setAttribute("data-open", "false");
+          mob.style.display = "";
+        }
+        if (menuIcon) {
+          menuIcon.classList.remove("menu-open");
+        }
+      }
     };
-    document.addEventListener("click", closeOnLink);
+
+    // Use 'click' for robust handling across devices. 
+    // Modern mobile browsers handle click well without 300ms delay if viewport is set correctly.
+    document.addEventListener("click", handleMenuInteraction);
 
     return () => {
-      handlers.forEach((handler, icon) => {
-        icon.removeEventListener("click", handler);
-        icon.removeEventListener("touchstart", handler);
-      });
-      document.removeEventListener("click", closeOnLink);
+      document.removeEventListener("click", handleMenuInteraction);
     };
   }, []);
 
