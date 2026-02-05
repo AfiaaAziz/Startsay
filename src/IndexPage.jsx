@@ -411,7 +411,7 @@ function IndexPage() {
       </div>
       <div className="section">
         <div className="gap-120"></div>
-        <div className="container hide-mob">
+        <div className="container">
           <div
             id="w-node-e060aa2e-8755-94e5-ddd9-be93d928de7e-256fe6c6"
             className="table-head"
