@@ -17,6 +17,58 @@ import Loader from "./components/Loader.jsx";
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  useEffect(() => {
+    // Enable touch/click for menu icons produced by Webflow export
+    const icons = Array.from(document.querySelectorAll(".menu-icon"));
+    const handlers = new Map();
+    icons.forEach((icon) => {
+      const handler = (e) => {
+        // allow link handling on click but ensure touch starts also toggle
+        e.preventDefault?.();
+        const navbar = icon.closest(".navbar");
+        if (!navbar) return;
+        const mob = navbar.querySelector(".navbar-mob-wrp");
+        if (!mob) return;
+        const isOpen = mob.getAttribute("data-open") === "true";
+        if (isOpen) {
+          mob.setAttribute("data-open", "false");
+          mob.style.display = "";
+          icon.classList.remove("menu-open");
+        } else {
+          mob.setAttribute("data-open", "true");
+          mob.style.display = "block";
+          icon.classList.add("menu-open");
+        }
+      };
+      icon.addEventListener("click", handler);
+      icon.addEventListener("touchstart", handler);
+      handlers.set(icon, handler);
+    });
+
+    // Close mobile menu when a navbar link is clicked
+    const closeOnLink = (e) => {
+      const link = e.target.closest && e.target.closest(".navbar-link");
+      if (!link) return;
+      const navbar = link.closest && link.closest(".navbar");
+      const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
+      const icon = navbar && navbar.querySelector(".menu-icon");
+      if (mob) {
+        mob.setAttribute("data-open", "false");
+        mob.style.display = "";
+      }
+      if (icon) icon.classList.remove("menu-open");
+    };
+    document.addEventListener("click", closeOnLink);
+
+    return () => {
+      handlers.forEach((handler, icon) => {
+        icon.removeEventListener("click", handler);
+        icon.removeEventListener("touchstart", handler);
+      });
+      document.removeEventListener("click", closeOnLink);
+    };
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -249,6 +301,23 @@ function HomePage() {
   }, []);
 
   useEffect(() => {}, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        if (window.Webflow && window.Webflow.require) {
+          const ix2 = window.Webflow.require("ix2");
+          if (ix2 && typeof ix2.init === "function") {
+            ix2.init();
+          }
+        }
+      } catch (e) {}
+      try {
+        ScrollTrigger.refresh();
+      } catch (e) {}
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="app-container">
@@ -1638,12 +1707,17 @@ function HomePage() {
             >
               Team
             </a>
-            <div
+            <a
               data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"
+              href="#"
               className="link footer-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsContactOpen(!isContactOpen);
+              }}
             >
               Contact
-            </div>
+            </a>
           </div>
         </div>
       </div>

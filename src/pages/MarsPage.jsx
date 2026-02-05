@@ -1150,12 +1150,17 @@ export default function MarsPage() {
             >
               Team
             </a>
-            <div
+            <a
               data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"
+              href="#"
               className="link footer-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsContactOpen(!isContactOpen);
+              }}
             >
               Contact
-            </div>
+            </a>
           </div>
         </div>
         <div className="footer-logo-cont">
