@@ -143,12 +143,7 @@ html.w-editor [text-split] {
   outline: none !important;
 }
 
-.index-hover,
-.index-hover-vid,
-.index-poster,
-.collection-item-logo-anim,
-.video-cursor,
-.cursor-pack div {}
+
 
 .index-item,
 .table-row {
@@ -159,7 +154,8 @@ html.w-editor [text-split] {
 .table-head,
 .link.table-row {
   display: grid !important;
-  grid-template-columns: 80px 1fr 1.5fr !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  /* 3 Equal Columns */
   gap: 0px 20px !important;
   align-items: center !important;
   width: 100% !important;
@@ -182,48 +178,46 @@ html.w-editor [text-split] {
   transform: none !important;
 }
 
-/* FIRST COLUMN (Year) - Apply to ALL direct children in both header and rows */
+/* ALL COLUMNS - Equal flexible width */
+.table-head>div,
+.link.table-row>div {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+}
+
+/* FIRST COLUMN (Year) - Reset fixed width overrides */
 .table-head>div:nth-child(1),
 .link.table-row>div:nth-child(1) {
   grid-column: 1 !important;
-  width: 80px !important;
-  min-width: 80px !important;
-  max-width: 80px !important;
-  flex: 0 0 80px !important;
   text-align: left !important;
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
 }
 
-/* SECOND COLUMN (Client) - Target 2nd child in both header and rows */
+/* SECOND COLUMN (Client) */
 .table-head>div:nth-child(2),
 .link.table-row>div:nth-child(2) {
   grid-column: 2 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  flex: 1 1 auto !important;
 }
 
-/* THIRD COLUMN (Project) - Target 3rd child in both header and rows */
+/* THIRD COLUMN (Project) */
 .table-head>div:nth-child(3),
 .link.table-row>div:nth-child(3) {
   grid-column: 3 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  flex: 1 1 auto !important;
 }
 
 /* FIRST COLUMN wrapper - specifically for index-1st-col-wrp in Year column */
 .table-head>div>.index-1st-col-wrp,
 .link.table-row>div>.index-1st-col-wrp {
   grid-column: 1 !important;
-  width: 80px !important;
-  min-width: 80px !important;
-  max-width: 80px !important;
-  flex: 0 0 80px !important;
+  width: auto !important;
+  /* Allow flex */
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
   display: flex !important;
   align-items: center !important;
 }
@@ -232,17 +226,17 @@ html.w-editor [text-split] {
 .table-head>div>.index-1st-col-wrp>div,
 .link.table-row>div>.index-1st-col-wrp>div {
   grid-column: 1 !important;
-  width: 100px !important;
-  min-width: 100px !important;
-  max-width: 100px !important;
-  flex: 0 0 100px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
 }
 
 /* Ensure Year text is aligned properly */
 .index-1st-col-wrp .t-large.mob-size,
 .index-1st-col-wrp .t-small {
   text-align: left !important;
-  width: 100px !important;
+  width: auto !important;
 }
 
 /* Increase font size for list items */
@@ -732,47 +726,15 @@ html.w-mod-js .collection-item-lab,
   }
 
   /* ========== MOBILE PREVIEW VIDEO FIX ========== */
+  /* Reverted to allow JS-controlled floating animation */
   .index-hover {
+    /* Ensure it can be shown by JS */
     display: none;
-    /* Default hidden on desktop */
   }
 
-  /* Force display on mobile - Centered Overlay Style */
+  /* Don't force static layout on items */
   .index-item {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    min-height: 220px !important;
-    /* Ensure space for the video card */
-  }
-
-  .index-hover {
-    display: block !important;
-    position: absolute !important;
-    /* Float over the item */
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    /* Center correctly */
-    width: auto !important;
-    /* Let specific media queries handle width */
-    height: auto !important;
-    margin-top: 0 !important;
-    z-index: 1 !important;
-    /* Behind text (which is likely z-index 1000) */
-    pointer-events: none;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
-  .index-hover-vid {
-    /* Dimensions handled by specific media queries below */
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    /* Restore shadow */
+    min-height: auto !important;
   }
 
   .index-hover-vid video {
@@ -783,18 +745,16 @@ html.w-mod-js .collection-item-lab,
 
   /* Adjust table layout for mobile */
   .table-head {
-    display: flex !important;
-    /* switch to flex to match list items if needed, or keep grid */
+    display: grid !important;
+    /* Keep grid for alignment */
+    grid-template-columns: repeat(3, 1fr) !important;
     font-size: 0.8rem !important;
   }
 
   /* Ensure header columns align with content if content wraps */
-  .table-head>div:nth-child(2),
-  .link.table-row>div:nth-child(2),
-  .table-head>div:nth-child(3),
-  .link.table-row>div:nth-child(3) {
-    width: 100% !important;
-    /* Allow expansion */
+  .table-head>div,
+  .link.table-row>div {
+    width: auto !important;
   }
 }
 

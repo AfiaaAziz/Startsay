@@ -216,19 +216,79 @@ function IndexPage() {
       });
     };
 
+    // Touch Event Handlers
+    const handleTouchStart = (e) => {
+      const hoverVideo = e.currentTarget.querySelector(".index-hover");
+      if (hoverVideo) {
+        hoverVideo.style.display = "block";
+        hoverVideo.setAttribute("data-visible", "true");
+        
+        // Immediate position update
+        const touch = e.touches[0];
+        // Ensure we calculate dimensions correctly even if valid
+        const videoWidth = 320; // Fallback or use offsetWidth
+        const videoHeight = 180;
+        
+        // Use clientX/Y which is viewport relative
+        const offsetX = touch.clientX - (hoverVideo.offsetWidth || videoWidth) / 2;
+        const offsetY = touch.clientY - (hoverVideo.offsetHeight || videoHeight) / 2;
+        
+        hoverVideo.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      const hoverVideo = e.currentTarget.querySelector(".index-hover");
+      if (hoverVideo) {
+        hoverVideo.style.display = "none";
+        hoverVideo.removeAttribute("data-visible");
+      }
+    };
+
+    const handleTouchMove = (e) => {
+       const visibleVideos = document.querySelectorAll(
+        ".index-hover[data-visible='true']",
+      );
+      if (visibleVideos.length > 0) {
+          // Prevent scrolling to let the user "drag" the video
+          if (e.cancelable) e.preventDefault(); 
+          
+          const touch = e.touches[0];
+          visibleVideos.forEach((video) => {
+            const videoWidth = video.offsetWidth || 320;
+            const videoHeight = video.offsetHeight || 180;
+            
+            const offsetX = touch.clientX - videoWidth / 2;
+            const offsetY = touch.clientY - videoHeight / 2;
+            
+            video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+          });
+      }
+    };
+
     indexItems.forEach((item) => {
       item.addEventListener("mouseenter", handleItemMouseEnter);
       item.addEventListener("mouseleave", handleItemMouseLeave);
+      
+      // Add touch listeners
+      // Use passive: false to allow preventDefault (blocking scroll)
+      item.addEventListener("touchstart", handleTouchStart, { passive: true });
+      item.addEventListener("touchend", handleTouchEnd);
     });
 
     document.addEventListener("mousemove", handleMouseMove);
+    // Use passive: false for touchmove to allow preventing scroll
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       indexItems.forEach((item) => {
         item.removeEventListener("mouseenter", handleItemMouseEnter);
         item.removeEventListener("mouseleave", handleItemMouseLeave);
+        item.removeEventListener("touchstart", handleTouchStart);
+        item.removeEventListener("touchend", handleTouchEnd);
       });
       document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
 
@@ -634,7 +694,7 @@ function IndexPage() {
                     <div className="t-large mob-size">2025</div>
                   </div>
                   <div className="t-large">Wolf &amp; Shepherd</div>
-                  <div className="t-large">SuperCrossover</div>
+                  <div className="t-large">Super</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
