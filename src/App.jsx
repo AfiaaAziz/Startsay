@@ -812,7 +812,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/mars"
+                href="#/project/mars"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -841,7 +841,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/teenage-engineering"
+                href="#/project/teenage-engineering"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -870,7 +870,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/innovation-lab"
+                href="#/project/innovation-lab"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -899,7 +899,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/beats-n-buckets"
+                href="#/project/beats-n-buckets"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -928,7 +928,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/moncler-grenoble"
+                href="#/project/moncler-grenoble"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -957,7 +957,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/13-11"
+                href="#/project/13-11"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -986,7 +986,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/we-are-rewind"
+                href="#/project/we-are-rewind"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -1015,7 +1015,7 @@ function HomePage() {
                 style={{
                   backgroundImage: 'url("/assets/hero1.jpeg")',
                 }}
-                href="/project/hatton-labs-x-ap"
+                href="#/project/hatton-labs-x-ap"
                 className="link project-card w-inline-block"
               >
                 <div
@@ -1136,7 +1136,7 @@ function HomePage() {
               data-wf-native-id-path="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="2cb51c69-c4b8-8fd1-4c5c-0440af9c4663"
-              href="/team"
+              href="#/team"
               className="link l-large right-arrow"
             >
               Read More
@@ -1537,7 +1537,7 @@ function HomePage() {
               data-wf-native-id-path="9a73183d-b011-f786-83ad-31a4f71def03"
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="9a73183d-b011-f786-83ad-31a4f71def03"
-              href="/project-index"
+              href="#/project-index"
               className="link l-large right-arrow"
             >
               All Projects
@@ -1613,7 +1613,7 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f5"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/project-index"
+              href="#/project-index"
               className="link footer-link right-arrow"
             >
               Index
@@ -1623,7 +1623,7 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f7"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/research"
+              href="#/research"
               className="link footer-link right-arrow"
             >
               Research
@@ -1633,7 +1633,7 @@ function HomePage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f9"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/team"
+              href="#/team"
               className="link footer-link right-arrow"
             >
               Team

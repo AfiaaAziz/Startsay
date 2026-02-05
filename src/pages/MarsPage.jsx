@@ -1125,7 +1125,7 @@ export default function MarsPage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f5"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/project-index"
+              href="#/project-index"
               className="link footer-link right-arrow"
             >
               Index
@@ -1135,7 +1135,7 @@ export default function MarsPage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f7"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/research"
+              href="#/research"
               className="link footer-link right-arrow"
             >
               Research
@@ -1145,7 +1145,7 @@ export default function MarsPage() {
               data-wf-ao-click-engagement-tracking="true"
               data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f9"
               data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/team"
+              href="#/team"
               className="link footer-link right-arrow"
             >
               Team

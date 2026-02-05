@@ -1060,13 +1060,13 @@ export default function ProjectPage() {
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"
           >
-            <a href="/project-index" className="link footer-link right-arrow">
+            <a href="#/project-index" className="link footer-link right-arrow">
               Index
             </a>
-            <a href="/research" className="link footer-link right-arrow">
+            <a href="#/research" className="link footer-link right-arrow">
               Research
             </a>
-            <a href="/team" className="link footer-link right-arrow">
+            <a href="#/team" className="link footer-link right-arrow">
               Team
             </a>
             <div
