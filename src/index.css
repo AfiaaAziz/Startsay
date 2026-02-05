@@ -150,6 +150,10 @@ html.w-editor [text-split] {
     /* Stack on mobile */
     gap: 40px;
   }
+
+  .footer {
+    padding-bottom: 250px !important;
+  }
 }
 
 
