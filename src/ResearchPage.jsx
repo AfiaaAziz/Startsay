@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import panzoom from "panzoom";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
+import Loader from "./components/Loader.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -526,6 +527,7 @@ function ResearchPage() {
 
   return (
     <>
+      <Loader />
       <div className="navbar">
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">

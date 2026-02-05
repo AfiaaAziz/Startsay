@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
+import Loader from "../components/Loader.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,6 +187,7 @@ export default function MarsPage() {
 
   return (
     <div className="app-container">
+      <Loader />
       {/* Navbar */}
       <div
         className="navbar"
@@ -1113,31 +1115,7 @@ export default function MarsPage() {
               Behance
             </a>
           </div>
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09ef-fc0d09e3"
-            className="footer-column"
-          >
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f0"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f0"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/legal/privacy-policy"
-              className="link footer-link fl-small"
-            >
-              Privacy Policy
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f2"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f2"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="/legal/imprint"
-              className="link footer-link fl-small"
-            >
-              Imprint
-            </a>
-          </div>
+        
           <div
             id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
             className="footer-column"

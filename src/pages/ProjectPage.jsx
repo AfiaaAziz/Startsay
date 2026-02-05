@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
+import Loader from "../components/Loader.jsx";
 import { getProjectBySlug, getAdjacentProjects } from "../data/projects";
 // import "./ProjectPage.css"; // Commented out to avoid conflicts with MarsPage styles
 
@@ -236,6 +237,7 @@ export default function ProjectPage() {
 
   return (
     <div className="app-container">
+      <Loader />
       {/* Navbar */}
       <div
         className="navbar"

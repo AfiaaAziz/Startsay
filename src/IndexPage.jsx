@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
+import Loader from "./components/Loader.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -175,20 +176,7 @@ function IndexPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const el = document.querySelector(".loader");
-    if (!el) return;
-    el.style.display = "flex";
-    el.style.opacity = "1";
-    el.setAttribute("aria-busy", "true");
-    const t = setTimeout(() => {
-      el.style.opacity = "0";
-      el.style.display = "none";
-      el.removeAttribute("aria-busy");
-      el.setAttribute("aria-hidden", "true");
-    }, 1500);
-    return () => clearTimeout(t);
-  }, []);
+  useEffect(() => {}, []);
 
   // Handle index hover video positioning and visibility
   useEffect(() => {
@@ -246,168 +234,7 @@ function IndexPage() {
 
   return (
     <>
-      <div className="loader">
-        <div
-          data-w-id="b8bdbb27-d710-8937-fa2d-e2ff10981e1c"
-          className="loader-logo-cont"
-        >
-          <div className="footer-logo-wrp">
-            <div className="footer-logo-frame">
-              <div className="logo-frame-wrp">
-                <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div
-                    role="list"
-                    className="collection-list-logo-anim w-dyn-items"
-                  >
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ea7b8caf2e461da972d_18.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e9dab059fd303cb59bb_17.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42e8c9b02ae0d1681b7b8_16.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cb457683fdcaecf34aa_15.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42cabbf94893911f30b8d_14.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42ca28d03c1d72159ab26_13.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c954de027a2c9aa384c_12.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42c84894ff1d8f915df24_11.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683100007bdc0d6b8d0c4_6867d7d6a8c71bddc3942a28_2.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682ff1da9335baedef285_6867f5123aa787b54ba2cafe_7.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682fa186bbdce6c8fe845_686bf6bd7fb6fdadca975d14_cover%20image-web-497237698_18509548351001463_3505879398570363264_n.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                    <div
-                      style={{
-                        backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif")`,
-                      }}
-                      role="listitem"
-                      className="collection-item-logo-anim w-dyn-item"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="footer-logo-s"></div>
-            <div className="footer-logo-r"></div>
-          </div>
-        </div>
-      </div>
+      <Loader />
       <div className="navbar">
         <div className="navbar-main-wrp">
           <div className="navbar-logo-wrp">
