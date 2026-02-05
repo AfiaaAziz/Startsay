@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "../hooks/useVideoPlayer";
 import Loader from "../components/Loader.jsx";
+import Footer from "../components/Footer.jsx";
 import { getProjectBySlug, getAdjacentProjects } from "../data/projects";
 // import "./ProjectPage.css"; // Commented out to avoid conflicts with MarsPage styles
 

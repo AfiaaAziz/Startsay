@@ -12,6 +12,7 @@ import ProjectPage from "./pages/ProjectPage";
 import MarsPage from "./pages/MarsPage";
 import AdminRoutes from "./admin/AdminRoutes";
 import Loader from "./components/Loader.jsx";
+import Footer from "./components/Footer.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -1615,112 +1616,7 @@ function HomePage() {
         </div>
         <div className="gap-80"></div>
       </div>
-      <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
-        <div className="container">
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
-            className="footer-column"
-          >
-            <div className="t-small">© Startsay</div>
-          </div>
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3"
-            className="footer-column"
-          >
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09e9"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09e9"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.instagram.com/startsay.official/"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Instagram
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09eb"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.linkedin.com/company/startsayofficial"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              LinkedIn
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09eb"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09eb"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.facebook.com/profile.php?id=61572256355814"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Facebook
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09ed"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09ed"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="https://www.behance.net/thisissyedbadshah"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Behance
-            </a>
-          </div>
-
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
-            className="footer-column"
-          >
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f5"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f5"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="#/project-index"
-              className="link footer-link right-arrow"
-            >
-              Index
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f7"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f7"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="#/research"
-              className="link footer-link right-arrow"
-            >
-              Research
-            </a>
-            <a
-              data-wf-native-id-path="25bbb818-505b-4eef-f059-e84f2ae1b087:d636055f-4a21-6155-01a4-3396fc0d09f9"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="d636055f-4a21-6155-01a4-3396fc0d09f9"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d636055f-4a21-6155-01a4-3396fc0d09e3%22%2C%22instanceId%22%3A%2225bbb818-505b-4eef-f059-e84f2ae1b087%22%7D%5D"
-              href="#/team"
-              className="link footer-link right-arrow"
-            >
-              Team
-            </a>
-            <a
-              data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"
-              href="#"
-              className="link footer-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsContactOpen(!isContactOpen);
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
     </div>
   );
 }

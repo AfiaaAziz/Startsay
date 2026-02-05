@@ -119,8 +119,47 @@ html.w-editor [text-split] {
   padding-bottom: 0 !important;
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 equal columns */
+  gap: 20px;
+  width: 100%;
+}
+
+.branding-col {
+  /* Branding column styles */
+  display: flex;
+  align-items: flex-start;
+}
+
+.social-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile Responsiveness for Footer */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    /* Stack on mobile */
+    gap: 40px;
+  }
+}
+
+
 .footer-logo-cont {
   display: none !important;
+}
+
+/* Ensure footer columns don't have conflicting widths from webflow export */
+.footer-column {
+  width: auto !important;
 }
 
 
