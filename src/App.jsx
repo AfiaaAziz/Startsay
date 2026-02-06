@@ -29,7 +29,7 @@ function App() {
         if (!navbar) return;
         const mob = navbar.querySelector(".navbar-mob-wrp");
         if (!mob) return;
-        
+
         const isOpen = mob.getAttribute("data-open") === "true";
         if (isOpen) {
           mob.setAttribute("data-open", "false");
@@ -49,7 +49,7 @@ function App() {
         const navbar = link.closest(".navbar");
         const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
         const menuIcon = navbar && navbar.querySelector(".menu-icon");
-        
+
         if (mob) {
           mob.setAttribute("data-open", "false");
           mob.style.display = "";
@@ -60,7 +60,7 @@ function App() {
       }
     };
 
-    // Use 'click' for robust handling across devices. 
+    // Use 'click' for robust handling across devices.
     // Modern mobile browsers handle click well without 300ms delay if viewport is set correctly.
     document.addEventListener("click", handleMenuInteraction);
 
@@ -880,7 +880,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/01_USAID.webp")',
                 }}
                 href="#/project/mars"
                 className="link project-card w-inline-block"
@@ -889,7 +889,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Oakley
+               USAID
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -909,7 +909,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/02_DIFC.webp")',
                 }}
                 href="#/project/teenage-engineering"
                 className="link project-card w-inline-block"
@@ -918,7 +918,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Teenage Engineering
+                 DIFC
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -938,7 +938,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/03_HollyWood.webp")',
                 }}
                 href="#/project/innovation-lab"
                 className="link project-card w-inline-block"
@@ -947,7 +947,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Ray-Ban
+                  HollyWood
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -967,7 +967,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/04_Avtive.webp")',
                 }}
                 href="#/project/beats-n-buckets"
                 className="link project-card w-inline-block"
@@ -976,7 +976,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Samsung
+                  Avtive
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -996,7 +996,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/05_ONYX TOWER.webp")',
                 }}
                 href="#/project/moncler-grenoble"
                 className="link project-card w-inline-block"
@@ -1005,7 +1005,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Moncler
+                  ONYX TOWER
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1025,7 +1025,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/06_Intercity Hotel.webp")',
                 }}
                 href="#/project/13-11"
                 className="link project-card w-inline-block"
@@ -1034,7 +1034,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Oakley
+                  Intercity Hotel
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1054,7 +1054,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/07_Neuro.webp")',
                 }}
                 href="#/project/we-are-rewind"
                 className="link project-card w-inline-block"
@@ -1063,7 +1063,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  We Are Rewind
+                 Neuro
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1083,7 +1083,7 @@ function HomePage() {
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
                 style={{
-                  backgroundImage: 'url("/assets/hero1.jpeg")',
+                  backgroundImage: 'url("/assets/08_Social Media.webp")',
                 }}
                 href="#/project/hatton-labs-x-ap"
                 className="link project-card w-inline-block"
@@ -1092,7 +1092,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                  Hatton Labs
+                  Social Media
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1113,7 +1113,8 @@ function HomePage() {
               style={{ opacity: 1 }}
               className="motto"
             >
-              Creative Sparks, Powerful Impact            </div>
+              Creative Sparks, Powerful Impact{" "}
+            </div>
           </div>
         </div>
         <div id="showreel" className="container _5-grid">
@@ -1213,7 +1214,7 @@ function HomePage() {
           </div>
         </div>
         <div className="gap-100"></div>
-       
+
         <div words-slide-up="" text-split="" className="container no-top-pad">
           <div>
             <div className="gap-15"></div>
@@ -1237,7 +1238,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">FrontRow Entertainment</div>
+                      <div className="t-large-no-anim">
+                        FrontRow Entertainment
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1261,11 +1264,15 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim">
+                        WAH Industries Limited
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim">
+                        Millennium Aesthetic
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1277,7 +1284,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim">
+                        COCO Cotton Collection
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1285,7 +1294,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim">
+                        Abraham & Agrimont Tractors
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1320,7 +1331,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">FrontRow Entertainment</div>
+                      <div className="t-large-no-anim">
+                        FrontRow Entertainment
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1344,11 +1357,15 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim">
+                        WAH Industries Limited
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim">
+                        Millennium Aesthetic
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1360,7 +1377,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim">
+                        COCO Cotton Collection
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1368,7 +1387,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim">
+                        Abraham & Agrimont Tractors
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1377,34 +1398,35 @@ function HomePage() {
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
                       <div className="t-large-no-anim">Trivelles</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="overflow-hidden w-dyn-list">
+                  <div role="list" className="scroll-list w-dyn-items">
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">USAID</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">DIFC</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">UNODC</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">
+                        FrontRow Entertainment
+                      </div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Marriott</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
 
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">USAID</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">DIFC</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">UNODC</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">FrontRow Entertainment</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Marriott</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    
                     <div role="listitem" className="scroll-item w-dyn-item">
                       <div className="t-large-no-anim">Parkview City</div>
                       <div className="t-large-no-anim t-gray">●</div>
@@ -1422,11 +1444,15 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim">
+                        WAH Industries Limited
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim">
+                        Millennium Aesthetic
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1438,7 +1464,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim">
+                        COCO Cotton Collection
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1446,7 +1474,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim">
+                        Abraham & Agrimont Tractors
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1474,7 +1504,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">FrontRow Entertainment</div>
+                      <div className="t-large-no-anim">
+                        FrontRow Entertainment
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1498,11 +1530,15 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim">
+                        WAH Industries Limited
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim">
+                        Millennium Aesthetic
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1514,7 +1550,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim">
+                        COCO Cotton Collection
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1522,7 +1560,9 @@ function HomePage() {
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim">
+                        Abraham & Agrimont Tractors
+                      </div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
@@ -1551,7 +1591,10 @@ function HomePage() {
         </div>
         <div className="gap-80"></div>
       </div>
-      <Footer isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
+      <Footer
+        isContactOpen={isContactOpen}
+        setIsContactOpen={setIsContactOpen}
+      />
     </div>
   );
 }
