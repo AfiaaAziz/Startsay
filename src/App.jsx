@@ -1113,8 +1113,7 @@ function HomePage() {
               style={{ opacity: 1 }}
               className="motto"
             >
-              Visual precision, designed to resonate
-            </div>
+              Creative Sparks, Powerful Impact            </div>
           </div>
         </div>
         <div id="showreel" className="container _5-grid">
@@ -1169,7 +1168,7 @@ function HomePage() {
                   poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
                 >
                   <source
-                    src="https://cdn.styleframe.de/SF_Showreel_2025_FINAL.mp4"
+                    src="https://drive.google.com/file/d/12yztqRDU8seIgWrsc6zAYSOLFvsf7oJA/view?usp=sharing"
                     type="video/mp4"
                   />{" "}
                 </video>
