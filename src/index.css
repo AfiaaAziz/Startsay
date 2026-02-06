@@ -88,8 +88,8 @@ html.w-editor [text-split] {
 
 .loader-logo-cont {
   position: relative !important;
-  width: 160px !important;
-  height: 160px !important;
+  width: 200px !important;
+  height: 200px !important;
 }
 
 .collection-list-logo-anim {
@@ -1619,7 +1619,6 @@ html.w-editor [text-split] {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Ensure cursor pack is always top-most and ignores pointer events */
 #cursor-pack {
   z-index: 1000000 !important;
   pointer-events: none !important;
