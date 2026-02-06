@@ -101,7 +101,7 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
 
   if (!project) {
     return (
-      <div className="app-container">
+      <>
         <div
           className="section"
           style={{
@@ -118,14 +118,12 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
             </Link>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="app-container">
-      {/* Cookie Pack */}
-      <div className="cookie-pack">
+    <>
         <div
           fs-cc="banner"
           className="fs-cc-banner"
@@ -221,7 +219,6 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
             </div>
           </div>
         </div>
-      </div>
 
 
       {/* Up Arrow */}
@@ -775,6 +772,6 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

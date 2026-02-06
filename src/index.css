@@ -352,6 +352,12 @@ html body .line-mask,
   box-shadow: none !important;
 }
 
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
@@ -369,11 +375,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Override body layout for ResearchPage */

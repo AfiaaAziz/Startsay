@@ -75,9 +75,7 @@ export default function MarsPage({ isContactOpen, setIsContactOpen }) {
   }, []);
 
   return (
-    <div className="app-container">
-      {/* Cookie Pack */}
-      <div className="cookie-pack">
+    <>
         <div
           fs-cc="banner"
           className="fs-cc-banner"
@@ -173,7 +171,6 @@ export default function MarsPage({ isContactOpen, setIsContactOpen }) {
             </div>
           </div>
         </div>
-      </div>
 
 
       {/* Up Arrow */}
@@ -729,6 +726,6 @@ export default function MarsPage({ isContactOpen, setIsContactOpen }) {
         isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
       />
-    </div>
+    </>
   );
 }
