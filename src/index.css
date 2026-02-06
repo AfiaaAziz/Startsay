@@ -1464,8 +1464,8 @@ html.w-editor [text-split] {
 /* Style for PNG logo in navbar */
 .sf-navbar-logo-wrp .logo {
   display: block;
-  width: 50px;
-  height: 40px;
+  width: 100px;
+  height: 60px;
   background-image: url("/assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
