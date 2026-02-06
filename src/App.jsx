@@ -24,6 +24,7 @@ function App() {
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Custom Cursor Logic
   useEffect(() => {
@@ -123,58 +124,16 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    // Event delegation for mobile menu to handle dynamic navigation
-    const handleMenuInteraction = (e) => {
-      const icon = e.target.closest(".menu-icon");
-      if (icon) {
-        e.preventDefault();
-        const navbar = icon.closest(".navbar");
-        if (!navbar) return;
-        const mob = navbar.querySelector(".navbar-mob-wrp");
-        if (!mob) return;
-
-        const isOpen = mob.getAttribute("data-open") === "true";
-        if (isOpen) {
-          mob.setAttribute("data-open", "false");
-          mob.style.display = "";
-          icon.classList.remove("menu-open");
-        } else {
-          mob.setAttribute("data-open", "true");
-          mob.style.display = "block";
-          icon.classList.add("menu-open");
-        }
-        return;
-      }
-
-      const link = e.target.closest(".navbar-link");
-      if (link) {
-        const navbar = link.closest(".navbar");
-        const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
-        const menuIcon = navbar && navbar.querySelector(".menu-icon");
-
-        if (mob) {
-          mob.setAttribute("data-open", "false");
-          mob.style.display = "";
-        }
-        if (menuIcon) {
-          menuIcon.classList.remove("menu-open");
-        }
-      }
-    };
-
-    document.addEventListener("click", handleMenuInteraction);
-    document.addEventListener("touchstart", handleMenuInteraction, { passive: false });
-    return () => {
-      document.removeEventListener("click", handleMenuInteraction);
-      document.removeEventListener("touchstart", handleMenuInteraction);
-    };
-  }, []);
 
   return (
     <div className="app-container">
       <Loader />
-      <Navbar isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
+      <Navbar 
+        isContactOpen={isContactOpen} 
+        setIsContactOpen={setIsContactOpen}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
       <div
         id="cursor-pack"
         className="cursor-pack"

@@ -1477,6 +1477,15 @@ html.w-editor [text-split] {
   /* Spread links wider */
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
 .navbar-link {
   font-size: 1.1rem !important;
   text-transform: uppercase !important;
@@ -1528,6 +1537,10 @@ html.w-editor [text-split] {
     z-index: 9998;
     padding: 40px 20px;
     overflow-y: auto;
+  }
+
+  .navbar-mob-wrp.open {
+    display: block !important;
   }
 
   .navbar-mob-wrp .navbar-link-wrp {
