@@ -5,86 +5,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
-import Loader from "./components/Loader.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 function IndexPage() {
-  const cursorPackRef = useRef(null);
-  const defaultCursorRef = useRef(null);
-  const linkCursorRef = useRef(null);
-  const [cursorType, setCursorType] = useState("default");
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
   useVideoPlayer();
-
-  // Custom Cursor Logic
-  useEffect(() => {
-    const cursorPack = cursorPackRef.current;
-    const defaultCursor = defaultCursorRef.current;
-    const linkCursor = linkCursorRef.current;
-
-    if (!cursorPack || !defaultCursor || !linkCursor) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    // Track mouse position
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-
-    // Smooth cursor animation loop
-    const animateCursor = () => {
-      // Smooth interpolation for cursor movement
-      const speed = 0.15;
-      cursorX += (mouseX - cursorX) * speed;
-      cursorY += (mouseY - cursorY) * speed;
-
-      // Position both cursors - they already have transform: translate(-50%, -50%) in CSS
-      if (defaultCursor) {
-        defaultCursor.style.left = `${cursorX}px`;
-        defaultCursor.style.top = `${cursorY}px`;
-      }
-
-      if (linkCursor) {
-        linkCursor.style.left = `${cursorX}px`;
-        linkCursor.style.top = `${cursorY}px`;
-      }
-
-      requestAnimationFrame(animateCursor);
-    };
-
-    // Start cursor animation
-    const animationFrame = requestAnimationFrame(animateCursor);
-
-    // Handle hover states for links and interactive elements
-    const handleLinkHover = () => setCursorType("link");
-    const handleLinkLeave = () => setCursorType("default");
-
-    // Add hover listeners to all links and interactive elements
-    const links = document.querySelectorAll("a, button, .link, .project-card");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover);
-      link.addEventListener("mouseleave", handleLinkLeave);
-    });
-
-    // Clean up
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrame);
-      links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover);
-        link.removeEventListener("mouseleave", handleLinkLeave);
-      });
-    };
-  }, []);
 
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
@@ -223,15 +149,17 @@ function IndexPage() {
       if (hoverVideo) {
         hoverVideo.style.display = "block";
         hoverVideo.setAttribute("data-visible", "true");
-        
+
         // Immediate position update
         const touch = e.touches[0];
-        const videoWidth = 320; 
+        const videoWidth = 320;
         const videoHeight = 180;
-        
-        const offsetX = touch.clientX - (hoverVideo.offsetWidth || videoWidth) / 2;
-        const offsetY = touch.clientY - (hoverVideo.offsetHeight || videoHeight) / 2;
-        
+
+        const offsetX =
+          touch.clientX - (hoverVideo.offsetWidth || videoWidth) / 2;
+        const offsetY =
+          touch.clientY - (hoverVideo.offsetHeight || videoHeight) / 2;
+
         hoverVideo.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
       }
     };
@@ -245,29 +173,29 @@ function IndexPage() {
     };
 
     const handleTouchMove = (e) => {
-       const visibleVideos = document.querySelectorAll(
+      const visibleVideos = document.querySelectorAll(
         ".index-hover[data-visible='true']",
       );
       if (visibleVideos.length > 0) {
-          // REMOVED preventDefault to allow scrolling
-          
-          const touch = e.touches[0];
-          visibleVideos.forEach((video) => {
-            const videoWidth = video.offsetWidth || 320;
-            const videoHeight = video.offsetHeight || 180;
-            
-            const offsetX = touch.clientX - videoWidth / 2;
-            const offsetY = touch.clientY - videoHeight / 2;
-            
-            video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-          });
+        // REMOVED preventDefault to allow scrolling
+
+        const touch = e.touches[0];
+        visibleVideos.forEach((video) => {
+          const videoWidth = video.offsetWidth || 320;
+          const videoHeight = video.offsetHeight || 180;
+
+          const offsetX = touch.clientX - videoWidth / 2;
+          const offsetY = touch.clientY - videoHeight / 2;
+
+          video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
       }
     };
 
     indexItems.forEach((item) => {
       item.addEventListener("mouseenter", handleItemMouseEnter);
       item.addEventListener("mouseleave", handleItemMouseLeave);
-      
+
       // Add touch listeners
       // Changed to passive: true to allow scrolling
       item.addEventListener("touchstart", handleTouchStart, { passive: true });
@@ -293,181 +221,6 @@ function IndexPage() {
 
   return (
     <>
-      <Loader />
-      <div className="navbar">
-        <div className="navbar-main-wrp">
-          <div className="navbar-logo-wrp">
-            <a
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:695dd12c-82a5-a52d-8f5b-486dd64e909b"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="695dd12c-82a5-a52d-8f5b-486dd64e909b"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%5D"
-              href="/"
-              className="logo link w-inline-block"
-              style={{
-                backgroundImage: 'url("/assets/logo.png")',
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            ></a>
-          </div>
-          <div
-            id="w-node-f189272f-6638-5b12-d5b7-2dd5adebb21e-d64e909a"
-            className="navbar-dt-wrp"
-          >
-            <div className="navbar-link-wrp">
-              <Link
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                to="/project-index"
-                className="link navbar-link"
-              >
-                Index
-              </Link>
-              <a
-                data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#/research"
-                className="link navbar-link"
-              >
-                Research
-              </a>
-              <a
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#/team"
-                className="link navbar-link"
-              >
-                Team
-              </a>
-              <a
-                data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#"
-                className="link navbar-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsContactOpen(!isContactOpen);
-                }}
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-          <div
-            id="w-node-_695dd12c-82a5-a52d-8f5b-486dd64e909c-d64e909a"
-            data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909c"
-            className="menu-icon"
-          >
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909d"
-              className="menu-icon-line"
-            ></div>
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909e"
-              className="menu-icon-line mi-2"
-            ></div>
-          </div>
-        </div>
-        <div className="navbar-mob-wrp">
-          <div className="navbar-link-wrp">
-            <Link
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              to="/project-index"
-              className="link navbar-link"
-            >
-              Index
-            </Link>
-            <a
-              data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#/research"
-              className="link navbar-link"
-            >
-              Research
-            </a>
-            <a
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#/team"
-              className="link navbar-link"
-            >
-              Team
-            </a>
-            <a
-              data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#"
-              className="link navbar-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsContactOpen(!isContactOpen);
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        id="cursor-pack"
-        data-w-id="ffc94e13-05f2-5027-2033-6946e0d01232"
-        className="cursor-pack"
-        ref={cursorPackRef}
-      >
-        <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01237"
-          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
-          ref={defaultCursorRef}
-        >
-          <div className="def-cursor-hor"></div>
-          <div className="def-cursor-ver"></div>
-        </div>
-        <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01234"
-          className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
-          ref={linkCursorRef}
-        >
-          <div className="link-cursor-hor"></div>
-          <div className="link-cursor-ver"></div>
-        </div>
-        <div
-          data-w-id="218bd18c-b09b-fd1f-8919-239f1d31cae1"
-          className="drag-cursor"
-        ></div>
-        <div className="resize-cursor"></div>
-        <div className="arrow-cursor"></div>
-        <div id="video-cursor" className="video-cursor">
-          <div id="video-loader" className="video-loader"></div>
-          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
-            Play
-          </div>
-        </div>
-        <div className="drag-helper">Drag</div>
-        <div className="team-drag">Drag</div>
-      </div>
       <div className="section">
         <div className="gap-120"></div>
         <div className="container">

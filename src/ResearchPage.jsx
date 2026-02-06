@@ -5,79 +5,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import panzoom from "panzoom";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
-import Loader from "./components/Loader.jsx";
 import Footer from "./components/Footer.jsx";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ResearchPage() {
-  const cursorPackRef = useRef(null);
-  const defaultCursorRef = useRef(null);
-  const linkCursorRef = useRef(null);
-  const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
   const panzoomInstanceRef = useRef(null);
 
   useVideoPlayer();
-
-  // Custom Cursor Logic
-  useEffect(() => {
-    const cursorPack = cursorPackRef.current;
-    const defaultCursor = defaultCursorRef.current;
-    const linkCursor = linkCursorRef.current;
-
-    if (!cursorPack || !defaultCursor || !linkCursor) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-
-    const animateCursor = () => {
-      const speed = 0.15;
-      cursorX += (mouseX - cursorX) * speed;
-      cursorY += (mouseY - cursorY) * speed;
-
-      if (defaultCursor) {
-        defaultCursor.style.left = `${cursorX}px`;
-        defaultCursor.style.top = `${cursorY}px`;
-      }
-      if (linkCursor) {
-        linkCursor.style.left = `${cursorX}px`;
-        linkCursor.style.top = `${cursorY}px`;
-      }
-
-      requestAnimationFrame(animateCursor);
-    };
-
-    const animationFrame = requestAnimationFrame(animateCursor);
-
-    const handleLinkHover = () => setCursorType("link");
-    const handleLinkLeave = () => setCursorType("default");
-
-    const links = document.querySelectorAll("a, button, .link");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleLinkHover);
-      link.addEventListener("mouseleave", handleLinkLeave);
-    });
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrame);
-      links.forEach((link) => {
-        link.removeEventListener("mouseenter", handleLinkHover);
-        link.removeEventListener("mouseleave", handleLinkLeave);
-      });
-    };
-  }, []);
 
   // Panzoom and drag/resize functionality
   useEffect(() => {
@@ -529,130 +465,10 @@ function ResearchPage() {
 
   return (
     <>
-      <Loader />
-      <div className="navbar">
-        <div className="navbar-main-wrp">
-          <div className="navbar-logo-wrp">
-            <Link
-              to="/"
-              className="logo link w-inline-block"
-              style={{
-                backgroundImage: 'url("/assets/logo.png")',
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            ></Link>
-          </div>
-          <div
-            id="w-node-f189272f-6638-5b12-d5b7-2dd5adebb21e-d64e909a"
-            className="navbar-dt-wrp"
-          >
-            <div className="navbar-link-wrp">
-              <Link to="/project-index" className="link navbar-link">
-                Index
-              </Link>
-              <Link
-                to="/research"
-                aria-current="page"
-                className="link navbar-link w--current"
-              >
-                Research
-              </Link>
-              <Link to="/team" className="link navbar-link">
-                Team
-              </Link>
-              <a
-                href="#"
-                className="link navbar-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsContactOpen(!isContactOpen);
-                }}
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-          <div
-            id="w-node-_695dd12c-82a5-a52d-8f5b-486dd64e909c-d64e909a"
-            data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909c"
-            className="menu-icon"
-          >
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909d"
-              className="menu-icon-line"
-            ></div>
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909e"
-              className="menu-icon-line mi-2"
-            ></div>
-          </div>
-        </div>
-        <div className="navbar-mob-wrp">
-          <div className="navbar-link-wrp">
-            <Link to="/project-index" className="link navbar-link">
-              Index
-            </Link>
-            <Link
-              to="/research"
-              aria-current="page"
-              className="link navbar-link w--current"
-            >
-              Research
-            </Link>
-            <Link to="/team" className="link navbar-link">
-              Team
-            </Link>
-            <a
-              href="#"
-              className="link navbar-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsContactOpen(!isContactOpen);
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <Footer isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
-
-
-      <div
-        id="cursor-pack"
-        className="cursor-pack"
-        ref={cursorPackRef}
-        style={{ zIndex: 200000 }}
-      >
-        <div
-          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
-          ref={defaultCursorRef}
-        >
-          <div className="def-cursor-hor"></div>
-          <div className="def-cursor-ver"></div>
-        </div>
-        <div
-          className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
-          ref={linkCursorRef}
-        >
-          <div className="link-cursor-hor"></div>
-          <div className="link-cursor-ver"></div>
-        </div>
-        <div className="drag-cursor"></div>
-        <div className="resize-cursor"></div>
-        <div className="arrow-cursor"></div>
-        <div id="video-cursor" className="video-cursor">
-          <div id="video-loader" className="video-loader"></div>
-          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
-            Play
-          </div>
-        </div>
-        <div className="drag-helper">Drag</div>
-        <div className="team-drag">Drag</div>
-      </div>
+      <Footer
+        isContactOpen={isContactOpen}
+        setIsContactOpen={setIsContactOpen}
+      />
 
       <div
         className={`contact-banner ${isContactOpen ? "open" : "closed"}`}

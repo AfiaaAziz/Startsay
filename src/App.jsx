@@ -13,83 +13,17 @@ import MarsPage from "./pages/MarsPage";
 import AdminRoutes from "./admin/AdminRoutes";
 import Loader from "./components/Loader.jsx";
 import Footer from "./components/Footer.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  useEffect(() => {
-    // Event delegation for mobile menu to handle dynamic navigation
-    const handleMenuInteraction = (e) => {
-      // 1. Handle Menu Icon Click
-      const icon = e.target.closest(".menu-icon");
-      if (icon) {
-        e.preventDefault(); // Prevent ghost clicks if checking both touch/click or default behaviors
-        const navbar = icon.closest(".navbar");
-        if (!navbar) return;
-        const mob = navbar.querySelector(".navbar-mob-wrp");
-        if (!mob) return;
-
-        const isOpen = mob.getAttribute("data-open") === "true";
-        if (isOpen) {
-          mob.setAttribute("data-open", "false");
-          mob.style.display = "";
-          icon.classList.remove("menu-open");
-        } else {
-          mob.setAttribute("data-open", "true");
-          mob.style.display = "block";
-          icon.classList.add("menu-open");
-        }
-        return; // Stop processing if we handled the icon
-      }
-
-      // 2. Handle Link Clicks (Close Menu)
-      const link = e.target.closest(".navbar-link");
-      if (link) {
-        const navbar = link.closest(".navbar");
-        const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
-        const menuIcon = navbar && navbar.querySelector(".menu-icon");
-
-        if (mob) {
-          mob.setAttribute("data-open", "false");
-          mob.style.display = "";
-        }
-        if (menuIcon) {
-          menuIcon.classList.remove("menu-open");
-        }
-      }
-    };
-
-    // Use 'click' for robust handling across devices.
-    // Modern mobile browsers handle click well without 300ms delay if viewport is set correctly.
-    document.addEventListener("click", handleMenuInteraction);
-
-    return () => {
-      document.removeEventListener("click", handleMenuInteraction);
-    };
-  }, []);
-
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/project-index" element={<IndexPage />} />
-      <Route path="/team" element={<TeamPage />} />
-      <Route path="/research" element={<ResearchPage />} />
-      <Route path="/project/mars" element={<MarsPage />} />
-      <Route path="/project/:projectSlug" element={<ProjectPage />} />
-      <Route path="/admin/*" element={<AdminRoutes />} />
-    </Routes>
-  );
-}
-
-function HomePage() {
   const cursorPackRef = useRef(null);
   const defaultCursorRef = useRef(null);
   const linkCursorRef = useRef(null);
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
-
-  useVideoPlayer();
 
   // Custom Cursor Logic
   useEffect(() => {
@@ -121,12 +55,10 @@ function HomePage() {
 
     // Smooth cursor animation loop
     const animateCursor = () => {
-      // Smooth interpolation for cursor movement
       const speed = 0.15;
       cursorX += (mouseX - cursorX) * speed;
       cursorY += (mouseY - cursorY) * speed;
 
-      // Position both cursors - they already have transform: translate(-50%, -50%) in CSS
       if (defaultCursor) {
         defaultCursor.style.left = `${cursorX}px`;
         defaultCursor.style.top = `${cursorY}px`;
@@ -144,39 +76,23 @@ function HomePage() {
 
     // Function to add white cursor class to all cursor elements
     const addContactBannerCursor = () => {
-      if (defaultCursor) defaultCursor.classList.add("contact-banner-cursor");
-      if (linkCursor) linkCursor.classList.add("contact-banner-cursor");
-      if (dragCursor) dragCursor.classList.add("contact-banner-cursor");
-      if (resizeCursor) resizeCursor.classList.add("contact-banner-cursor");
-      if (videoCursor) videoCursor.classList.add("contact-banner-cursor");
-      if (dragHelper) dragHelper.classList.add("contact-banner-cursor");
-      if (teamDrag) teamDrag.classList.add("contact-banner-cursor");
+      const elements = [defaultCursor, linkCursor, dragCursor, resizeCursor, videoCursor, dragHelper, teamDrag];
+      elements.forEach(el => el && el.classList.add("contact-banner-cursor"));
     };
 
     // Function to remove white cursor class from all cursor elements
     const removeContactBannerCursor = () => {
-      if (defaultCursor)
-        defaultCursor.classList.remove("contact-banner-cursor");
-      if (linkCursor) linkCursor.classList.remove("contact-banner-cursor");
-      if (dragCursor) dragCursor.classList.remove("contact-banner-cursor");
-      if (resizeCursor) resizeCursor.classList.remove("contact-banner-cursor");
-      if (videoCursor) videoCursor.classList.remove("contact-banner-cursor");
-      if (dragHelper) dragHelper.classList.remove("contact-banner-cursor");
-      if (teamDrag) teamDrag.classList.remove("contact-banner-cursor");
+      const elements = [defaultCursor, linkCursor, dragCursor, resizeCursor, videoCursor, dragHelper, teamDrag];
+      elements.forEach(el => el && el.classList.remove("contact-banner-cursor"));
     };
 
     // Handle hover states for links and interactive elements using event delegation
     const handleLinkHover = (e) => {
-      // Check if target has closest method (skip if it doesn't)
       if (!e.target || typeof e.target.closest !== "function") return;
-
-      const target = e.target.closest(
-        "a, button, .link, .project-card, .contact-banner",
-      );
+      const target = e.target.closest("a, button, .link, .project-card, .contact-banner");
       if (target) {
         setCursorType("link");
       }
-      // Check if hovering over contact banner for white cursor
       const contactBanner = e.target.closest(".contact-banner");
       if (contactBanner) {
         addContactBannerCursor();
@@ -184,29 +100,21 @@ function HomePage() {
     };
 
     const handleLinkLeave = (e) => {
-      // Check if target has closest method (skip if it doesn't)
       if (!e.target || typeof e.target.closest !== "function") return;
-
-      const target = e.target.closest(
-        "a, button, .link, .project-card, .contact-banner",
-      );
+      const target = e.target.closest("a, button, .link, .project-card, .contact-banner");
       if (target) {
         setCursorType("default");
       }
-      // Check if leaving contact banner - remove white cursor
       const relatedTarget = e.relatedTarget;
-      const leavingContactBanner =
-        !relatedTarget || !relatedTarget.closest(".contact-banner");
+      const leavingContactBanner = !relatedTarget || !relatedTarget.closest(".contact-banner");
       if (leavingContactBanner) {
         removeContactBannerCursor();
       }
     };
 
-    // Use mouseover/mouseout instead of mouseenter/mouseleave for better bubbling
     document.addEventListener("mouseover", handleLinkHover);
     document.addEventListener("mouseout", handleLinkLeave);
 
-    // Clean up
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrame);
@@ -214,6 +122,110 @@ function HomePage() {
       document.removeEventListener("mouseout", handleLinkLeave);
     };
   }, []);
+
+  useEffect(() => {
+    // Event delegation for mobile menu to handle dynamic navigation
+    const handleMenuInteraction = (e) => {
+      const icon = e.target.closest(".menu-icon");
+      if (icon) {
+        e.preventDefault();
+        const navbar = icon.closest(".navbar");
+        if (!navbar) return;
+        const mob = navbar.querySelector(".navbar-mob-wrp");
+        if (!mob) return;
+
+        const isOpen = mob.getAttribute("data-open") === "true";
+        if (isOpen) {
+          mob.setAttribute("data-open", "false");
+          mob.style.display = "";
+          icon.classList.remove("menu-open");
+        } else {
+          mob.setAttribute("data-open", "true");
+          mob.style.display = "block";
+          icon.classList.add("menu-open");
+        }
+        return;
+      }
+
+      const link = e.target.closest(".navbar-link");
+      if (link) {
+        const navbar = link.closest(".navbar");
+        const mob = navbar && navbar.querySelector(".navbar-mob-wrp");
+        const menuIcon = navbar && navbar.querySelector(".menu-icon");
+
+        if (mob) {
+          mob.setAttribute("data-open", "false");
+          mob.style.display = "";
+        }
+        if (menuIcon) {
+          menuIcon.classList.remove("menu-open");
+        }
+      }
+    };
+
+    document.addEventListener("click", handleMenuInteraction);
+    document.addEventListener("touchstart", handleMenuInteraction, { passive: false });
+    return () => {
+      document.removeEventListener("click", handleMenuInteraction);
+      document.removeEventListener("touchstart", handleMenuInteraction);
+    };
+  }, []);
+
+  return (
+    <div className="app-container">
+      <Loader />
+      <Navbar isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />
+      <div
+        id="cursor-pack"
+        className="cursor-pack"
+        ref={cursorPackRef}
+      >
+        <div
+          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
+          ref={defaultCursorRef}
+        >
+          <div className="def-cursor-hor"></div>
+          <div className="def-cursor-ver"></div>
+        </div>
+        <div
+          className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
+          ref={linkCursorRef}
+        >
+          <div className="link-cursor-hor"></div>
+          <div className="link-cursor-ver"></div>
+        </div>
+        <div className="drag-cursor"></div>
+        <div className="resize-cursor"></div>
+        <div className="arrow-cursor"></div>
+        <div id="video-cursor" className="video-cursor">
+          <div id="video-loader" className="video-loader"></div>
+          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
+            Play
+          </div>
+        </div>
+        <div className="drag-helper">Drag</div>
+        <div className="team-drag">Drag</div>
+        <div className="contact-white-cursor">
+          <div className="contact-white-hor"></div>
+          <div className="contact-white-ver"></div>
+        </div>
+      </div>
+
+      <Routes>
+        <Route path="/" element={<HomePage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
+        <Route path="/project-index" element={<IndexPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/project/mars" element={<MarsPage />} />
+        <Route path="/project/:projectSlug" element={<ProjectPage />} />
+        <Route path="/admin/*" element={<AdminRoutes />} />
+      </Routes>
+    </div>
+  );
+}
+
+function HomePage({ isContactOpen, setIsContactOpen }) {
+  useVideoPlayer();
 
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
@@ -300,7 +312,7 @@ function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -312,190 +324,16 @@ function HomePage() {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) {}
+      } catch (e) { }
       try {
         ScrollTrigger.refresh();
-      } catch (e) {}
+      } catch (e) { }
     }, 500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="app-container">
-      <Loader />
-      <div className="navbar">
-        <div className="navbar-main-wrp">
-          <div className="navbar-logo-wrp">
-            <a
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:695dd12c-82a5-a52d-8f5b-486dd64e909b"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="695dd12c-82a5-a52d-8f5b-486dd64e909b"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%5D"
-              href="/"
-              aria-current="page"
-              className="logo link w-inline-block w--current"
-            ></a>
-          </div>
-          <div
-            id="w-node-f189272f-6638-5b12-d5b7-2dd5adebb21e-d64e909a"
-            className="navbar-dt-wrp"
-          >
-            <div className="navbar-link-wrp">
-              <a
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#/project-index"
-                className="link navbar-link"
-              >
-                Index
-              </a>
-              <a
-                data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#/research"
-                className="link navbar-link"
-              >
-                Research
-              </a>
-              <a
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#/team"
-                className="link navbar-link"
-              >
-                Team
-              </a>
-              <a
-                data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:777dc168-b433-7e41-f8ce-a97e84182cc6:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-ao-click-engagement-tracking="true"
-                data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-                data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%22777dc168-b433-7e41-f8ce-a97e84182cc6%22%7D%5D"
-                href="#"
-                className="link navbar-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsContactOpen(!isContactOpen);
-                }}
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-          <div
-            id="w-node-_695dd12c-82a5-a52d-8f5b-486dd64e909c-d64e909a"
-            data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909c"
-            className="menu-icon"
-          >
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909d"
-              className="menu-icon-line"
-            ></div>
-            <div
-              data-w-id="695dd12c-82a5-a52d-8f5b-486dd64e909e"
-              className="menu-icon-line mi-2"
-            ></div>
-          </div>
-        </div>
-        <div className="navbar-mob-wrp">
-          <div className="navbar-link-wrp">
-            <a
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de3"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#/project-index"
-              className="link navbar-link"
-            >
-              Index
-            </a>
-            <a
-              data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de5"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#/research"
-              className="link navbar-link"
-            >
-              Research
-            </a>
-            <a
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de7"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#/team"
-              className="link navbar-link"
-            >
-              Team
-            </a>
-            <a
-              data-w-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-native-id-path="db3a588f-3827-e854-563a-f0ecb0988341:43979cbf-fab0-480b-4b9a-2c363aa41cfd:7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="7f4a4cfd-1a02-f6e0-fe12-3c21a7a73de9"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22695dd12c-82a5-a52d-8f5b-486dd64e909a%22%2C%22instanceId%22%3A%22db3a588f-3827-e854-563a-f0ecb0988341%22%7D%2C%7B%22componentId%22%3A%227f4a4cfd-1a02-f6e0-fe12-3c21a7a73de2%22%2C%22instanceId%22%3A%2243979cbf-fab0-480b-4b9a-2c363aa41cfd%22%7D%5D"
-              href="#"
-              className="link navbar-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsContactOpen(!isContactOpen);
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        id="cursor-pack"
-        data-w-id="ffc94e13-05f2-5027-2033-6946e0d01232"
-        className="cursor-pack"
-        ref={cursorPackRef}
-      >
-        <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01237"
-          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
-          ref={defaultCursorRef}
-        >
-          <div className="def-cursor-hor"></div>
-          <div className="def-cursor-ver"></div>
-        </div>
-        <div
-          data-w-id="ffc94e13-05f2-5027-2033-6946e0d01234"
-          className={`link-cursor ${cursorType === "link" ? "visible" : ""}`}
-          ref={linkCursorRef}
-        >
-          <div className="link-cursor-hor"></div>
-          <div className="link-cursor-ver"></div>
-        </div>
-        <div
-          data-w-id="218bd18c-b09b-fd1f-8919-239f1d31cae1"
-          className="drag-cursor"
-        ></div>
-        <div className="resize-cursor"></div>
-        <div className="arrow-cursor"></div>
-        <div id="video-cursor" className="video-cursor">
-          <div id="video-loader" className="video-loader"></div>
-          <div id="videocontrol-play-btn" className="videocontrol-play-btn">
-            Play
-          </div>
-        </div>
-        <div className="drag-helper">Drag</div>
-        <div className="team-drag">Drag</div>
-        <div className="contact-white-cursor">
-          <div className="contact-white-hor"></div>
-          <div className="contact-white-ver"></div>
-        </div>
-      </div>
+    <>
       <div className="cookie-pack">
         <div fs-cc="banner" className="fs-cc-banner">
           <div className="fs-cc-banner2_container">
@@ -889,7 +727,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-               USAID
+                  USAID
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -918,7 +756,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                 DIFC
+                  DIFC
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1063,7 +901,7 @@ function HomePage() {
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
                 >
-                 Neuro
+                  Neuro
                 </div>
                 <div
                   data-w-id="45a76f3e-773c-ba96-27a9-12db3d2a4ce9"
@@ -1107,7 +945,9 @@ function HomePage() {
         <div id="scrollto" className="gap-80"></div>
         <div className="container _5-grid">
           <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678"></div>
+
           <div id="w-node-_07ba283e-d6d6-55a6-8ecc-27cf9d894ec7-256fe678">
+
             <div
               data-w-id="7256aa37-c59c-faaf-e9fb-6a5ef41e1011"
               style={{ opacity: 1 }}
@@ -1181,25 +1021,23 @@ function HomePage() {
         <div words-slide-up="" text-split="" className="container">
           <div>
             <div>
-              Styleframe GmbH
+              Startsay
               <br />
               Based in
               <br />
-              Frankfurt am Main
+              Office Number 2207
+              National Science & Technology Park (NSTP)
+              NUST H-12, Islamabad
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
             <div className="t-large">
-              Styleframe is a design and CGI animation studio driven by clarity,
-              craft, and creative vision. Projects are approached with precision
-              and purpose, ensuring every detail contributes to meaningful
-              visual impact.
+              Startsay is an advertising and marketing agency driven by strategy, creativity, and clear brand vision. We craft every project with purpose, ensuring each detail delivers meaningful impact and real results.
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
             <div className="t-large">
-              Collaboration with international clients shapes the work, always
-              balancing experimentation with refined execution.
+              Working with international clients, we balance experimentation with refined execution.
             </div>
             <div className="gap-40"></div>
             <a
@@ -1595,7 +1433,7 @@ function HomePage() {
         isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
       />
-    </div>
+    </>
   );
 }
 
