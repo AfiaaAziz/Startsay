@@ -1213,202 +1213,8 @@ function HomePage() {
             </a>
           </div>
         </div>
-        <div className="gap-120"></div>
-        <div words-slide-up="" text-split="" className="container">
-          <div>
-            <div className="gap-15"></div>
-            <div>Awards</div>
-          </div>
-          <div id="w-node-d48b33b4-4f55-d80e-e9f8-fe8192c56aee-256fe678">
-            <div className="carousel-wrp">
-              <div className="carousel">
-                <div
-                  data-w-id="23bbced2-e113-b288-9ae4-e1b1c477c475"
-                  className="overflow-hidden w-dyn-list"
-                >
-                  <div
-                    data-w-id="23bbced2-e113-b288-9ae4-e1b1c477c476"
-                    role="list"
-                    className="scroll-list w-dyn-items"
-                  >
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x World Media Festivals
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        04 x Worldfest Houston
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x Berlin Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        02 x Vegas Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        01 x New York Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">
-                        03 x Red Movie Awards
-                      </div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">01 x Lafa Awards</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="gap-100"></div>
+       
         <div words-slide-up="" text-split="" className="container no-top-pad">
           <div>
             <div className="gap-15"></div>
@@ -1420,43 +1226,75 @@ function HomePage() {
                 <div className="overflow-hidden w-dyn-list">
                   <div role="list" className="scroll-list w-dyn-items">
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
+                      <div className="t-large-no-anim">USAID</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
+                      <div className="t-large-no-anim">DIFC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
+                      <div className="t-large-no-anim">UNODC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
+                      <div className="t-large-no-anim">FrontRow Entertainment</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
+                      <div className="t-large-no-anim">Marriott</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
+                      <div className="t-large-no-anim">Parkview City</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
+                      <div className="t-large-no-anim">Intercity Hotel</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
+                      <div className="t-large-no-anim">NUST</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
+                      <div className="t-large-no-anim">POF</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
+                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Neuro</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Zonergy</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">ONYX Tower</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Avtive</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Trivelles</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                   </div>
@@ -1471,43 +1309,153 @@ function HomePage() {
                     className="scroll-list w-dyn-items"
                   >
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
+                      <div className="t-large-no-anim">USAID</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
+                      <div className="t-large-no-anim">DIFC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
+                      <div className="t-large-no-anim">UNODC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
+                      <div className="t-large-no-anim">FrontRow Entertainment</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
+                      <div className="t-large-no-anim">Marriott</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
+                      <div className="t-large-no-anim">Parkview City</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
+                      <div className="t-large-no-anim">Intercity Hotel</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
+                      <div className="t-large-no-anim">NUST</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
+                      <div className="t-large-no-anim">POF</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
+                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Neuro</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Zonergy</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">ONYX Tower</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Avtive</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Trivelles</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+
+                  </div>
+                </div>
+                <div className="overflow-hidden w-dyn-list">
+                  <div role="list" className="scroll-list w-dyn-items">
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">USAID</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">DIFC</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">UNODC</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">FrontRow Entertainment</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Marriott</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Parkview City</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Intercity Hotel</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">NUST</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">POF</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">WAH Industries Limited</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Millennium Aesthetic</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Neuro</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Zonergy</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">COCO Cotton Collection</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">ONYX Tower</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Avtive</div>
+                      <div className="t-large-no-anim t-gray">●</div>
+                    </div>
+                    <div role="listitem" className="scroll-item w-dyn-item">
+                      <div className="t-large-no-anim">Trivelles</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                   </div>
@@ -1515,87 +1463,75 @@ function HomePage() {
                 <div className="overflow-hidden w-dyn-list">
                   <div role="list" className="scroll-list w-dyn-items">
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
+                      <div className="t-large-no-anim">USAID</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
+                      <div className="t-large-no-anim">DIFC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
+                      <div className="t-large-no-anim">UNODC</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
+                      <div className="t-large-no-anim">FrontRow Entertainment</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
+                      <div className="t-large-no-anim">Marriott</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
+                      <div className="t-large-no-anim">Parkview City</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
+                      <div className="t-large-no-anim">Intercity Hotel</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
+                      <div className="t-large-no-anim">NUST</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
+                      <div className="t-large-no-anim">POF</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overflow-hidden w-dyn-list">
-                  <div role="list" className="scroll-list w-dyn-items">
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Audi</div>
+                      <div className="t-large-no-anim">WAH Industries Limited</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Bose</div>
+                      <div className="t-large-no-anim">Millennium Aesthetic</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Deutsche Bank</div>
+                      <div className="t-large-no-anim">Neuro</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Lionsgate</div>
+                      <div className="t-large-no-anim">Zonergy</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Michelin</div>
+                      <div className="t-large-no-anim">COCO Cotton Collection</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Moncler</div>
+                      <div className="t-large-no-anim">ONYX Tower</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Oakley</div>
+                      <div className="t-large-no-anim">Abraham & Agrimont Tractors</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Opel</div>
+                      <div className="t-large-no-anim">Avtive</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                     <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Ray-Ban</div>
-                      <div className="t-large-no-anim t-gray">●</div>
-                    </div>
-                    <div role="listitem" className="scroll-item w-dyn-item">
-                      <div className="t-large-no-anim">Sonra</div>
+                      <div className="t-large-no-anim">Trivelles</div>
                       <div className="t-large-no-anim t-gray">●</div>
                     </div>
                   </div>

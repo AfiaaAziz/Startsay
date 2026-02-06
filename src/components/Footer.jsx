@@ -42,9 +42,7 @@ const Footer = ({ isContactOpen, setIsContactOpen }) => {
           <a href="#/project-index" className="link footer-link right-arrow">
             Index
           </a>
-          <a href="#/research" className="link footer-link right-arrow">
-            Research
-          </a>
+          
           <a href="#/team" className="link footer-link right-arrow">
             Team
           </a>
