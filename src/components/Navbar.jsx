@@ -12,9 +12,9 @@ const Navbar = ({ isContactOpen, setIsContactOpen, isMenuOpen, setIsMenuOpen }) 
   };
 
   return (
-    <div className="navbar">
-      <div className="navbar-main-wrp">
-        <div className="navbar-logo-wrp">
+    <div className="sf-navbar">
+      <div className="sf-navbar-main-wrp">
+        <div className="sf-navbar-logo-wrp">
           <Link
             to="/"
             className="logo link w-inline-block"
@@ -27,17 +27,17 @@ const Navbar = ({ isContactOpen, setIsContactOpen, isMenuOpen, setIsMenuOpen }) 
             }}
           ></Link>
         </div>
-        <div className="navbar-dt-wrp">
-          <div className="navbar-link-wrp">
-            <Link to="/project-index" className="link navbar-link">
+        <div className="sf-navbar-dt-wrp">
+          <div className="sf-navbar-link-wrp">
+            <Link to="/project-index" className="link sf-navbar-link">
               Index
             </Link>
-            <Link to="/team" className="link navbar-link">
+            <Link to="/team" className="link sf-navbar-link">
               Team
             </Link>
             <a
               href="#"
-              className="link navbar-link"
+              className="link sf-navbar-link"
               onClick={(e) => {
                 e.preventDefault();
                 if (setIsContactOpen) {
@@ -50,32 +50,32 @@ const Navbar = ({ isContactOpen, setIsContactOpen, isMenuOpen, setIsMenuOpen }) 
           </div>
         </div>
         <div 
-          className={`menu-icon ${isMenuOpen ? "menu-open" : ""}`}
+          className={`sf-menu-icon ${isMenuOpen ? "menu-open" : ""}`}
           onClick={toggleMenu}
         >
-          <div className="menu-icon-line"></div>
-          <div className="menu-icon-line mi-2"></div>
+          <div className="sf-menu-icon-line"></div>
+          <div className="sf-menu-icon-line mi-2"></div>
         </div>
       </div>
-      <div className={`navbar-mob-wrp ${isMenuOpen ? "open" : ""}`}>
-        <div className="navbar-link-wrp">
+      <div className={`sf-navbar-mob-wrp ${isMenuOpen ? "open" : ""}`}>
+        <div className="sf-navbar-link-wrp">
           <Link 
             to="/project-index" 
-            className="link navbar-link"
+            className="link sf-navbar-link"
             onClick={closeMenu}
           >
             Index
           </Link>
           <Link 
             to="/team" 
-            className="link navbar-link"
+            className="link sf-navbar-link"
             onClick={closeMenu}
           >
             Team
           </Link>
           <a
             href="#"
-            className="link navbar-link"
+            className="link sf-navbar-link"
             onClick={(e) => {
               e.preventDefault();
               closeMenu();

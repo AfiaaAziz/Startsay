@@ -1408,7 +1408,7 @@ html.w-editor [text-split] {
 }
 
 /* Style for PNG logo in navbar */
-.navbar-logo-wrp .logo {
+.sf-navbar-logo-wrp .logo {
   display: block;
   width: 50px;
   height: 40px;
@@ -1428,21 +1428,21 @@ html.w-editor [text-split] {
 
 /* Adjust logo size for different screen sizes */
 @media (max-width: 768px) {
-  .navbar-logo-wrp .logo {
+  .sf-navbar-logo-wrp .logo {
     width: 120px;
     height: 32px;
   }
 }
 
 @media (max-width: 480px) {
-  .navbar-logo-wrp .logo {
+  .sf-navbar-logo-wrp .logo {
     width: 100px;
     height: 28px;
   }
 }
 
 /* ========== NAVBAR LAYOUT ADJUSTMENTS ========== */
-.navbar {
+.sf-navbar {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1450,9 +1450,10 @@ html.w-editor [text-split] {
   z-index: 9999 !important;
   /* Below cursor pack but above most */
   background: transparent !important;
+  pointer-events: auto !important;
 }
 
-.navbar-main-wrp {
+.sf-navbar-main-wrp {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -1463,18 +1464,18 @@ html.w-editor [text-split] {
   box-sizing: border-box !important;
 }
 
-.navbar-logo-wrp {
+.sf-navbar-logo-wrp {
   flex: 0 0 auto !important;
 }
 
-.navbar-dt-wrp {
+.sf-navbar-dt-wrp {
   flex: 1 1 auto !important;
   display: flex !important;
   justify-content: center !important;
   margin: 0 20px !important;
 }
 
-.navbar-link-wrp {
+.sf-navbar-link-wrp {
   display: flex !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -1482,24 +1483,16 @@ html.w-editor [text-split] {
   /* Spread links wider */
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10000;
-  pointer-events: auto;
-}
-
-.navbar-link {
+.sf-navbar-link {
   font-size: 1.1rem !important;
   text-transform: uppercase !important;
   letter-spacing: 1.5px !important;
   font-weight: 500 !important;
   pointer-events: auto !important;
+  color: black !important;
 }
 
-.menu-icon {
+.sf-menu-icon {
   display: none !important;
   cursor: pointer;
   width: 30px;
@@ -1511,27 +1504,31 @@ html.w-editor [text-split] {
   pointer-events: auto !important;
 }
 
-.menu-icon-line {
+.sf-menu-icon-line {
   width: 100%;
   height: 2px;
   background-color: #ff5101;
   transition: all 0.3s ease;
 }
 
+.sf-navbar-mob-wrp {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .navbar-dt-wrp {
+  .sf-navbar-dt-wrp {
     display: none !important;
   }
 
-  .menu-icon {
+  .sf-menu-icon {
     display: flex !important;
   }
 
-  .navbar-main-wrp {
+  .sf-navbar-main-wrp {
     padding: 0 20px !important;
   }
 
-  .navbar-mob-wrp {
+  .sf-navbar-mob-wrp {
     display: none;
     position: fixed;
     top: 80px;
@@ -1544,27 +1541,27 @@ html.w-editor [text-split] {
     overflow-y: auto;
   }
 
-  .navbar-mob-wrp.open {
+  .sf-navbar-mob-wrp.open {
     display: block !important;
   }
 
-  .navbar-mob-wrp .navbar-link-wrp {
+  .sf-navbar-mob-wrp .sf-navbar-link-wrp {
     flex-direction: column !important;
     gap: 30px !important;
     align-items: center !important;
     max-width: none !important;
   }
 
-  .navbar-mob-wrp .navbar-link {
+  .sf-navbar-mob-wrp .sf-navbar-link {
     font-size: 1.5rem !important;
   }
 }
 
-.menu-open .menu-icon-line:nth-child(1) {
+.menu-open .sf-menu-icon-line:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-.menu-open .menu-icon-line:nth-child(2) {
+.menu-open .sf-menu-icon-line:nth-child(2) {
   transform: translateY(-8px) rotate(-45deg);
 }
 

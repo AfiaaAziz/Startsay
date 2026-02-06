@@ -251,17 +251,16 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
             className="index-list-wrp w-dyn-list"
           >
             <div role="list" className="index-list w-dyn-items">
-              {/* Samsung Wearables */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/samsung-wearables"
                   className="link table-row w-inline-block"
                 >
                   <div className="index-1st-col-wrp">
-                    <div className="t-large mob-size">2025</div>
+                    <div className="t-large mob-size">2021</div>
                   </div>
-                  <div className="t-large">Samsung</div>
-                  <div className="t-large">Galaxy Watch8 Series</div>
+                  <div className="t-large">USAID</div>
+                  <div className="t-large">COVID-19 Pandemic Explainer Animation</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -288,17 +287,16 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Oakley Plantaris */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/plantaris-ti"
                   className="link table-row w-inline-block"
                 >
                   <div className="index-1st-col-wrp">
-                    <div className="t-large mob-size">2025</div>
+                    <div className="t-large mob-size">2024</div>
                   </div>
-                  <div className="t-large">Oakley</div>
-                  <div className="t-large">Plantaris Titanium</div>
+                  <div className="t-large">DIFC</div>
+                  <div className="t-large">Social media content</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -325,17 +323,16 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Samsung BnB */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/beats-n-buckets"
                   className="link table-row w-inline-block"
                 >
                   <div className="index-1st-col-wrp">
-                    <div className="t-large mob-size">2025</div>
+                    <div className="t-large mob-size">2022</div>
                   </div>
-                  <div className="t-large">Samsung</div>
-                  <div className="t-large">Galaxy Z Fold 7 - BnB</div>
+                  <div className="t-large">UNODC</div>
+                  <div className="t-large">Explainer Animations</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -362,7 +359,6 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Ray-Ban Innovation Lab */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/innovation-lab"
@@ -371,8 +367,8 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                   <div className="index-1st-col-wrp">
                     <div className="t-large mob-size">2025</div>
                   </div>
-                  <div className="t-large">Ray-Ban</div>
-                  <div className="t-large">Innovation Lab</div>
+                  <div className="t-large">FrontRow Entertainment</div>
+                  <div className="t-large">Hollywood Posters</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -399,7 +395,6 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Oakley Artifacts */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/cltr-rdfnd-7nt5r"
@@ -408,8 +403,8 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                   <div className="index-1st-col-wrp">
                     <div className="t-large mob-size">2025</div>
                   </div>
-                  <div className="t-large">Oakley</div>
-                  <div className="t-large">Artifacts from the Future</div>
+                  <div className="t-large">Marriott</div>
+                  <div className="t-large">Digital & Print Menu</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -436,17 +431,16 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Wolf & Shepherd */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/wolf-shepherd"
                   className="link table-row w-inline-block"
                 >
                   <div className="index-1st-col-wrp">
-                    <div className="t-large mob-size">2025</div>
+                    <div className="t-large mob-size">2024</div>
                   </div>
-                  <div className="t-large">Wolf &amp; Shepherd</div>
-                  <div className="t-large">Super</div>
+                  <div className="t-large">Parkview City</div>
+                  <div className="t-large">Commercials</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -473,7 +467,6 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Moncler */}
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
@@ -482,8 +475,8 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                   <div className="index-1st-col-wrp">
                     <div className="t-large mob-size">2025</div>
                   </div>
-                  <div className="t-large">Moncler</div>
-                  <div className="t-large">Grenoble FW25</div>
+                  <div className="t-large">Intercity Hotel</div>
+                  <div className="t-large">Promotional Reels</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -510,17 +503,376 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-              {/* Panel Systems */}
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2024</div>
+                  </div>
+                  <div className="t-large">POF</div>
+                  <div className="t-large">Presentational Videos</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2023</div>
+                  </div>
+                  <div className="t-large">WAH Industries Limited</div>
+                  <div className="t-large">Promotional Profiles</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+                <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Neuro</div>
+                  <div className="t-large">Promotional Content</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+                <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2026</div>
+                  </div>
+                  <div className="t-large">Millennium Aesthetic</div>
+                  <div className="t-large">Digital Campaigns</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2022</div>
+                  </div>
+                  <div className="t-large">Zonergy</div>
+                  <div className="t-large">Digital Campaigns</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">COCO Cotton Collection</div>
+                  <div className="t-large">Promotional Reels</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2020</div>
+                  </div>
+                  <div className="t-large">ONYX Tower</div>
+                  <div className="t-large">Architectural Animation</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+               <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2024</div>
+                  </div>
+                  <div className="t-large">Abraham & Agrimont Tractors</div>
+                  <div className="t-large">3D animation</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+                <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2025</div>
+                  </div>
+                  <div className="t-large">Avtive</div>
+                  <div className="t-large">Branding</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+                <div role="listitem" className="index-item w-dyn-item">
+                <Link
+                  to="/project/moncler-grenoble"
+                  className="link table-row w-inline-block"
+                >
+                  <div className="index-1st-col-wrp">
+                    <div className="t-large mob-size">2023</div>
+                  </div>
+                  <div className="t-large">Trivelles</div>
+                  <div className="t-large">Digital Campaigns</div>
+                </Link>
+                <div className="index-hover">
+                  <div className="index-hover-vid w-embed">
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      disablePictureInPicture
+                      disableRemotePlayback
+                      poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    >
+                      <source
+                        src="https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              </div>
+
               <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/szp"
                   className="link table-row w-inline-block"
                 >
                   <div className="index-1st-col-wrp">
-                    <div className="t-large mob-size">2024</div>
+                    <div className="t-large mob-size">2025</div>
                   </div>
-                  <div className="t-large">Panel Systems</div>
-                  <div className="t-large">Unit</div>
+                  <div className="t-large">NUST</div>
+                  <div className="t-large">Promotional Videos</div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
