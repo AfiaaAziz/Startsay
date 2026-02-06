@@ -9,8 +9,7 @@ import Footer from "./components/Footer.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ResearchPage() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
+function ResearchPage({ isContactOpen, setIsContactOpen }) {
   const panzoomInstanceRef = useRef(null);
 
   useVideoPlayer();
@@ -470,87 +469,6 @@ function ResearchPage() {
         setIsContactOpen={setIsContactOpen}
       />
 
-      <div
-        className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
-        style={{ zIndex: 150000 }}
-      >
-        <div
-          className="link t-large t-right bottom-auto"
-          onClick={() => setIsContactOpen(false)}
-          style={{ cursor: "pointer" }}
-        >
-          ✕
-        </div>
-        <div>
-          <div className="t-large t-white">
-            <a href="tel:+496994946890">+49 69 9494 689-0</a>
-            <br />
-          </div>
-          <div className="t-large t-white">
-            <a href="mailto:info@styleframe.de" className="link">
-              info@styleframe.de
-            </a>
-            <br />
-          </div>
-        </div>
-        <div className="t-large t-white">
-          Hanauer Landstr. 287
-          <br />
-          60314 Frankfurt am
-          <br />
-          Main, Germany
-        </div>
-        <a
-          href="https://maps.app.goo.gl/iqJ7Bt22FuPA7EKA7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link t-white-50"
-        >
-          Map ↗
-        </a>
-        <div className="link-wrp">
-          <a
-            href="https://www.instagram.com/styleframe.studio/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link t-large"
-          >
-            ↗ Instagram
-          </a>
-          <a
-            href="https://www.linkedin.com/company/styleframe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link t-large"
-          >
-            ↗ LinkedIn
-          </a>
-          <a
-            href="https://www.behance.net/styleframe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link t-large"
-          >
-            ↗ Behance
-          </a>
-          <a
-            href="https://vimeo.com/styleframe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link t-large"
-          >
-            ↗ Vimeo
-          </a>
-          <a
-            href="https://www.instagram.com/echologic.lab/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link t-large"
-          >
-            ↗ AI Lab
-          </a>
-        </div>
-      </div>
 
       <div className="lab-canvas-wrp" style={{ zIndex: 50000 }}>
         <Link

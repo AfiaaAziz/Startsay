@@ -9,7 +9,7 @@ import { useVideoPlayer } from "./hooks/useVideoPlayer";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function IndexPage() {
+function IndexPage({ isContactOpen, setIsContactOpen }) {
   useVideoPlayer();
 
   useEffect(() => {
@@ -807,99 +807,6 @@ function IndexPage() {
           <div className="w-form-done"></div>
           <div className="w-form-fail"></div>
           <div fs-cc="close" className="fs-cc-prefs2_overlay"></div>
-        </div>
-      </div>
-      <div
-        data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
-        className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
-      >
-        <div
-          data-w-id="d5f92b82-978f-a770-3f25-8224578da03b"
-          className="link t-large t-right bottom-auto"
-          onClick={() => setIsContactOpen(false)}
-          style={{ cursor: "pointer" }}
-        >
-          ✕
-        </div>
-        <div>
-          <div className="t-large t-white">
-            <a
-              href="tel:+496994946890"
-              data-w-id="3e6c7f76-b278-6f4b-e9b1-42e06638d930"
-              data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:3e6c7f76-b278-6f4b-e9b1-42e06638d930"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="3e6c7f76-b278-6f4b-e9b1-42e06638d930"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            >
-              +92 312 517 5041
-            </a>
-            <br />
-          </div>
-          <div className="t-large t-white">
-            <a
-              href="#"
-              data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:6d153c17-ca5a-0644-979f-a1a5d83c9835"
-              data-wf-ao-click-engagement-tracking="true"
-              data-wf-element-id="6d153c17-ca5a-0644-979f-a1a5d83c9835"
-              data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-              className="link"
-            >
-              info@startsay.com
-            </a>
-            <br />
-          </div>
-        </div>
-        <div className="t-large t-white">
-          Office Number 2207 <br />
-          National Science & Technology Park (NSTP)
-          <br />
-          NUST H-12, Islamabad
-        </div>
-        <a
-          data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da048"
-          data-wf-ao-click-engagement-tracking="true"
-          data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da048"
-          data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-          href="https://www.google.com/maps/place/National+Science+%26+Technology+Park+(NSTP)/@33.6457175,72.9972339,18z/data=!4m14!1m7!3m6!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!2sNational+Science+%26+Technology+Park+(NSTP)!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk!3m5!1s0x38df9573aecd2f93:0x1c7fdc5084512ca2!8m2!3d33.6456729!4d72.9985536!16s%2Fg%2F11h7fm4qtk?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank"
-          className="link t-white-50"
-        >
-          Map ↗
-        </a>
-        <div className="link-wrp">
-          <a
-            data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da04b"
-            data-wf-ao-click-engagement-tracking="true"
-            data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04b"
-            data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.instagram.com/startsay.official/"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ Instagram
-          </a>
-          <a
-            data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da04d"
-            data-wf-ao-click-engagement-tracking="true"
-            data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04d"
-            data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.linkedin.com/company/startsayofficial"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ LinkedIn
-          </a>
-          <a
-            data-wf-native-id-path="20f5aab3-bb9e-bf4b-b6b2-65f1575cf856:d5f92b82-978f-a770-3f25-8224578da04f"
-            data-wf-ao-click-engagement-tracking="true"
-            data-wf-element-id="d5f92b82-978f-a770-3f25-8224578da04f"
-            data-wf-component-context="%5B%7B%22componentId%22%3A%22d5f92b82-978f-a770-3f25-8224578da03a%22%2C%22instanceId%22%3A%2220f5aab3-bb9e-bf4b-b6b2-65f1575cf856%22%7D%5D"
-            href="https://www.behance.net/thisissyedbadshah"
-            target="_blank"
-            className="link t-large"
-          >
-            ↗ Behance
-          </a>
         </div>
       </div>
     </>
