@@ -1029,7 +1029,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
         </div>
       </div>
       <div className="section">
-        <div id="scrollto" className="gap-80"></div>
+        <div id="scrollto" className="gap-70"></div>
         <div className="container _5-grid">
           <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678">
             <div words-slide-up="" text-split="" className="about-heading">
@@ -1047,6 +1047,8 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
             </div>
           </div>
         </div>
+
+        <div className="gap-700"></div>
         <div id="showreel" className="container _5-grid">
           <div id="w-node-a83bf4c9-7318-1161-7fa0-1f567b3d4e71-256fe678">
             <div>HighLight</div>

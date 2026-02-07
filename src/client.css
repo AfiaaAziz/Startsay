@@ -521,13 +521,13 @@ html.w-mod-js .collection-item-lab,
   display: block !important;
 }
 
-/* ========== MOTTO HEADING ========== */
 .motto {
   margin-left: -10px;
   margin-top: -35px;
+  letter-spacing: 2.5px !important;
+
 }
 
-/* ========== ABOUT HEADING ========== */
 .about-heading {
   font-size: 2rem;
   font-weight: 600;
@@ -535,7 +535,46 @@ html.w-mod-js .collection-item-lab,
   color: #000;
 }
 
-/* ========== CURSOR PACK STYLING ========== */
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+
+  .about-heading {
+    margin-bottom: 40px;
+  }
+
+  .motto {
+    margin-left: -10px;
+    margin-top: 0;
+  }
+
+  #videocontainer {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .video-container.home-instance {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .gap-100 {
+    height: 40px;
+  }
+
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .gap-80 {
+    height: 20px;
+  }
+}
+
 #cursor-pack {
   position: fixed;
   top: 0;
@@ -585,7 +624,6 @@ html.w-mod-js .collection-item-lab,
   z-index: 10000;
 }
 
-/* Plus Sign Cursor Elements */
 .def-cursor-hor,
 .def-cursor-ver,
 .link-cursor-hor,
@@ -725,6 +763,7 @@ html.w-mod-js .collection-item-lab,
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -741,7 +780,7 @@ html.w-mod-js .collection-item-lab,
 }
 
 .project-hero-video video,
-.project-hero-video > * {
+.project-hero-video>* {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -779,7 +818,7 @@ html.w-mod-js .collection-item-lab,
     display: none !important;
   }
 
-  
+
   .index-hover {
     /* Ensure it can be shown by JS */
     display: none;
@@ -982,6 +1021,7 @@ html.w-mod-js .collection-item-lab,
 
 /* ========== MOBILE INDEX TABLE FIXES ========== */
 @media (max-width: 768px) {
+
   /* Reduce font sizes for mobile table */
   .link.table-row .t-large {
     font-size: 0.85rem !important;
@@ -1248,7 +1288,7 @@ html.w-mod-js .collection-item-lab,
 }
 
 .gap-80 {
-  height: 80px;
+  height: 40px;
 }
 
 .gap-100 {
