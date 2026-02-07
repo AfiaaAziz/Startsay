@@ -42,7 +42,7 @@ function App() {
     // Get all cursor elements
     const dragCursor = cursorPack.querySelector(".drag-cursor");
     const resizeCursor = cursorPack.querySelector(".resize-cursor");
-    const videoCursor = cursorPack.querySelector(".video-cursor");
+    const videoCursor = cursorPack.querySelector("#video-cursor");
     const dragHelper = cursorPack.querySelector(".drag-helper");
     const teamDrag = cursorPack.querySelector(".team-drag");
 
@@ -67,6 +67,10 @@ function App() {
       if (linkCursor) {
         linkCursor.style.left = `${cursorX}px`;
         linkCursor.style.top = `${cursorY}px`;
+      }
+      if (videoCursor) {
+        videoCursor.style.left = `${cursorX}px`;
+        videoCursor.style.top = `${cursorY}px`;
       }
 
       requestAnimationFrame(animateCursor);
@@ -1045,7 +1049,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
         </div>
         <div id="showreel" className="container _5-grid">
           <div id="w-node-a83bf4c9-7318-1161-7fa0-1f567b3d4e71-256fe678">
-            <div>Showreel</div>
+            <div>HighLight</div>
           </div>
           <div id="w-node-a83bf4c9-7318-1161-7fa0-1f567b3d4e74-256fe678">
             <div
@@ -1094,10 +1098,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
                   }}
                   poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
                 >
-                  <source
-                    src="https://drive.google.com/file/d/12yztqRDU8seIgWrsc6zAYSOLFvsf7oJA/view?usp=sharing"
-                    type="video/mp4"
-                  />{" "}
+                  <source src="assets/Highlight.mp4" type="video/mp4" />{" "}
                 </video>
               </div>
             </div>

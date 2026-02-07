@@ -13,6 +13,7 @@ export const useVideoPlayer = () => {
       const on = (t, type, h, opts) => t && t.addEventListener(type, h, opts);
       const once = (t, type, h, opts) =>
         t && t.addEventListener(type, h, { ...opts, once: true });
+      const off = (t, type, h) => t && t.removeEventListener(type, h);
 
       const videoContainer = $("#videocontainer");
       const video = $("#video");
@@ -29,6 +30,15 @@ export const useVideoPlayer = () => {
       const videoCursors = $$(".video-cursor");
 
       if (!video || !videoContainer || !controls) return;
+
+      // Video cursor elements
+      const videoCursor = $("#video-cursor");
+      const videoCursorMobile = $(".video-cursor.mobile-cursor");
+
+      // Hide mobile cursor on desktop
+      if (videoCursorMobile) {
+        videoCursorMobile.style.display = "none";
+      }
 
       const HIDE_DELAY = 2000;
       const SEEK_STEP = 1;
@@ -341,6 +351,35 @@ export const useVideoPlayer = () => {
           fsElement() ? exitFs() : enterFs(videoContainer);
         }
       };
+
+      // Video cursor mouse tracking
+      let isHoveringVideo = false;
+
+      // Track cursor on entire document when video container is hovered
+      // The main cursor already tracks document level, we just need to show/hide the video cursor overlay
+      if (videoContainer) {
+        on(videoContainer, "mouseenter", () => {
+          isHoveringVideo = true;
+          // Show video cursor by making it visible
+          videoCursors.forEach((vc) => {
+            if (vc && !vc.classList.contains("mobile-cursor")) {
+              vc.style.opacity = "1";
+              vc.style.visibility = "visible";
+            }
+          });
+        });
+
+        on(videoContainer, "mouseleave", () => {
+          isHoveringVideo = false;
+          // Hide video cursor
+          videoCursors.forEach((vc) => {
+            if (vc) {
+              vc.style.opacity = "0";
+              vc.style.visibility = "hidden";
+            }
+          });
+        });
+      }
 
       ["pointermove", "pointerdown"].forEach((evt) =>
         on(videoContainer, evt, resetHideTimer, { passive: true }),

@@ -122,13 +122,11 @@ html.w-editor [text-split] {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 3 equal columns */
   gap: 20px;
   width: 100%;
 }
 
 .branding-col {
-  /* Branding column styles */
   display: flex;
   align-items: flex-start;
 }
@@ -143,11 +141,9 @@ html.w-editor [text-split] {
   flex-direction: column;
 }
 
-/* Mobile Responsiveness for Footer */
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    /* Stack on mobile */
     gap: 40px;
   }
 
@@ -161,7 +157,6 @@ html.w-editor [text-split] {
   display: none !important;
 }
 
-/* Ensure footer columns don't have conflicting widths from webflow export */
 .footer-column {
   width: auto !important;
 }
@@ -198,7 +193,6 @@ html.w-editor [text-split] {
 .link.table-row {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  /* 3 Equal Columns */
   gap: 0px 20px !important;
   align-items: center !important;
   width: 100% !important;
@@ -221,7 +215,6 @@ html.w-editor [text-split] {
   transform: none !important;
 }
 
-/* ALL COLUMNS - Equal flexible width */
 .table-head>div,
 .link.table-row>div {
   width: auto !important;
@@ -230,7 +223,6 @@ html.w-editor [text-split] {
   flex: 1 1 auto !important;
 }
 
-/* FIRST COLUMN (Year) - Reset fixed width overrides */
 .table-head>div:nth-child(1),
 .link.table-row>div:nth-child(1) {
   grid-column: 1 !important;
@@ -240,24 +232,20 @@ html.w-editor [text-split] {
   justify-content: flex-start !important;
 }
 
-/* SECOND COLUMN (Client) */
 .table-head>div:nth-child(2),
 .link.table-row>div:nth-child(2) {
   grid-column: 2 !important;
 }
 
-/* THIRD COLUMN (Project) */
 .table-head>div:nth-child(3),
 .link.table-row>div:nth-child(3) {
   grid-column: 3 !important;
 }
 
-/* FIRST COLUMN wrapper - specifically for index-1st-col-wrp in Year column */
 .table-head>div>.index-1st-col-wrp,
 .link.table-row>div>.index-1st-col-wrp {
   grid-column: 1 !important;
   width: auto !important;
-  /* Allow flex */
   min-width: 0 !important;
   max-width: none !important;
   flex: 1 1 auto !important;
@@ -265,7 +253,6 @@ html.w-editor [text-split] {
   align-items: center !important;
 }
 
-/* SECOND COLUMN wrapper - specifically for Year column's inner div */
 .table-head>div>.index-1st-col-wrp>div,
 .link.table-row>div>.index-1st-col-wrp>div {
   grid-column: 1 !important;
@@ -275,21 +262,18 @@ html.w-editor [text-split] {
   flex: 1 1 auto !important;
 }
 
-/* Ensure Year text is aligned properly */
 .index-1st-col-wrp .t-large.mob-size,
 .index-1st-col-wrp .t-small {
   text-align: left !important;
   width: auto !important;
 }
 
-/* Increase font size for list items */
 .link.table-row .t-large {
   font-size: 1.4rem !important;
   line-height: 1.4 !important;
   font-weight: 500 !important;
 }
 
-/* Increase header font size */
 .table-head .t-small {
   font-size: 1rem !important;
   line-height: 1.4 !important;
@@ -298,7 +282,6 @@ html.w-editor [text-split] {
   letter-spacing: 1px !important;
 }
 
-/* Ensure containers align perfectly - preserve original spacing */
 .index-list-wrp,
 .index-list {
   width: 100% !important;
@@ -312,7 +295,6 @@ html.w-editor [text-split] {
   margin: 0 !important;
 }
 
-/* Increase spacing between list items */
 .link.table-row {
   padding: 12px 0 !important;
   margin: 0 !important;
@@ -326,7 +308,6 @@ html.w-editor [text-split] {
   pointer-events: none !important;
 }
 
-/* Force hide any line-mask elements from external Webflow CSS */
 html body .line-mask,
 .wf-content .line-mask,
 .section .line-mask {
@@ -334,7 +315,6 @@ html body .line-mask,
   visibility: hidden !important;
 }
 
-/* Remove any white backgrounds on hover for table rows */
 .link.table-row,
 .link.table-row:hover,
 .link.table-row:focus,
@@ -345,7 +325,6 @@ html body .line-mask,
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove outline/box-shadow on hover */
 .link.table-row:hover,
 .index-item:hover {
   outline: none !important;
@@ -381,7 +360,6 @@ body {
   position: relative;
 }
 
-/* Override body layout for ResearchPage */
 .lab-canvas-wrp~body,
 body:has(.lab-canvas-wrp) {
   display: block;
@@ -431,7 +409,6 @@ button:focus-visible {
   }
 }
 
-/* ========== LAB CANVAS STYLES - CRITICAL ========== */
 .lab-canvas-wrp {
   position: fixed !important;
   top: 0 !important;
@@ -445,7 +422,6 @@ button:focus-visible {
   z-index: 1 !important;
 }
 
-/* Cookie banner on top of everything */
 .cookie-pack {
   position: fixed !important;
   bottom: 0 !important;
@@ -459,7 +435,6 @@ button:focus-visible {
   pointer-events: auto !important;
 }
 
-/* When contact banner is open, hide cookie banner completely */
 body:has(.contact-banner.open) .cookie-pack,
 body:has(.contact-banner.open) .fs-cc-banner {
   display: none !important;
@@ -610,12 +585,6 @@ html.w-mod-js .collection-item-lab,
   z-index: 10000;
 }
 
-.video-cursor {
-  width: 40px;
-  height: 40px;
-  z-index: 10000;
-}
-
 /* Plus Sign Cursor Elements */
 .def-cursor-hor,
 .def-cursor-ver,
@@ -705,20 +674,57 @@ html.w-mod-js .collection-item-lab,
 }
 
 /* Video cursor styles */
+.video-cursor {
+  position: fixed;
+  z-index: 10001;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.video-cursor.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-cursor.mobile-cursor {
+  display: none;
+}
+
 .video-cursor .video-loader {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   border: 2px solid #ff5101;
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 3s linear infinite;
+  opacity: 1;
+}
+
+.video-cursor .videocontrol-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff5101;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 1;
+  pointer-events: none;
 }
 
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -735,7 +741,7 @@ html.w-mod-js .collection-item-lab,
 }
 
 .project-hero-video video,
-.project-hero-video>* {
+.project-hero-video > * {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -744,20 +750,6 @@ html.w-mod-js .collection-item-lab,
 
 .video-loader {
   animation: spin 3s linear infinite;
-}
-
-.video-cursor .videocontrol-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ff5101;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.video-cursor.mobile-cursor {
-  display: none;
 }
 
 /* Cursor visibility states */
