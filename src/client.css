@@ -546,6 +546,20 @@ html.w-mod-js .collection-item-lab,
   display: block !important;
 }
 
+/* ========== MOTTO HEADING ========== */
+.motto {
+  margin-left: -10px;
+  margin-top: -35px;
+}
+
+/* ========== ABOUT HEADING ========== */
+.about-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #000;
+}
+
 /* ========== CURSOR PACK STYLING ========== */
 #cursor-pack {
   position: fixed;
@@ -773,8 +787,7 @@ html.w-mod-js .collection-item-lab,
     display: none !important;
   }
 
-  /* ========== MOBILE PREVIEW VIDEO FIX ========== */
-  /* Reverted to allow JS-controlled floating animation */
+  
   .index-hover {
     /* Ensure it can be shown by JS */
     display: none;
@@ -806,7 +819,6 @@ html.w-mod-js .collection-item-lab,
   }
 }
 
-/* ========== CONTACT BANNER STYLES ========== */
 .contact-banner {
   position: fixed;
   right: -400px;
@@ -816,7 +828,6 @@ html.w-mod-js .collection-item-lab,
   background-color: #ff5101;
   padding: 40px 30px;
   padding-bottom: 180px;
-  /* Extra padding at bottom to avoid cookie banner overlap */
   overflow-y: auto;
   transition: right 0.4s ease-in-out;
   z-index: 100001 !important;
@@ -1453,8 +1464,7 @@ html.w-editor [text-split] {
   position: relative;
 }
 
-/* ========== NAVBAR LOGO - REPLACE S/R WITH PNG ========== */
-/* Hide pseudo-elements that generate S and R letters */
+
 .logo::before,
 .logo::after {
   display: none !important;

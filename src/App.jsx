@@ -77,20 +77,40 @@ function App() {
 
     // Function to add white cursor class to all cursor elements
     const addContactBannerCursor = () => {
-      const elements = [defaultCursor, linkCursor, dragCursor, resizeCursor, videoCursor, dragHelper, teamDrag];
-      elements.forEach(el => el && el.classList.add("contact-banner-cursor"));
+      const elements = [
+        defaultCursor,
+        linkCursor,
+        dragCursor,
+        resizeCursor,
+        videoCursor,
+        dragHelper,
+        teamDrag,
+      ];
+      elements.forEach((el) => el && el.classList.add("contact-banner-cursor"));
     };
 
     // Function to remove white cursor class from all cursor elements
     const removeContactBannerCursor = () => {
-      const elements = [defaultCursor, linkCursor, dragCursor, resizeCursor, videoCursor, dragHelper, teamDrag];
-      elements.forEach(el => el && el.classList.remove("contact-banner-cursor"));
+      const elements = [
+        defaultCursor,
+        linkCursor,
+        dragCursor,
+        resizeCursor,
+        videoCursor,
+        dragHelper,
+        teamDrag,
+      ];
+      elements.forEach(
+        (el) => el && el.classList.remove("contact-banner-cursor"),
+      );
     };
 
     // Handle hover states for links and interactive elements using event delegation
     const handleLinkHover = (e) => {
       if (!e.target || typeof e.target.closest !== "function") return;
-      const target = e.target.closest("a, button, .link, .project-card, .contact-banner");
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
       if (target) {
         setCursorType("link");
       }
@@ -102,12 +122,15 @@ function App() {
 
     const handleLinkLeave = (e) => {
       if (!e.target || typeof e.target.closest !== "function") return;
-      const target = e.target.closest("a, button, .link, .project-card, .contact-banner");
+      const target = e.target.closest(
+        "a, button, .link, .project-card, .contact-banner",
+      );
       if (target) {
         setCursorType("default");
       }
       const relatedTarget = e.relatedTarget;
-      const leavingContactBanner = !relatedTarget || !relatedTarget.closest(".contact-banner");
+      const leavingContactBanner =
+        !relatedTarget || !relatedTarget.closest(".contact-banner");
       if (leavingContactBanner) {
         removeContactBannerCursor();
       }
@@ -124,21 +147,16 @@ function App() {
     };
   }, []);
 
-
   return (
     <div className="app-container">
       <Loader />
-      <Navbar 
-        isContactOpen={isContactOpen} 
+      <Navbar
+        isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
-      <div
-        id="cursor-pack"
-        className="cursor-pack"
-        ref={cursorPackRef}
-      >
+      <div id="cursor-pack" className="cursor-pack" ref={cursorPackRef}>
         <div
           className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
           ref={defaultCursorRef}
@@ -171,18 +189,64 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="/" element={<HomePage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
-        <Route path="/project-index" element={<IndexPage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
-        <Route path="/team" element={<TeamPage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
-        <Route path="/research" element={<ResearchPage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
-        <Route path="/project/mars" element={<MarsPage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
-        <Route path="/project/:projectSlug" element={<ProjectPage isContactOpen={isContactOpen} setIsContactOpen={setIsContactOpen} />} />
+        <Route
+          path="/"
+          element={
+            <HomePage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/project-index"
+          element={
+            <IndexPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <TeamPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/research"
+          element={
+            <ResearchPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/project/mars"
+          element={
+            <MarsPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/project/:projectSlug"
+          element={
+            <ProjectPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
         <Route path="/admin/*" element={<AdminRoutes />} />
       </Routes>
 
-      <div
-        className={`contact-banner ${isContactOpen ? "open" : "closed"}`}
-      >
+      <div className={`contact-banner ${isContactOpen ? "open" : "closed"}`}>
         <div
           className="link t-large t-right bottom-auto"
           onClick={() => setIsContactOpen(false)}
@@ -196,7 +260,9 @@ function App() {
             <br />
           </div>
           <div className="t-large t-white">
-            <a href="#" className="link">info@startsay.com</a>
+            <a href="#" className="link">
+              info@startsay.com
+            </a>
             <br />
           </div>
         </div>
@@ -329,7 +395,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -341,10 +407,10 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) { }
+      } catch (e) {}
       try {
         ScrollTrigger.refresh();
-      } catch (e) { }
+      } catch (e) {}
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -961,10 +1027,13 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
       <div className="section">
         <div id="scrollto" className="gap-80"></div>
         <div className="container _5-grid">
-          <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678"></div>
+          <div id="w-node-_868d1110-b12c-1f1a-6951-19194e763c46-256fe678">
+            <div words-slide-up="" text-split="" className="about-heading">
+              About
+            </div>
+          </div>
 
           <div id="w-node-_07ba283e-d6d6-55a6-8ecc-27cf9d894ec7-256fe678">
-
             <div
               data-w-id="7256aa37-c59c-faaf-e9fb-6a5ef41e1011"
               style={{ opacity: 1 }}
@@ -1042,19 +1111,22 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
               <br />
               Based in
               <br />
-              Office Number 2207
-              National Science & Technology Park (NSTP)
-              NUST H-12, Islamabad
+              Office Number 2207 National Science & Technology Park (NSTP) NUST
+              H-12, Islamabad
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
             <div className="t-large">
-              Startsay is an advertising and marketing agency driven by strategy, creativity, and clear brand vision. We craft every project with purpose, ensuring each detail delivers meaningful impact and real results.
+              Startsay is an advertising and marketing agency driven by
+              strategy, creativity, and clear brand vision. We craft every
+              project with purpose, ensuring each detail delivers meaningful
+              impact and real results.
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
             <div className="t-large">
-              Working with international clients, we balance experimentation with refined execution.
+              Working with international clients, we balance experimentation
+              with refined execution.
             </div>
             <div className="gap-40"></div>
             <a
