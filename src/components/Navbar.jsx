@@ -30,7 +30,7 @@ const Navbar = ({ isContactOpen, setIsContactOpen, isMenuOpen, setIsMenuOpen }) 
         <div className="sf-navbar-dt-wrp">
           <div className="sf-navbar-link-wrp">
             <Link to="/project-index" className="link sf-navbar-link">
-              Index
+              Clients
             </Link>
             <Link to="/team" className="link sf-navbar-link">
               Team
@@ -64,7 +64,7 @@ const Navbar = ({ isContactOpen, setIsContactOpen, isMenuOpen, setIsMenuOpen }) 
             className="link sf-navbar-link"
             onClick={closeMenu}
           >
-            Index
+            Clients
           </Link>
           <Link 
             to="/team" 

@@ -9,7 +9,7 @@ import { useVideoPlayer } from "./hooks/useVideoPlayer";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function IndexPage({ isContactOpen, setIsContactOpen }) {
+function ClientPage({ isContactOpen, setIsContactOpen }) {
   useVideoPlayer();
 
   useEffect(() => {
@@ -906,4 +906,5 @@ function IndexPage({ isContactOpen, setIsContactOpen }) {
   );
 }
 
-export default IndexPage;
+export default ClientPage;
+

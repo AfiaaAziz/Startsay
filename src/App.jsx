@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useVideoPlayer } from "./hooks/useVideoPlayer";
 import { Routes, Route, Link } from "react-router-dom";
-import IndexPage from "./IndexPage";
+import IndexPage from "./ClientPage.jsx";
 import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";

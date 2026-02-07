@@ -1,19 +1,3 @@
-// src/data/migrate.js
-/**
- * Migration Script: Webflow CMS to Supabase
- * 
- * This script helps migrate your existing Webflow CMS data to Supabase.
- * 
- * INSTRUCTIONS:
- * 1. Export your Webflow CMS data from: Site Settings → Integrations → Export Data
- * 2. You'll get a CSV file with all your projects
- * 3. Update the projectsData array below with your Webflow data
- * 4. Run this script once to populate your Supabase database
- * 
- * TO RUN:
- * node src/data/migrate.js
- */
-
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase credentials (use your actual values)
@@ -193,8 +177,5 @@ async function runMigration() {
   console.log('='.repeat(50));
 }
 
-// Uncomment to run:
-// runMigration();
 
-// Export for use as module
 export { migrateProjects, migrateHomeSettings, migrateFeaturedProjects };

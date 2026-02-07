@@ -1,5 +1,3 @@
-// Centralized project data for all 8 projects
-// URLs: https://styleframe.de/project/{slug}
 
 export const projects = {
   mars: {

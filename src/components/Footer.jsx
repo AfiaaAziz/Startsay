@@ -40,7 +40,7 @@ const Footer = ({ isContactOpen, setIsContactOpen }) => {
 
         <div className="footer-column nav-col">
           <a href="#/project-index" className="link footer-link right-arrow">
-            Index
+            Clients
           </a>
           
           <a href="#/team" className="link footer-link right-arrow">

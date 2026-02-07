@@ -1,9 +1,6 @@
-// src/lib/supabaseAdmin.js
+
 import { supabase } from './supabase';
 
-// ============================================
-// PROJECTS
-// ============================================
 
 export const fetchProjects = async () => {
   const { data, error } = await supabase
@@ -151,9 +148,6 @@ export const updateHomePageSettings = async (settings) => {
   return data;
 };
 
-// ============================================
-// FEATURED PROJECTS
-// ============================================
 
 export const fetchFeaturedProjects = async () => {
   const { data, error } = await supabase
@@ -202,9 +196,7 @@ export const reorderFeaturedProjects = async (featuredProjects) => {
   if (errors.length > 0) throw errors[0].error;
 };
 
-// ============================================
-// STORAGE (for media uploads)
-// ============================================
+
 
 export const uploadFile = async (bucket, path, file) => {
   const { data, error } = await supabase.storage
