@@ -1,3 +1,9 @@
+/* ========== PREVENT HORIZONTAL SCROLL ========== */
+body,
+html {
+  overflow-x: hidden;
+}
+
 /* ========== CONTACT BANNER FIX - Match IndexPage ========== */
 .contact-banner {
   position: fixed;
@@ -7,7 +13,8 @@
   height: 100vh;
   background-color: #ff5101;
   padding: 40px 30px;
-  padding-top: 80px; /* Extra padding at top for close button */
+  padding-top: 80px;
+  /* Extra padding at top for close button */
   overflow-y: auto;
   transition: right 0.4s ease-in-out;
   z-index: 9999;
@@ -218,52 +225,53 @@
   margin-bottom: 20px;
 }
 
+/* Increased top padding to move the heading slightly down */
 .team-title-wrp {
-  padding: 60px 20px 20px;
+  padding: 100px 20px 20px;
   text-align: center;
 }
 
 .team-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   margin: 0;
+  /* Add top margin to move heading down */
+  margin-top: 60px;
 }
 
 .studio-team {
-  padding: 40px 20px 40px;
-  overflow: visible;
-
+  padding: 40px 0;
+  overflow: hidden;
 }
 
 .cms-list-wrp-team {
+  max-width: 1400px;
+  margin: 0 auto;
   width: 100%;
+  /* Use responsive symmetric side padding so left/right space is equal */
+  padding: 0 clamp(20px, 8vw, 120px);
+  /* Nudge the whole section slightly to the right to visually balance gutters */
+  padding-left: calc(clamp(20px, 8vw, 120px) + 30px);
+  box-sizing: border-box;
 }
 
 .cms-list-team {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  overflow-x: auto;
   padding: 20px 0;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.cms-list-team::-webkit-scrollbar {
-  display: none;
+  /* Keep grid centered with a fixed content width so side gutters are equal */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .cms-item-team {
-  flex: 0 0 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  cursor: grab;
   user-select: none;
-}
-
-.cms-item-team:active {
-  cursor: grabbing;
+  cursor: default;
+  pointer-events: auto;
 }
 
 .team-name {
@@ -313,20 +321,30 @@
     font-size: clamp(2rem, 10vw, 4rem);
   }
 
+  .cms-list-wrp-team {
+    padding: 0 20px;
+  }
+
   .cms-list-team {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    overflow-x: visible;
   }
+
   .cms-item-team {
-    flex: none;
     width: 100%;
   }
 
   /* Team Heading Responsive */
   .team-heading {
     font-size: 2.5rem;
+  }
+}
+
+/* Tablet view */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cms-list-team {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
