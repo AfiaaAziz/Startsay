@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import "./TeamPage.css";
 import Footer from "./components/Footer.jsx";
+import DragCursor from "./components/DragCursor.jsx";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -548,6 +549,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
         isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
       />
+      <DragCursor />
     </>
   );
 }

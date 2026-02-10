@@ -258,22 +258,35 @@ html {
 }
 
 .cms-list-team {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  padding: 0;
-  /* Keep grid centered with a fixed content width so side gutters are equal */
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 20px;
+  /* Space for scrollbar if visible, effectively hides it if valid */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
 
+.cms-list-team::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Webkit */
+}
+
+
+
 .cms-item-team {
+  flex: 0 0 auto;
+  width: 220px;
+  /* Reduced width */
   display: flex;
   flex-direction: column;
   gap: 10px;
   user-select: none;
-  cursor: default;
+  cursor: none;
+  /* Hide default cursor to show custom drag cursor */
   pointer-events: auto;
 }
 
@@ -288,11 +301,45 @@ html {
 }
 
 .team-photo {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
+  /* Adjusted aspect ratio to prevent excessive cropping */
   background-size: cover;
-  background-position: center;
-  border-radius: 8px;
+  background-position: center top;
+  /* Focus on faces/top of image */
+  border-radius: 4px;
+  /* Slightly smaller radius for smaller cards */
   width: 100%;
+}
+
+/* Drag Cursor Styles */
+.team-drag-cursor {
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  /* Glassy background */
+  backdrop-filter: blur(8px);
+  /* Blur effect */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #000;
+  /* Black text */
+  border-radius: 50px;
+  /* Pill shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.team-drag-cursor.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .w-slider {
@@ -329,12 +376,12 @@ html {
   }
 
   .cms-list-team {
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
   .cms-item-team {
-    width: 100%;
+    width: 260px;
+    /* Slightly smaller on mobile if needed */
   }
 
   /* Team Heading Responsive */
@@ -346,10 +393,7 @@ html {
 
 /* Tablet view */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .cms-list-team {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+  /* No special grid changes needed for scrolling list */
 }
 
 [text-split] {

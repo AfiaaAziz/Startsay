@@ -112,12 +112,18 @@ function App() {
     // Handle hover states for links and interactive elements using event delegation
     const handleLinkHover = (e) => {
       if (!e.target || typeof e.target.closest !== "function") return;
+
+      const teamList = e.target.closest(".cms-list-team");
       const target = e.target.closest(
         "a, button, .link, .project-card, .contact-banner",
       );
-      if (target) {
+
+      if (teamList) {
+        setCursorType("team-drag");
+      } else if (target) {
         setCursorType("link");
       }
+
       const contactBanner = e.target.closest(".contact-banner");
       if (contactBanner) {
         addContactBannerCursor();
@@ -126,13 +132,22 @@ function App() {
 
     const handleLinkLeave = (e) => {
       if (!e.target || typeof e.target.closest !== "function") return;
+
+      const teamList = e.target.closest(".cms-list-team");
       const target = e.target.closest(
         "a, button, .link, .project-card, .contact-banner",
       );
-      if (target) {
-        setCursorType("default");
-      }
+
       const relatedTarget = e.relatedTarget;
+      const leavingTeamList = !relatedTarget || !relatedTarget.closest(".cms-list-team");
+      const leavingTarget = !relatedTarget || !relatedTarget.closest("a, button, .link, .project-card, .contact-banner");
+
+      if (leavingTeamList && leavingTarget) {
+        setCursorType("default");
+      } else if (leavingTeamList && !leavingTarget) {
+        setCursorType("link");
+      }
+
       const leavingContactBanner =
         !relatedTarget || !relatedTarget.closest(".contact-banner");
       if (leavingContactBanner) {
@@ -162,7 +177,7 @@ function App() {
       />
       <div id="cursor-pack" className="cursor-pack" ref={cursorPackRef}>
         <div
-          className={`default-cursor ${cursorType === "link" ? "hidden" : ""}`}
+          className={`default-cursor ${cursorType !== "default" ? "hidden" : ""}`}
           ref={defaultCursorRef}
         >
           <div className="def-cursor-hor"></div>
@@ -399,7 +414,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -411,10 +426,10 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) {}
+      } catch (e) { }
       try {
         ScrollTrigger.refresh();
-      } catch (e) {}
+      } catch (e) { }
     }, 500);
     return () => clearTimeout(timer);
   }, []);

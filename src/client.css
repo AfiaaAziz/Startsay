@@ -1600,7 +1600,7 @@ html.w-editor [text-split] {
 }
 
 .scroll-list {
-  animation: sf-scroll 60s linear infinite !important;
+  animation: sf-scroll 600s linear infinite !important;
 }
 
 .sf-menu-icon {
