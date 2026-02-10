@@ -92,7 +92,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
           }
           idx = (idx + 1) % slides.length;
           slides[idx].style.display = "block";
-          setTimeout(rotate, 83.333333);
+          setTimeout(rotate, 5000);
         }
         rotate();
       });
@@ -260,7 +260,9 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                     <div className="t-large mob-size">2021</div>
                   </div>
                   <div className="t-large">USAID</div>
-                  <div className="t-large">COVID-19 Pandemic Explainer Animation</div>
+                  <div className="t-large">
+                    COVID-19 Pandemic Explainer Animation
+                  </div>
                 </Link>
                 <div className="index-hover">
                   <div className="index-hover-vid w-embed">
@@ -503,7 +505,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -539,7 +541,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -575,7 +577,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-                <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -611,7 +613,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-                <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -647,7 +649,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -683,7 +685,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -719,7 +721,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -755,7 +757,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-               <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -791,7 +793,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-                <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -827,7 +829,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
                 </div>
               </div>
 
-                <div role="listitem" className="index-item w-dyn-item">
+              <div role="listitem" className="index-item w-dyn-item">
                 <Link
                   to="/project/moncler-grenoble"
                   className="link table-row w-inline-block"
@@ -907,4 +909,3 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
 }
 
 export default ClientPage;
-

@@ -388,7 +388,7 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
           }
           idx = (idx + 1) % slides.length;
           slides[idx].style.display = "block";
-          setTimeout(rotate, 83.333333);
+          setTimeout(rotate, 5000);
         }
         rotate();
       });

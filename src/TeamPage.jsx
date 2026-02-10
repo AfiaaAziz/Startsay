@@ -2,15 +2,76 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 import "./TeamPage.css";
 import Footer from "./components/Footer.jsx";
 
 // Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 function TeamPage({ isContactOpen, setIsContactOpen }) {
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
     const initializeAnimations = () => {
+      // Text animations with GSAP (Copied from App.jsx)
+      if (typeof window !== "undefined") {
+        // Split text into spans
+        new SplitType("[text-split]", {
+          types: "words, chars",
+          tagName: "span",
+        });
+
+        // Link timelines to scroll position
+        function createScrollTriggerAnimation(triggerElement, timeline) {
+          ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top bottom",
+            onLeaveBack: () => {
+              timeline.progress(0);
+              timeline.pause();
+            },
+          });
+          ScrollTrigger.create({
+            trigger: triggerElement,
+            start: "top 80%",
+            onEnter: () => timeline.play(),
+          });
+        }
+
+        const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+        // Words slide up animation
+        $$("[words-slide-up]").forEach((element) => {
+          let tl = gsap.timeline({ paused: true });
+          tl.from(element.querySelectorAll(".word"), {
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.5,
+            ease: "power2.out(2)",
+            stagger: { amount: 0.5 },
+          });
+          createScrollTriggerAnimation(element, tl);
+        });
+
+        // Words rotate in animation
+        $$("[words-rotate-in]").forEach((element) => {
+          let tl = gsap.timeline({ paused: true });
+          tl.set(element.querySelectorAll(".word"), {
+            transformPerspective: 1000,
+          });
+          tl.from(element.querySelectorAll(".word"), {
+            rotationX: -90,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: { amount: 0.6 },
+          });
+          createScrollTriggerAnimation(element, tl);
+        });
+
+        // Set text as visible
+        gsap.set("[text-split]", { opacity: 1 });
+      }
+
       // Logo carousel animation
       const carousels = document.querySelectorAll(".collection-list-logo-anim");
       carousels.forEach((carousel) => {
@@ -33,8 +94,6 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
     const timer = setTimeout(initializeAnimations, 500);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {}, []);
 
   const teamMembers = [
     {
@@ -101,6 +160,130 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
 
   return (
     <>
+      
+
+      <div className="section pad-100">
+        <div className="container _2-grid">
+          <div>
+            <div words-slide-up="" text-split="" className="t-large">
+              The studio’s process is rooted in careful listening, clear planning,
+              and meticulous execution. Each project begins with a shared
+              understanding of objectives, developing into visuals that are both
+              impactful and enduring.
+            </div>
+          </div>
+          <div>
+            <div words-slide-up="" text-split="" className="t-large">
+              Styleframe offers expertise across visual effects, post-production,
+              creative direction, animation direction, and CGI production. Each
+              service is tailored to the needs of the project, ensuring
+              flexibility while maintaining uncompromising standards.
+              <br />
+              <br />
+              Dedicated research and look development keep the studio at the
+              forefront of technology and aesthetics. Every commission is an
+              opportunity to refine methods, push boundaries, and deliver visuals
+              that resonate.
+            </div>
+          </div>
+        </div>
+
+        <div className="container _2-grid">
+          <div>
+            <div className="gap-30"></div>
+            <div words-slide-up="" text-split="" className="list-title">
+              <strong>Services</strong>
+            </div>
+            <div className="gap-20"></div>
+            <div className="w-dyn-list">
+              <div role="list" className="service-list w-dyn-items">
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>3D Motion</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>Conception &amp; Design</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>Research &amp; Visual Development</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>Creative, Art &amp; Animation Direction</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>CGI Still &amp; Animation Production</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>AI Direction &amp; Execution</div>
+                </div>
+                <div role="listitem" className="service-item w-dyn-item">
+                  <div>Visual Effects</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="gap-40"></div>
+            <div words-slide-up="" text-split="" className="list-title">
+              <strong>Selected Clients</strong>
+            </div>
+            <div className="gap-20"></div>
+            <div className="w-dyn-list">
+              <div role="list" className="client-list w-dyn-items">
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Audi</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Bose</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Deutsche Bank</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Ferrero</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Hatton Labs</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Lionsgate</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Michelin</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Microsoft</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Moncler</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Nickelodeon</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Oakley</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Opel</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Ray-Ban</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Samsung</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>Sonra</div>
+                </div>
+                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                  <div>rabbit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Team Section */}
       <div className="section team-title-wrp">
         <h2 className="team-heading">Team</h2>

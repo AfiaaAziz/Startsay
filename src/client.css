@@ -1580,12 +1580,27 @@ html.w-editor [text-split] {
 }
 
 .sf-navbar-link {
-  font-size: 1.1rem !important;
-  text-transform: uppercase !important;
+  font-size: calc(1vw + 16px) !important;
+  
   letter-spacing: 1.5px !important;
-  font-weight: 500 !important;
+  font-weight: 800 !important;
   pointer-events: auto !important;
   color: black !important;
+  font-family: "Universal Sans Display 450", sans-serif !important;
+}
+
+@keyframes sf-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.scroll-list {
+  animation: sf-scroll 60s linear infinite !important;
 }
 
 .sf-menu-icon {
