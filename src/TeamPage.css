@@ -1,10 +1,8 @@
-/* ========== PREVENT HORIZONTAL SCROLL ========== */
 body,
 html {
   overflow-x: hidden;
 }
 
-/* ========== CONTACT BANNER FIX - Match IndexPage ========== */
 .contact-banner {
   position: fixed;
   right: -400px;
@@ -14,7 +12,6 @@ html {
   background-color: #ff5101;
   padding: 40px 30px;
   padding-top: 80px;
-  /* Extra padding at top for close button */
   overflow-y: auto;
   transition: right 0.4s ease-in-out;
   z-index: 9999;
@@ -109,7 +106,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 .studio-heading-wrp {
@@ -161,7 +158,15 @@ html {
 }
 
 .pad-5 {
-  padding: 80px 20px;
+  padding: 0 20px;
+}
+
+.section.pad-900 {
+  padding: 0 20px;
+}
+
+.section.pad-100 {
+  padding: 20px;
 }
 
 .container {
@@ -174,7 +179,7 @@ html {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .t-large {
@@ -183,7 +188,7 @@ html {
 }
 
 .gap-40 {
-  height: 40px;
+  height: 20px;
 }
 
 .gap-20 {
@@ -191,7 +196,7 @@ html {
 }
 
 .gap-80 {
-  height: 80px;
+  height: 20px;
 }
 
 .list-title {
@@ -207,7 +212,7 @@ html {
 }
 
 .service-item {
-  padding: 15px 0;
+  padding: 5px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 1rem;
 }
@@ -225,21 +230,18 @@ html {
   margin-bottom: 20px;
 }
 
-/* Increased top padding to move the heading slightly down */
 .team-title-wrp {
-  padding: 100px 20px 20px;
+  padding: 0 20px 5px;
   text-align: center;
 }
 
 .team-heading {
   font-size: clamp(2rem, 5vw, 4rem);
   margin: 0;
-  /* Add top margin to move heading down */
-  margin-top: 60px;
 }
 
 .studio-team {
-  padding: 40px 0;
+  padding: 10px 0;
   overflow: hidden;
 }
 
@@ -258,7 +260,7 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  padding: 20px 0;
+  padding: 0;
   /* Keep grid centered with a fixed content width so side gutters are equal */
   max-width: 1200px;
   margin: 0 auto;
@@ -337,6 +339,7 @@ html {
   /* Team Heading Responsive */
   .team-heading {
     font-size: 2.5rem;
+
   }
 }
 

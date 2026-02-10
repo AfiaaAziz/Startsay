@@ -160,37 +160,35 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
 
   return (
     <>
-      
-
-      <div className="section pad-100">
+      <div className="section pad-2">
         <div className="container _2-grid">
           <div>
             <div words-slide-up="" text-split="" className="t-large">
-              The studio’s process is rooted in careful listening, clear planning,
-              and meticulous execution. Each project begins with a shared
-              understanding of objectives, developing into visuals that are both
-              impactful and enduring.
+              The studio's process is rooted in careful listening, clear
+              planning, and meticulous execution. Each project begins with a
+              shared understanding of objectives, developing into visuals that
+              are both impactful and enduring.
+              <br />
+              <br />
+              Styleframe offers expertise across visual effects,
+              post-production, creative direction, animation direction, and CGI
+              production. Each service is tailored to the needs of the project,
+              ensuring flexibility while maintaining uncompromising standards.
             </div>
           </div>
           <div>
             <div words-slide-up="" text-split="" className="t-large">
-              Styleframe offers expertise across visual effects, post-production,
-              creative direction, animation direction, and CGI production. Each
-              service is tailored to the needs of the project, ensuring
-              flexibility while maintaining uncompromising standards.
-              <br />
-              <br />
               Dedicated research and look development keep the studio at the
               forefront of technology and aesthetics. Every commission is an
-              opportunity to refine methods, push boundaries, and deliver visuals
-              that resonate.
+              opportunity to refine methods, push boundaries, and deliver
+              visuals that resonate.
             </div>
           </div>
         </div>
 
         <div className="container _2-grid">
           <div>
-            <div className="gap-30"></div>
+            <div className="gap-40"></div>
             <div words-slide-up="" text-split="" className="list-title">
               <strong>Services</strong>
             </div>
@@ -230,52 +228,132 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
             <div className="gap-20"></div>
             <div className="w-dyn-list">
               <div role="list" className="client-list w-dyn-items">
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Audi</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Bose</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Deutsche Bank</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Ferrero</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Hatton Labs</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Lionsgate</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Michelin</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Microsoft</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Moncler</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Nickelodeon</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Oakley</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Opel</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Ray-Ban</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Samsung</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>Sonra</div>
                 </div>
-                <div words-slide-up="" text-split="" role="listitem" className="w-dyn-item">
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
                   <div>rabbit</div>
                 </div>
               </div>
