@@ -168,7 +168,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Loader />
+      <Loader duration={3.5} />
       <Navbar
         isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
