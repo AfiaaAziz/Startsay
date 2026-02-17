@@ -527,7 +527,7 @@ html.w-mod-js .collection-item-lab,
   letter-spacing: 2.5px !important;
   font-size: 99.6px;
   line-height: 99.6px;
-  font-weight:700;
+  font-weight: 700;
   font-family: 'Universal Sans Display 450';
   letter-spacing: -1.992px !important;
   color: #000000 !important;
@@ -1269,28 +1269,28 @@ html.w-mod-js .collection-item-lab,
   line-height: 1.5;
 }
 
-.text
-{
-   font-size: 16px;
+.text {
+  font-size: 16px;
   line-height: 19.2px;
-  font-weight:400;
+  font-weight: 400;
   font-family: 'Universal Sans Display 450';
   color: #000000;
 
 }
+
 .startsay-description {
   font-size: 28.8px;
   line-height: 34.56px;
-  font-weight:700;
+  font-weight: 700;
   font-family: 'Universal Sans Display 450';
   color: #000000;
 }
 
 .startsay-description p {
   margin-bottom: 20px;
-   font-size: 28.8px;
+  font-size: 28.8px;
   line-height: 34.56px;
-  font-weight:700;
+  font-weight: 700;
   font-family: 'Universal Sans Display 450';
   color: #000000;
 }
@@ -1615,7 +1615,7 @@ html.w-editor [text-split] {
 .sf-navbar-link {
   font-size: 28.8px !important;
   line-height: 34.56px !important;
-  
+
   letter-spacing: 1.5px !important;
   font-weight: 700 !important;
   pointer-events: auto !important;
@@ -1634,7 +1634,7 @@ html.w-editor [text-split] {
 }
 
 .scroll-list {
-  animation: sf-scroll 600s linear infinite !important;
+  animation: sf-scroll 3000s linear infinite !important;
 }
 
 .sf-menu-icon {
@@ -1717,4 +1717,22 @@ html.w-editor [text-split] {
 
 #cursor-pack * {
   pointer-events: none !important;
+}
+
+/* Fix vertical alignment for container elements to match Navbar */
+.container {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+  max-width: none !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
