@@ -27,6 +27,9 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Custom Cursor Logic
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Custom Cursor Logic
   useEffect(() => {
     const cursorPack = cursorPackRef.current;
     const defaultCursor = defaultCursorRef.current;
@@ -168,7 +171,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Loader duration={3.5} />
+      <Loader duration={3.5} onComplete={() => setIsLoaded(true)} />
       <Navbar
         isContactOpen={isContactOpen}
         setIsContactOpen={setIsContactOpen}
@@ -214,6 +217,7 @@ function App() {
             <HomePage
               isContactOpen={isContactOpen}
               setIsContactOpen={setIsContactOpen}
+              isLoaded={isLoaded}
             />
           }
         />
@@ -326,12 +330,15 @@ function App() {
   );
 }
 
-function HomePage({ isContactOpen, setIsContactOpen }) {
+function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
   useVideoPlayer();
 
   useEffect(() => {
     // Initialize all animations and carousel after component mounts
     const initializeAnimations = () => {
+      // Wait for loader to finish
+      if (!isLoaded) return;
+
       // Text animations with GSAP
       if (typeof window !== "undefined") {
         // Split text into spans
@@ -409,10 +416,9 @@ function HomePage({ isContactOpen, setIsContactOpen }) {
       });
     };
 
-    // Wait a bit for libraries to load and DOM to settle
-    const timer = setTimeout(initializeAnimations, 500);
-    return () => clearTimeout(timer);
-  }, []);
+    // Initialize animations when isLoaded becomes true
+    initializeAnimations();
+  }, [isLoaded]);
 
   useEffect(() => { }, []);
 

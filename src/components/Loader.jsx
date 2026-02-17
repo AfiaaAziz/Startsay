@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function Loader({ duration = 1.5 }) {
+export default function Loader({ duration = 1.5, onComplete = () => { } }) {
   const rootRef = useRef(null);
   const overlayRef = useRef(null);
   const logoContRef = useRef(null);
@@ -69,13 +69,14 @@ export default function Loader({ duration = 1.5 }) {
           overlay.style.display = "none";
           overlay.removeAttribute("aria-busy");
           overlay.setAttribute("aria-hidden", "true");
+          onComplete();
         },
       });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [duration]);
+  }, [duration, onComplete]);
 
   return (
     <div ref={rootRef}>
