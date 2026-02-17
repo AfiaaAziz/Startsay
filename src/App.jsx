@@ -142,8 +142,13 @@ function App() {
       );
 
       const relatedTarget = e.relatedTarget;
-      const leavingTeamList = !relatedTarget || !relatedTarget.closest(".cms-list-team");
-      const leavingTarget = !relatedTarget || !relatedTarget.closest("a, button, .link, .project-card, .contact-banner");
+      const leavingTeamList =
+        !relatedTarget || !relatedTarget.closest(".cms-list-team");
+      const leavingTarget =
+        !relatedTarget ||
+        !relatedTarget.closest(
+          "a, button, .link, .project-card, .contact-banner",
+        );
 
       if (leavingTeamList && leavingTarget) {
         setCursorType("default");
@@ -420,7 +425,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
     initializeAnimations();
   }, [isLoaded]);
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -432,10 +437,10 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) { }
+      } catch (e) {}
       try {
         ScrollTrigger.refresh();
-      } catch (e) { }
+      } catch (e) {}
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -825,12 +830,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/01_USAID.webp")',
-                }}
                 href="#/project/mars"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/01_USAID.webp"
+                  alt="USAID"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -854,12 +861,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/02_DIFC.webp")',
-                }}
                 href="#/project/teenage-engineering"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/02_DIFC.webp"
+                  alt="DIFC"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -883,12 +892,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/03_HollyWood.webp")',
-                }}
                 href="#/project/innovation-lab"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/03_HollyWood.webp"
+                  alt="HollyWood"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -912,12 +923,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/04_Avtive.webp")',
-                }}
                 href="#/project/beats-n-buckets"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/04_Avtive.webp"
+                  alt="Avtive"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -941,12 +954,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/05_ONYX TOWER.webp")',
-                }}
                 href="#/project/moncler-grenoble"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/05_ONYX TOWER.webp"
+                  alt="ONYX TOWER"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -970,12 +985,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/06_Intercity Hotel.webp")',
-                }}
                 href="#/project/13-11"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/06_Intercity Hotel.webp"
+                  alt="Intercity Hotel"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -999,12 +1016,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/07_Neuro.webp")',
-                }}
                 href="#/project/we-are-rewind"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/07_Neuro.webp"
+                  alt="Neuro"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -1028,12 +1047,14 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
-                style={{
-                  backgroundImage: 'url("/assets/08_Social Media.webp")',
-                }}
                 href="#/project/hatton-labs-x-ap"
                 className="link project-card w-inline-block"
               >
+                <img
+                  src="/assets/08_Social Media.webp"
+                  alt="Social Media"
+                  className="project-bg-image w-embed"
+                />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
                   className="project-title"
@@ -1129,7 +1150,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
         </div>
         <div className="gap-80"></div>
         <div words-slide-up="" text-split="" className="container">
-          <div>
+          <div className="text">
             <div>
               Startsay
               <br />
@@ -1140,17 +1161,21 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
-            <div className="t-large">
-              Startsay is an advertising and marketing agency driven by
-              strategy, creativity, and clear brand vision. We craft every
-              project with purpose, ensuring each detail delivers meaningful
-              impact and real results.
+            <div className="startsay-description">
+              <p>
+                Startsay is an advertising and marketing agency driven by
+                strategy, creativity, and clear brand vision. We craft every
+                project with purpose, ensuring each detail delivers meaningful
+                impact and real results.
+              </p>
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
-            <div className="t-large">
-              Working with international clients, we balance experimentation
-              with refined execution.
+            <div className="startsay-description">
+              <p>
+                Working with international clients, we balance experimentation
+                with refined execution.
+              </p>
             </div>
             <div className="gap-40"></div>
             <a
