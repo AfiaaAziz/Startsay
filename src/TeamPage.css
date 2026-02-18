@@ -182,9 +182,14 @@ html {
   margin-bottom: 10px;
 }
 
+
+
+
 .t-large {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  line-height: 1.5;
+  font-family: "Universal Sans Display 450";
+  font-weight: 700;
+  font-size: 28.2px;
+  line-height: 34.56px;
 }
 
 .gap-40 {
@@ -206,15 +211,21 @@ html {
 
 .service-list,
 .client-list {
+  font-family: "Universal Sans Display 350";
+  font-weight: 400;
+  font-size: 22.4px;
+  line-height: 22.4px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .service-item {
+  font-family: "Universal Sans Display 350";
+  font-weight: 400;
+  line-height: 26.88px;
   padding: 5px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 1rem;
+  font-size: 22.4px;
 }
 
 .studio-interior {
