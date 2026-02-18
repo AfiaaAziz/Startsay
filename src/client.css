@@ -266,19 +266,25 @@ html.w-editor [text-split] {
 .index-1st-col-wrp .t-small {
   text-align: left !important;
   width: auto !important;
+  font-family: "Universal Sans Display 450" !important;
+  font-size: 35.2px !important;
+  line-height: 42.24px !important;
+  font-weight: 700 !important;
 }
 
 .link.table-row .t-large {
-  font-size: 1.4rem !important;
-  line-height: 1.4 !important;
-  font-weight: 500 !important;
+   font-family: "Universal Sans Display 450" !important;
+  font-size: 28.8px !important;
+  line-height: 34.56px !important;
+  font-weight: 700 !important;
 }
 
 .table-head .t-small {
-  font-size: 1rem !important;
-  line-height: 1.4 !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
+  font-size: 16px !important;
+  line-height: 19.2px !important;
+  font-family: "Universal Sans Display 450" !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
   letter-spacing: 1px !important;
 }
 
