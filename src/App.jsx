@@ -425,7 +425,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
     initializeAnimations();
   }, [isLoaded]);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -437,10 +437,10 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) {}
+      } catch (e) { }
       try {
         ScrollTrigger.refresh();
-      } catch (e) {}
+      } catch (e) { }
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -1136,13 +1136,15 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   playsInline
                   muted
                   style={{
+                    
+
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
                   }}
                   poster="https://cdn.prod.website-files.com/66c3a685de0fd85a256fe67c/6905062799c3b939ac1d235d_reel-cover-2.webp"
                 >
-                  <source src="assets/Highlight.mp4" type="video/mp4" />{" "}
+                  <source src="https://res.cloudinary.com/djypv81wq/video/upload/v1771525791/Highlight_1_mvkp5i.mp4" type="video/mp4" />{" "}
                 </video>
               </div>
             </div>

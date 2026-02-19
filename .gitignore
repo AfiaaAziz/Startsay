@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 .env
 
+# Large media files — host these on Cloudinary or similar CDN
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm

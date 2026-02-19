@@ -128,11 +128,10 @@ export const useVideoPlayer = () => {
 
       let fsOverlay = null;
 
+      // Only controls bar fades in/out — video cursor visibility is handled
+      // exclusively by mouseenter/mouseleave on the video container
       const setControlsOpacity = (v) => {
         if (controls) controls.style.opacity = v;
-        videoCursors.forEach((vc) => {
-          vc.style.opacity = v;
-        });
       };
       const showControls = () => setControlsOpacity("1");
       const hideControls = () => setControlsOpacity("0");
@@ -420,9 +419,13 @@ export const useVideoPlayer = () => {
         on(video, "webkitpresentationmodechanged", () => {
           const isFs = video.webkitPresentationMode === "fullscreen";
           screenBtns.forEach((btn) => btn.classList.toggle("fullscreen", isFs));
-          videoCursors.forEach((vc) => {
-            vc.style.opacity = isFs ? "0" : "1";
-          });
+          // In fullscreen mode, hide the video cursor (it gets repositioned)
+          if (isFs) {
+            videoCursors.forEach((vc) => {
+              vc.style.opacity = "0";
+              vc.style.visibility = "hidden";
+            });
+          }
           resetHideTimer();
         });
       }

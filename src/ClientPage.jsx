@@ -103,19 +103,45 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   // Handle index hover video positioning and visibility
   useEffect(() => {
     const indexItems = document.querySelectorAll(".index-item");
 
+    // Map each hover element to its GSAP quickTo setters for silky smooth following
+    const quickToMap = new WeakMap();
+
+    const getOrCreateQuickTo = (video) => {
+      if (quickToMap.has(video)) return quickToMap.get(video);
+
+      // Set GPU acceleration hint once
+      video.style.willChange = "transform";
+
+      const xTo = gsap.quickTo(video, "x", { duration: 0.6, ease: "power3.out" });
+      const yTo = gsap.quickTo(video, "y", { duration: 0.6, ease: "power3.out" });
+      const setters = { xTo, yTo };
+      quickToMap.set(video, setters);
+      return setters;
+    };
+
+
     const handleItemMouseEnter = (e) => {
       const hoverVideo = e.currentTarget.querySelector(".index-hover");
       if (hoverVideo) {
+        const videoWidth = hoverVideo.offsetWidth || window.innerWidth * 0.25;
+        const videoHeight = hoverVideo.offsetHeight || videoWidth * (9 / 16);
+        const startX = e.clientX - videoWidth / 2;
+        const startY = e.clientY - videoHeight / 2;
+
+        // Snap to cursor first, then create quickTo (prevents fly-in from stale position)
+        gsap.set(hoverVideo, { x: startX, y: startY });
+        getOrCreateQuickTo(hoverVideo);
         hoverVideo.style.display = "block";
         hoverVideo.setAttribute("data-visible", "true");
       }
     };
+
 
     const handleItemMouseLeave = (e) => {
       const hoverVideo = e.currentTarget.querySelector(".index-hover");
@@ -130,16 +156,17 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
         ".index-hover[data-visible='true']",
       );
       visibleVideos.forEach((video) => {
-        // Get the video dimensions
         const videoWidth = video.offsetWidth || window.innerWidth * 0.25;
         const videoHeight = video.offsetHeight || videoWidth * (9 / 16);
 
-        // Position with offset to center around cursor
-        const offsetX = e.clientX - videoWidth / 2;
-        const offsetY = e.clientY - videoHeight / 2;
+        // Target position centred on cursor
+        const targetX = e.clientX - videoWidth / 2;
+        const targetY = e.clientY - videoHeight / 2;
 
-        // Use transform for better performance
-        video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        // Use GSAP quickTo for smooth lerp-based following (silky smooth)
+        const { xTo, yTo } = getOrCreateQuickTo(video);
+        xTo(targetX);
+        yTo(targetY);
       });
     };
 
@@ -150,17 +177,16 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
         hoverVideo.style.display = "block";
         hoverVideo.setAttribute("data-visible", "true");
 
-        // Immediate position update
         const touch = e.touches[0];
-        const videoWidth = 320;
-        const videoHeight = 180;
+        const videoWidth = hoverVideo.offsetWidth || 320;
+        const videoHeight = hoverVideo.offsetHeight || 180;
 
-        const offsetX =
-          touch.clientX - (hoverVideo.offsetWidth || videoWidth) / 2;
-        const offsetY =
-          touch.clientY - (hoverVideo.offsetHeight || videoHeight) / 2;
+        const targetX = touch.clientX - videoWidth / 2;
+        const targetY = touch.clientY - videoHeight / 2;
 
-        hoverVideo.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        const { xTo, yTo } = getOrCreateQuickTo(hoverVideo);
+        xTo(targetX);
+        yTo(targetY);
       }
     };
 
@@ -177,17 +203,17 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
         ".index-hover[data-visible='true']",
       );
       if (visibleVideos.length > 0) {
-        // REMOVED preventDefault to allow scrolling
-
         const touch = e.touches[0];
         visibleVideos.forEach((video) => {
           const videoWidth = video.offsetWidth || 320;
           const videoHeight = video.offsetHeight || 180;
 
-          const offsetX = touch.clientX - videoWidth / 2;
-          const offsetY = touch.clientY - videoHeight / 2;
+          const targetX = touch.clientX - videoWidth / 2;
+          const targetY = touch.clientY - videoHeight / 2;
 
-          video.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+          const { xTo, yTo } = getOrCreateQuickTo(video);
+          xTo(targetX);
+          yTo(targetY);
         });
       }
     };
@@ -195,12 +221,9 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
     indexItems.forEach((item) => {
       item.addEventListener("mouseenter", handleItemMouseEnter);
       item.addEventListener("mouseleave", handleItemMouseLeave);
-
-      // Add touch listeners
-      // Changed to passive: true to allow scrolling
       item.addEventListener("touchstart", handleTouchStart, { passive: true });
       item.addEventListener("touchend", handleTouchEnd);
-      item.addEventListener("touchcancel", handleTouchEnd); // Handle scroll cancellation
+      item.addEventListener("touchcancel", handleTouchEnd);
     });
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -222,7 +245,7 @@ function ClientPage({ isContactOpen, setIsContactOpen }) {
   return (
     <>
       <div className="section">
-        <div className="gap-120"></div>
+        <div className="gap-100"></div>
         <div className="container">
           <div
             id="w-node-e060aa2e-8755-94e5-ddd9-be93d928de7e-256fe6c6"
