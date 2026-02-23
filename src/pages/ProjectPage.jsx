@@ -239,7 +239,6 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
 
       {/* Main Content */}
       <div className="section">
-        <div className="gap-120"></div>
         <div className="container">
           <h1
             words-slide-up=""
@@ -421,7 +420,6 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
             </div>
           </div>
         </div>
-        <div className="gap-120"></div>
       </div>
 
       {/* Gallery Section */}
@@ -489,8 +487,7 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
       </div>
 
       {/* Credits Section */}
-      <div className="section">
-        <div className="gap-120"></div>
+      <div className="section section-compact">
         <div className="container">
           <div
             id="w-node-dbacb399-4cbe-e265-cd6d-671956f93798-256fe6a4"
@@ -523,14 +520,13 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
             </div>
           </div>
         </div>
-        <div className="gap-120"></div>
       </div>
 
       {/* Project Navigation */}
       <div
         id="current-project"
         current-title={project.title}
-        className="section"
+        className="section section-compact"
       >
         <div className="container">
           <div

@@ -564,6 +564,11 @@ html.w-mod-js .collection-item-lab,
   padding-bottom: 80px;
 }
 
+.section-compact {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
 @media (max-width: 768px) {
 
   .about-heading {
@@ -592,6 +597,11 @@ html.w-mod-js .collection-item-lab,
   .section {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  .section-compact {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
   }
 
   .gap-80 {
@@ -792,6 +802,17 @@ html.w-mod-js .collection-item-lab,
     transform: rotate(360deg);
   }
 }
+
+
+.project-title {
+  color: #000000;
+  font-family: "Universal Sans Display 450";
+  font-size: 107px;
+  line-height: 96.12px;
+  font-weight: 700;
+  margin-top: 0px;
+}
+
 
 .project-hero-video {
   position: absolute;
@@ -1638,6 +1659,11 @@ html.w-editor [text-split] {
   pointer-events: auto !important;
   color: black !important;
   font-family: "Universal Sans Display 450" !important;
+  transition: color 0.3s ease !important;
+}
+
+.sf-navbar-link:hover {
+  color: #FF5101 !important;
 }
 
 @keyframes sf-scroll {
