@@ -9,7 +9,6 @@ import IndexPage from "./ClientPage.jsx";
 import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
-import MarsPage from "./pages/MarsPage";
 import AdminRoutes from "./admin/AdminRoutes";
 import Loader from "./components/Loader.jsx";
 import Footer from "./components/Footer.jsx";
@@ -254,15 +253,6 @@ function App() {
           }
         />
         <Route
-          path="/project/mars"
-          element={
-            <MarsPage
-              isContactOpen={isContactOpen}
-              setIsContactOpen={setIsContactOpen}
-            />
-          }
-        />
-        <Route
           path="/project/:projectSlug"
           element={
             <ProjectPage
@@ -425,7 +415,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
     initializeAnimations();
   }, [isLoaded]);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -437,10 +427,10 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
           document.dispatchEvent(new Event("readystatechange"));
           window.dispatchEvent(new Event("resize"));
         }
-      } catch (e) {}
+      } catch (e) { }
       try {
         ScrollTrigger.refresh();
-      } catch (e) {}
+      } catch (e) { }
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -830,7 +820,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2266c3a685de0fd85a256fe733%22%7D%5D"
-                href="#/project/mars"
+                href="#/project/usaid"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -861,7 +851,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226866689c4654135be7a8ed19%22%7D%5D"
-                href="#/project/teenage-engineering"
+                href="#/project/difc"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -892,7 +882,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0ab5502c77430020dc19c%22%7D%5D"
-                href="#/project/innovation-lab"
+                href="#/project/holly-wood"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -923,7 +913,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268f0b2efb2a92583f025a43b%22%7D%5D"
-                href="#/project/beats-n-buckets"
+                href="#/project/avtive"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -954,7 +944,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%22686664600b8fabf98a30e68d%22%7D%5D"
-                href="#/project/moncler-grenoble"
+                href="#/project/onyx-tower"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -985,7 +975,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%226862af0ceb0cacf22273af63%22%7D%5D"
-                href="#/project/13-11"
+                href="#/project/intercity-hotel"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -1016,7 +1006,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666832c2ad48342e4da3a0%22%7D%5D"
-                href="#/project/we-are-rewind"
+                href="#/project/neuro"
                 className="link project-card w-inline-block"
               >
                 <img
@@ -1047,7 +1037,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-ao-click-engagement-tracking="true"
                 data-wf-element-id="ace78f01-d8e5-8629-9683-6b3790a435cd"
                 data-wf-cms-context="%5B%7B%22collectionId%22%3A%2266c3a685de0fd85a256fe686%22%2C%22itemId%22%3A%2268666408afab266dc2e2a003%22%7D%5D"
-                href="#/project/hatton-labs-x-ap"
+                href="#/project/social-media"
                 className="link project-card w-inline-block"
               >
                 <img

@@ -124,101 +124,101 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
 
   return (
     <>
-        <div
-          fs-cc="banner"
-          className="fs-cc-banner"
-          style={{ display: "flex", opacity: 1 }}
-        >
-          <div className="fs-cc-banner2_container">
-            <div className="fs-cc-manager2_button w-embed">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 8L9 8.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M16 15L16 15.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M10 17L10 17.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M11 13L11 13.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M6 12L6 12.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M12 21C16.9706 21 21 16.9706 21 12C21 11.4402 20.9489 10.8924 20.8511 10.361C20.3413 10.7613 19.6985 11 19 11C18.4536 11 17.9413 10.8539 17.5 10.5987C17.0587 10.8539 16.5464 11 16 11C14.3431 11 13 9.65685 13 8C13 7.60975 13.0745 7.23691 13.2101 6.89492C11.9365 6.54821 11 5.38347 11 4C11 3.66387 11.0553 3.34065 11.1572 3.03894C6.58185 3.46383 3 7.31362 3 12C3 16.9706 7.02944 21 12 21Z"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </div>
-            <div className="fs-cc-banner2_text">
-              By clicking "Accept", you agree to the storing of cookies on your
-              device to enhance site navigation, analyze site usage, and assist
-              in our marketing efforts. View our{" "}
-              <a href="#" className="fs-cc-banner2_text-link">
-                Privacy Policy
-              </a>{" "}
-              for more information.
-            </div>
-            <div className="fs-cc-banner2_buttons-wrapper">
-              <a
-                fs-cc="allow"
-                href="#"
-                className="link fs-cc-banner2_button w-button"
-                role="button"
-                tabIndex="0"
-              >
-                Accept
-              </a>
-              <a
-                fs-cc="deny"
-                href="#"
-                className="link fs-cc-banner2_button fs-cc-button-alt w-button"
-                role="button"
-                tabIndex="0"
-              >
-                Deny
-              </a>
-              <div
-                fs-cc="open-preferences"
-                className="link fs-cc-manager"
-                role="button"
-                tabIndex="0"
-              >
-                <div>Preferences</div>
-              </div>
+      <div
+        fs-cc="banner"
+        className="fs-cc-banner"
+        style={{ display: "flex", opacity: 1 }}
+      >
+        <div className="fs-cc-banner2_container">
+          <div className="fs-cc-manager2_button w-embed">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 8L9 8.01"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M16 15L16 15.01"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M10 17L10 17.01"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M11 13L11 13.01"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M6 12L6 12.01"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M12 21C16.9706 21 21 16.9706 21 12C21 11.4402 20.9489 10.8924 20.8511 10.361C20.3413 10.7613 19.6985 11 19 11C18.4536 11 17.9413 10.8539 17.5 10.5987C17.0587 10.8539 16.5464 11 16 11C14.3431 11 13 9.65685 13 8C13 7.60975 13.0745 7.23691 13.2101 6.89492C11.9365 6.54821 11 5.38347 11 4C11 3.66387 11.0553 3.34065 11.1572 3.03894C6.58185 3.46383 3 7.31362 3 12C3 16.9706 7.02944 21 12 21Z"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+            </svg>
+          </div>
+          <div className="fs-cc-banner2_text">
+            By clicking "Accept", you agree to the storing of cookies on your
+            device to enhance site navigation, analyze site usage, and assist
+            in our marketing efforts. View our{" "}
+            <a href="#" className="fs-cc-banner2_text-link">
+              Privacy Policy
+            </a>{" "}
+            for more information.
+          </div>
+          <div className="fs-cc-banner2_buttons-wrapper">
+            <a
+              fs-cc="allow"
+              href="#"
+              className="link fs-cc-banner2_button w-button"
+              role="button"
+              tabIndex="0"
+            >
+              Accept
+            </a>
+            <a
+              fs-cc="deny"
+              href="#"
+              className="link fs-cc-banner2_button fs-cc-button-alt w-button"
+              role="button"
+              tabIndex="0"
+            >
+              Deny
+            </a>
+            <div
+              fs-cc="open-preferences"
+              className="link fs-cc-manager"
+              role="button"
+              tabIndex="0"
+            >
+              <div>Preferences</div>
             </div>
           </div>
         </div>
+      </div>
 
 
       {/* Up Arrow */}
@@ -676,102 +676,10 @@ export default function ProjectPage({ isContactOpen, setIsContactOpen }) {
         </div>
       </div>
 
-      <div data-w-id="d636055f-4a21-6155-01a4-3396fc0d09e3" className="footer">
-        <div className="container">
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e5-fc0d09e3"
-            className="footer-column"
-          >
-            <div className="t-small">© Startsay</div>
-          </div>
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09e8-fc0d09e3"
-            className="footer-column"
-          >
-            <a
-              href="https://www.instagram.com/startsay.official/"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.linkedin.com/company/startsayofficial"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61572256355814"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://www.behance.net/thisissyedbadshah"
-              target="_blank"
-              className="link footer-link right-up-arrow"
-            >
-              Behance
-            </a>
-          </div>
-
-          <div
-            id="w-node-d636055f-4a21-6155-01a4-3396fc0d09f4-fc0d09e3"
-            className="footer-column"
-          >
-            <a href="#/project-index" className="link footer-link right-arrow">
-              Index
-            </a>
-            <a href="#/research" className="link footer-link right-arrow">
-              Research
-            </a>
-            <a href="#/team" className="link footer-link right-arrow">
-              Team
-            </a>
-            <a
-              data-w-id="d636055f-4a21-6155-01a4-3396fc0d09fb"
-              href="#"
-              className="link footer-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsContactOpen(!isContactOpen);
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-        <div className="footer-logo-cont">
-          <div className="footer-logo-wrp">
-            <div className="footer-logo-frame">
-              <div className="logo-frame-wrp">
-                <div className="collection-list-wrp-logo-anim w-dyn-list">
-                  <div
-                    role="list"
-                    className="collection-list-logo-anim w-dyn-items"
-                  >
-                    {[...Array(20)].map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f32e179658fc220ff71_20.avif")`,
-                        }}
-                        role="listitem"
-                        className="collection-item-logo-anim w-dyn-item"
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="footer-logo-s"></div>
-            <div className="footer-logo-r"></div>
-          </div>
-        </div>
-      </div>
+      <Footer
+        isContactOpen={isContactOpen}
+        setIsContactOpen={setIsContactOpen}
+      />
     </>
   );
 }

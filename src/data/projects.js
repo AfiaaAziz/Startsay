@@ -1,9 +1,9 @@
 
 export const projects = {
-  mars: {
-    slug: "mars",
-    title: "MUZM Mars",
-    client: "Oakley",
+  usaid: {
+    slug: "usaid",
+    title: "USAID",
+    client: "USAID",
     year: "2022",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif",
@@ -15,20 +15,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e52c4d8fbc95d05cfa37_13.2.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb84fab4ef70a362aa7532_Mars_Stills_Static_Background_Rover_web.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0dcf8c00dfb4a224bd6_2.2.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -37,11 +28,7 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68f0e0e3b587f63e8c69536f_3.2.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb8277d242196cfc68802d_Mars_Glasses_Hero_Portait_v003_web.avif",
+            src: "/assets/section2.jpeg",
           },
         ],
       },
@@ -50,7 +37,20 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1b.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
           },
         ],
       },
@@ -67,10 +67,19 @@ export const projects = {
           },
         ],
       },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+          },
+        ],
+      },
     ],
     description:
-      "Oakley MUZM Mars campaign set against a forged-in-red Martian surface, unifying terrain, rover, and glasses as a vehicle of performance and design.",
-    category: "Campaign Film",
+      "The Mars campaign transports the legendary eyewear into a bold new dimension, set against a forged-in-red, Martian surface, our CGI film reimagines the terrain, the rover and the glasses as one unified vehicle of performance and design.",
+    category: "Campaign Movie",
     services: [
       "Visual Effects",
       "AI Direction & Execution",
@@ -81,10 +90,12 @@ export const projects = {
       "Research & Visual Development",
     ],
   },
-  "teenage-engineering": {
-    slug: "teenage-engineering",
-    title: "Teenage Engineering",
-    client: "Teenage Engineering",
+
+
+  "difc": {
+    slug: "difc",
+    title: "DIFC",
+    client: "DIFC",
     year: "2024",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif",
@@ -96,20 +107,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -118,11 +120,7 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68fb923211684ccad8ba7f6f_230124_OP1_v003_1_Main_0001_web.avif",
+            src: "/assets/section2.jpeg",
           },
         ],
       },
@@ -131,7 +129,20 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868334c66e32973ba66caf_686685c2c0df48ad320a646c_230124_OP1_v003_1_Main_0001%20Large.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
           },
         ],
       },
@@ -154,10 +165,12 @@ export const projects = {
     category: "Product Photography",
     services: ["Product Photography", "Art Direction", "Set Design"],
   },
-  "innovation-lab": {
-    slug: "innovation-lab",
-    title: "Ray-Ban",
-    client: "Ray-Ban",
+
+
+  "holly-wood": {
+    slug: "holly-wood",
+    title: "HollyWood",
+    client: "HollyWood",
     year: "2025",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif",
@@ -169,20 +182,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -191,10 +195,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif",
+            src: "/assets/section2.jpeg",
+
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
+            src: "/assets/Project1a.jpeg",
             src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif",
           },
         ],
@@ -204,7 +219,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68e42f2a1bc30a29cc9dde23_19.avif",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -227,10 +243,10 @@ export const projects = {
     category: "Brand Campaign",
     services: ["Brand Strategy", "Visual Identity", "Campaign Management"],
   },
-  "beats-n-buckets": {
-    slug: "beats-n-buckets",
-    title: "Samsung",
-    client: "Samsung",
+  "avtive": {
+    slug: "avtive",
+    title: "Avtive",
+    client: "Avtive",
     year: "2025",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif",
@@ -242,20 +258,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -264,11 +271,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -277,7 +281,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688683406e8226dcdd61a12c_6867e107b4d400ad20ad39dd_230303_Firstcolo_Broschure_Rnd_001c_blueAkzent_01%20Large.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -300,10 +318,10 @@ export const projects = {
     category: "Mobile Campaign",
     services: ["Video Production", "Motion Graphics", "Sound Design"],
   },
-  "moncler-grenoble": {
-    slug: "moncler-grenoble",
-    title: "Moncler",
-    client: "Moncler",
+  "onyx-tower": {
+    slug: "onyx-tower",
+    title: "ONYX Tower",
+    client: "ONYX Tower",
     year: "2025",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
@@ -315,20 +333,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -337,11 +346,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -350,7 +356,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886834949596497c68bf5b1_686e821bdf1767b3c81c36e8_231030_RND_DK_010_orangehintergrund_v2%20fog%20Large.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -373,10 +393,10 @@ export const projects = {
     category: "Fashion Campaign",
     services: ["Photography", "Art Direction", "Styling"],
   },
-  "13-11": {
-    slug: "13-11",
-    title: "Oakley",
-    client: "Oakley",
+  "intercity-hotel": {
+    slug: "intercity-hotel",
+    title: "Intercity Hotel",
+    client: "Intercity Hotel",
     year: "2024",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg",
@@ -388,20 +408,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -410,11 +421,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6863fb29be7faa9be9331c2f_OAK23_CATALYST_13.11_Metaphor_16x6.jpg",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -423,7 +431,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/688682a866bb85d741dbe468_6862aa2bcc68d0ad5ce0ed3a_mars_cover.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -446,10 +468,10 @@ export const projects = {
     category: "Limited Edition",
     services: ["Product Design", "3D Modeling", "Prototyping"],
   },
-  "we-are-rewind": {
-    slug: "we-are-rewind",
-    title: "We Are Rewind",
-    client: "We Are Rewind",
+  "neuro": {
+    slug: "neuro",
+    title: "Neuro",
+    client: "Neuro",
     year: "2024",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif",
@@ -461,20 +483,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -483,11 +496,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900ec9e83ce6ba9cfe2a137_we-are-rewind-titel.avif",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -496,7 +506,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6886832b826db4c61cb8afcf_686695b490c6187b4302ded1_We_are_Rewind_Ghetto_Blaster_1x1_07%20Large.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -519,10 +543,10 @@ export const projects = {
     category: "Brand Story",
     services: ["Brand Storytelling", "Content Creation", "Social Media"],
   },
-  "hatton-labs-x-ap": {
-    slug: "hatton-labs-x-ap",
-    title: "Hatton Labs",
-    client: "Hatton Labs",
+  "social-media": {
+    slug: "social-media",
+    title: "Social Media",
+    client: "Social Media",
     year: "2024",
     heroImage:
       "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif",
@@ -534,20 +558,11 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif",
+            src: "/assets/Project1a.jpeg",
           },
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif",
-          },
-        ],
-      },
-      {
-        type: "mixed",
-        items: [
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif",
+            src: "/assets/Project1a.jpeg",
           },
         ],
       },
@@ -556,11 +571,8 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif",
-          },
-          {
-            type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68921423739f1125120c9884_hero_Hatton_Labs_AP_Stills_Watch_009_v002_0000_Black.avif",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
@@ -569,7 +581,21 @@ export const projects = {
         items: [
           {
             type: "image",
-            src: "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68868319d36be5e41a195460_6867c4009b5aeeeb46555855_RND_dk_011_0031.avif",
+            src: "/assets/Project1a.jpeg",
+          },
+          {
+            type: "image",
+            src: "/assets/Project1a.jpeg",
+          },
+        ],
+      },
+      {
+        type: "mixed",
+        items: [
+          {
+            type: "image",
+            src: "/assets/section2.jpeg",
+
           },
         ],
       },
