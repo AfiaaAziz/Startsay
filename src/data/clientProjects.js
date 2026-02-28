@@ -6,74 +6,53 @@ export const clientProjects = {
     "client": "USAID",
     "year": "2021",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69023aab725e99851044f4b2_Samsung_Wearables_Watches_10s_PACKSHOT_WEB.avif",
-    "heroVideo": "https://cdn.styleframe.de/Samsung_Wearables/SNIPPET_SAMSUNG_WEARABLES.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
+    
+            
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "COVID-19 Pandemic Explainer Animation for USAID.",
     "category": "Explainer Animation",
@@ -90,74 +69,51 @@ export const clientProjects = {
     "client": "DIFC",
     "year": "2024",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6902375a90fb4818e5e5720f_PLANTARIS_TI_STILL-Life_MAXINE_HERO_V3_16x9_600dpi_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/oakley-plantaris_ti/SNIPPET_PLANTARIS-Ti.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Social media content for DIFC.",
     "category": "Social Media",
@@ -174,81 +130,52 @@ export const clientProjects = {
     "client": "UNODC",
     "year": "2022",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900e837866d7e691a0e9ae3_SAMSUNG_BnB_OPENING_FINAL_3709_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/Samsung_BeatzNBuckets/SNIPPET-Samsung_BnB_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
-    "description": "Explainer Animations for UNODC.",
-    "category": "Explainer Animation",
-    "services": [
-      "Animation",
-      "Visual Effects"
-    ]
   },
   "frontrow-entertainment": {
     "slug": "frontrow-entertainment",
@@ -257,74 +184,51 @@ export const clientProjects = {
     "client": "FrontRow Entertainment",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/69010151686bcc9bfa2af042_Cover_image-v2.avif",
-    "heroVideo": "https://cdn.styleframe.de/ray-ban_innovation_lab/SNIPPET-RayBan_InnovationLab_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Hollywood Posters for FrontRow Entertainment.",
     "category": "Posters",
@@ -340,74 +244,51 @@ export const clientProjects = {
     "client": "Marriott",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6904b145453e177540b455c2_497237698_18509548351001463_3505879398570363264_n_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/OAKLEY_CLTR_RDFND/SNIPPET-OAKLEY_CLTR_RDFND_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Digital & Print Menu for Marriott.",
     "category": "Digital & Print Menu",
@@ -423,74 +304,51 @@ export const clientProjects = {
     "client": "Parkview City",
     "year": "2024",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/68ffa2f85f4049d12ecc726e_250305_WS_CGFILM-FINAL_v19_Music_Atmospheric01_00175_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/wolfshepard-film-web/SNIPPET-WOLF_%26_HIRTE_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Commercials for Parkview City.",
     "category": "Commercials",
@@ -506,74 +364,51 @@ export const clientProjects = {
     "client": "Intercity Hotel",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Promotional Reels for Intercity Hotel.",
     "category": "Promotional Reels",
@@ -589,74 +424,51 @@ export const clientProjects = {
     "client": "POF",
     "year": "2024",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Presentational Videos for POF.",
     "category": "Presentational Videos",
@@ -672,75 +484,53 @@ export const clientProjects = {
     "client": "WAH Industries Limited",
     "year": "2023",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
+
     "description": "Promotional Profiles for WAH Industries Limited.",
     "category": "Promotional Profiles",
     "services": [
@@ -755,75 +545,53 @@ export const clientProjects = {
     "client": "Neuro",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
+
     "description": "Promotional Content for Neuro.",
     "category": "Promotional Content",
     "services": [
@@ -838,74 +606,51 @@ export const clientProjects = {
     "client": "Millennium Aesthetic",
     "year": "2026",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Digital Campaigns for Millennium Aesthetic.",
     "category": "Digital Campaigns",
@@ -921,74 +666,51 @@ export const clientProjects = {
     "client": "Zonergy",
     "year": "2022",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Digital Campaigns for Zonergy.",
     "category": "Digital Campaigns",
@@ -1004,74 +726,51 @@ export const clientProjects = {
     "client": "COCO Cotton Collection",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Promotional Reels for COCO Cotton Collection.",
     "category": "Promotional Reels",
@@ -1087,74 +786,51 @@ export const clientProjects = {
     "client": "ONYX Tower",
     "year": "2020",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Architectural Animation for ONYX Tower.",
     "category": "Architectural Animation",
@@ -1170,74 +846,51 @@ export const clientProjects = {
     "client": "Abraham & Agrimont Tractors",
     "year": "2024",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "3D animation for Abraham & Agrimont Tractors.",
     "category": "3D Animation",
@@ -1253,74 +906,51 @@ export const clientProjects = {
     "client": "Avtive",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Branding for Avtive.",
     "category": "Branding",
@@ -1336,74 +966,51 @@ export const clientProjects = {
     "client": "Trivelles",
     "year": "2023",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Digital Campaigns for Trivelles.",
     "category": "Digital Campaigns",
@@ -1419,74 +1026,52 @@ export const clientProjects = {
     "client": "NUST",
     "year": "2025",
     "heroImage": "https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/6900efeaf6cde121118c4036_250305_Moncler_Grenoble_Ticket_Cover00164_web.avif",
-    "heroVideo": "https://cdn.styleframe.de/moncler-grenoble-web/SNIPPET-MONCLER_LowRes.mp4",
+    "heroVideo": "https://res.cloudinary.com/djypv81wq/video/upload/v1772274669/clientvedio_xe2k3a.mp4",
+
     "gallery": [
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image1.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image2.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "image",
-            "src": "/assets/Project1a.jpeg"
+            "src": "/assets/image3.webp"
           },
           {
             "type": "image",
-            "src": "/assets/Project1b.jpeg"
+            "src": "/assets/image4.webp"
           }
         ]
       },
+
       {
         "type": "mixed",
         "items": [
           {
             "type": "image",
-            "src": "/assets/section2.jpeg"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Oswald_Snippet.mp4"
+            "src": "/assets/image5.webp"
           },
           {
-            "type": "video",
-            "src": "https://cdn.styleframe.de/oakley-mars/Rover_Snippet.mp4"
-          }
-        ]
-      },
-      {
-        "type": "mixed",
-        "items": [
-          {
             "type": "image",
-            "src": "/assets/section2.jpeg"
+            "src": "/assets/image6.webp"
           }
         ]
       }
+
+
     ],
     "description": "Promotional Videos for NUST.",
     "category": "Promotional Videos",
