@@ -9,6 +9,7 @@ import IndexPage from "./ClientPage.jsx";
 import TeamPage from "./TeamPage";
 import ResearchPage from "./ResearchPage";
 import ProjectPage from "./pages/ProjectPage";
+import ClientProjectPage from "./pages/ClientProjectPage";
 import AdminRoutes from "./admin/AdminRoutes";
 import Loader from "./components/Loader.jsx";
 import Footer from "./components/Footer.jsx";
@@ -257,6 +258,15 @@ function App() {
           path="/project/:projectSlug"
           element={
             <ProjectPage
+              isContactOpen={isContactOpen}
+              setIsContactOpen={setIsContactOpen}
+            />
+          }
+        />
+        <Route
+          path="/client-project/:projectSlug"
+          element={
+            <ClientProjectPage
               isContactOpen={isContactOpen}
               setIsContactOpen={setIsContactOpen}
             />
