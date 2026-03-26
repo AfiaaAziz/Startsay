@@ -785,6 +785,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/01_USAID.webp"
                   alt="USAID"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -816,6 +817,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/02_DIFC.webp"
                   alt="DIFC"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -847,6 +849,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/03_HollyWood.webp"
                   alt="HollyWood"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -878,6 +881,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/04_Avtive.webp"
                   alt="Avtive"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -909,6 +913,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/05_ONYX TOWER.webp"
                   alt="ONYX TOWER"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -940,6 +945,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/06_Intercity Hotel.webp"
                   alt="Intercity Hotel"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -971,6 +977,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/07_Neuro.webp"
                   alt="Neuro"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
@@ -1002,6 +1009,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                   src="/assets/08_Social Media.webp"
                   alt="Social Media"
                   className="project-bg-image w-embed"
+                  loading="lazy"
                 />
                 <div
                   data-w-id="a6b1d65a-6253-497b-f5ad-8b354b24b4e3"
