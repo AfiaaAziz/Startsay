@@ -165,24 +165,29 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
         <div className="container _2-grid">
           <div>
             <div words-slide-up="" text-split="" className="t-large">
-              The studio's process is rooted in careful listening, clear
-              planning, and meticulous execution. Each project begins with a
-              shared understanding of objectives, developing into visuals that
-              are both impactful and enduring.
+              StartSay is more than an advertising agency it is a movement
+              against mediocrity. Born in 2018 and rebranded for the AI era,
+              we exist to help businesses break free from outdated
+              marketing and step into identities that truly represent who
+              they are.
               <br />
               <br />
-              Styleframe offers expertise across visual effects,
-              post-production, creative direction, animation direction, and CGI
-              production. Each service is tailored to the needs of the project,
-              ensuring flexibility while maintaining uncompromising standards.
+              From startups looking to make a
+              bold entrance to established
+              businesses aiming for a refresh,
+              our work spans a diverse range
+              of industries and styles.
             </div>
           </div>
           <div>
             <div words-slide-up="" text-split="" className="t-large">
-              Dedicated research and look development keep the studio at the
-              forefront of technology and aesthetics. Every commission is an
-              opportunity to refine methods, push boundaries, and deliver
-              visuals that resonate.
+              Our team of creative professionals brings together strategy,
+              design, content and technology to build campaigns that leave
+              a lasting impression. From startups finding their voice to
+              established companies redefining their presence StartSay is
+              the partner that makes it happen. 1,200+ projects. 80+
+              companies. 7 countries. One mission: to set a new standard
+              for advertising
             </div>
           </div>
         </div>
@@ -197,25 +202,25 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
             <div className="w-dyn-list">
               <div role="list" className="service-list w-dyn-items">
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>3D Motion</div>
+                  <div>Ad Creative</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>Conception &amp; Design</div>
+                  <div>UI/UX</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>Research &amp; Visual Development</div>
+                  <div>Concept Creation</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>Creative, Art &amp; Animation Direction</div>
+                  <div>OOH &amp; Outdoor Advertising</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>CGI Still &amp; Animation Production</div>
+                  <div>Design Systems</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>AI Direction &amp; Execution</div>
+                  <div>Campaign Strategy</div>
                 </div>
                 <div role="listitem" className="service-item w-dyn-item">
-                  <div>Visual Effects</div>
+                  <div>Animation</div>
                 </div>
               </div>
             </div>
@@ -235,7 +240,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Audi</div>
+                  <div>USAID</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -243,7 +248,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Bose</div>
+                  <div>DIFC</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -251,7 +256,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Deutsche Bank</div>
+                  <div>UNODC</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -259,7 +264,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Ferrero</div>
+                  <div>Marriott </div>
                 </div>
                 <div
                   words-slide-up=""
@@ -267,7 +272,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Hatton Labs</div>
+                  <div>NUST</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -275,7 +280,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Lionsgate</div>
+                  <div>Trivelles</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -283,7 +289,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Michelin</div>
+                  <div>Avtive</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -291,7 +298,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Microsoft</div>
+                  <div>POF</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -299,7 +306,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Moncler</div>
+                <div>Zonergy</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -307,7 +315,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Nickelodeon</div>
+                  <div>Millennium Aesthetic </div>
                 </div>
                 <div
                   words-slide-up=""
@@ -315,7 +323,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Oakley</div>
+                  <div>Neuro</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -323,7 +331,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Opel</div>
+                                    <div>ONYX Tower</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -331,7 +340,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Ray-Ban</div>
+                  <div>Parkview City</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -339,7 +349,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Samsung</div>
+                  <div>Intercity Hotel</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -347,7 +358,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Sonra</div>
+                  <div>Abraham & Agrimont Tractor</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -355,7 +366,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>rabbit</div>
+                  <div>WAH Industries Limited</div>
                 </div>
               </div>
             </div>

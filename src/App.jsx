@@ -1033,7 +1033,8 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
               style={{ opacity: 1 }}
               className="motto"
             >
-              Creative Sparks, Powerful Impact{" "}
+              The Full Stop Before
+              Your Brand's New Chapter{" "}
             </div>
           </div>
         </div>
@@ -1114,19 +1115,26 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465c-256fe678">
             <div className="startsay-description">
-              <p>
-                Startsay is an advertising and marketing agency driven by
-                strategy, creativity, and clear brand vision. We craft every
-                project with purpose, ensuring each detail delivers meaningful
-                impact and real results.
+             
+               <p>
+                 StartSay is more than an advertising agency it is a movement
+                against mediocrity. Born in 2018 and rebranded for the AI era,
+                we exist to help businesses break free from outdated
+                marketing and step into identities that truly represent who
+                they are.
               </p>
             </div>
           </div>
           <div id="w-node-_2cb51c69-c4b8-8fd1-4c5c-0440af9c465f-256fe678">
             <div className="startsay-description">
               <p>
-                Working with international clients, we balance experimentation
-                with refined execution.
+                Our team of creative professionals brings together strategy,
+                design, content and technology to build campaigns that leave
+                a lasting impression. From startups finding their voice to
+                established companies redefining their presence StartSay is
+                the partner that makes it happen. 1,200+ projects. 80+
+                companies. 7 countries. One mission: to set a new standard
+                for advertising
               </p>
             </div>
             <div className="gap-40"></div>
