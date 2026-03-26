@@ -373,7 +373,29 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
     initializeAnimations();
   }, [isLoaded]);
 
-  useEffect(() => { }, []);
+  useEffect(() => {
+    if (isLoaded) {
+      // Preload images in the background after the splash screen finishes
+      const imagesToPreload = [
+        "/assets/01_USAID.webp",
+        "/assets/02_DIFC.webp",
+        "/assets/03_HollyWood.webp",
+        "/assets/04_Avtive.webp",
+        "/assets/05_ONYX TOWER.webp",
+        "/assets/06_Intercity Hotel.webp",
+        "/assets/07_Neuro.webp",
+        "/assets/08_Social Media.webp",
+        "/assets/logo.png",
+      ];
+      // Delay preloading slightly to ensure the browser has finished rendering the splash screen dismissal
+      setTimeout(() => {
+        imagesToPreload.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+      }, 500); 
+    }
+  }, [isLoaded]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
