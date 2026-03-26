@@ -26,6 +26,19 @@ function App() {
   const [cursorType, setCursorType] = useState("default");
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCookieBanner, setShowCookieBanner] = useState(() => {
+    return localStorage.getItem("cookie-consent") !== "accepted";
+  });
+
+  const handleAcceptCookies = () => {
+    localStorage.setItem("cookie-consent", "accepted");
+    setShowCookieBanner(false);
+  };
+
+  const handleDenyCookies = () => {
+    localStorage.setItem("cookie-consent", "denied");
+    setShowCookieBanner(false);
+  };
 
   // Custom Cursor Logic
   const [isLoaded, setIsLoaded] = useState(false);
@@ -224,6 +237,9 @@ function App() {
               isContactOpen={isContactOpen}
               setIsContactOpen={setIsContactOpen}
               isLoaded={isLoaded}
+              showCookieBanner={showCookieBanner}
+              handleAcceptCookies={handleAcceptCookies}
+              handleDenyCookies={handleDenyCookies}
             />
           }
         />
@@ -283,7 +299,14 @@ function App() {
   );
 }
 
-function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
+function HomePage({
+  isContactOpen,
+  setIsContactOpen,
+  isLoaded,
+  showCookieBanner,
+  handleAcceptCookies,
+  handleDenyCookies,
+}) {
   useVideoPlayer();
 
   useEffect(() => {
@@ -417,7 +440,8 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
 
   return (
     <>
-      <div className="cookie-pack">
+      {showCookieBanner && (
+        <div className="cookie-pack">
         <div fs-cc="banner" className="fs-cc-banner">
           <div className="fs-cc-banner2_container">
             <div className="fs-cc-manager2_button w-embed">
@@ -495,6 +519,10 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-component-context="%5B%7B%22componentId%22%3A%22f650a7ea-2f52-1ece-a861-43a90418f58f%22%2C%22instanceId%22%3A%22add0c45d-d02e-cb36-c4ab-5b762e766396%22%7D%5D"
                 href="#"
                 className="link fs-cc-banner2_button w-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAcceptCookies();
+                }}
               >
                 Accept
               </a>
@@ -506,6 +534,10 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
                 data-wf-component-context="%5B%7B%22componentId%22%3A%22f650a7ea-2f52-1ece-a861-43a90418f58f%22%2C%22instanceId%22%3A%22add0c45d-d02e-cb36-c4ab-5b762e766396%22%7D%5D"
                 href="#"
                 className="link fs-cc-banner2_button fs-cc-button-alt w-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDenyCookies();
+                }}
               >
                 Deny
               </a>
@@ -676,6 +708,7 @@ function HomePage({ isContactOpen, setIsContactOpen, isLoaded }) {
           <div fs-cc="close" className="fs-cc-prefs2_overlay"></div>
         </div>
       </div>
+    )}
       <div
         data-w-id="d5f92b82-978f-a770-3f25-8224578da03a"
         className={`contact-banner ${isContactOpen ? "open" : "closed"}`}

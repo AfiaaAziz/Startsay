@@ -303,7 +303,30 @@ html {
   /* Team Heading Responsive */
   .team-heading {
     font-size: 2.5rem;
+  }
 
+  ._2-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .t-large {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  .cms-item-team {
+    width: 220px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-large {
+    font-size: 16px !important;
+  }
+  
+  .team-heading {
+    font-size: 2rem !important;
   }
 }
 
