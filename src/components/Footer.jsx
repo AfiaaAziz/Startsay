@@ -9,21 +9,21 @@ const Footer = ({ isContactOpen, setIsContactOpen }) => {
         </div>
         <div className="footer-column social-col">
           <a
-            href="https://www.instagram.com/startsay.official/"
+            href="https://www.instagram.com/startsayhq/"
             target="_blank"
             className="link footer-link right-up-arrow"
           >
             Instagram
           </a>
           <a
-            href="https://www.linkedin.com/company/startsayofficial"
+            href="https://www.linkedin.com/company/startsayhq"
             target="_blank"
             className="link footer-link right-up-arrow"
           >
             LinkedIn
           </a>
           <a
-            href="https://www.facebook.com/profile.php?id=61572256355814"
+            href="https://www.facebook.com/startsayhq/"
             target="_blank"
             className="link footer-link right-up-arrow"
           >

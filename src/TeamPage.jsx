@@ -315,7 +315,8 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Millennium Aesthetic </div>
+                  <div>Footology</div>
+
                 </div>
                 <div
                   words-slide-up=""
@@ -331,7 +332,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                                    <div>ONYX Tower</div>
+                <div>ONYX Tower</div>
 
                 </div>
                 <div
@@ -340,8 +341,26 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   role="listitem"
                   className="w-dyn-item"
                 >
-                  <div>Parkview City</div>
+                  <div>QONEXA</div>
 
+                </div>
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
+                  <div>Flamex </div>
+
+
+                </div>
+                <div
+                  words-slide-up=""
+                  text-split=""
+                  role="listitem"
+                  className="w-dyn-item"
+                >
+                  <div>PCB</div>
                 </div>
                 <div
                   words-slide-up=""
@@ -350,23 +369,6 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                   className="w-dyn-item"
                 >
                   <div>Intercity Hotel</div>
-
-                </div>
-                <div
-                  words-slide-up=""
-                  text-split=""
-                  role="listitem"
-                  className="w-dyn-item"
-                >
-                  <div>Abraham & Agrimont Tractor</div>
-                </div>
-                <div
-                  words-slide-up=""
-                  text-split=""
-                  role="listitem"
-                  className="w-dyn-item"
-                >
-                  <div>WAH Industries Limited</div>
                 </div>
               </div>
             </div>

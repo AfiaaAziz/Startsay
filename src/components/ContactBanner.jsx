@@ -38,14 +38,14 @@ const ContactBanner = ({ isOpen, onClose }) => {
             </a>
             <div className="link-wrp">
                 <a
-                    href="https://www.instagram.com/startsay.official/"
+                    href="https://www.instagram.com/startsayhq/"
                     target="_blank"
                     className="link t-large"
                 >
                     ↗ Instagram
                 </a>
                 <a
-                    href="https://www.linkedin.com/company/startsayofficial"
+                    href="https://www.linkedin.com/company/startsayhq"
                     target="_blank"
                     className="link t-large"
                 >
