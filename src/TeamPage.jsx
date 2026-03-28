@@ -98,9 +98,9 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
 
   const teamMembers = [
     {
-      name: "Robin",
-      title: "Founder & CEO",
-      img: "68ee35284412b64fabb6a434_SF_Portraits_Robin_Final_Blur.avif",
+      name: "Syed Mesum Raza",
+      title: "Founder",
+      img: "/assets/team/Syed Mesum Raza.webp",
     },
     {
       name: "Tim",
@@ -394,7 +394,9 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
                 <div className="team-title">{member.title}</div>
                 <div
                   style={{
-                    backgroundImage: `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/${member.img}")`,
+                    backgroundImage: member.img.startsWith("/")
+                      ? `url("${member.img}")`
+                      : `url("https://cdn.prod.website-files.com/66c3a685de0fd85a256fe680/${member.img}")`,
                   }}
                   className="team-photo"
                 ></div>
