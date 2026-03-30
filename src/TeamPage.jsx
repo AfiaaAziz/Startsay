@@ -104,7 +104,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
     },
     {
       name: "Rameel Malik",
-      title: "Chief Product & Technology Officer ",
+      title: "Creative Lead",
       img: "/assets/team/Rameel.webp",
     },
     {
