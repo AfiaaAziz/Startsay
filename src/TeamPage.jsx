@@ -105,42 +105,42 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
     {
       name: "Rameel Malik",
       title: "Chief Product Officer ",
-      img: "/assets/team/Rameel.png",
+      img: "/assets/team/Rameel.webp",
     },
     {
       name: "Fataina Nadwa",
       title: "Project Manager",
-      img: "/assets/team/Fataina.jpg",
+      img: "/assets/team/Fataina.webp",
     },
     {
       name: "Muhammad Zain UL Abedeen ",
       title: "Business Analyst",
-      img: "/assets/team/Zain.jpeg",
+      img: "/assets/team/Zain.webp",
     },
     {
       name: "Afia Aziz",
       title: "Full-Stack Developer",
-      img: "/assets/team/Afia.jpeg",
+      img: "/assets/team/Afia.webp",
     },
      {
       name: "Hoor Ain",
       title: "Graphic Designer",
-      img: "/assets/team/Hoor.jpeg",
+      img: "/assets/team/Hoor.webp",
     },
     {
       name: "Bilal Tahir",
       title: "Graphic Design",
-      img: "/assets/team/Bilal.jpeg",
+      img: "/assets/team/Bilal.webp",
     },
     {
       name: "Sana Saeed",
       title: "UI/UX Designer",
-      img: "/assets/team/Sana.jpg",
+      img: "/assets/team/Sana.webp",
     },
     {
       name: "Maria Ilyas Malik",
       title: "Business Developer & Social Media Manager",
-      img: "/assets/team/Maria.jpeg",
+      img: "/assets/team/Maria.webp",
     },
     
   ];
