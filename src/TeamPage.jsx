@@ -108,7 +108,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
       img: "/assets/team/Rameel.webp",
     },
     {
-      name: "Fataina Nadwa",
+      name: "Fataina Bint e Noor",
       title: "Project Manager",
       img: "/assets/team/Fataina.webp",
     },
