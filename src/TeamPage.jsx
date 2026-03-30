@@ -135,7 +135,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
      {
       name: "Maria Riaz",
       title: "Business Development Intern",
-      img: "/assets/team/mariaRiaz.png",
+      img: "/assets/team/mariaRiaz.webp",
     },
     {
       name: "Sana Saeed",
