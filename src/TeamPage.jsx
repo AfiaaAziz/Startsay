@@ -114,7 +114,7 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
     },
     {
       name: "Muhammad Zain UL Abedeen ",
-      title: "Business Analyst",
+      title: "Business Analyst Intern",
       img: "/assets/team/Zain.webp",
     },
     {
@@ -129,8 +129,13 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
     },
     {
       name: "Bilal Tahir",
-      title: "Graphic Design",
+      title: "Graphic Design Intern",
       img: "/assets/team/Bilal.webp",
+    },
+     {
+      name: "Maria Riaz",
+      title: "Business Development Intern",
+      img: "/assets/team/mariaRiaz.png",
     },
     {
       name: "Sana Saeed",
