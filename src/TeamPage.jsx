@@ -113,6 +113,21 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
       img: "/assets/team/Fataina.jpg",
     },
     {
+      name: "Muhammad Zain UL Abedeen ",
+      title: "Business Analyst",
+      img: "/assets/team/Zain.jpeg",
+    },
+    {
+      name: "Afia Aziz",
+      title: "Full-Stack Developer",
+      img: "/assets/team/Afia.jpeg",
+    },
+     {
+      name: "Hoor Ain",
+      title: "Graphic Designer",
+      img: "/assets/team/Hoor.jpeg",
+    },
+    {
       name: "Bilal Tahir",
       title: "Graphic Design",
       img: "/assets/team/Bilal.jpeg",
@@ -123,40 +138,11 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
       img: "/assets/team/Sana.jpg",
     },
     {
-      name: "Muhammad Zain UL Abedeen ",
-      title: "Business Analyst",
-      img: "/assets/team/Zain.jpeg",
-    },
-    {
-      name: "Afia Aziz",
-      title: "Full-Stack Developer",
-      img: "/assets/team/Afia.jpeg",
-    },
-    {
-      name: "Hoor Ain",
-      title: "Graphic Designer",
-      img: "/assets/team/Hoor.jpeg",
-    },
-    {
       name: "Maria Ilyas Malik",
       title: "Business Developer & Social Media Manager",
       img: "/assets/team/Maria.jpeg",
     },
-    {
-      name: "Andre",
-      title: "3D Designer / TD",
-      img: "68ee355e74d0eff38a24440a_SF_Portraits_Andre_Final_Blur.avif",
-    },
-    {
-      name: "Victor",
-      title: "3D Designer",
-      img: "68ee354313087b95211028b8_SF_Portraits_Victor_Final_Blur.avif",
-    },
-    {
-      name: "Janic",
-      title: "3D Designer",
-      img: "68ee350e62d9c1fccfde9981_SF_Portraits_Jannic_Final_Blur.avif",
-    },
+    
   ];
 
   return (
