@@ -138,11 +138,6 @@ function TeamPage({ isContactOpen, setIsContactOpen }) {
       img: "/assets/team/mariaRiaz.webp",
     },
     {
-      name: "Sana Saeed",
-      title: "UI/UX Designer",
-      img: "/assets/team/Sana.webp",
-    },
-    {
       name: "Maria Ilyas Malik",
       title: "Business Developer & Social Media Manager",
       img: "/assets/team/Maria.webp",
